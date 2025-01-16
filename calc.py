@@ -34,23 +34,32 @@ class Field:
         neightborCount = 0
         for i in range(-1, 2):
             for j in range(-1, 2):
-                if i == j:
+                
+                if i == 0 and j == 0:
                     continue
+                
                 if self.field[(x + i + self.xSize) % self.xSize, (y + j + self.ySize) % self.ySize] != 0:
                     neightborCount += 1
         return neightborCount
     
     def calcualteFieldStep(self):
         print(self.field)
+        print("Neigh count")
+
         newFiled = np.ndarray(shape=(self.xSize, self.ySize))
+
+        neicount = np.ndarray(shape=(self.xSize, self.ySize))
+
         for x in range(self.xSize):
             for y in range(self.ySize):
+                neicount[x, y] = self.calcualteNeighborCount(x, y)
                 if self.field[x, y] == 0:
                     newFiled[x, y] = self.thisRule.getArrival(self.calcualteNeighborCount(x, y))
                 else:
                     newFiled[x, y] = self.thisRule.getSurvive(self.calcualteNeighborCount(x, y))
         self.field = newFiled.copy()
-        
+        # print(neicount)
+        # print("---------")
     
     def getState(self, x : int, y : int) -> int:
         return int(self.field[x, y])
