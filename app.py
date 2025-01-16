@@ -16,7 +16,7 @@ frame = App()
 frame.InitializeField(9, 8)
 frame.fillButtons()
 frame.changeAllButtons(0)
-c
+
 frame.show()
 
 # frame.changeAllButtons(0)
