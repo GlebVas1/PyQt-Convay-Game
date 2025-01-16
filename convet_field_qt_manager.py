@@ -46,6 +46,8 @@ class ConveyFieldQtManager(object):
            
         for v in self.gameButtonsStates:
             v = val
+
+        self.calc.field.fill(val)
     
     def changeButtonState(self, x : int, y : int, val : int):
         self.gameButtons[x * self.yFieldSize + y].setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameButtonsColorsState[val])

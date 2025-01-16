@@ -41,6 +41,7 @@ class Field:
         return neightborCount
     
     def calcualteFieldStep(self):
+        print(self.field)
         newFiled = np.ndarray(shape=(self.xSize, self.ySize))
         for x in range(self.xSize):
             for y in range(self.ySize):
@@ -49,6 +50,7 @@ class Field:
                 else:
                     newFiled[x, y] = self.thisRule.getSurvive(self.calcualteNeighborCount(x, y))
         self.field = newFiled.copy()
+        
     
     def getState(self, x : int, y : int) -> int:
         return int(self.field[x, y])
