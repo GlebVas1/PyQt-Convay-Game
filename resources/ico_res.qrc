@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="icons">
+    <file>game_pressed_ico.png</file>
+    <file>graph_pressed_ico.png</file>
+    <file>settings_pressed_ico.png</file>
     <file>graph_ico.png</file>
     <file>game_ico.png</file>
     <file>pause.png</file>

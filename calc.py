@@ -21,7 +21,7 @@ class Field:
         self.thisRule = rule
     
     def initializeStatistics(self):
-        for i in range(self.thisRule.genetationsCount):
+        for i in range(self.thisRule.generationsCount + 1):
             self.statistics[i] = []
 
     def setCell(self, x : int, y : int, val : int):
@@ -36,7 +36,7 @@ class Field:
             for j in range(-1, 2):
                 if i == 0 and j == 0:
                     continue
-                if self.field[(x + i + self.xSize) % self.xSize, (y + j + self.ySize) % self.ySize] == self.thisRule.genetationsCount:
+                if self.field[(x + i + self.xSize) % self.xSize, (y + j + self.ySize) % self.ySize] == self.thisRule.generationsCount:
                     neightborCount += 1
         return neightborCount
     
@@ -49,19 +49,18 @@ class Field:
 
                 if self.field[x, y] == 0: # empty or dead
                     if self.thisRule.getArrival(neighborCount):
-                        newField[x, y] = self.thisRule.genetationsCount
+                        newField[x, y] = self.thisRule.generationsCount
                     else:
                         newField[x,y] = 0
                 else:
-                    if self.field[x, y] == self.thisRule.genetationsCount:
+                    if self.field[x, y] == self.thisRule.generationsCount:
                         if self.thisRule.getSurvive(neighborCount):
                             newField[x, y] = self.field[x, y]
                         else:
                             newField[x, y] = self.field[x, y] - 1
                     else:
                         newField[x, y] = self.field[x, y] - 1
-        # print(self.field)
-        # print(newField)
+
         self.field = newField.copy()
     
     def getState(self, x : int, y : int) -> int:
@@ -72,7 +71,7 @@ class Field:
 
     def calcStatistic(self):
         currentStatistic = {}
-        for i in range(self.thisRule.genetationsCount):
+        for i in range(self.thisRule.generationsCount + 1):
             currentStatistic[i] = 0
 
         for x in range(self.xSize):
@@ -80,8 +79,6 @@ class Field:
                 currentStatistic[self.getState(x, y)] += 1
                 
         for generation, value in currentStatistic.items():
-            print(generation)
-            print(value)
             self.statistics[generation].append(value)
             if len(self.statistics[generation]) > self.statisticsMaxSize:
                 self.statistics[generation] = self.statistics[generation][1:]

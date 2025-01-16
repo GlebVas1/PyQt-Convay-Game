@@ -7,7 +7,7 @@ class Rule:
     """
     surviveIfNeighborCount = [0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
     arriveIfNeighborCount = [0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
-    genetationsCount = 1
+    generationsCount = 1
     
     def getSurvive(self, neighborCount : int):
         return self.surviveIfNeighborCount[neighborCount] == 1
@@ -18,4 +18,4 @@ class Rule:
     def __init__(self, surviveIfNeighborCount : list = [0, 0, 1, 1, 0, 0, 0, 0, 0, 0], arriveIfNeighborCount : list = [0, 0, 0, 1, 0, 0, 0, 0, 0, 0], genetationsCount = 1):
         self.surviveIfNeighborCount = surviveIfNeighborCount
         self.arriveIfNeighborCount = arriveIfNeighborCount
-        self.genetationsCount = genetationsCount
+        self.generationsCount = genetationsCount

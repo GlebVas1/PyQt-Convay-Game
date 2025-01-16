@@ -53,7 +53,7 @@ class ConveyFieldQtManager(object):
                 button.setObjectName("game_button_" + str(i * self.xFieldSize + j))
                 button.setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameButtonsColorsPalette[0])
 
-                button.clicked.connect(partial(self.changeButtonState, i, j, self.calc.thisRule.genetationsCount))
+                button.clicked.connect(partial(self.changeButtonState, i, j, self.calc.thisRule.generationsCount))
 
                 self.gameButtons.append(button)
                 self.gameButtonsStates.append(0)
@@ -84,11 +84,11 @@ class ConveyFieldQtManager(object):
             for y in range(self.yFieldSize):
                 state = self.calc.getState(x, y)
                 self.changeButtonState(x, y, state)
-                if state == self.calc.thisRule.genetationsCount:
+                if state == self.calc.thisRule.generationsCount:
                     self.alliveCellsCounter += 1
         
         self.calc.calcStatistic()
-        self.alliveCellsCounter = self.calc.statistics[self.calc.thisRule.genetationsCount][-1]
+        self.alliveCellsCounter = self.calc.statistics[self.calc.thisRule.generationsCount][-1]
         self.updateLCD()
 
     def getButtonState(self, x : int, y : int) -> int:
