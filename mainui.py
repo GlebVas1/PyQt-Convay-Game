@@ -16,18 +16,17 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setWindowModality(QtCore.Qt.NonModal)
         MainWindow.setEnabled(True)
-        MainWindow.resize(1132, 854)
-        MainWindow.setMinimumSize(QtCore.QSize(900, 800))
-        MainWindow.setMaximumSize(QtCore.QSize(1920, 1280))
+        MainWindow.resize(1200, 900)
+        MainWindow.setMinimumSize(QtCore.QSize(1200, 900))
+        MainWindow.setMaximumSize(QtCore.QSize(10000, 10000))
         MainWindow.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         MainWindow.setIconSize(QtCore.QSize(50, 50))
         MainWindow.setTabShape(QtWidgets.QTabWidget.Triangular)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setMaximumSize(QtCore.QSize(989, 853))
+        self.centralwidget.setMaximumSize(QtCore.QSize(10000, 10000))
         self.centralwidget.setStyleSheet("background-color : black")
         self.centralwidget.setObjectName("centralwidget")
         self.gridLayout = QtWidgets.QGridLayout(self.centralwidget)
-        self.gridLayout.setSizeConstraint(QtWidgets.QLayout.SetMaximumSize)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
         self.gridLayout.setObjectName("gridLayout")
         self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
@@ -42,7 +41,7 @@ class Ui_MainWindow(object):
 "background-color: rgb(49, 49, 49);\n"
 "}\n"
 "QTabWidget::pane { /* The tab widget frame */\n"
-"border-top: 2px solid rgb(89, 89, 89);\n"
+"border-top: 2px solid rgb(49, 49, 49);\n"
 "}\n"
 "\n"
 "QTabBar::tab {\n"
@@ -53,7 +52,7 @@ class Ui_MainWindow(object):
 "background:  rgb(19, 19, 19);\n"
 "border-top-left-radius: 8px;\n"
 "border-top-right-radius: 8px;\n"
-"border: 2px solid rgb(89, 89, 89);\n"
+"border: 2px solid  rgb(49, 49, 49);\n"
 "border-bottom-color:  rgb(49, 49, 49);\n"
 "color : white;\n"
 "}\n"
@@ -65,7 +64,7 @@ class Ui_MainWindow(object):
         self.tabWidget.setMovable(False)
         self.tabWidget.setObjectName("tabWidget")
         self.tabDisplay = QtWidgets.QWidget()
-        self.tabDisplay.setMaximumSize(QtCore.QSize(989, 802))
+        self.tabDisplay.setMaximumSize(QtCore.QSize(10000, 10000))
         font = QtGui.QFont()
         font.setPointSize(10)
         font.setBold(False)
@@ -74,54 +73,110 @@ class Ui_MainWindow(object):
         self.tabDisplay.setObjectName("tabDisplay")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.tabDisplay)
         self.gridLayout_2.setObjectName("gridLayout_2")
-        self.Displaylayout = QtWidgets.QHBoxLayout()
-        self.Displaylayout.setSpacing(20)
-        self.Displaylayout.setObjectName("Displaylayout")
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
         self.infoPanelLayout = QtWidgets.QVBoxLayout()
         self.infoPanelLayout.setObjectName("infoPanelLayout")
-        self.lcdNumber = QtWidgets.QLCDNumber(self.tabDisplay)
-        self.lcdNumber.setMaximumSize(QtCore.QSize(16777215, 50))
-        self.lcdNumber.setObjectName("lcdNumber")
-        self.infoPanelLayout.addWidget(self.lcdNumber)
-        self.Displaylayout.addLayout(self.infoPanelLayout)
+        self.infoframe = QtWidgets.QFrame(self.tabDisplay)
+        self.infoframe.setMaximumSize(QtCore.QSize(150, 200))
+        self.infoframe.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(69, 69, 69)")
+        self.infoframe.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.infoframe.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.infoframe.setObjectName("infoframe")
+        self.gridLayout_6 = QtWidgets.QGridLayout(self.infoframe)
+        self.gridLayout_6.setObjectName("gridLayout_6")
+        self.infoVerticalLayout = QtWidgets.QVBoxLayout()
+        self.infoVerticalLayout.setObjectName("infoVerticalLayout")
+        self.framesTotal = QtWidgets.QLabel(self.infoframe)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.framesTotal.setFont(font)
+        self.framesTotal.setStyleSheet("color : white")
+        self.framesTotal.setObjectName("framesTotal")
+        self.infoVerticalLayout.addWidget(self.framesTotal)
+        self.totalFramesLCD = QtWidgets.QLCDNumber(self.infoframe)
+        self.totalFramesLCD.setMaximumSize(QtCore.QSize(16777215, 50))
+        font = QtGui.QFont()
+        font.setPointSize(8)
+        self.totalFramesLCD.setFont(font)
+        self.totalFramesLCD.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(49, 49, 49);\n"
+"color : white")
+        self.totalFramesLCD.setSmallDecimalPoint(False)
+        self.totalFramesLCD.setSegmentStyle(QtWidgets.QLCDNumber.Flat)
+        self.totalFramesLCD.setObjectName("totalFramesLCD")
+        self.infoVerticalLayout.addWidget(self.totalFramesLCD)
+        self.CellsAlive = QtWidgets.QLabel(self.infoframe)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.CellsAlive.setFont(font)
+        self.CellsAlive.setStyleSheet("color : white")
+        self.CellsAlive.setObjectName("CellsAlive")
+        self.infoVerticalLayout.addWidget(self.CellsAlive)
+        self.AliveCellsLCD = QtWidgets.QLCDNumber(self.infoframe)
+        self.AliveCellsLCD.setMaximumSize(QtCore.QSize(16777215, 50))
+        self.AliveCellsLCD.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(49, 49, 49);\n"
+"color : white")
+        self.AliveCellsLCD.setSegmentStyle(QtWidgets.QLCDNumber.Flat)
+        self.AliveCellsLCD.setObjectName("AliveCellsLCD")
+        self.infoVerticalLayout.addWidget(self.AliveCellsLCD)
+        self.gridLayout_6.addLayout(self.infoVerticalLayout, 0, 0, 1, 1)
+        self.infoPanelLayout.addWidget(self.infoframe)
+        self.horizontalLayout.addLayout(self.infoPanelLayout)
         self.mainField = QtWidgets.QFrame(self.tabDisplay)
         self.mainField.setMinimumSize(QtCore.QSize(800, 800))
         self.mainField.setMaximumSize(QtCore.QSize(800, 800))
-        self.mainField.setStyleSheet("border: 2px solid black;\n"
-"border-color  : rgb(89, 89, 89);\n"
-"border-bottom-color: black;\n"
-"border-radius : 5px;\n"
+        self.mainField.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69)")
         self.mainField.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.mainField.setFrameShadow(QtWidgets.QFrame.Plain)
         self.mainField.setLineWidth(10)
         self.mainField.setMidLineWidth(16)
         self.mainField.setObjectName("mainField")
-        self.Displaylayout.addWidget(self.mainField)
+        self.horizontalLayout.addWidget(self.mainField)
         self.gameControlPanelsLayout = QtWidgets.QVBoxLayout()
         self.gameControlPanelsLayout.setObjectName("gameControlPanelsLayout")
         self.gameContolPanel = QtWidgets.QFrame(self.tabDisplay)
-        self.gameContolPanel.setStyleSheet("border: 2px solid black;\n"
-"border-color  : rgb(89, 89, 89);\n"
-"border-bottom-color: black;\n"
-"border-radius : 5px;\n"
+        self.gameContolPanel.setMaximumSize(QtCore.QSize(150, 100))
+        self.gameContolPanel.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69)")
         self.gameContolPanel.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.gameContolPanel.setFrameShadow(QtWidgets.QFrame.Raised)
         self.gameContolPanel.setObjectName("gameContolPanel")
+        self.gridLayout_5 = QtWidgets.QGridLayout(self.gameContolPanel)
+        self.gridLayout_5.setObjectName("gridLayout_5")
+        self.gameStartStopButton = QtWidgets.QPushButton(self.gameContolPanel)
+        self.gameStartStopButton.setMinimumSize(QtCore.QSize(60, 60))
+        self.gameStartStopButton.setMaximumSize(QtCore.QSize(60, 60))
+        self.gameStartStopButton.setStyleSheet("QPushButton {\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(89, 89, 89)\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(49, 49, 49);\n"
+"    border-style: inset;\n"
+"}")
+        self.gameStartStopButton.setText("")
+        self.gameStartStopButton.setObjectName("gameStartStopButton")
+        self.gridLayout_5.addWidget(self.gameStartStopButton, 0, 0, 1, 1)
         self.gameControlPanelsLayout.addWidget(self.gameContolPanel)
         self.frame = QtWidgets.QFrame(self.tabDisplay)
-        self.frame.setStyleSheet("border: 2px solid black;\n"
-"border-color  : rgb(89, 89, 89);\n"
-"border-bottom-color: black;\n"
-"border-radius : 5px;\n"
+        self.frame.setMaximumSize(QtCore.QSize(150, 16777215))
+        self.frame.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69)")
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
         self.gameControlPanelsLayout.addWidget(self.frame)
-        self.Displaylayout.addLayout(self.gameControlPanelsLayout)
-        self.gridLayout_2.addLayout(self.Displaylayout, 0, 0, 1, 1)
+        self.horizontalLayout.addLayout(self.gameControlPanelsLayout)
+        self.gridLayout_2.addLayout(self.horizontalLayout, 0, 0, 1, 1)
         self.tabWidget.addTab(self.tabDisplay, "")
         self.tabSetting = QtWidgets.QWidget()
         self.tabSetting.setObjectName("tabSetting")
@@ -130,20 +185,18 @@ class Ui_MainWindow(object):
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setObjectName("verticalLayout")
         self.groupBox = QtWidgets.QGroupBox(self.tabSetting)
+        self.groupBox.setMinimumSize(QtCore.QSize(0, 400))
+        self.groupBox.setMaximumSize(QtCore.QSize(16777215, 400))
         font = QtGui.QFont()
-        font.setPointSize(11)
+        font.setPointSize(10)
         font.setBold(True)
         font.setWeight(75)
         self.groupBox.setFont(font)
-        self.groupBox.setStyleSheet("border: 2px solid black;\n"
-"border-color  : rgb(89, 89, 89);\n"
-"border-bottom-color: black;\n"
-"border-radius : 10px;\n"
-"background-color : rgb(49, 49, 49);\n"
-"color : white;")
+        self.groupBox.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(69, 69, 69); color : white;")
         self.groupBox.setObjectName("groupBox")
         self.layoutWidget = QtWidgets.QWidget(self.groupBox)
-        self.layoutWidget.setGeometry(QtCore.QRect(20, 40, 561, 331))
+        self.layoutWidget.setGeometry(QtCore.QRect(20, 40, 421, 331))
         self.layoutWidget.setObjectName("layoutWidget")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(self.layoutWidget)
         self.verticalLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -153,18 +206,15 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.ruleArriving.setFont(font)
-        self.ruleArriving.setStyleSheet("border: 2px solid black;\n"
-"border-color  : rgb(89, 89, 89);\n"
-"border-bottom-color: black;\n"
-"border-radius : 10px;\n"
-"background-color : rgb(49, 49, 49)")
+        self.ruleArriving.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(89, 89, 89)")
         self.ruleArriving.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.ruleArriving.setFrameShadow(QtWidgets.QFrame.Raised)
         self.ruleArriving.setObjectName("ruleArriving")
         self.ruleArriveLabel = QtWidgets.QLabel(self.ruleArriving)
         self.ruleArriveLabel.setGeometry(QtCore.QRect(10, 10, 521, 31))
         font = QtGui.QFont()
-        font.setPointSize(11)
+        font.setPointSize(10)
         font.setBold(True)
         font.setWeight(75)
         self.ruleArriveLabel.setFont(font)
@@ -173,18 +223,15 @@ class Ui_MainWindow(object):
         self.ruleArriveLabel.setObjectName("ruleArriveLabel")
         self.verticalLayout_2.addWidget(self.ruleArriving)
         self.ruleSurviving = QtWidgets.QFrame(self.layoutWidget)
-        self.ruleSurviving.setStyleSheet("border: 2px solid black;\n"
-"border-color  : rgb(89, 89, 89);\n"
-"border-bottom-color: black;\n"
-"border-radius : 10px;\n"
-"background-color : rgb(49, 49, 49)")
+        self.ruleSurviving.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(89, 89, 89)")
         self.ruleSurviving.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.ruleSurviving.setFrameShadow(QtWidgets.QFrame.Raised)
         self.ruleSurviving.setObjectName("ruleSurviving")
         self.ruleSurviveLabel = QtWidgets.QLabel(self.ruleSurviving)
         self.ruleSurviveLabel.setGeometry(QtCore.QRect(10, 10, 331, 16))
         font = QtGui.QFont()
-        font.setPointSize(11)
+        font.setPointSize(10)
         font.setBold(True)
         font.setWeight(75)
         self.ruleSurviveLabel.setFont(font)
@@ -199,6 +246,8 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.ruleSurviveLabel_2.setFont(font)
+        self.ruleSurviveLabel_2.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.ruleSurviveLabel_2.setAutoFillBackground(False)
         self.ruleSurviveLabel_2.setStyleSheet("border :  0px; border :  0px; color : white;")
         self.ruleSurviveLabel_2.setObjectName("ruleSurviveLabel_2")
         self.horizontalLayout_2.addWidget(self.ruleSurviveLabel_2)
@@ -210,25 +259,28 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.spinBox.setFont(font)
         self.spinBox.setFocusPolicy(QtCore.Qt.WheelFocus)
+        self.spinBox.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(89, 89, 89); \n"
+"color : white;\n"
+"padding-left : 5px;")
         self.spinBox.setFrame(True)
         self.spinBox.setSuffix("")
+        self.spinBox.setMinimum(2)
         self.spinBox.setMaximum(10)
         self.spinBox.setObjectName("spinBox")
         self.horizontalLayout_2.addWidget(self.spinBox)
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
         self.verticalLayout.addWidget(self.groupBox)
         self.groupBox_2 = QtWidgets.QGroupBox(self.tabSetting)
+        self.groupBox_2.setMinimumSize(QtCore.QSize(0, 200))
+        self.groupBox_2.setMaximumSize(QtCore.QSize(16777215, 200))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
         self.groupBox_2.setFont(font)
-        self.groupBox_2.setStyleSheet("border: 2px solid black;\n"
-"border-color  : rgb(89, 89, 89);\n"
-"border-bottom-color: black;\n"
-"border-radius : 10px;\n"
-"background-color : rgb(49, 49, 49);\n"
-"color : white;")
+        self.groupBox_2.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(69, 69, 69); color : white;")
         self.groupBox_2.setObjectName("groupBox_2")
         self.ruleSurviveLabel_6 = QtWidgets.QLabel(self.groupBox_2)
         self.ruleSurviveLabel_6.setGeometry(QtCore.QRect(20, 50, 41, 16))
@@ -241,6 +293,13 @@ class Ui_MainWindow(object):
         self.ruleSurviveLabel_6.setObjectName("ruleSurviveLabel_6")
         self.comboBox = QtWidgets.QComboBox(self.groupBox_2)
         self.comboBox.setGeometry(QtCore.QRect(70, 40, 101, 41))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.comboBox.setFont(font)
+        self.comboBox.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(89, 89, 89); color : white;")
         self.comboBox.setObjectName("comboBox")
         self.comboBox.addItem("")
         self.comboBox.addItem("")
@@ -264,6 +323,8 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Convey"))
+        self.framesTotal.setText(_translate("MainWindow", "Frames total"))
+        self.CellsAlive.setText(_translate("MainWindow", "Alive cells"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabDisplay), _translate("MainWindow", "Game"))
         self.groupBox.setTitle(_translate("MainWindow", "Game Rule Settings"))
         self.ruleArriveLabel.setText(_translate("MainWindow", "Cell arrives when neighbor count is"))

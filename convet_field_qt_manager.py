@@ -14,18 +14,31 @@ class ConveyFieldQtManager(object):
     gameButtonsColorsState = ["rgb(49, 49, 49)", "rgb(255, 249, 207)"]
     gameButtonsStates = []
 
-    def InitializeField(self, x: int = 10, y : int = 10):
-        self.xFieldSize = x
-        self.yFieldSize = y
-        self.calc = cl.Field()
-        self.calc.InitializeField(x, y)
-        # self.updateButton.clicked.connect(self.updateField)
+    gameStatePlayed = True
+    gameStateFPS = 30
+
+    framesTotalCounter = 0
+    alliveCellsCounter = 0
+
+    def initializeManger(self):
+        """Initializes some QT events, like timer, basic buttons actions etc"""
         self.updateTimer = QtCore.QTimer(self)
         self.updateTimer.setInterval(500)
         self.updateTimer.timeout.connect(self.updateField)
         self.updateTimer.start()
 
+        self.gameStartStopButton.clicked.connect(self.gameStartStopButtonAction)
+        self.comboBox.currentIndexChanged.connect(self.setFPS)
+
+    def InitializeField(self, x: int = 10, y : int = 10):
+        """Initialize game field, sizes and calc platform"""
+        self.xFieldSize = x
+        self.yFieldSize = y
+        self.calc = cl.Field()
+        self.calc.InitializeField(x, y)
+        
     def fillButtons(self):
+        """initial filiing main field with buttons"""
         xSize = int((self.mainField.size().width() - (1 + self.xFieldSize) * CFMGameFramePadding) / self.xFieldSize)
         ySize = int((self.mainField.size().height() - (1 + self.yFieldSize) * CFMGameFramePadding) / self.yFieldSize)
 
@@ -42,6 +55,7 @@ class ConveyFieldQtManager(object):
                 self.gameButtonsStates.append(0)
 
     def changeAllButtons(self, val : int):
+        """change all buttons to a specific state"""
         for button in self.gameButtons:
             button.setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameButtonsColorsState[val]) 
            
@@ -56,14 +70,32 @@ class ConveyFieldQtManager(object):
         self.calc.setCell(x, y, val)
 
     def updateField(self):
-        print("updated")
-
+        self.framesTotalCounter += 1
+        self.alliveCellsCounter = 0
         self.calc.calcualteFieldStep()
-        
         for x in range(self.xFieldSize):
             for y in range(self.yFieldSize):
-                self.changeButtonState(x, y, self.calc.getState(x, y))
+                state = self.calc.getState(x, y)
+                self.changeButtonState(x, y, state)
+                if state == 1:
+                    self.alliveCellsCounter += 1
+        self.updateLCD()
 
     def getButtonState(self, x : int, y : int) -> int:
         return self.gameButtonsStates[x * self.yFieldSize + y]
     
+    def gameStartStopButtonAction(self):
+        if self.gameStatePlayed:
+            self.gameStatePlayed = False
+            self.updateTimer.stop()
+        else:
+            self.gameStatePlayed = True
+            self.updateTimer.start()
+
+    def setFPS(self, value):
+        msToRender = int(1000 / int(self.comboBox.itemText(value)))
+        self.updateTimer.setInterval(msToRender)
+    
+    def updateLCD(self):
+        self.totalFramesLCD.display(self.framesTotalCounter)
+        self.AliveCellsLCD.display(self.alliveCellsCounter)
