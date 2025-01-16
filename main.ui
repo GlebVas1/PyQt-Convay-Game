@@ -12,8 +12,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>900</width>
-    <height>800</height>
+    <width>1132</width>
+    <height>854</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -24,8 +24,8 @@
   </property>
   <property name="maximumSize">
    <size>
-    <width>900</width>
-    <height>800</height>
+    <width>1920</width>
+    <height>1280</height>
    </size>
   </property>
   <property name="contextMenuPolicy">
@@ -41,163 +41,486 @@
    </size>
   </property>
   <property name="tabShape">
-   <enum>QTabWidget::Rounded</enum>
+   <enum>QTabWidget::Triangular</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="maximumSize">
+    <size>
+     <width>989</width>
+     <height>853</height>
+    </size>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-color : black</string>
    </property>
-   <widget class="QTabWidget" name="tabWidget">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>900</width>
-      <height>800</height>
-     </rect>
+   <layout class="QGridLayout" name="gridLayout">
+    <property name="sizeConstraint">
+     <enum>QLayout::SetMaximumSize</enum>
     </property>
-    <property name="styleSheet">
-     <string notr="true">QTabWidget QWidget
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="minimumSize">
+       <size>
+        <width>900</width>
+        <height>800</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QTabWidget QWidget
 {
-background-color: black;
+background-color: rgb(49, 49, 49);
 }
 QTabWidget::pane { /* The tab widget frame */
-border-top: 2px solid #C2C7CB;
+border-top: 2px solid rgb(89, 89, 89);
 }
 
-
-/* Style the tab using the tab sub-control. Note that
-it reads QTabBar not QTabWidget */
 QTabBar::tab {
-min-height : 20px;
-
-background: gray;
+padding-left : 5px;
+padding-top: 5px;
+min-height : 40px;
+min-width : 150px;
+background:  rgb(19, 19, 19);
+border-top-left-radius: 8px;
+border-top-right-radius: 8px;
+border: 2px solid rgb(89, 89, 89);
+border-bottom-color:  rgb(49, 49, 49);
+color : white;
 }
 
 QTabBar::tab:selected {
-background : white;
+background :  rgb(49, 49, 49);
 }</string>
-    </property>
-    <property name="currentIndex">
-     <number>1</number>
-    </property>
-    <widget class="QWidget" name="tabDisplay">
-     <attribute name="title">
-      <string>Game</string>
-     </attribute>
-     <widget class="QFrame" name="mainField">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>880</width>
-        <height>760</height>
-       </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true">border-style: solid;
-border: 4px;
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="movable">
+       <bool>false</bool>
+      </property>
+      <widget class="QWidget" name="tabDisplay">
+       <property name="maximumSize">
+        <size>
+         <width>989</width>
+         <height>802</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <attribute name="title">
+        <string>Game</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="Displaylayout">
+          <property name="spacing">
+           <number>20</number>
+          </property>
+          <item>
+           <layout class="QVBoxLayout" name="infoPanelLayout">
+            <item>
+             <widget class="QLCDNumber" name="lcdNumber">
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>50</height>
+               </size>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QFrame" name="mainField">
+            <property name="minimumSize">
+             <size>
+              <width>800</width>
+              <height>800</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>800</width>
+              <height>800</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border: 2px solid black;
+border-color  : rgb(89, 89, 89);
+border-bottom-color: black;
+border-radius : 5px;
+background-color : rgb(69, 69, 69)</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Plain</enum>
+            </property>
+            <property name="lineWidth">
+             <number>10</number>
+            </property>
+            <property name="midLineWidth">
+             <number>16</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="gameControlPanelsLayout">
+            <item>
+             <widget class="QFrame" name="gameContolPanel">
+              <property name="styleSheet">
+               <string notr="true">border: 2px solid black;
+border-color  : rgb(89, 89, 89);
+border-bottom-color: black;
+border-radius : 5px;
+background-color : rgb(69, 69, 69)</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="frame">
+              <property name="styleSheet">
+               <string notr="true">border: 2px solid black;
+border-color  : rgb(89, 89, 89);
+border-bottom-color: black;
+border-radius : 5px;
+background-color : rgb(69, 69, 69)</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabSetting">
+       <attribute name="icon">
+        <iconset resource="resources/ico_res.qrc">
+         <normaloff>:/icons/settings_ico.png</normaloff>:/icons/settings_ico.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Settings</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QGroupBox" name="groupBox">
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border: 2px solid black;
 border-color  : rgb(89, 89, 89);
 border-bottom-color: black;
 border-radius : 10px;
-background-color : rgb(40, 40, 40)</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Plain</enum>
-      </property>
-      <property name="lineWidth">
-       <number>10</number>
-      </property>
-      <property name="midLineWidth">
-       <number>16</number>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tabSetting">
-     <attribute name="title">
-      <string>Settings</string>
-     </attribute>
-     <widget class="QFrame" name="ruleArriving">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>30</y>
-        <width>541</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <widget class="QLabel" name="ruleArriveLabel">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>231</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Cell arrives when neighbor count is</string>
-       </property>
+background-color : rgb(49, 49, 49);
+color : white;</string>
+            </property>
+            <property name="title">
+             <string>Game Rule Settings</string>
+            </property>
+            <widget class="QWidget" name="layoutWidget">
+             <property name="geometry">
+              <rect>
+               <x>20</x>
+               <y>40</y>
+               <width>561</width>
+               <height>331</height>
+              </rect>
+             </property>
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <item>
+               <widget class="QFrame" name="ruleArriving">
+                <property name="font">
+                 <font>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">border: 2px solid black;
+border-color  : rgb(89, 89, 89);
+border-bottom-color: black;
+border-radius : 10px;
+background-color : rgb(49, 49, 49)</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <widget class="QLabel" name="ruleArriveLabel">
+                 <property name="geometry">
+                  <rect>
+                   <x>10</x>
+                   <y>10</y>
+                   <width>521</width>
+                   <height>31</height>
+                  </rect>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border :  0px; color : white;</string>
+                 </property>
+                 <property name="text">
+                  <string>Cell arrives when neighbor count is</string>
+                 </property>
+                 <property name="textFormat">
+                  <enum>Qt::PlainText</enum>
+                 </property>
+                </widget>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="ruleSurviving">
+                <property name="styleSheet">
+                 <string notr="true">border: 2px solid black;
+border-color  : rgb(89, 89, 89);
+border-bottom-color: black;
+border-radius : 10px;
+background-color : rgb(49, 49, 49)</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <widget class="QLabel" name="ruleSurviveLabel">
+                 <property name="geometry">
+                  <rect>
+                   <x>10</x>
+                   <y>10</y>
+                   <width>331</width>
+                   <height>16</height>
+                  </rect>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border :  0px; border :  0px; color : white;</string>
+                 </property>
+                 <property name="text">
+                  <string>Cell survives when neighbor count is</string>
+                 </property>
+                </widget>
+               </widget>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_2">
+                <item>
+                 <widget class="QLabel" name="ruleSurviveLabel_2">
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">border :  0px; border :  0px; color : white;</string>
+                  </property>
+                  <property name="text">
+                   <string>Generations</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="spinBox">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>50</weight>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="focusPolicy">
+                   <enum>Qt::WheelFocus</enum>
+                  </property>
+                  <property name="frame">
+                   <bool>true</bool>
+                  </property>
+                  <property name="suffix">
+                   <string/>
+                  </property>
+                  <property name="maximum">
+                   <number>10</number>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="groupBox_2">
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border: 2px solid black;
+border-color  : rgb(89, 89, 89);
+border-bottom-color: black;
+border-radius : 10px;
+background-color : rgb(49, 49, 49);
+color : white;</string>
+            </property>
+            <property name="title">
+             <string>Simultation Settings</string>
+            </property>
+            <widget class="QLabel" name="ruleSurviveLabel_6">
+             <property name="geometry">
+              <rect>
+               <x>20</x>
+               <y>50</y>
+               <width>41</width>
+               <height>16</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">border :  0px; border :  0px; color : white;</string>
+             </property>
+             <property name="text">
+              <string>FPS</string>
+             </property>
+            </widget>
+            <widget class="QComboBox" name="comboBox">
+             <property name="geometry">
+              <rect>
+               <x>70</x>
+               <y>40</y>
+               <width>101</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <item>
+              <property name="text">
+               <string>5</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>10</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>20</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>30</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>40</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>50</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>60</string>
+              </property>
+             </item>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
       </widget>
      </widget>
-     <widget class="QFrame" name="ruleSurviving">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>130</y>
-        <width>541</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <widget class="QLabel" name="ruleSurviveLabel">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>231</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Cell survives when neighbor count is</string>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QPushButton" name="updateButton">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>250</y>
-        <width>93</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color : white</string>
-      </property>
-      <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
-    </widget>
-   </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="resources/ico_res.qrc"/>
+ </resources>
  <connections/>
 </ui>

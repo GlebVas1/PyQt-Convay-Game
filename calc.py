@@ -43,23 +43,16 @@ class Field:
         return neightborCount
     
     def calcualteFieldStep(self):
-        print(self.field)
-        print("Neigh count")
-
         newFiled = np.ndarray(shape=(self.xSize, self.ySize))
-
-        neicount = np.ndarray(shape=(self.xSize, self.ySize))
 
         for x in range(self.xSize):
             for y in range(self.ySize):
-                neicount[x, y] = self.calcualteNeighborCount(x, y)
+                neighborCount = self.calcualteNeighborCount(x, y)
                 if self.field[x, y] == 0:
-                    newFiled[x, y] = self.thisRule.getArrival(self.calcualteNeighborCount(x, y))
+                    newFiled[x, y] = self.thisRule.getArrival(neighborCount)
                 else:
-                    newFiled[x, y] = self.thisRule.getSurvive(self.calcualteNeighborCount(x, y))
+                    newFiled[x, y] = self.thisRule.getSurvive(neighborCount)
         self.field = newFiled.copy()
-        # print(neicount)
-        # print("---------")
     
     def getState(self, x : int, y : int) -> int:
         return int(self.field[x, y])

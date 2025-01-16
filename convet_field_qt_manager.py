@@ -3,7 +3,8 @@ from functools import partial
 import calc as cl
 
 
-CFMButtonStyleSheet = "border-radius : 6px;\nborder-width: 2px; \nborder-style : solid;\nborder-color : rgb(255 79, 79);\nborder-bottom: 2px solid rgb(89, 89, 89);\n"
+# CFMButtonStyleSheet = "border-radius : 6px;\nborder-width: 2px; \nborder-style : solid;\nborder-color : rgb(255 79, 79);\nborder-bottom: 2px solid rgb(89, 89, 89);\n"
+CFMButtonStyleSheet = ""
 CFMGameFramePadding = 5
 class ConveyFieldQtManager(object):
 
@@ -20,7 +21,7 @@ class ConveyFieldQtManager(object):
         self.calc.InitializeField(x, y)
         # self.updateButton.clicked.connect(self.updateField)
         self.updateTimer = QtCore.QTimer(self)
-        self.updateTimer.setInterval(2000)
+        self.updateTimer.setInterval(500)
         self.updateTimer.timeout.connect(self.updateField)
         self.updateTimer.start()
 
