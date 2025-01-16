@@ -59,7 +59,9 @@ class Ui_MainWindow(object):
 "\n"
 "QTabBar::tab:selected {\n"
 "background :  rgb(49, 49, 49);\n"
-"}")
+"}\n"
+"\n"
+"")
         self.tabWidget.setIconSize(QtCore.QSize(30, 30))
         self.tabWidget.setMovable(False)
         self.tabWidget.setObjectName("tabWidget")
@@ -103,7 +105,7 @@ class Ui_MainWindow(object):
         font.setPointSize(8)
         self.totalFramesLCD.setFont(font)
         self.totalFramesLCD.setStyleSheet("border-radius : 5px;\n"
-"background-color : rgb(49, 49, 49);\n"
+"background-color : rgb(89, 89, 89);\n"
 "color : white")
         self.totalFramesLCD.setSmallDecimalPoint(False)
         self.totalFramesLCD.setSegmentStyle(QtWidgets.QLCDNumber.Flat)
@@ -121,7 +123,7 @@ class Ui_MainWindow(object):
         self.AliveCellsLCD = QtWidgets.QLCDNumber(self.infoframe)
         self.AliveCellsLCD.setMaximumSize(QtCore.QSize(16777215, 50))
         self.AliveCellsLCD.setStyleSheet("border-radius : 5px;\n"
-"background-color : rgb(49, 49, 49);\n"
+"background-color : rgb(89, 89, 89);\n"
 "color : white")
         self.AliveCellsLCD.setSegmentStyle(QtWidgets.QLCDNumber.Flat)
         self.AliveCellsLCD.setObjectName("AliveCellsLCD")
@@ -164,6 +166,10 @@ class Ui_MainWindow(object):
 "    border-style: inset;\n"
 "}")
         self.gameStartStopButton.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icons/play.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.gameStartStopButton.setIcon(icon)
+        self.gameStartStopButton.setIconSize(QtCore.QSize(40, 40))
         self.gameStartStopButton.setObjectName("gameStartStopButton")
         self.gridLayout_5.addWidget(self.gameStartStopButton, 0, 0, 1, 1)
         self.gameControlPanelsLayout.addWidget(self.gameContolPanel)
@@ -177,7 +183,9 @@ class Ui_MainWindow(object):
         self.gameControlPanelsLayout.addWidget(self.frame)
         self.horizontalLayout.addLayout(self.gameControlPanelsLayout)
         self.gridLayout_2.addLayout(self.horizontalLayout, 0, 0, 1, 1)
-        self.tabWidget.addTab(self.tabDisplay, "")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/icons/game_ico.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.tabWidget.addTab(self.tabDisplay, icon1, "")
         self.tabSetting = QtWidgets.QWidget()
         self.tabSetting.setObjectName("tabSetting")
         self.gridLayout_3 = QtWidgets.QGridLayout(self.tabSetting)
@@ -223,6 +231,7 @@ class Ui_MainWindow(object):
         self.ruleArriveLabel.setObjectName("ruleArriveLabel")
         self.verticalLayout_2.addWidget(self.ruleArriving)
         self.ruleSurviving = QtWidgets.QFrame(self.layoutWidget)
+        self.ruleSurviving.setAutoFillBackground(False)
         self.ruleSurviving.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(89, 89, 89)")
         self.ruleSurviving.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -259,10 +268,31 @@ class Ui_MainWindow(object):
         font.setWeight(50)
         self.spinBox.setFont(font)
         self.spinBox.setFocusPolicy(QtCore.Qt.WheelFocus)
-        self.spinBox.setStyleSheet("border-radius : 5px;\n"
+        self.spinBox.setStyleSheet("\n"
+"QSpinBox {\n"
+"border-radius : 5px;\n"
 "background-color : rgb(89, 89, 89); \n"
 "color : white;\n"
-"padding-left : 5px;")
+"padding-left : 5px;\n"
+"padding-left : 20px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-button {\n"
+"subcontrol-origin: border;\n"
+"subcontrol-position: center right; \n"
+"border-image: url(:/icons/arrow_right.png);\n"
+"border-right-width:10;\n"
+"width: 10px;\n"
+"}\n"
+"\n"
+"QSpinBox::down-button {\n"
+"subcontrol-origin: border;\n"
+"border-right-width:30;    \n"
+"subcontrol-position: center right ;\n"
+"border-image: url(:/icons/arrow_left.png) 1;\n"
+"width: 10px;\n"
+"\n"
+"}")
         self.spinBox.setFrame(True)
         self.spinBox.setSuffix("")
         self.spinBox.setMinimum(2)
@@ -271,18 +301,18 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.addWidget(self.spinBox)
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
         self.verticalLayout.addWidget(self.groupBox)
-        self.groupBox_2 = QtWidgets.QGroupBox(self.tabSetting)
-        self.groupBox_2.setMinimumSize(QtCore.QSize(0, 200))
-        self.groupBox_2.setMaximumSize(QtCore.QSize(16777215, 200))
+        self.simulationSettings = QtWidgets.QGroupBox(self.tabSetting)
+        self.simulationSettings.setMinimumSize(QtCore.QSize(0, 200))
+        self.simulationSettings.setMaximumSize(QtCore.QSize(16777215, 200))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
-        self.groupBox_2.setFont(font)
-        self.groupBox_2.setStyleSheet("border-radius : 5px;\n"
+        self.simulationSettings.setFont(font)
+        self.simulationSettings.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69); color : white;")
-        self.groupBox_2.setObjectName("groupBox_2")
-        self.ruleSurviveLabel_6 = QtWidgets.QLabel(self.groupBox_2)
+        self.simulationSettings.setObjectName("simulationSettings")
+        self.ruleSurviveLabel_6 = QtWidgets.QLabel(self.simulationSettings)
         self.ruleSurviveLabel_6.setGeometry(QtCore.QRect(20, 50, 41, 16))
         font = QtGui.QFont()
         font.setPointSize(11)
@@ -291,28 +321,28 @@ class Ui_MainWindow(object):
         self.ruleSurviveLabel_6.setFont(font)
         self.ruleSurviveLabel_6.setStyleSheet("border :  0px; border :  0px; color : white;")
         self.ruleSurviveLabel_6.setObjectName("ruleSurviveLabel_6")
-        self.comboBox = QtWidgets.QComboBox(self.groupBox_2)
-        self.comboBox.setGeometry(QtCore.QRect(70, 40, 101, 41))
+        self.fpsSetter = QtWidgets.QComboBox(self.simulationSettings)
+        self.fpsSetter.setGeometry(QtCore.QRect(70, 40, 101, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
-        self.comboBox.setFont(font)
-        self.comboBox.setStyleSheet("border-radius : 5px;\n"
+        self.fpsSetter.setFont(font)
+        self.fpsSetter.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(89, 89, 89); color : white;")
-        self.comboBox.setObjectName("comboBox")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.comboBox.addItem("")
-        self.verticalLayout.addWidget(self.groupBox_2)
+        self.fpsSetter.setObjectName("fpsSetter")
+        self.fpsSetter.addItem("")
+        self.fpsSetter.addItem("")
+        self.fpsSetter.addItem("")
+        self.fpsSetter.addItem("")
+        self.fpsSetter.addItem("")
+        self.fpsSetter.addItem("")
+        self.fpsSetter.addItem("")
+        self.verticalLayout.addWidget(self.simulationSettings)
         self.gridLayout_3.addLayout(self.verticalLayout, 0, 0, 1, 1)
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/icons/settings_ico.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.tabWidget.addTab(self.tabSetting, icon, "")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap(":/icons/settings_ico.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.tabWidget.addTab(self.tabSetting, icon2, "")
         self.gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -330,14 +360,14 @@ class Ui_MainWindow(object):
         self.ruleArriveLabel.setText(_translate("MainWindow", "Cell arrives when neighbor count is"))
         self.ruleSurviveLabel.setText(_translate("MainWindow", "Cell survives when neighbor count is"))
         self.ruleSurviveLabel_2.setText(_translate("MainWindow", "Generations"))
-        self.groupBox_2.setTitle(_translate("MainWindow", "Simultation Settings"))
+        self.simulationSettings.setTitle(_translate("MainWindow", "Simultation Settings"))
         self.ruleSurviveLabel_6.setText(_translate("MainWindow", "FPS"))
-        self.comboBox.setItemText(0, _translate("MainWindow", "5"))
-        self.comboBox.setItemText(1, _translate("MainWindow", "10"))
-        self.comboBox.setItemText(2, _translate("MainWindow", "20"))
-        self.comboBox.setItemText(3, _translate("MainWindow", "30"))
-        self.comboBox.setItemText(4, _translate("MainWindow", "40"))
-        self.comboBox.setItemText(5, _translate("MainWindow", "50"))
-        self.comboBox.setItemText(6, _translate("MainWindow", "60"))
+        self.fpsSetter.setItemText(0, _translate("MainWindow", "5"))
+        self.fpsSetter.setItemText(1, _translate("MainWindow", "10"))
+        self.fpsSetter.setItemText(2, _translate("MainWindow", "20"))
+        self.fpsSetter.setItemText(3, _translate("MainWindow", "30"))
+        self.fpsSetter.setItemText(4, _translate("MainWindow", "40"))
+        self.fpsSetter.setItemText(5, _translate("MainWindow", "50"))
+        self.fpsSetter.setItemText(6, _translate("MainWindow", "60"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabSetting), _translate("MainWindow", "Settings"))
 import ico_res_rc

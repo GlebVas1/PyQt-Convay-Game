@@ -1,17 +1,19 @@
 from PyQt5 import QtWidgets, QtCore
 from functools import partial
 import calc as cl
-
+import colorPalletes as cp
+import rules as r
 
 # CFMButtonStyleSheet = "border-radius : 6px;\nborder-width: 2px; \nborder-style : solid;\nborder-color : rgb(255 79, 79);\nborder-bottom: 2px solid rgb(89, 89, 89);\n"
 CFMButtonStyleSheet = ""
 CFMGameFramePadding = 5
+
 class ConveyFieldQtManager(object):
 
     xFieldSize = 10
     yFieldSize = 10
     gameButtons = []
-    gameButtonsColorsState = ["rgb(49, 49, 49)", "rgb(255, 249, 207)"]
+    gameButtonsColorsPalette = ["rgb(49, 49, 49)", "rgb(255, 249, 207)"]
     gameButtonsStates = []
 
     gameStatePlayed = True
@@ -28,14 +30,15 @@ class ConveyFieldQtManager(object):
         self.updateTimer.start()
 
         self.gameStartStopButton.clicked.connect(self.gameStartStopButtonAction)
-        self.comboBox.currentIndexChanged.connect(self.setFPS)
+        self.fpsSetter.currentIndexChanged.connect(self.setFPS)
 
-    def InitializeField(self, x: int = 10, y : int = 10):
+    def initializeField(self, x: int = 10, y : int = 10):
         """Initialize game field, sizes and calc platform"""
         self.xFieldSize = x
         self.yFieldSize = y
         self.calc = cl.Field()
-        self.calc.InitializeField(x, y)
+        self.gameButtonsColorsPalette = cp.defaultQuadro
+        self.calc.InitializeField(x, y, r.starWars)
         
     def fillButtons(self):
         """initial filiing main field with buttons"""
@@ -47,9 +50,9 @@ class ConveyFieldQtManager(object):
                 button = QtWidgets.QPushButton(self.mainField)
                 button.setGeometry(QtCore.QRect(CFMGameFramePadding + (xSize + CFMGameFramePadding) * i, CFMGameFramePadding + (ySize + CFMGameFramePadding) * j, xSize, ySize))
                 button.setObjectName("game_button_" + str(i * self.xFieldSize + j))
-                button.setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameButtonsColorsState[0])
+                button.setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameButtonsColorsPalette[0])
 
-                button.clicked.connect(partial(self.changeButtonState, i, j, 1))
+                button.clicked.connect(partial(self.changeButtonState, i, j, self.calc.thisRule.genetationsCount))
 
                 self.gameButtons.append(button)
                 self.gameButtonsStates.append(0)
@@ -57,7 +60,7 @@ class ConveyFieldQtManager(object):
     def changeAllButtons(self, val : int):
         """change all buttons to a specific state"""
         for button in self.gameButtons:
-            button.setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameButtonsColorsState[val]) 
+            button.setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameButtonsColorsPalette[val]) 
            
         for v in self.gameButtonsStates:
             v = val
@@ -65,11 +68,14 @@ class ConveyFieldQtManager(object):
         self.calc.field.fill(val)
     
     def changeButtonState(self, x : int, y : int, val : int):
-        self.gameButtons[x * self.yFieldSize + y].setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameButtonsColorsState[val])
+        """change one button state"""
+        # print(val)
+        self.gameButtons[x * self.yFieldSize + y].setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameButtonsColorsPalette[val])
         self.gameButtonsStates[x * self.yFieldSize + y] = val
         self.calc.setCell(x, y, val)
 
     def updateField(self):
+        """recalculate field and update buttons"""
         self.framesTotalCounter += 1
         self.alliveCellsCounter = 0
         self.calc.calcualteFieldStep()
@@ -77,7 +83,7 @@ class ConveyFieldQtManager(object):
             for y in range(self.yFieldSize):
                 state = self.calc.getState(x, y)
                 self.changeButtonState(x, y, state)
-                if state == 1:
+                if state == self.calc.thisRule.genetationsCount:
                     self.alliveCellsCounter += 1
         self.updateLCD()
 
@@ -93,7 +99,7 @@ class ConveyFieldQtManager(object):
             self.updateTimer.start()
 
     def setFPS(self, value):
-        msToRender = int(1000 / int(self.comboBox.itemText(value)))
+        msToRender = int(1000 / int(self.fpsSetter.itemText(value)))
         self.updateTimer.setInterval(msToRender)
     
     def updateLCD(self):

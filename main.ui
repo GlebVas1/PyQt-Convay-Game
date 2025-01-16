@@ -110,7 +110,7 @@ background :  rgb(49, 49, 49);
 </string>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -135,6 +135,10 @@ background :  rgb(49, 49, 49);
          <bold>false</bold>
         </font>
        </property>
+       <attribute name="icon">
+        <iconset resource="resources/ico_res.qrc">
+         <normaloff>:/icons/game_ico.png</normaloff>:/icons/game_ico.png</iconset>
+       </attribute>
        <attribute name="title">
         <string>Game</string>
        </attribute>
@@ -329,6 +333,16 @@ QPushButton:pressed {
                  </property>
                  <property name="text">
                   <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resources/ico_res.qrc">
+                   <normaloff>:/icons/play.png</normaloff>:/icons/play.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>40</width>
+                   <height>40</height>
+                  </size>
                  </property>
                 </widget>
                </item>
@@ -552,15 +566,16 @@ padding-left : 20px;
 QSpinBox::up-button {
 subcontrol-origin: border;
 subcontrol-position: center right; 
-border-image: url(:/icons/arrow_up.png);
+border-image: url(:/icons/arrow_right.png);
+border-right-width:10;
 width: 10px;
 }
 
 QSpinBox::down-button {
 subcontrol-origin: border;
-border-right-width:20;	
+border-right-width:30;	
 subcontrol-position: center right ;
-border-image: url(:/icons/arrow_down.png) 1;
+border-image: url(:/icons/arrow_left.png) 1;
 width: 10px;
 
 }</string>
@@ -586,7 +601,7 @@ width: 10px;
            </widget>
           </item>
           <item>
-           <widget class="QGroupBox" name="groupBox_2">
+           <widget class="QGroupBox" name="simulationSettings">
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -636,7 +651,7 @@ background-color : rgb(69, 69, 69); color : white;</string>
               <string>FPS</string>
              </property>
             </widget>
-            <widget class="QComboBox" name="comboBox">
+            <widget class="QComboBox" name="fpsSetter">
              <property name="geometry">
               <rect>
                <x>70</x>
