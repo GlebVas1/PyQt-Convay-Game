@@ -4,6 +4,7 @@ class Rule:
     """Rule that returns new cellState by neighbors count"""
     surviveIfNeighborCount = [0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
     arriveIfNeighborCount = [0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
+    
     def getSurvive(self, neighborCount : int):
         return self.surviveIfNeighborCount[neighborCount]
     
@@ -18,7 +19,7 @@ class Field:
     thisRule = Rule()
 
     def InitializeField(self, x: int = 10, y : int = 10, rule : Rule = Rule()):
-        self.field = np.ndarray(shape=(x, y))
+        self.field = np.ndarray(shape=(x, y), dtype=int)
         self.xSize = x
         self.ySize = y
         self.thisRule = rule
@@ -50,7 +51,7 @@ class Field:
         self.field = newFiled.copy()
     
     def getState(self, x : int, y : int) -> int:
-        return self.field[x, y]
+        return int(self.field[x, y])
     
     def setState(self, x : int, y : int, val : int):
         self.field[x, y] = val

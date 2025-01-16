@@ -13,15 +13,12 @@ class ConveyFieldQtManager(object):
     gameButtonsColorsState = ["rgb(49, 49, 49)", "rgb(255, 249, 207)"]
     gameButtonsStates = []
 
-    def update(self):
-        print("updated")
-
     def InitializeField(self, x: int = 10, y : int = 10):
         self.xFieldSize = x
         self.yFieldSize = y
         self.calc = cl.Field()
         self.calc.InitializeField(x, y)
-        self.updateButton.clicked.connect(partial(self.update))
+        self.updateButton.clicked.connect(self.updateField)
 
     def fillButtons(self):
         xSize = int((self.mainField.size().width() - (1 + self.xFieldSize) * CFMGameFramePadding) / self.xFieldSize)
@@ -57,12 +54,13 @@ class ConveyFieldQtManager(object):
         self.gameButtonsStates[x * self.yFieldSize + y] = val
         self.calc.setCell(x, y, val)
 
-    
-        # self.calc.calcualteFieldStep()
+    def updateField(self):
+        print("updated")
+        self.calc.calcualteFieldStep()
         
-        # for x in range(self.xFieldSize):
-        #     for y in range(self.yFieldSize):
-        #         self.changeButtonState(self.calc.getState(x, y))
+        for x in range(self.xFieldSize):
+            for y in range(self.yFieldSize):
+                self.changeButtonState(x, y, self.calc.getState(x, y))
 
     def getButtonState(self, x : int, y : int) -> int:
         return self.gameButtonsStates[x * self.yFieldSize + y]
