@@ -18,7 +18,11 @@ class ConveyFieldQtManager(object):
         self.yFieldSize = y
         self.calc = cl.Field()
         self.calc.InitializeField(x, y)
-        self.updateButton.clicked.connect(self.updateField)
+        # self.updateButton.clicked.connect(self.updateField)
+        self.updateTimer = QtCore.QTimer(self)
+        self.updateTimer.setInterval(2000)
+        self.updateTimer.timeout.connect(self.updateField)
+        self.updateTimer.start()
 
     def fillButtons(self):
         xSize = int((self.mainField.size().width() - (1 + self.xFieldSize) * CFMGameFramePadding) / self.xFieldSize)
@@ -37,25 +41,20 @@ class ConveyFieldQtManager(object):
                 self.gameButtonsStates.append(0)
 
     def changeAllButtons(self, val : int):
-        # for button in self.gameButtons:
-        #     button.setStyleSheet("background-color : " + self.gameButtonsColorsState[val]) 
-        for i in range(0, self.xFieldSize):
-            for j in range(0, self.yFieldSize):
-                print(i * self.xFieldSize + j)
-                print(self.gameButtonsColorsState[val])
-                self.gameButtons[i * self.yFieldSize + j].setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameButtonsColorsState[val])
-                
+        for button in self.gameButtons:
+            button.setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameButtonsColorsState[val]) 
+           
         for v in self.gameButtonsStates:
             v = val
     
     def changeButtonState(self, x : int, y : int, val : int):
-        print(str(x) + "  " + str(y) + " changed to " + str(val))
         self.gameButtons[x * self.yFieldSize + y].setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameButtonsColorsState[val])
         self.gameButtonsStates[x * self.yFieldSize + y] = val
         self.calc.setCell(x, y, val)
 
     def updateField(self):
         print("updated")
+
         self.calc.calcualteFieldStep()
         
         for x in range(self.xFieldSize):
