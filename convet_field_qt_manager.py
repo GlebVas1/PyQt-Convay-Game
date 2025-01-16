@@ -3,7 +3,7 @@ from functools import partial
 import calc as cl
 
 
-CFMButtonStyleSheet = "border-radius : 10px;\nborder-width: 3px; \nborder-style : solid;\nborder-color  : rgb(89, 89, 89);\nborder-bottom: 4px solid black;\n"
+CFMButtonStyleSheet = "border-radius : 6px;\nborder-width: 2px; \nborder-style : solid;\nborder-color : rgb(255 79, 79);\nborder-bottom: 2px solid rgb(89, 89, 89);\n"
 CFMGameFramePadding = 5
 class ConveyFieldQtManager(object):
 
