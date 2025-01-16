@@ -78,6 +78,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.infoPanelLayout = QtWidgets.QVBoxLayout()
+        self.infoPanelLayout.setContentsMargins(10, -1, 10, -1)
+        self.infoPanelLayout.setSpacing(2)
         self.infoPanelLayout.setObjectName("infoPanelLayout")
         self.infoframe = QtWidgets.QFrame(self.tabDisplay)
         self.infoframe.setMaximumSize(QtCore.QSize(150, 200))
@@ -143,6 +145,7 @@ class Ui_MainWindow(object):
         self.mainField.setObjectName("mainField")
         self.horizontalLayout.addWidget(self.mainField)
         self.gameControlPanelsLayout = QtWidgets.QVBoxLayout()
+        self.gameControlPanelsLayout.setContentsMargins(10, -1, 10, -1)
         self.gameControlPanelsLayout.setObjectName("gameControlPanelsLayout")
         self.gameContolPanel = QtWidgets.QFrame(self.tabDisplay)
         self.gameContolPanel.setMaximumSize(QtCore.QSize(150, 100))
@@ -173,14 +176,59 @@ class Ui_MainWindow(object):
         self.gameStartStopButton.setObjectName("gameStartStopButton")
         self.gridLayout_5.addWidget(self.gameStartStopButton, 0, 0, 1, 1)
         self.gameControlPanelsLayout.addWidget(self.gameContolPanel)
-        self.frame = QtWidgets.QFrame(self.tabDisplay)
-        self.frame.setMaximumSize(QtCore.QSize(150, 16777215))
-        self.frame.setStyleSheet("border-radius : 5px;\n"
+        self.pickToolPanel = QtWidgets.QFrame(self.tabDisplay)
+        self.pickToolPanel.setMaximumSize(QtCore.QSize(150, 500))
+        self.pickToolPanel.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69)")
+        self.pickToolPanel.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.pickToolPanel.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.pickToolPanel.setObjectName("pickToolPanel")
+        self.gridLayout_4 = QtWidgets.QGridLayout(self.pickToolPanel)
+        self.gridLayout_4.setObjectName("gridLayout_4")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_3.setContentsMargins(0, -1, -1, -1)
+        self.verticalLayout_3.setSpacing(0)
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.frame = QtWidgets.QFrame(self.pickToolPanel)
+        self.frame.setMaximumSize(QtCore.QSize(16777215, 150))
+        self.frame.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(89, 89, 89)")
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
-        self.gameControlPanelsLayout.addWidget(self.frame)
+        self.gridLayout_7 = QtWidgets.QGridLayout(self.frame)
+        self.gridLayout_7.setObjectName("gridLayout_7")
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.label = QtWidgets.QLabel(self.frame)
+        self.label.setMaximumSize(QtCore.QSize(200, 20))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label.setFont(font)
+        self.label.setStyleSheet("color : white")
+        self.label.setObjectName("label")
+        self.verticalLayout_4.addWidget(self.label)
+        self.pickButton = QtWidgets.QPushButton(self.frame)
+        self.pickButton.setMaximumSize(QtCore.QSize(60, 60))
+        self.pickButton.setStyleSheet("QPushButton {\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(0, 0, 0);\n"
+"    border: 2pt solid black;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(0, 49, 49);\n"
+"    border-style: inset;\n"
+"}")
+        self.pickButton.setText("")
+        self.pickButton.setObjectName("pickButton")
+        self.verticalLayout_4.addWidget(self.pickButton)
+        self.gridLayout_7.addLayout(self.verticalLayout_4, 0, 0, 1, 1)
+        self.verticalLayout_3.addWidget(self.frame)
+        self.gridLayout_4.addLayout(self.verticalLayout_3, 0, 0, 1, 1)
+        self.gameControlPanelsLayout.addWidget(self.pickToolPanel)
         self.horizontalLayout.addLayout(self.gameControlPanelsLayout)
         self.gridLayout_2.addLayout(self.horizontalLayout, 0, 0, 1, 1)
         icon1 = QtGui.QIcon()
@@ -328,8 +376,19 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.fpsSetter.setFont(font)
-        self.fpsSetter.setStyleSheet("border-radius : 5px;\n"
-"background-color : rgb(89, 89, 89); color : white;")
+        self.fpsSetter.setStyleSheet("QComboBox {\n"
+"border-radius : 5px;\n"
+"background-color : rgb(89, 89, 89); color : white;\n"
+"}\n"
+"\n"
+"QComboBox::down-button {\n"
+"subcontrol-origin: border;\n"
+"border-right-width:30;    \n"
+"subcontrol-position: center right ;\n"
+"border-image: url(:/icons/arrow_left.png) 1;\n"
+"width: 10px;\n"
+"\n"
+"}")
         self.fpsSetter.setObjectName("fpsSetter")
         self.fpsSetter.addItem("")
         self.fpsSetter.addItem("")
@@ -343,11 +402,56 @@ class Ui_MainWindow(object):
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(":/icons/settings_ico.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.tabWidget.addTab(self.tabSetting, icon2, "")
+        self.tabGraph = QtWidgets.QWidget()
+        self.tabGraph.setObjectName("tabGraph")
+        self.gridLayout_8 = QtWidgets.QGridLayout(self.tabGraph)
+        self.gridLayout_8.setObjectName("gridLayout_8")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.plotSettingFrame = QtWidgets.QFrame(self.tabGraph)
+        self.plotSettingFrame.setMaximumSize(QtCore.QSize(300, 400))
+        self.plotSettingFrame.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(69, 69, 69)")
+        self.plotSettingFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.plotSettingFrame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.plotSettingFrame.setObjectName("plotSettingFrame")
+        self.plotSettingsLabel = QtWidgets.QLabel(self.plotSettingFrame)
+        self.plotSettingsLabel.setGeometry(QtCore.QRect(20, 10, 141, 31))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.plotSettingsLabel.setFont(font)
+        self.plotSettingsLabel.setStyleSheet("color : white")
+        self.plotSettingsLabel.setObjectName("plotSettingsLabel")
+        self.radioButton = QtWidgets.QRadioButton(self.plotSettingFrame)
+        self.radioButton.setGeometry(QtCore.QRect(20, 50, 241, 20))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.radioButton.setFont(font)
+        self.radioButton.setStyleSheet("color : white")
+        self.radioButton.setObjectName("radioButton")
+        self.horizontalLayout_3.addWidget(self.plotSettingFrame)
+        self.plotFrame = QtWidgets.QFrame(self.tabGraph)
+        self.plotFrame.setMinimumSize(QtCore.QSize(600, 400))
+        self.plotFrame.setMaximumSize(QtCore.QSize(800, 600))
+        self.plotFrame.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(69, 69, 69)")
+        self.plotFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.plotFrame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.plotFrame.setObjectName("plotFrame")
+        self.horizontalLayout_3.addWidget(self.plotFrame)
+        self.gridLayout_8.addLayout(self.horizontalLayout_3, 0, 0, 1, 1)
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap(":/icons/graph_ico.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.tabWidget.addTab(self.tabGraph, icon3, "")
         self.gridLayout.addWidget(self.tabWidget, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -355,6 +459,7 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "Convey"))
         self.framesTotal.setText(_translate("MainWindow", "Frames total"))
         self.CellsAlive.setText(_translate("MainWindow", "Alive cells"))
+        self.label.setText(_translate("MainWindow", "Current"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabDisplay), _translate("MainWindow", "Game"))
         self.groupBox.setTitle(_translate("MainWindow", "Game Rule Settings"))
         self.ruleArriveLabel.setText(_translate("MainWindow", "Cell arrives when neighbor count is"))
@@ -370,4 +475,7 @@ class Ui_MainWindow(object):
         self.fpsSetter.setItemText(5, _translate("MainWindow", "50"))
         self.fpsSetter.setItemText(6, _translate("MainWindow", "60"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabSetting), _translate("MainWindow", "Settings"))
+        self.plotSettingsLabel.setText(_translate("MainWindow", "Plot Settings"))
+        self.radioButton.setText(_translate("MainWindow", "Enable total count"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabGraph), _translate("MainWindow", "Plotter"))
 import ico_res_rc

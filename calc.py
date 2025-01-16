@@ -8,15 +8,22 @@ class Field:
     ySize = 10
     thisRule = Rule()
 
+    statistics = {}
+    statisticsMaxSize = 100
+
     def setRule(self, rule : Rule):
         self.thisRule = rule
     
-    def InitializeField(self, x: int = 10, y : int = 10, rule : Rule = Rule()):
+    def initializeField(self, x: int = 10, y : int = 10, rule : Rule = Rule()):
         self.field = np.ndarray(shape=(x, y), dtype=int)
         self.xSize = x
         self.ySize = y
         self.thisRule = rule
     
+    def initializeStatistics(self):
+        for i in range(self.thisRule.genetationsCount):
+            self.statistics[i] = []
+
     def setCell(self, x : int, y : int, val : int):
         self.field[x, y] = val
     
@@ -62,3 +69,21 @@ class Field:
     
     def setState(self, x : int, y : int, val : int):
         self.field[x, y] = val
+
+    def calcStatistic(self):
+        currentStatistic = {}
+        for i in range(self.thisRule.genetationsCount):
+            currentStatistic[i] = 0
+
+        for x in range(self.xSize):
+            for y in range(self.ySize):
+                currentStatistic[self.getState(x, y)] += 1
+                
+        for generation, value in currentStatistic.items():
+            print(generation)
+            print(value)
+            self.statistics[generation].append(value)
+            if len(self.statistics[generation]) > self.statisticsMaxSize:
+                self.statistics[generation] = self.statistics[generation][1:]
+        
+

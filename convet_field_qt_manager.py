@@ -38,7 +38,8 @@ class ConveyFieldQtManager(object):
         self.yFieldSize = y
         self.calc = cl.Field()
         self.gameButtonsColorsPalette = cp.defaultQuadro
-        self.calc.InitializeField(x, y, r.starWars)
+        self.calc.initializeField(x, y, r.starWars)
+        self.calc.initializeStatistics()
         
     def fillButtons(self):
         """initial filiing main field with buttons"""
@@ -85,6 +86,9 @@ class ConveyFieldQtManager(object):
                 self.changeButtonState(x, y, state)
                 if state == self.calc.thisRule.genetationsCount:
                     self.alliveCellsCounter += 1
+        
+        self.calc.calcStatistic()
+        self.alliveCellsCounter = self.calc.statistics[self.calc.thisRule.genetationsCount][-1]
         self.updateLCD()
 
     def getButtonState(self, x : int, y : int) -> int:

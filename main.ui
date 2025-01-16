@@ -110,7 +110,7 @@ background :  rgb(49, 49, 49);
 </string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -147,6 +147,15 @@ background :  rgb(49, 49, 49);
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
            <layout class="QVBoxLayout" name="infoPanelLayout" stretch="0">
+            <property name="spacing">
+             <number>2</number>
+            </property>
+            <property name="leftMargin">
+             <number>10</number>
+            </property>
+            <property name="rightMargin">
+             <number>10</number>
+            </property>
             <item>
              <widget class="QFrame" name="infoframe">
               <property name="maximumSize">
@@ -287,6 +296,12 @@ background-color : rgb(69, 69, 69)</string>
           </item>
           <item>
            <layout class="QVBoxLayout" name="gameControlPanelsLayout">
+            <property name="leftMargin">
+             <number>10</number>
+            </property>
+            <property name="rightMargin">
+             <number>10</number>
+            </property>
             <item>
              <widget class="QFrame" name="gameContolPanel">
               <property name="maximumSize">
@@ -350,11 +365,11 @@ QPushButton:pressed {
              </widget>
             </item>
             <item>
-             <widget class="QFrame" name="frame">
+             <widget class="QFrame" name="pickToolPanel">
               <property name="maximumSize">
                <size>
                 <width>150</width>
-                <height>16777215</height>
+                <height>500</height>
                </size>
               </property>
               <property name="styleSheet">
@@ -367,6 +382,92 @@ background-color : rgb(69, 69, 69)</string>
               <property name="frameShadow">
                <enum>QFrame::Raised</enum>
               </property>
+              <layout class="QGridLayout" name="gridLayout_4">
+               <item row="0" column="0">
+                <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0">
+                 <property name="spacing">
+                  <number>0</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>0</number>
+                 </property>
+                 <item>
+                  <widget class="QFrame" name="frame">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>150</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_7" columnstretch="0">
+                    <item row="0" column="0">
+                     <layout class="QVBoxLayout" name="verticalLayout_4">
+                      <item>
+                       <widget class="QLabel" name="label">
+                        <property name="maximumSize">
+                         <size>
+                          <width>200</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">color : white</string>
+                        </property>
+                        <property name="text">
+                         <string>Current</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="pickButton">
+                        <property name="maximumSize">
+                         <size>
+                          <width>60</width>
+                          <height>60</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">QPushButton {
+	border-radius : 5px;
+	background-color : rgb(0, 0, 0);
+	border: 2pt solid black;
+}
+
+QPushButton:pressed {
+    background-color: rgb(0, 49, 49);
+    border-style: inset;
+}</string>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
              </widget>
             </item>
            </layout>
@@ -668,8 +769,19 @@ background-color : rgb(69, 69, 69); color : white;</string>
               </font>
              </property>
              <property name="styleSheet">
-              <string notr="true">border-radius : 5px;
-background-color : rgb(89, 89, 89); color : white;</string>
+              <string notr="true">QComboBox {
+border-radius : 5px;
+background-color : rgb(89, 89, 89); color : white;
+}
+
+QComboBox::down-button {
+subcontrol-origin: border;
+border-right-width:30;	
+subcontrol-position: center right ;
+border-image: url(:/icons/arrow_left.png) 1;
+width: 10px;
+
+}</string>
              </property>
              <item>
               <property name="text">
@@ -707,6 +819,113 @@ background-color : rgb(89, 89, 89); color : white;</string>
               </property>
              </item>
             </widget>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabGraph">
+       <attribute name="icon">
+        <iconset resource="resources/ico_res.qrc">
+         <normaloff>:/icons/graph_ico.png</normaloff>:/icons/graph_ico.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Plotter</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_8">
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QFrame" name="plotSettingFrame">
+            <property name="maximumSize">
+             <size>
+              <width>300</width>
+              <height>400</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69)</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <widget class="QLabel" name="plotSettingsLabel">
+             <property name="geometry">
+              <rect>
+               <x>20</x>
+               <y>10</y>
+               <width>141</width>
+               <height>31</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color : white</string>
+             </property>
+             <property name="text">
+              <string>Plot Settings</string>
+             </property>
+            </widget>
+            <widget class="QRadioButton" name="radioButton">
+             <property name="geometry">
+              <rect>
+               <x>20</x>
+               <y>50</y>
+               <width>241</width>
+               <height>20</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color : white</string>
+             </property>
+             <property name="text">
+              <string>Enable total count</string>
+             </property>
+            </widget>
+           </widget>
+          </item>
+          <item>
+           <widget class="QFrame" name="plotFrame">
+            <property name="minimumSize">
+             <size>
+              <width>600</width>
+              <height>400</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>800</width>
+              <height>600</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69)</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
            </widget>
           </item>
          </layout>

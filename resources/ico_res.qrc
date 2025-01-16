@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="icons">
+    <file>graph_ico.png</file>
     <file>game_ico.png</file>
     <file>pause.png</file>
     <file>play.png</file>
