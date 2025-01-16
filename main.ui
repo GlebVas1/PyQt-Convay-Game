@@ -105,10 +105,12 @@ color : white;
 
 QTabBar::tab:selected {
 background :  rgb(49, 49, 49);
-}</string>
+}
+
+</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="iconSize">
        <size>
@@ -194,7 +196,7 @@ background-color : rgb(69, 69, 69)</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">border-radius : 5px;
-background-color : rgb(49, 49, 49);
+background-color : rgb(89, 89, 89);
 color : white</string>
                    </property>
                    <property name="smallDecimalPoint">
@@ -232,7 +234,7 @@ color : white</string>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">border-radius : 5px;
-background-color : rgb(49, 49, 49);
+background-color : rgb(89, 89, 89);
 color : white</string>
                    </property>
                    <property name="segmentStyle">
@@ -456,6 +458,9 @@ background-color : rgb(89, 89, 89)</string>
               </item>
               <item>
                <widget class="QFrame" name="ruleSurviving">
+                <property name="autoFillBackground">
+                 <bool>false</bool>
+                </property>
                 <property name="styleSheet">
                  <string notr="true">border-radius : 5px;
 background-color : rgb(89, 89, 89)</string>
@@ -535,10 +540,30 @@ background-color : rgb(89, 89, 89)</string>
                    <enum>Qt::WheelFocus</enum>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">border-radius : 5px;
+                   <string notr="true">
+QSpinBox {
+border-radius : 5px;
 background-color : rgb(89, 89, 89); 
 color : white;
-padding-left : 5px;</string>
+padding-left : 5px;
+padding-left : 20px;
+}
+
+QSpinBox::up-button {
+subcontrol-origin: border;
+subcontrol-position: center right; 
+border-image: url(:/icons/arrow_up.png);
+width: 10px;
+}
+
+QSpinBox::down-button {
+subcontrol-origin: border;
+border-right-width:20;	
+subcontrol-position: center right ;
+border-image: url(:/icons/arrow_down.png) 1;
+width: 10px;
+
+}</string>
                   </property>
                   <property name="frame">
                    <bool>true</bool>
