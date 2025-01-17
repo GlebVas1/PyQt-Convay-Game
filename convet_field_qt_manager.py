@@ -1,4 +1,5 @@
 from PyQt5 import QtWidgets, QtCore
+from PyQt5.QtGui import QFont
 from functools import partial
 
 import calc as cl
@@ -6,6 +7,7 @@ import colorPalletes as cp
 import rules as r
 
 import pyqtgraph as pg
+from pyqtgraph.Qt import QtGui as pQtGui
 
 # CFMButtonStyleSheet = "border-radius : 6px;\nborder-width: 2px; \nborder-style : solid;\nborder-color : rgb(255 79, 79);\nborder-bottom: 2px solid rgb(89, 89, 89);\n"
 CFMButtonStyleSheet = ""
@@ -42,7 +44,7 @@ class ConveyFieldQtManager(object):
         self.xFieldSize = x
         self.yFieldSize = y
         self.calc = cl.Field()
-        self.gameColorPalette = cp.redPenta
+        self.gameColorPalette = cp.greenHexa
 
         for c in self.gameColorPalette:
             self.gameColorPalleteQt.append(cp.convertColorToQTString(c))
@@ -50,12 +52,34 @@ class ConveyFieldQtManager(object):
         self.calc.initializeField(x, y, r.starWars)
         self.calc.initializeStatistics()
 
-        
-        for generation, s in self.calc.statistics.items():
+        self.mainPlotView.setBackground((69, 69, 69))
 
-            brush = pg.mkBrush('y', width=3, style=QtCore.Qt.SolidLine) 
-            plotDataItem = self.mainPlotView.plot()
-            self.mainPlotView.setBackground((69, 69, 69))
+        self.mainPlotView.setMouseEnabled(x=False, y=False)  # Disable mouse panning & zooming
+        self.mainPlotView.hideButtons()  # Disable corner auto-scale button
+        self.mainPlotView.getPlotItem().setMenuEnabled(False)
+
+        my_font = QFont("MS Shell Dlg 2", 10, QFont.Bold)
+
+
+        font = QFont()
+        font.setPixelSize(20)
+        
+        labelPen = pg.mkPen('w', width=2, style=QtCore.Qt.SolidLine) 
+
+        self.mainPlotView.getAxis("bottom").setStyle(showValues=False)
+        self.mainPlotView.getAxis("bottom").setPen(labelPen)
+        self.mainPlotView.hideAxis("bottom")
+
+        self.mainPlotView.getAxis("left").setTextPen('w')
+        self.mainPlotView.getAxis("left").setTickFont(font)
+        self.mainPlotView.getAxis("left").setStyle(tickTextOffset=20)
+        self.mainPlotView.getAxis("left").setPen(labelPen)
+        
+
+        self.mainPlotView.addLegend(enableMouse=False)
+        for generation, s in self.calc.statistics.items():
+            pen = pg.mkPen(self.gameColorPalette[generation], width=3, style=QtCore.Qt.SolidLine) 
+            plotDataItem = self.mainPlotView.plot(pen=pen)
             self.mainPlotCurves.append(plotDataItem)
         
         

@@ -1,5 +1,6 @@
 import sys
 from PyQt5 import QtWidgets, QtCore
+
 import mainui
 import convet_field_qt_manager
 import calc as cl
@@ -13,7 +14,7 @@ class App(QtWidgets.QMainWindow, mainui.Ui_MainWindow, convet_field_qt_manager.C
 app = QtWidgets.QApplication(sys.argv)
 frame = App()
 
-frame.initializeField(10, 10)
+frame.initializeField(25, 25)
 frame.initializeManger()
 frame.fillButtons()
 frame.changeAllButtons(0)

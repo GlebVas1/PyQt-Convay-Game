@@ -641,8 +641,20 @@ class Ui_MainWindow(object):
         self.simulationSettings.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69); color : white;")
         self.simulationSettings.setObjectName("simulationSettings")
-        self.ruleSurviveLabel_6 = QtWidgets.QLabel(self.simulationSettings)
-        self.ruleSurviveLabel_6.setGeometry(QtCore.QRect(20, 50, 41, 16))
+        self.gridLayout_14 = QtWidgets.QGridLayout(self.simulationSettings)
+        self.gridLayout_14.setObjectName("gridLayout_14")
+        self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_6.setContentsMargins(-1, 20, -1, -1)
+        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
+        self.fpsSettingsFrame = QtWidgets.QFrame(self.simulationSettings)
+        self.fpsSettingsFrame.setMaximumSize(QtCore.QSize(250, 16777215))
+        self.fpsSettingsFrame.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(89, 89, 89)")
+        self.fpsSettingsFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.fpsSettingsFrame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.fpsSettingsFrame.setObjectName("fpsSettingsFrame")
+        self.ruleSurviveLabel_6 = QtWidgets.QLabel(self.fpsSettingsFrame)
+        self.ruleSurviveLabel_6.setGeometry(QtCore.QRect(10, 13, 71, 31))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -650,9 +662,10 @@ class Ui_MainWindow(object):
         self.ruleSurviveLabel_6.setFont(font)
         self.ruleSurviveLabel_6.setStyleSheet("border :  0px; border :  0px; color : white;")
         self.ruleSurviveLabel_6.setObjectName("ruleSurviveLabel_6")
-        self.fpsSetter = QtWidgets.QComboBox(self.simulationSettings)
+        self.fpsSetter = QtWidgets.QComboBox(self.fpsSettingsFrame)
         self.fpsSetter.setEnabled(True)
-        self.fpsSetter.setGeometry(QtCore.QRect(70, 40, 101, 41))
+        self.fpsSetter.setGeometry(QtCore.QRect(170, 10, 71, 40))
+        self.fpsSetter.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -660,7 +673,7 @@ class Ui_MainWindow(object):
         self.fpsSetter.setFont(font)
         self.fpsSetter.setStyleSheet("QComboBox {\n"
 "border-radius : 5px;\n"
-"background-color : rgb(89, 89, 89); color : white;\n"
+"background-color : rgb(69, 69, 69); color : white;\n"
 "}\n"
 "\n"
 "QComboBox::down-button {\n"
@@ -679,6 +692,70 @@ class Ui_MainWindow(object):
         self.fpsSetter.addItem("")
         self.fpsSetter.addItem("")
         self.fpsSetter.addItem("")
+        self.ruleSurviveLabel_8 = QtWidgets.QLabel(self.fpsSettingsFrame)
+        self.ruleSurviveLabel_8.setGeometry(QtCore.QRect(10, 60, 211, 41))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.ruleSurviveLabel_8.setFont(font)
+        self.ruleSurviveLabel_8.setStyleSheet("border :  0px; border :  0px; color : white;")
+        self.ruleSurviveLabel_8.setObjectName("ruleSurviveLabel_8")
+        self.fpsSetter_2 = QtWidgets.QComboBox(self.fpsSettingsFrame)
+        self.fpsSetter_2.setEnabled(True)
+        self.fpsSetter_2.setGeometry(QtCore.QRect(170, 60, 71, 40))
+        self.fpsSetter_2.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.fpsSetter_2.setFont(font)
+        self.fpsSetter_2.setStyleSheet("QComboBox {\n"
+"border-radius : 5px;\n"
+"background-color : rgb(69, 69, 69); color : white;\n"
+"}\n"
+"\n"
+"QComboBox::down-button {\n"
+"subcontrol-origin: border;\n"
+"border-right-width:30;    \n"
+"subcontrol-position: center right ;\n"
+"border-image: url(:/icons/arrow_left.png) 1;\n"
+"width: 10px;\n"
+"\n"
+"}")
+        self.fpsSetter_2.setObjectName("fpsSetter_2")
+        self.fpsSetter_2.addItem("")
+        self.fpsSetter_2.addItem("")
+        self.fpsSetter_2.addItem("")
+        self.fpsSetter_2.addItem("")
+        self.fpsSetter_2.addItem("")
+        self.fpsSetter_2.addItem("")
+        self.fpsSetter_2.addItem("")
+        self.horizontalLayout_6.addWidget(self.fpsSettingsFrame)
+        self.frame_8 = QtWidgets.QFrame(self.simulationSettings)
+        self.frame_8.setMaximumSize(QtCore.QSize(200, 16777215))
+        self.frame_8.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(89, 89, 89)")
+        self.frame_8.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_8.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_8.setObjectName("frame_8")
+        self.radioButton_6 = QtWidgets.QRadioButton(self.frame_8)
+        self.radioButton_6.setGeometry(QtCore.QRect(10, 10, 161, 20))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.radioButton_6.setFont(font)
+        self.radioButton_6.setObjectName("radioButton_6")
+        self.horizontalLayout_6.addWidget(self.frame_8)
+        self.frame_9 = QtWidgets.QFrame(self.simulationSettings)
+        self.frame_9.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(89, 89, 89)")
+        self.frame_9.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_9.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_9.setObjectName("frame_9")
+        self.horizontalLayout_6.addWidget(self.frame_9)
+        self.gridLayout_14.addLayout(self.horizontalLayout_6, 0, 0, 1, 1)
         self.verticalLayout.addWidget(self.simulationSettings)
         self.groupBox_2 = QtWidgets.QGroupBox(self.tabSetting)
         font = QtGui.QFont()
@@ -803,7 +880,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -835,6 +912,15 @@ class Ui_MainWindow(object):
         self.fpsSetter.setItemText(4, _translate("MainWindow", "40"))
         self.fpsSetter.setItemText(5, _translate("MainWindow", "50"))
         self.fpsSetter.setItemText(6, _translate("MainWindow", "60"))
+        self.ruleSurviveLabel_8.setText(_translate("MainWindow", "Skip frame count"))
+        self.fpsSetter_2.setItemText(0, _translate("MainWindow", "5"))
+        self.fpsSetter_2.setItemText(1, _translate("MainWindow", "10"))
+        self.fpsSetter_2.setItemText(2, _translate("MainWindow", "20"))
+        self.fpsSetter_2.setItemText(3, _translate("MainWindow", "30"))
+        self.fpsSetter_2.setItemText(4, _translate("MainWindow", "40"))
+        self.fpsSetter_2.setItemText(5, _translate("MainWindow", "50"))
+        self.fpsSetter_2.setItemText(6, _translate("MainWindow", "60"))
+        self.radioButton_6.setText(_translate("MainWindow", "Enable random cells"))
         self.groupBox_2.setTitle(_translate("MainWindow", "Window Settings"))
         self.enableMiniPlot.setText(_translate("MainWindow", "Enable mini plot in game tab"))
         self.enableMiniPlot_2.setText(_translate("MainWindow", "Fix window size"))
