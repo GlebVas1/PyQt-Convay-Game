@@ -1,5 +1,6 @@
 from PyQt5 import QtWidgets, QtCore
 from functools import partial
+
 import calc as cl
 import colorPalletes as cp
 import rules as r
@@ -31,6 +32,8 @@ class ConveyFieldQtManager(object):
 
         self.gameStartStopButton.clicked.connect(self.gameStartStopButtonAction)
         self.fpsSetter.currentIndexChanged.connect(self.setFPS)
+
+
 
     def initializeField(self, x: int = 10, y : int = 10):
         """Initialize game field, sizes and calc platform"""
@@ -109,3 +112,6 @@ class ConveyFieldQtManager(object):
     def updateLCD(self):
         self.totalFramesLCD.display(self.framesTotalCounter)
         self.AliveCellsLCD.display(self.alliveCellsCounter)
+
+    def drawStatistic(self):
+        statistics = self.calc.statistics
