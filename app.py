@@ -13,7 +13,7 @@ class App(QtWidgets.QMainWindow, mainui.Ui_MainWindow, convet_field_qt_manager.C
 app = QtWidgets.QApplication(sys.argv)
 frame = App()
 
-frame.initializeField(20, 20)
+frame.initializeField(10, 10)
 frame.initializeManger()
 frame.fillButtons()
 frame.changeAllButtons(0)

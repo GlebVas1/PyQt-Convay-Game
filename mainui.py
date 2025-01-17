@@ -54,11 +54,12 @@ class Ui_MainWindow(object):
 "border-top-right-radius: 8px;\n"
 "border: 2px solid  rgb(49, 49, 49);\n"
 "border-bottom-color:  rgb(49, 49, 49);\n"
-"color : white;\n"
+"color : gray;\n"
 "}\n"
 "\n"
 "QTabBar::tab:selected {\n"
 "background :  rgb(49, 49, 49);\n"
+"color : white;\n"
 "}\n"
 "\n"
 "")
@@ -196,7 +197,7 @@ class Ui_MainWindow(object):
         self.gridLayout_5.addWidget(self.gameStartStopButton, 0, 0, 1, 1)
         self.gameControlPanelsLayout.addWidget(self.gameContolPanel)
         self.pickToolPanel = QtWidgets.QFrame(self.tabDisplay)
-        self.pickToolPanel.setMaximumSize(QtCore.QSize(150, 500))
+        self.pickToolPanel.setMaximumSize(QtCore.QSize(150, 600))
         self.pickToolPanel.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69)")
         self.pickToolPanel.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -253,6 +254,26 @@ class Ui_MainWindow(object):
         self.radioButton_2.setStyleSheet("color : white")
         self.radioButton_2.setObjectName("radioButton_2")
         self.verticalLayout_4.addWidget(self.radioButton_2)
+        self.pushButton_2 = QtWidgets.QPushButton(self.frame)
+        self.pushButton_2.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButton_2.setFont(font)
+        self.pushButton_2.setStyleSheet("QPushButton {\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    color : white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(49, 49, 49);\n"
+"    border-style: inset;\n"
+"}\n"
+"")
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.verticalLayout_4.addWidget(self.pushButton_2)
         self.gridLayout_7.addLayout(self.verticalLayout_4, 0, 0, 1, 1)
         self.verticalLayout_3.addWidget(self.frame)
         self.frame_2 = QtWidgets.QFrame(self.pickToolPanel)
@@ -311,6 +332,15 @@ class Ui_MainWindow(object):
         self.spinBox_5.setMaximum(4)
         self.spinBox_5.setObjectName("spinBox_5")
         self.verticalLayout_9.addWidget(self.spinBox_5)
+        self.radioButton_4 = QtWidgets.QRadioButton(self.frame_2)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.radioButton_4.setFont(font)
+        self.radioButton_4.setStyleSheet("color : white")
+        self.radioButton_4.setObjectName("radioButton_4")
+        self.verticalLayout_9.addWidget(self.radioButton_4)
         self.radioButton_3 = QtWidgets.QRadioButton(self.frame_2)
         font = QtGui.QFont()
         font.setPointSize(11)
@@ -645,6 +675,9 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addLayout(self.verticalLayout, 0, 0, 1, 1)
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(":/icons/settings_ico.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(":/icons/settings_pressed_ico.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(":/icons/settings_pressed_ico.png"), QtGui.QIcon.Active, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap(":/icons/settings_pressed_ico.png"), QtGui.QIcon.Selected, QtGui.QIcon.Off)
         self.tabWidget.addTab(self.tabSetting, icon2, "")
         self.tabGraph = QtWidgets.QWidget()
         self.tabGraph.setObjectName("tabGraph")
@@ -695,7 +728,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -705,7 +738,9 @@ class Ui_MainWindow(object):
         self.CellsAlive.setText(_translate("MainWindow", "Alive cells"))
         self.label.setText(_translate("MainWindow", "Current"))
         self.radioButton_2.setText(_translate("MainWindow", "Random"))
+        self.pushButton_2.setText(_translate("MainWindow", "Fill all"))
         self.label_2.setText(_translate("MainWindow", "Brush size"))
+        self.radioButton_4.setText(_translate("MainWindow", "Circle"))
         self.radioButton_3.setText(_translate("MainWindow", "Random"))
         self.pushButton.setText(_translate("MainWindow", "Place"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabDisplay), _translate("MainWindow", "Game"))

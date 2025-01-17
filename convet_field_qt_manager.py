@@ -5,6 +5,8 @@ import calc as cl
 import colorPalletes as cp
 import rules as r
 
+import plot as pltQt
+
 # CFMButtonStyleSheet = "border-radius : 6px;\nborder-width: 2px; \nborder-style : solid;\nborder-color : rgb(255 79, 79);\nborder-bottom: 2px solid rgb(89, 89, 89);\n"
 CFMButtonStyleSheet = ""
 CFMGameFramePadding = 5
@@ -14,7 +16,8 @@ class ConveyFieldQtManager(object):
     xFieldSize = 10
     yFieldSize = 10
     gameButtons = []
-    gameButtonsColorsPalette = ["rgb(49, 49, 49)", "rgb(255, 249, 207)"]
+    gameColorPalette = ["rgb(49, 49, 49)", "rgb(255, 249, 207)"]
+    gameColorPalleteQt = []
     gameButtonsStates = []
 
     gameStatePlayed = True
@@ -33,28 +36,39 @@ class ConveyFieldQtManager(object):
         self.gameStartStopButton.clicked.connect(self.gameStartStopButtonAction)
         self.fpsSetter.currentIndexChanged.connect(self.setFPS)
 
-
-
     def initializeField(self, x: int = 10, y : int = 10):
         """Initialize game field, sizes and calc platform"""
         self.xFieldSize = x
         self.yFieldSize = y
         self.calc = cl.Field()
-        self.gameButtonsColorsPalette = cp.defaultQuadro
+        self.gameColorPalette = cp.redPenta
+
+        for c in self.gameColorPalette:
+            self.gameColorPalleteQt.append(cp.convertColorToQTString(c))
+
         self.calc.initializeField(x, y, r.starWars)
         self.calc.initializeStatistics()
+
+        self.dataPlot = pltQt.QTMultiPlot(self.plotFrame)
+        self.dataPlot.colorPalette = self.gameColorPalette
         
     def fillButtons(self):
         """initial filiing main field with buttons"""
         xSize = int((self.mainField.size().width() - (1 + self.xFieldSize) * CFMGameFramePadding) / self.xFieldSize)
         ySize = int((self.mainField.size().height() - (1 + self.yFieldSize) * CFMGameFramePadding) / self.yFieldSize)
 
+        newFieldXSize = xSize * self.xFieldSize + CFMGameFramePadding * (1 + self.xFieldSize)
+        newFieldYSize = ySize * self.yFieldSize + CFMGameFramePadding * (1 + self.yFieldSize)
+
+        self.mainField.setMinimumSize(QtCore.QSize(newFieldXSize, newFieldYSize))
+        self.mainField.setMaximumSize(QtCore.QSize(newFieldXSize, newFieldYSize))
+        
         for i in range(0, self.xFieldSize):
             for j in range(0, self.yFieldSize):
                 button = QtWidgets.QPushButton(self.mainField)
                 button.setGeometry(QtCore.QRect(CFMGameFramePadding + (xSize + CFMGameFramePadding) * i, CFMGameFramePadding + (ySize + CFMGameFramePadding) * j, xSize, ySize))
                 button.setObjectName("game_button_" + str(i * self.xFieldSize + j))
-                button.setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameButtonsColorsPalette[0])
+                button.setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameColorPalleteQt[0])
 
                 button.clicked.connect(partial(self.changeButtonState, i, j, self.calc.thisRule.generationsCount))
 
@@ -64,7 +78,7 @@ class ConveyFieldQtManager(object):
     def changeAllButtons(self, val : int):
         """change all buttons to a specific state"""
         for button in self.gameButtons:
-            button.setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameButtonsColorsPalette[val]) 
+            button.setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameColorPalleteQt[val])
            
         for v in self.gameButtonsStates:
             v = val
@@ -74,7 +88,7 @@ class ConveyFieldQtManager(object):
     def changeButtonState(self, x : int, y : int, val : int):
         """change one button state"""
         # print(val)
-        self.gameButtons[x * self.yFieldSize + y].setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameButtonsColorsPalette[val])
+        self.gameButtons[x * self.yFieldSize + y].setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameColorPalleteQt[val])
         self.gameButtonsStates[x * self.yFieldSize + y] = val
         self.calc.setCell(x, y, val)
 
@@ -93,6 +107,10 @@ class ConveyFieldQtManager(object):
         self.calc.calcStatistic()
         self.alliveCellsCounter = self.calc.statistics[self.calc.thisRule.generationsCount][-1]
         self.updateLCD()
+
+        if self.framesTotalCounter % 10 == 0:
+            if len(self.calc.statistics[0]) > 6:
+                self.dataPlot.updatePlot(range(len(self.calc.statistics[0])), self.calc.statistics)
 
     def getButtonState(self, x : int, y : int) -> int:
         return self.gameButtonsStates[x * self.yFieldSize + y]

@@ -100,17 +100,18 @@ border-top-left-radius: 8px;
 border-top-right-radius: 8px;
 border: 2px solid  rgb(49, 49, 49);
 border-bottom-color:  rgb(49, 49, 49);
-color : white;
+color : gray;
 }
 
 QTabBar::tab:selected {
 background :  rgb(49, 49, 49);
+color : white;
 }
 
 </string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="iconSize">
        <size>
@@ -407,7 +408,7 @@ QPushButton:pressed {
               <property name="maximumSize">
                <size>
                 <width>150</width>
-                <height>500</height>
+                <height>600</height>
                </size>
               </property>
               <property name="styleSheet">
@@ -515,6 +516,39 @@ QPushButton:pressed {
                         </property>
                        </widget>
                       </item>
+                      <item>
+                       <widget class="QPushButton" name="pushButton_2">
+                        <property name="minimumSize">
+                         <size>
+                          <width>0</width>
+                          <height>40</height>
+                         </size>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">QPushButton {
+	border-radius : 5px;
+	background-color : rgb(69, 69, 69);
+	color : white;
+}
+
+QPushButton:pressed {
+    background-color: rgb(49, 49, 49);
+    border-style: inset;
+}
+</string>
+                        </property>
+                        <property name="text">
+                         <string>Fill all</string>
+                        </property>
+                       </widget>
+                      </item>
                      </layout>
                     </item>
                    </layout>
@@ -605,6 +639,23 @@ width: 10px;
                         </property>
                         <property name="maximum">
                          <number>4</number>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QRadioButton" name="radioButton_4">
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">color : white</string>
+                        </property>
+                        <property name="text">
+                         <string>Circle</string>
                         </property>
                        </widget>
                       </item>
@@ -703,7 +754,10 @@ QPushButton:pressed {
       <widget class="QWidget" name="tabSetting">
        <attribute name="icon">
         <iconset resource="resources/ico_res.qrc">
-         <normaloff>:/icons/settings_ico.png</normaloff>:/icons/settings_ico.png</iconset>
+         <normaloff>:/icons/settings_ico.png</normaloff>
+         <disabledoff>:/icons/settings_pressed_ico.png</disabledoff>
+         <activeoff>:/icons/settings_pressed_ico.png</activeoff>
+         <selectedoff>:/icons/settings_pressed_ico.png</selectedoff>:/icons/settings_ico.png</iconset>
        </attribute>
        <attribute name="title">
         <string>Settings</string>
