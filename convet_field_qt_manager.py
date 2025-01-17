@@ -108,7 +108,7 @@ class ConveyFieldQtManager(object):
         self.alliveCellsCounter = self.calc.statistics[self.calc.thisRule.generationsCount][-1]
         self.updateLCD()
 
-        if self.framesTotalCounter % 10 == 0:
+        if self.framesTotalCounter % 1 == 0:
             if len(self.calc.statistics[0]) > 6:
                 self.dataPlot.updatePlot(range(len(self.calc.statistics[0])), self.calc.statistics)
 

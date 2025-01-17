@@ -9,6 +9,9 @@ import numpy as np
 
 # https://stackoverflow.com/questions/72568050/plotting-a-chart-inside-a-pyqt-gui
 # https://www.pythonguis.com/tutorials/plotting-matplotlib/
+# https://stackoverflow.com/questions/8955869/why-is-plotting-with-matplotlib-so-slow
+# https://pyqtgraph.readthedocs.io/en/latest/getting_started/how_to_use.html
+
 class QTMultiPlot(QtWidgets.QWidget):
 
     colorPalette = []
@@ -31,6 +34,9 @@ class QTMultiPlot(QtWidgets.QWidget):
         self.ax.spines['top'].set_visible(False)
         self.ax.spines['right'].set_visible(False)
         self.ax.spines['left'].set_color('#ffffff')
+        
+        self.figure.show()  
+        self.figureCanvas.show()
 
         
         
