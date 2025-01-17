@@ -162,17 +162,17 @@ color : white;
               <property name="minimumSize">
                <size>
                 <width>150</width>
-                <height>0</height>
+                <height>300</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>300</width>
-                <height>250</height>
+                <width>200</width>
+                <height>300</height>
                </size>
               </property>
               <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
+               <enum>Qt::RightToLeft</enum>
               </property>
               <property name="styleSheet">
                <string notr="true">border-radius : 5px;
@@ -186,9 +186,54 @@ background-color : rgb(69, 69, 69)</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_15">
                <item row="0" column="0">
-                <widget class="PlotWidget" name="miniPlotView">
-                 <property name="layoutDirection">
-                  <enum>Qt::LeftToRight</enum>
+                <widget class="QFrame" name="frame_13">
+                 <property name="styleSheet">
+                  <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_18">
+                  <property name="leftMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>2</number>
+                  </property>
+                  <item row="0" column="0">
+                   <widget class="PlotWidget" name="miniPlotView">
+                    <property name="layoutDirection">
+                     <enum>Qt::LeftToRight</enum>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_8">
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color : white</string>
+                 </property>
+                 <property name="text">
+                  <string>Distribution</string>
                  </property>
                 </widget>
                </item>
@@ -202,6 +247,9 @@ background-color : rgb(69, 69, 69)</string>
                 <width>150</width>
                 <height>250</height>
                </size>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::RightToLeft</enum>
               </property>
               <property name="styleSheet">
                <string notr="true">border-radius : 5px;
@@ -408,7 +456,10 @@ background-color : rgb(69, 69, 69)</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_5">
                <item row="0" column="0">
-                <widget class="QPushButton" name="gameStartStopButton">
+                <widget class="QPushButton" name="playButton">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
                  <property name="minimumSize">
                   <size>
                    <width>60</width>
@@ -420,6 +471,9 @@ background-color : rgb(69, 69, 69)</string>
                    <width>60</width>
                    <height>60</height>
                   </size>
+                 </property>
+                 <property name="layoutDirection">
+                  <enum>Qt::LeftToRight</enum>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">QPushButton {
@@ -437,7 +491,10 @@ QPushButton:pressed {
                  </property>
                  <property name="icon">
                   <iconset resource="resources/ico_res.qrc">
-                   <normaloff>:/icons/play.png</normaloff>:/icons/play.png</iconset>
+                   <normaloff>:/icons/play.png</normaloff>
+                   <disabledoff>:/icons/play_disabled.png</disabledoff>
+                   <disabledon>:/icons/play_disabled.png</disabledon>
+                   <activeoff>:/icons/play.png</activeoff>:/icons/play.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -448,7 +505,10 @@ QPushButton:pressed {
                 </widget>
                </item>
                <item row="0" column="1">
-                <widget class="QPushButton" name="pushButton_2">
+                <widget class="QPushButton" name="stopButton">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
                  <property name="minimumSize">
                   <size>
                    <width>60</width>
@@ -477,7 +537,9 @@ QPushButton:pressed {
                  </property>
                  <property name="icon">
                   <iconset resource="resources/ico_res.qrc">
-                   <normaloff>:/icons/pause.png</normaloff>:/icons/pause.png</iconset>
+                   <normaloff>:/icons/pause.png</normaloff>
+                   <disabledoff>:/icons/pause_disabled.png</disabledoff>
+                   <activeoff>:/icons/pause_disabled.png</activeoff>:/icons/pause.png</iconset>
                  </property>
                  <property name="iconSize">
                   <size>
@@ -761,26 +823,36 @@ QSpinBox {
 border-radius : 5px;
 background-color : rgb(69, 69, 69); 
 color : white;
-padding-left : 5px;
-padding-left : 20px;
+padding-left : 15px;
+padding-right : 50px;
 }
 
 QSpinBox::up-button {
 subcontrol-origin: border;
 subcontrol-position: center right; 
 border-image: url(:/icons/arrow_right.png);
-border-right-width:10;
-width: 10px;
+border : 1px;
+right : 10px;
+width : 10px;
+}
+
+QSpinBox::up-button::pressed {
+border-image: url(:/icons/arrow_right_pressed.png);
 }
 
 QSpinBox::down-button {
 subcontrol-origin: border;
-border-right-width:30;	
 subcontrol-position: center right ;
-border-image: url(:/icons/arrow_left.png) 1;
-width: 10px;
+border-image: url(:/icons/arrow_left.png);
+border : 1px;
+right : 35px;
+width : 10px;
+}
 
-}</string>
+QSpinBox::down-button::pressed {
+border-image: url(:/icons/arrow_left_pressed.png);
+}
+</string>
                           </property>
                           <property name="minimum">
                            <number>1</number>
@@ -1015,6 +1087,12 @@ background-color : rgb(89, 89, 89)</string>
                  </item>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_2">
+                   <property name="leftMargin">
+                    <number>20</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>20</number>
+                   </property>
                    <item>
                     <widget class="QLabel" name="ruleSurviveLabel_2">
                      <property name="font">
@@ -1065,26 +1143,36 @@ QSpinBox {
 border-radius : 5px;
 background-color : rgb(89, 89, 89); 
 color : white;
-padding-left : 5px;
-padding-left : 20px;
+padding-left : 15px;
+padding-right : 50px;
 }
 
 QSpinBox::up-button {
 subcontrol-origin: border;
 subcontrol-position: center right; 
 border-image: url(:/icons/arrow_right.png);
-border-right-width:10;
-width: 10px;
+border : 1px;
+right : 10px;
+width : 10px;
+}
+
+QSpinBox::up-button::pressed {
+border-image: url(:/icons/arrow_right_pressed.png);
 }
 
 QSpinBox::down-button {
 subcontrol-origin: border;
-border-right-width:30;	
 subcontrol-position: center right ;
-border-image: url(:/icons/arrow_left.png) 1;
-width: 10px;
+border-image: url(:/icons/arrow_left.png);
+border : 1px;
+right : 35px;
+width : 10px;
+}
 
-}</string>
+QSpinBox::down-button::pressed {
+border-image: url(:/icons/arrow_left_pressed.png);
+}
+</string>
                      </property>
                      <property name="frame">
                       <bool>true</bool>
@@ -1161,7 +1249,7 @@ background-color : rgb(89, 89, 89)</string>
                      <rect>
                       <x>60</x>
                       <y>50</y>
-                      <width>121</width>
+                      <width>101</width>
                       <height>41</height>
                      </rect>
                     </property>
@@ -1178,26 +1266,36 @@ QSpinBox {
 border-radius : 5px;
 background-color : rgb(69, 69, 69); 
 color : white;
-padding-left : 5px;
-padding-left : 20px;
+padding-left : 15px;
+padding-right : 50px;
 }
 
 QSpinBox::up-button {
 subcontrol-origin: border;
 subcontrol-position: center right; 
 border-image: url(:/icons/arrow_right.png);
-border-right-width:10;
-width: 10px;
+border : 1px;
+right : 10px;
+width : 10px;
+}
+
+QSpinBox::up-button::pressed {
+border-image: url(:/icons/arrow_right_pressed.png);
 }
 
 QSpinBox::down-button {
 subcontrol-origin: border;
-border-right-width:30;	
 subcontrol-position: center right ;
-border-image: url(:/icons/arrow_left.png) 1;
-width: 10px;
+border-image: url(:/icons/arrow_left.png);
+border : 1px;
+right : 35px;
+width : 10px;
+}
 
-}</string>
+QSpinBox::down-button::pressed {
+border-image: url(:/icons/arrow_left_pressed.png);
+}
+</string>
                     </property>
                     <property name="minimum">
                      <number>4</number>
@@ -1211,7 +1309,7 @@ width: 10px;
                      <rect>
                       <x>240</x>
                       <y>50</y>
-                      <width>121</width>
+                      <width>111</width>
                       <height>41</height>
                      </rect>
                     </property>
@@ -1228,26 +1326,36 @@ QSpinBox {
 border-radius : 5px;
 background-color : rgb(69, 69, 69); 
 color : white;
-padding-left : 5px;
-padding-left : 20px;
+padding-left : 15px;
+padding-right : 50px;
 }
 
 QSpinBox::up-button {
 subcontrol-origin: border;
 subcontrol-position: center right; 
 border-image: url(:/icons/arrow_right.png);
-border-right-width:10;
-width: 10px;
+border : 1px;
+right : 10px;
+width : 10px;
+}
+
+QSpinBox::up-button::pressed {
+border-image: url(:/icons/arrow_right_pressed.png);
 }
 
 QSpinBox::down-button {
 subcontrol-origin: border;
-border-right-width:30;	
 subcontrol-position: center right ;
-border-image: url(:/icons/arrow_left.png) 1;
-width: 10px;
+border-image: url(:/icons/arrow_left.png);
+border : 1px;
+right : 35px;
+width : 10px;
+}
 
-}</string>
+QSpinBox::down-button::pressed {
+border-image: url(:/icons/arrow_left_pressed.png);
+}
+</string>
                     </property>
                     <property name="minimum">
                      <number>4</number>
@@ -1306,6 +1414,86 @@ width: 10px;
                     </property>
                     <property name="textFormat">
                      <enum>Qt::PlainText</enum>
+                    </property>
+                   </widget>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="colorPalleteSettings">
+                   <property name="styleSheet">
+                    <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <widget class="QLabel" name="label_5">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>20</y>
+                      <width>151</width>
+                      <height>16</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border :  0px; color : white;</string>
+                    </property>
+                    <property name="text">
+                     <string>Color pallete</string>
+                    </property>
+                   </widget>
+                   <widget class="QFrame" name="colorPalletePreview">
+                    <property name="geometry">
+                     <rect>
+                      <x>20</x>
+                      <y>89</y>
+                      <width>561</width>
+                      <height>61</height>
+                     </rect>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69)</string>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="label_6">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>60</y>
+                      <width>151</width>
+                      <height>16</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border :  0px; color : white;</string>
+                    </property>
+                    <property name="text">
+                     <string>Preview</string>
                     </property>
                    </widget>
                   </widget>
@@ -1398,9 +1586,9 @@ background-color : rgb(89, 89, 89)</string>
                   </property>
                   <property name="geometry">
                    <rect>
-                    <x>170</x>
+                    <x>50</x>
                     <y>10</y>
-                    <width>71</width>
+                    <width>191</width>
                     <height>40</height>
                    </rect>
                   </property>
@@ -1420,16 +1608,20 @@ background-color : rgb(89, 89, 89)</string>
                   <property name="styleSheet">
                    <string notr="true">QComboBox {
 border-radius : 5px;
-background-color : rgb(69, 69, 69); color : white;
+background-color : rgb(69, 69, 69);
+color : white;
+padding-right : 20px;
+padding-left: 20px;
 }
 
-QComboBox::down-button {
+QComboBox::down-arrow {
 subcontrol-origin: border;
-border-right-width:30;	
 subcontrol-position: center right ;
-border-image: url(:/icons/arrow_left.png) 1;
-width: 10px;
-
+border-image: url(:/icons/arrow_left.png);
+border : 1px;
+right : 35px;
+width: 36px;
+height: 36px;
 }</string>
                   </property>
                   <item>
@@ -1621,6 +1813,36 @@ background-color : rgb(89, 89, 89)</string>
                  <property name="frameShadow">
                   <enum>QFrame::Raised</enum>
                  </property>
+                 <widget class="QComboBox" name="comboBox">
+                  <property name="geometry">
+                   <rect>
+                    <x>200</x>
+                    <y>20</y>
+                    <width>211</width>
+                    <height>84</height>
+                   </rect>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QComboBox{
+        border-radius: 5px;
+        padding: 1px 10px 1px 20px;
+        border: 1px solid #5CACEE;
+        min-height: 80px;
+}
+</string>
+                  </property>
+                  <property name="insertPolicy">
+                   <enum>QComboBox::InsertAtCurrent</enum>
+                  </property>
+                  <property name="sizeAdjustPolicy">
+                   <enum>QComboBox::AdjustToMinimumContentsLength</enum>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>New Item</string>
+                   </property>
+                  </item>
+                 </widget>
                 </widget>
                </item>
               </layout>
@@ -1671,46 +1893,6 @@ background-color : rgb(89, 89, 89)</string>
                  <property name="frameShadow">
                   <enum>QFrame::Raised</enum>
                  </property>
-                 <widget class="QRadioButton" name="enableMiniPlot">
-                  <property name="geometry">
-                   <rect>
-                    <x>10</x>
-                    <y>10</y>
-                    <width>572</width>
-                    <height>22</height>
-                   </rect>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Enable mini plot in game tab</string>
-                  </property>
-                 </widget>
-                 <widget class="QRadioButton" name="enableMiniPlot_2">
-                  <property name="geometry">
-                   <rect>
-                    <x>10</x>
-                    <y>40</y>
-                    <width>572</width>
-                    <height>22</height>
-                   </rect>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <pointsize>11</pointsize>
-                    <weight>75</weight>
-                    <bold>true</bold>
-                   </font>
-                  </property>
-                  <property name="text">
-                   <string>Fix window size</string>
-                  </property>
-                 </widget>
                 </widget>
                </item>
                <item>
@@ -1763,6 +1945,12 @@ background-color : rgb(89, 89, 89)</string>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <item>
            <widget class="QFrame" name="plotSettingFrame">
+            <property name="minimumSize">
+             <size>
+              <width>300</width>
+              <height>0</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
               <width>300</width>
@@ -1850,8 +2038,15 @@ background-color : rgb(89, 89, 89)</string>
                   <x>10</x>
                   <y>50</y>
                   <width>101</width>
-                  <height>31</height>
+                  <height>41</height>
                  </rect>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">
@@ -1859,26 +2054,42 @@ QSpinBox {
 border-radius : 5px;
 background-color : rgb(69, 69, 69); 
 color : white;
-padding-left : 5px;
-padding-left : 20px;
+padding-left : 15px;
+padding-right : 50px;
 }
 
 QSpinBox::up-button {
 subcontrol-origin: border;
 subcontrol-position: center right; 
 border-image: url(:/icons/arrow_right.png);
-border-right-width:10;
-width: 10px;
+border : 1px;
+right : 10px;
+width : 10px;
+}
+
+QSpinBox::up-button::pressed {
+border-image: url(:/icons/arrow_right_pressed.png);
 }
 
 QSpinBox::down-button {
 subcontrol-origin: border;
-border-right-width:30;	
 subcontrol-position: center right ;
-border-image: url(:/icons/arrow_left.png) 1;
-width: 10px;
+border-image: url(:/icons/arrow_left.png);
+border : 1px;
+right : 35px;
+width : 10px;
+}
 
-}</string>
+QSpinBox::down-button::pressed {
+border-image: url(:/icons/arrow_left_pressed.png);
+}
+</string>
+                </property>
+                <property name="minimum">
+                 <number>1</number>
+                </property>
+                <property name="maximum">
+                 <number>10</number>
                 </property>
                </widget>
                <widget class="QLabel" name="label_4">
@@ -1910,8 +2121,15 @@ width: 10px;
                   <x>10</x>
                   <y>130</y>
                   <width>101</width>
-                  <height>31</height>
+                  <height>41</height>
                  </rect>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">
@@ -1919,26 +2137,62 @@ QSpinBox {
 border-radius : 5px;
 background-color : rgb(69, 69, 69); 
 color : white;
-padding-left : 5px;
-padding-left : 20px;
+padding-left : 15px;
+padding-right : 50px;
 }
 
 QSpinBox::up-button {
 subcontrol-origin: border;
 subcontrol-position: center right; 
 border-image: url(:/icons/arrow_right.png);
-border-right-width:10;
-width: 10px;
+border : 1px;
+right : 10px;
+width : 10px;
+}
+
+QSpinBox::up-button::pressed {
+border-image: url(:/icons/arrow_right_pressed.png);
 }
 
 QSpinBox::down-button {
 subcontrol-origin: border;
-border-right-width:30;	
 subcontrol-position: center right ;
-border-image: url(:/icons/arrow_left.png) 1;
-width: 10px;
+border-image: url(:/icons/arrow_left.png);
+border : 1px;
+right : 35px;
+width : 10px;
+}
 
-}</string>
+QSpinBox::down-button::pressed {
+border-image: url(:/icons/arrow_left_pressed.png);
+}
+</string>
+                </property>
+                <property name="minimum">
+                 <number>10</number>
+                </property>
+               </widget>
+               <widget class="QCheckBox" name="checkBox">
+                <property name="geometry">
+                 <rect>
+                  <x>10</x>
+                  <y>180</y>
+                  <width>181</width>
+                  <height>20</height>
+                 </rect>
+                </property>
+                <property name="font">
+                 <font>
+                  <pointsize>11</pointsize>
+                  <weight>75</weight>
+                  <bold>true</bold>
+                 </font>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">color : white</string>
+                </property>
+                <property name="text">
+                 <string>Enable grid</string>
                 </property>
                </widget>
               </widget>
@@ -1947,35 +2201,104 @@ width: 10px;
            </widget>
           </item>
           <item>
-           <widget class="QFrame" name="plotFrame">
-            <property name="minimumSize">
-             <size>
-              <width>600</width>
-              <height>400</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>800</width>
-              <height>600</height>
-             </size>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">border-radius : 5px;
+           <layout class="QVBoxLayout" name="verticalLayout_11">
+            <item>
+             <widget class="QFrame" name="frame_11">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>60</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>800</width>
+                <height>60</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-radius : 5px;
 background-color : rgb(69, 69, 69)</string>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <layout class="QGridLayout" name="gridLayout_13">
-             <item row="0" column="0">
-              <widget class="PlotWidget" name="mainPlotView"/>
-             </item>
-            </layout>
-           </widget>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_17">
+               <item row="0" column="0">
+                <widget class="QFrame" name="frame_12">
+                 <property name="styleSheet">
+                  <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <widget class="QLabel" name="label_7">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>10</y>
+                    <width>481</width>
+                    <height>20</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color : white</string>
+                  </property>
+                  <property name="text">
+                   <string>Different cells state during last frames</string>
+                  </property>
+                 </widget>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="plotFrame">
+              <property name="minimumSize">
+               <size>
+                <width>600</width>
+                <height>400</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>800</width>
+                <height>600</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69)</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_13">
+               <item row="0" column="0">
+                <widget class="PlotWidget" name="mainPlotView"/>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </item>

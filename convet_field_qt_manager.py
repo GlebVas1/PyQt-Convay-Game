@@ -10,6 +10,7 @@ from main_plot_qt_manager import MainPlotController
 from color_pallete_manager import ColorPalleteManager
 from mini_plot_manager import MiniPlotManager
 from game_brush_manager import BrushManager
+from stop_start_manager import StopStartManager
 
 import pyqtgraph as pg
 
@@ -17,7 +18,7 @@ import pyqtgraph as pg
 CFMButtonStyleSheet = ""
 CFMGameFramePadding = 5
 
-class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotManager, BrushManager):
+class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotManager, BrushManager, StopStartManager):
 
     xFieldSize = 10
     yFieldSize = 10
@@ -26,7 +27,6 @@ class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotMana
     gameColorPalleteQt = []
     gameButtonsStates = []
 
-    gameStatePlayed = True
     gameStateFPS = 30
 
     framesTotalCounter = 0
@@ -39,24 +39,21 @@ class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotMana
         self.updateTimer.timeout.connect(self.updateField)
         self.updateTimer.start()
 
-        self.gameStartStopButton.clicked.connect(self.gameStartStopButtonAction)
         self.fpsSetter.currentIndexChanged.connect(self.setFPS)
-
-        self.fillAllCells.clicked.connect(self.changeAllButtonsStateInGame)
-
         
 
     def initializeField(self, x: int = 10, y : int = 10):
         """Initialize game field, sizes and calc platform"""
         self.xFieldSize = x
         self.yFieldSize = y
+
         self.calc = cl.Field()
-        self.gameColorPalette = cp.lazureQuadro
+        self.gameColorPalette = cp.defaultBinary
 
         for c in self.gameColorPalette:
             self.gameColorPalleteQt.append(cp.convertColorToQTString(c))
 
-        self.calc.initializeField(x, y, r.starWars)
+        self.calc.initializeField(x, y, r.defaultLife)
         self.calc.initializeStatistics()
 
         self.initializeMainPlot()
@@ -64,6 +61,8 @@ class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotMana
 
         self.initializeColorPallete()
         self.initializeBrushManager()
+
+        self.initializeStopStartManager()
 
         
         
@@ -153,14 +152,6 @@ class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotMana
 
     def getButtonState(self, x : int, y : int) -> int:
         return self.gameButtonsStates[x * self.yFieldSize + y]
-    
-    def gameStartStopButtonAction(self):
-        if self.gameStatePlayed:
-            self.gameStatePlayed = False
-            self.updateTimer.stop()
-        else:
-            self.gameStatePlayed = True
-            self.updateTimer.start()
 
     def setFPS(self, value):
         msToRender = int(1000 / int(self.fpsSetter.itemText(value)))

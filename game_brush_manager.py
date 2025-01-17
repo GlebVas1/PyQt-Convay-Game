@@ -11,6 +11,7 @@ class BrushManager(object):
 
     def initializeBrushManager(self):
         self.brushSizeSpinBox.valueChanged.connect(self.changeBrushSize)
+        self.fillAllCells.clicked.connect(self.changeAllButtonsStateInGame)
 
     def paintInPlace(self, x : int, y : int):
         for i in range(1 - self.brushSize, self.brushSize):

@@ -12,6 +12,8 @@ class MainPlotController(object):
         pass
 
     def initializeMainPlot(self):
+
+        self.mainPlotCurves.clear()
         self.mainPlotView.setBackground((69, 69, 69))
 
         self.mainPlotView.setMouseEnabled(x=False, y=False)  # Disable mouse panning & zooming

@@ -11,7 +11,10 @@ class MiniPlotManager(object):
     miniPlotBars = []
 
     def initializeMiniPlot(self):
-        self.miniPlotView.setBackground((69, 69, 69))
+
+        self.miniPlotBars.clear()
+
+        self.miniPlotView.setBackground((89, 89, 89))
 
         self.miniPlotView.setMouseEnabled(x=False, y=False)  # Disable mouse panning & zooming
         self.miniPlotView.hideButtons()  # Disable corner auto-scale button
@@ -63,16 +66,9 @@ class MiniPlotManager(object):
     def drawMiniPlotStatistic(self):
         if len(self.calc.statistics[0]) < 2:
             return
+        
         y = []
-
         for generation, s in self.calc.statistics.items():
-            # pen = pg.mkPen(self.gameColorPalette[generation], width=3, style=QtCore.Qt.SolidLine) 
-            # plotDataItem = self.miniPlotView.BarGraphItem(pen=pen)
-            # self.miniPlotBars.append(plotDataItem)
             y.append(s[-1])
 
         self.bargraph.setOpts(height=y)
-
-        for i in range(len(self.calc.statistics)):
-            # self.miniPlotBars[i].setData(self.calc.statistics[i][-1])
-            pass
