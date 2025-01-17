@@ -1,19 +1,21 @@
 from PyQt5 import QtWidgets, QtCore
-from PyQt5.QtGui import QFont
+
 from functools import partial
 
 import calc as cl
 import colorPalletes as cp
 import rules as r
 
+from main_plot_qt_mamger import MainPlotController
+from color_pallete_manager import ColorPalleteManager
+
 import pyqtgraph as pg
-from pyqtgraph.Qt import QtGui as pQtGui
 
 # CFMButtonStyleSheet = "border-radius : 6px;\nborder-width: 2px; \nborder-style : solid;\nborder-color : rgb(255 79, 79);\nborder-bottom: 2px solid rgb(89, 89, 89);\n"
 CFMButtonStyleSheet = ""
 CFMGameFramePadding = 5
 
-class ConveyFieldQtManager(object):
+class ConveyFieldQtManager(MainPlotController, ColorPalleteManager):
 
     xFieldSize = 10
     yFieldSize = 10
@@ -28,7 +30,11 @@ class ConveyFieldQtManager(object):
     framesTotalCounter = 0
     alliveCellsCounter = 0
 
+    gameCurrentState = 0
+    gamePalleteButtons = []
+
     mainPlotCurves = []
+
     def initializeManger(self):
         """Initializes some QT events, like timer, basic buttons actions etc"""
         self.updateTimer = QtCore.QTimer(self)
@@ -38,6 +44,10 @@ class ConveyFieldQtManager(object):
 
         self.gameStartStopButton.clicked.connect(self.gameStartStopButtonAction)
         self.fpsSetter.currentIndexChanged.connect(self.setFPS)
+
+        self.fillAllCells.clicked.connect(self.changeAllButtonsStateInGame)
+
+        
 
     def initializeField(self, x: int = 10, y : int = 10):
         """Initialize game field, sizes and calc platform"""
@@ -52,35 +62,10 @@ class ConveyFieldQtManager(object):
         self.calc.initializeField(x, y, r.starWars)
         self.calc.initializeStatistics()
 
-        self.mainPlotView.setBackground((69, 69, 69))
+        self.initializeMainPlot()
 
-        self.mainPlotView.setMouseEnabled(x=False, y=False)  # Disable mouse panning & zooming
-        self.mainPlotView.hideButtons()  # Disable corner auto-scale button
-        self.mainPlotView.getPlotItem().setMenuEnabled(False)
+        self.initializeColorPallete()
 
-        my_font = QFont("MS Shell Dlg 2", 10, QFont.Bold)
-
-
-        font = QFont()
-        font.setPixelSize(20)
-        
-        labelPen = pg.mkPen('w', width=2, style=QtCore.Qt.SolidLine) 
-
-        self.mainPlotView.getAxis("bottom").setStyle(showValues=False)
-        self.mainPlotView.getAxis("bottom").setPen(labelPen)
-        self.mainPlotView.hideAxis("bottom")
-
-        self.mainPlotView.getAxis("left").setTextPen('w')
-        self.mainPlotView.getAxis("left").setTickFont(font)
-        self.mainPlotView.getAxis("left").setStyle(tickTextOffset=20)
-        self.mainPlotView.getAxis("left").setPen(labelPen)
-        
-
-        self.mainPlotView.addLegend(enableMouse=False)
-        for generation, s in self.calc.statistics.items():
-            pen = pg.mkPen(self.gameColorPalette[generation], width=3, style=QtCore.Qt.SolidLine) 
-            plotDataItem = self.mainPlotView.plot(pen=pen)
-            self.mainPlotCurves.append(plotDataItem)
         
         
     def fillButtons(self):
@@ -101,7 +86,7 @@ class ConveyFieldQtManager(object):
                 button.setObjectName("game_button_" + str(i * self.xFieldSize + j))
                 button.setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameColorPalleteQt[0])
 
-                button.clicked.connect(partial(self.changeButtonState, i, j, self.calc.thisRule.generationsCount))
+                button.clicked.connect(partial(self.changeButtonStateInGame, i, j))
 
                 self.gameButtons.append(button)
                 self.gameButtonsStates.append(0)
@@ -122,6 +107,25 @@ class ConveyFieldQtManager(object):
         self.gameButtons[x * self.yFieldSize + y].setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameColorPalleteQt[val])
         self.gameButtonsStates[x * self.yFieldSize + y] = val
         self.calc.setCell(x, y, val)
+
+    def changeButtonStateInGame(self, x : int, y : int):
+        """change one button state by game parametrs"""
+        val = self.gameCurrentState
+        self.gameButtons[x * self.yFieldSize + y].setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameColorPalleteQt[val])
+        self.gameButtonsStates[x * self.yFieldSize + y] = val
+        self.calc.setCell(x, y, val)
+
+    def changeAllButtonsStateInGame(self):
+        """change all buttons to a specific state by game paramters"""
+        val = self.gameCurrentState
+
+        for button in self.gameButtons:
+            button.setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameColorPalleteQt[val])
+           
+        for v in self.gameButtonsStates:
+            v = val
+
+        self.calc.field.fill(val)
 
     def updateField(self):
         """recalculate field and update buttons"""
@@ -164,14 +168,10 @@ class ConveyFieldQtManager(object):
     
     def updateLCD(self):
         self.totalFramesLCD.display(self.framesTotalCounter)
-        self.AliveCellsLCD.display(self.alliveCellsCounter)
+        self.AliveCellsLCD.display(self.alliveCellsCounter)        
 
-    def setUpMainPlot(self):
-        self.mainPlotView.showGrid(x=True, y=True)
+
         
-    def drawStatistic(self):
-        for i in range(len(self.calc.statistics)):
-            self.mainPlotCurves[i].setData(self.calc.statistics[i])
                                
 
 

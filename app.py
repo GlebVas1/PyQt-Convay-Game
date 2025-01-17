@@ -18,7 +18,7 @@ frame.initializeField(25, 25)
 frame.initializeManger()
 frame.fillButtons()
 frame.changeAllButtons(0)
-
+5
 frame.show()
 
 app.exec()
