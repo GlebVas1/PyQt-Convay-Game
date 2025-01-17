@@ -1,5 +1,11 @@
 <RCC>
   <qresource prefix="icons">
+    <file>check_box_unchecked.png</file>
+    <file>checkbox_checked.png</file>
+    <file>checkbox_checked_pressed.png</file>
+    <file>checkbox_unchecked_pressed.png</file>
+    <file>drop_down.png</file>
+    <file>drop_down_pressed.png</file>
     <file>arrow_down_pressed.png</file>
     <file>arrow_left_pressed.png</file>
     <file>arrow_right_pressed.png</file>

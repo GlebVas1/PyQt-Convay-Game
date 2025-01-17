@@ -361,7 +361,8 @@ class Ui_MainWindow(object):
         self.gridLayout_7.addLayout(self.verticalLayout_4, 0, 0, 1, 1)
         self.verticalLayout_3.addWidget(self.frame)
         self.frame_2 = QtWidgets.QFrame(self.pickToolPanel)
-        self.frame_2.setMaximumSize(QtCore.QSize(16777215, 280))
+        self.frame_2.setMinimumSize(QtCore.QSize(0, 240))
+        self.frame_2.setMaximumSize(QtCore.QSize(16777215, 240))
         self.frame_2.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(89, 89, 89)")
         self.frame_2.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -427,6 +428,55 @@ class Ui_MainWindow(object):
         self.brushSizeSpinBox.setMaximum(4)
         self.brushSizeSpinBox.setObjectName("brushSizeSpinBox")
         self.verticalLayout_9.addWidget(self.brushSizeSpinBox)
+        self.brushSetRound = QtWidgets.QCheckBox(self.frame_2)
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.brushSetRound.setFont(font)
+        self.brushSetRound.setStyleSheet("QCheckBox {\n"
+"    spacing : 10px;\n"
+"    color : white;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 16px;\n"
+"    height: 16px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    image: url(:/icons/check_box_unchecked.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:hover {\n"
+"    image: url(:/icons/checkbox_unchecked_pressed.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:pressed {\n"
+"    image: url(:/icons/checkbox_unchecked_pressed.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    image: url(:/icons/checkbox_checked.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked:hover {\n"
+"    image: url(:/icons/checkbox_checked_pressed.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked:pressed {\n"
+"    image: url(:/icons/checkbox_checked_pressed.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:indeterminate:hover {\n"
+"    image: url(:/images/checkbox_indeterminate_hover.png);\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:indeterminate:pressed {\n"
+"    image: url(:/images/checkbox_indeterminate_pressed.png);\n"
+"}")
+        self.brushSetRound.setObjectName("brushSetRound")
+        self.verticalLayout_9.addWidget(self.brushSetRound)
         self.label_12 = QtWidgets.QLabel(self.frame_2)
         font = QtGui.QFont()
         font.setPointSize(11)
@@ -436,24 +486,104 @@ class Ui_MainWindow(object):
         self.label_12.setStyleSheet("color : white")
         self.label_12.setObjectName("label_12")
         self.verticalLayout_9.addWidget(self.label_12)
-        self.checkBox = QtWidgets.QCheckBox(self.frame_2)
+        self.brushRandomSize = QtWidgets.QCheckBox(self.frame_2)
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
-        self.checkBox.setFont(font)
-        self.checkBox.setStyleSheet("color : white")
-        self.checkBox.setObjectName("checkBox")
-        self.verticalLayout_9.addWidget(self.checkBox)
-        self.checkBox_2 = QtWidgets.QCheckBox(self.frame_2)
+        self.brushRandomSize.setFont(font)
+        self.brushRandomSize.setStyleSheet("QCheckBox {\n"
+"    spacing : 10px;\n"
+"    color : white;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 16px;\n"
+"    height: 16px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    image: url(:/icons/check_box_unchecked.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:hover {\n"
+"    image: url(:/icons/checkbox_unchecked_pressed.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:pressed {\n"
+"    image: url(:/icons/checkbox_unchecked_pressed.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    image: url(:/icons/checkbox_checked.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked:hover {\n"
+"    image: url(:/icons/checkbox_checked_pressed.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked:pressed {\n"
+"    image: url(:/icons/checkbox_checked_pressed.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:indeterminate:hover {\n"
+"    image: url(:/images/checkbox_indeterminate_hover.png);\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:indeterminate:pressed {\n"
+"    image: url(:/images/checkbox_indeterminate_pressed.png);\n"
+"}")
+        self.brushRandomSize.setObjectName("brushRandomSize")
+        self.verticalLayout_9.addWidget(self.brushRandomSize)
+        self.brushRandomState = QtWidgets.QCheckBox(self.frame_2)
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
-        self.checkBox_2.setFont(font)
-        self.checkBox_2.setStyleSheet("color : white")
-        self.checkBox_2.setObjectName("checkBox_2")
-        self.verticalLayout_9.addWidget(self.checkBox_2)
+        self.brushRandomState.setFont(font)
+        self.brushRandomState.setStyleSheet("QCheckBox {\n"
+"    spacing : 10px;\n"
+"    color : white;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    width: 16px;\n"
+"    height: 16px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    image: url(:/icons/check_box_unchecked.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:hover {\n"
+"    image: url(:/icons/checkbox_unchecked_pressed.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:pressed {\n"
+"    image: url(:/icons/checkbox_unchecked_pressed.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    image: url(:/icons/checkbox_checked.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked:hover {\n"
+"    image: url(:/icons/checkbox_checked_pressed.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked:pressed {\n"
+"    image: url(:/icons/checkbox_checked_pressed.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:indeterminate:hover {\n"
+"    image: url(:/images/checkbox_indeterminate_hover.png);\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:indeterminate:pressed {\n"
+"    image: url(:/images/checkbox_indeterminate_pressed.png);\n"
+"}")
+        self.brushRandomState.setObjectName("brushRandomState")
+        self.verticalLayout_9.addWidget(self.brushRandomState)
         self.gridLayout_10.addLayout(self.verticalLayout_9, 0, 0, 1, 1)
         self.verticalLayout_3.addWidget(self.frame_2)
         self.gridLayout_4.addLayout(self.verticalLayout_3, 0, 0, 1, 1)
@@ -762,6 +892,50 @@ class Ui_MainWindow(object):
         self.label_6.setFont(font)
         self.label_6.setStyleSheet("border :  0px; color : white;")
         self.label_6.setObjectName("label_6")
+        self.colorPalleteComboBox = QtWidgets.QComboBox(self.colorPalleteSettings)
+        self.colorPalleteComboBox.setGeometry(QtCore.QRect(150, 10, 271, 41))
+        self.colorPalleteComboBox.setStyleSheet("QComboBox {\n"
+"border-radius : 5px;\n"
+"background-color : rgb(69, 69, 69);\n"
+"color : white;\n"
+"padding-right : 20px;\n"
+"padding-left: 20px;\n"
+"}\n"
+"\n"
+"QComboBox::drop-down {\n"
+"    padding-right : 10px;\n"
+"    image: url(:/icons/drop_down.png);\n"
+"    min-width: 30px;\n"
+"    min-height: 20px;\n"
+"}\n"
+"\n"
+"QComboBox::drop-down::pressed {\n"
+"    padding-right : 10px;\n"
+"    image: url(:/icons/drop_down_pressed.png);\n"
+"    min-width: 30px;\n"
+"    min-height: 20px;\n"
+"}\n"
+"")
+        self.colorPalleteComboBox.setObjectName("colorPalleteComboBox")
+        self.colorPalleteApply = QtWidgets.QPushButton(self.colorPalleteSettings)
+        self.colorPalleteApply.setGeometry(QtCore.QRect(430, 10, 151, 41))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.colorPalleteApply.setFont(font)
+        self.colorPalleteApply.setStyleSheet("QPushButton {\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    color : white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(49, 49, 49);\n"
+"    border-style: inset;\n"
+"}\n"
+"")
+        self.colorPalleteApply.setObjectName("colorPalleteApply")
         self.verticalLayout_6.addWidget(self.colorPalleteSettings)
         self.horizontalLayout_4.addLayout(self.verticalLayout_6)
         self.gridLayout_9.addLayout(self.horizontalLayout_4, 0, 0, 1, 1)
@@ -817,14 +991,16 @@ class Ui_MainWindow(object):
 "\n"
 "QComboBox::drop-down {\n"
 "    padding-right : 10px;\n"
-"    image: url(:/icons/arrow_down.png);\n"
+"    image: url(:/icons/drop_down.png);\n"
 "    min-width: 30px;\n"
+"    min-height: 20px;\n"
 "}\n"
 "\n"
 "QComboBox::drop-down::pressed {\n"
 "    padding-right : 10px;\n"
-"    image: url(:/icons/arrow_down_pressed.png);\n"
+"    image: url(:/icons/drop_down_pressed.png);\n"
 "    min-width: 30px;\n"
+"    min-height: 20px;\n"
 "}\n"
 "")
         self.fpsSetter.setObjectName("fpsSetter")
@@ -863,14 +1039,16 @@ class Ui_MainWindow(object):
 "\n"
 "QComboBox::drop-down {\n"
 "    padding-right : 10px;\n"
-"    image: url(:/icons/arrow_down.png);\n"
+"    image: url(:/icons/drop_down.png);\n"
 "    min-width: 30px;\n"
+"    min-height: 20px;\n"
 "}\n"
 "\n"
 "QComboBox::drop-down::pressed {\n"
 "    padding-right : 10px;\n"
-"    image: url(:/icons/arrow_down_pressed.png);\n"
+"    image: url(:/icons/drop_down_pressed.png);\n"
 "    min-width: 30px;\n"
+"    min-height: 20px;\n"
 "}\n"
 "")
         self.fpsSetter_2.setObjectName("fpsSetter_2")
@@ -982,8 +1160,67 @@ class Ui_MainWindow(object):
         self.plotSettingsLabel.setStyleSheet("color : white")
         self.plotSettingsLabel.setObjectName("plotSettingsLabel")
         self.gridLayout_16.addWidget(self.plotSettingsLabel, 0, 0, 1, 1)
+        self.frame_14 = QtWidgets.QFrame(self.plotSettingFrame)
+        self.frame_14.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(89, 89, 89)")
+        self.frame_14.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_14.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_14.setObjectName("frame_14")
+        self.mainPlotEnableGrid = QtWidgets.QCheckBox(self.frame_14)
+        self.mainPlotEnableGrid.setGeometry(QtCore.QRect(10, 0, 191, 31))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.mainPlotEnableGrid.setFont(font)
+        self.mainPlotEnableGrid.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.mainPlotEnableGrid.setStyleSheet("QCheckBox {\n"
+"    spacing : 10px;\n"
+"    color : white;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    top: 2px;\n"
+"    width: 16px;\n"
+"    height: 16px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    image: url(:/icons/check_box_unchecked.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:hover {\n"
+"    image: url(:/icons/checkbox_unchecked_pressed.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:pressed {\n"
+"    image: url(:/icons/checkbox_unchecked_pressed.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    image: url(:/icons/checkbox_checked.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked:hover {\n"
+"    image: url(:/icons/checkbox_checked_pressed.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked:pressed {\n"
+"    image: url(:/icons/checkbox_checked_pressed.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:indeterminate:hover {\n"
+"    image: url(:/images/checkbox_indeterminate_hover.png);\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:indeterminate:pressed {\n"
+"    image: url(:/images/checkbox_indeterminate_pressed.png);\n"
+"}")
+        self.mainPlotEnableGrid.setChecked(True)
+        self.mainPlotEnableGrid.setObjectName("mainPlotEnableGrid")
+        self.gridLayout_16.addWidget(self.frame_14, 2, 0, 1, 1)
         self.frame_10 = QtWidgets.QFrame(self.plotSettingFrame)
-        self.frame_10.setMinimumSize(QtCore.QSize(0, 300))
+        self.frame_10.setMinimumSize(QtCore.QSize(0, 260))
         self.frame_10.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(89, 89, 89)")
         self.frame_10.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -1045,7 +1282,7 @@ class Ui_MainWindow(object):
         self.spinBox_6.setMaximum(10)
         self.spinBox_6.setObjectName("spinBox_6")
         self.label_4 = QtWidgets.QLabel(self.frame_10)
-        self.label_4.setGeometry(QtCore.QRect(10, 100, 251, 16))
+        self.label_4.setGeometry(QtCore.QRect(10, 90, 251, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -1054,7 +1291,7 @@ class Ui_MainWindow(object):
         self.label_4.setStyleSheet("color : white")
         self.label_4.setObjectName("label_4")
         self.spinBox_7 = QtWidgets.QSpinBox(self.frame_10)
-        self.spinBox_7.setGeometry(QtCore.QRect(10, 130, 101, 41))
+        self.spinBox_7.setGeometry(QtCore.QRect(160, 90, 101, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -1098,17 +1335,61 @@ class Ui_MainWindow(object):
 "")
         self.spinBox_7.setMinimum(10)
         self.spinBox_7.setObjectName("spinBox_7")
-        self.mainPlotEnableGrid = QtWidgets.QCheckBox(self.frame_10)
-        self.mainPlotEnableGrid.setGeometry(QtCore.QRect(10, 180, 181, 20))
+        self.label_13 = QtWidgets.QLabel(self.frame_10)
+        self.label_13.setGeometry(QtCore.QRect(10, 140, 251, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
-        self.mainPlotEnableGrid.setFont(font)
-        self.mainPlotEnableGrid.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.mainPlotEnableGrid.setStyleSheet("color : white")
-        self.mainPlotEnableGrid.setChecked(True)
-        self.mainPlotEnableGrid.setObjectName("mainPlotEnableGrid")
+        self.label_13.setFont(font)
+        self.label_13.setStyleSheet("color : white")
+        self.label_13.setObjectName("label_13")
+        self.lineThicknessSpinBox = QtWidgets.QSpinBox(self.frame_10)
+        self.lineThicknessSpinBox.setGeometry(QtCore.QRect(160, 140, 101, 41))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.lineThicknessSpinBox.setFont(font)
+        self.lineThicknessSpinBox.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.lineThicknessSpinBox.setStyleSheet("\n"
+"QSpinBox {\n"
+"border-radius : 5px;\n"
+"background-color : rgb(69, 69, 69); \n"
+"color : white;\n"
+"padding-left : 15px;\n"
+"padding-right : 50px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-button {\n"
+"subcontrol-origin: border;\n"
+"subcontrol-position: center right; \n"
+"border-image: url(:/icons/arrow_right.png);\n"
+"border : 1px;\n"
+"right : 10px;\n"
+"width : 10px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-button::pressed {\n"
+"border-image: url(:/icons/arrow_right_pressed.png);\n"
+"}\n"
+"\n"
+"QSpinBox::down-button {\n"
+"subcontrol-origin: border;\n"
+"subcontrol-position: center right ;\n"
+"border-image: url(:/icons/arrow_left.png);\n"
+"border : 1px;\n"
+"right : 35px;\n"
+"width : 10px;\n"
+"}\n"
+"\n"
+"QSpinBox::down-button::pressed {\n"
+"border-image: url(:/icons/arrow_left_pressed.png);\n"
+"}\n"
+"")
+        self.lineThicknessSpinBox.setMinimum(1)
+        self.lineThicknessSpinBox.setMaximum(5)
+        self.lineThicknessSpinBox.setObjectName("lineThicknessSpinBox")
         self.gridLayout_16.addWidget(self.frame_10, 1, 0, 1, 1)
         self.verticalLayout_12.addWidget(self.plotSettingFrame)
         self.frame_15 = QtWidgets.QFrame(self.tabGraph)
@@ -1235,9 +1516,10 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "Current"))
         self.fillAllCells.setText(_translate("MainWindow", "Fill all"))
         self.label_2.setText(_translate("MainWindow", "Brush size"))
+        self.brushSetRound.setText(_translate("MainWindow", "Round"))
         self.label_12.setText(_translate("MainWindow", "Random"))
-        self.checkBox.setText(_translate("MainWindow", "Size"))
-        self.checkBox_2.setText(_translate("MainWindow", "State"))
+        self.brushRandomSize.setText(_translate("MainWindow", "Size"))
+        self.brushRandomState.setText(_translate("MainWindow", "State"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabDisplay), _translate("MainWindow", "Game"))
         self.groupBox.setTitle(_translate("MainWindow", "Game Rule Settings"))
         self.ruleArriveLabel.setText(_translate("MainWindow", "Cell arrives when neighbor count is"))
@@ -1248,6 +1530,7 @@ class Ui_MainWindow(object):
         self.ruleArriveLabel_5.setText(_translate("MainWindow", "Y:"))
         self.label_5.setText(_translate("MainWindow", "Color pallete"))
         self.label_6.setText(_translate("MainWindow", "Preview"))
+        self.colorPalleteApply.setText(_translate("MainWindow", "Apply"))
         self.simulationSettings.setTitle(_translate("MainWindow", "Simultation Settings"))
         self.ruleSurviveLabel_6.setText(_translate("MainWindow", "FPS"))
         self.fpsSetter.setItemText(0, _translate("MainWindow", "5"))
@@ -1269,9 +1552,10 @@ class Ui_MainWindow(object):
         self.groupBox_2.setTitle(_translate("MainWindow", "Window Settings"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabSetting), _translate("MainWindow", "Settings"))
         self.plotSettingsLabel.setText(_translate("MainWindow", "Plot Settings"))
+        self.mainPlotEnableGrid.setText(_translate("MainWindow", "Enable grid"))
         self.label_3.setText(_translate("MainWindow", "Update each n - frame"))
         self.label_4.setText(_translate("MainWindow", "Frame window"))
-        self.mainPlotEnableGrid.setText(_translate("MainWindow", "Enable grid"))
+        self.label_13.setText(_translate("MainWindow", "Line thickness"))
         self.label_9.setText(_translate("MainWindow", "Legend"))
         self.label_10.setText(_translate("MainWindow", "New living cells"))
         self.label_11.setText(_translate("MainWindow", "Empty/Died cells"))

@@ -7,6 +7,7 @@ import pyqtgraph as pg
 class MainPlotController(object):
 
     mainPlotCurves = []
+    mainPlotPens = []
     
     def __init__(self):
         pass
@@ -38,7 +39,8 @@ class MainPlotController(object):
 
         self.mainPlotView.addLegend(enableMouse=False)
         for generation, s in self.calc.statistics.items():
-            pen = pg.mkPen(self.gameColorPalette[generation], width=3, style=QtCore.Qt.SolidLine) 
+            pen = pg.mkPen(self.gameColorPalette[generation], width=3, style=QtCore.Qt.SolidLine)
+            self.mainPlotPens.append(pen)
             plotDataItem = self.mainPlotView.plot(pen=pen)
             self.mainPlotCurves.append(plotDataItem)
 
@@ -49,6 +51,8 @@ class MainPlotController(object):
 
         self.mainPlotEnableGrid.stateChanged.connect(self.mainPlotChangeGridMode)
 
+        self.lineThicknessSpinBox.valueChanged.connect(self.mainPlotChangePenThickness)
+
     def drawMainPlotStatistic(self):
         for i in range(len(self.calc.statistics)):
             self.mainPlotCurves[i].setData(self.calc.statistics[i])
@@ -58,3 +62,7 @@ class MainPlotController(object):
             self.mainPlotView.showGrid(x=False, y=True)
         else:
             self.mainPlotView.showGrid(x=False, y=False)
+
+    def mainPlotChangePenThickness(self):
+        for pen in self.mainPlotPens:
+            pen.setWidth(self.lineThicknessSpinBox.value())
