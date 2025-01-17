@@ -44,6 +44,17 @@ class MainPlotController(object):
 
         self.mainPlotView.showGrid(x=False, y=True)
 
+        self.legendAliveFrame.setStyleSheet("background-color : " + self.gameColorPalleteQt[self.calc.thisRule.generationsCount])
+        self.legendEmptyFrame.setStyleSheet("background-color : " + self.gameColorPalleteQt[0])
+
+        self.mainPlotEnableGrid.stateChanged.connect(self.mainPlotChangeGridMode)
+
     def drawMainPlotStatistic(self):
         for i in range(len(self.calc.statistics)):
             self.mainPlotCurves[i].setData(self.calc.statistics[i])
+
+    def mainPlotChangeGridMode(self):
+        if self.mainPlotEnableGrid.isChecked():
+            self.mainPlotView.showGrid(x=False, y=True)
+        else:
+            self.mainPlotView.showGrid(x=False, y=False)
