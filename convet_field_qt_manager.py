@@ -50,9 +50,13 @@ class ConveyFieldQtManager(object):
         self.calc.initializeField(x, y, r.starWars)
         self.calc.initializeStatistics()
 
+        
         for generation, s in self.calc.statistics.items():
-            pen = pg.mkPen('y', width=3, style=QtCore.Qt.DashLine) 
-            self.mainPlotCurves.append(self.mainPlotView.plot(brush=pen))
+
+            brush = pg.mkBrush('y', width=3, style=QtCore.Qt.SolidLine) 
+            plotDataItem = self.mainPlotView.plot()
+            self.mainPlotView.setBackground((69, 69, 69))
+            self.mainPlotCurves.append(plotDataItem)
         
         
     def fillButtons(self):
@@ -143,7 +147,7 @@ class ConveyFieldQtManager(object):
         
     def drawStatistic(self):
         for i in range(len(self.calc.statistics)):
-            self.mainPlotCurves[i].setData(self.calc.statistics)
+            self.mainPlotCurves[i].setData(self.calc.statistics[i])
                                
 
 
