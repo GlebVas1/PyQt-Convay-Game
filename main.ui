@@ -180,7 +180,7 @@ background-color : rgb(69, 69, 69)</string>
               </property>
               <layout class="QGridLayout" name="gridLayout_15">
                <item row="0" column="0">
-                <widget class="QGraphicsView" name="miniPlotView">
+                <widget class="PlotWidget" name="miniPlotView">
                  <property name="layoutDirection">
                   <enum>Qt::LeftToRight</enum>
                  </property>

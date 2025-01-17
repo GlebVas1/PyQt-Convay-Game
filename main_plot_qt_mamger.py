@@ -5,6 +5,9 @@ from PyQt5.QtGui import QFont
 import pyqtgraph as pg
 
 class MainPlotController(object):
+
+    mainPlotCurves = []
+    
     def __init__(self):
         pass
 
@@ -37,8 +40,8 @@ class MainPlotController(object):
             plotDataItem = self.mainPlotView.plot(pen=pen)
             self.mainPlotCurves.append(plotDataItem)
 
-        self.mainPlotView.showGrid(x=True, y=True)
+        self.mainPlotView.showGrid(x=False, y=True)
 
-    def drawStatistic(self):
+    def drawMainPlotStatistic(self):
         for i in range(len(self.calc.statistics)):
             self.mainPlotCurves[i].setData(self.calc.statistics[i])

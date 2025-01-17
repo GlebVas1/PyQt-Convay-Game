@@ -8,6 +8,7 @@ import rules as r
 
 from main_plot_qt_mamger import MainPlotController
 from color_pallete_manager import ColorPalleteManager
+from mini_plot_manager import MiniPlotManager
 
 import pyqtgraph as pg
 
@@ -15,7 +16,7 @@ import pyqtgraph as pg
 CFMButtonStyleSheet = ""
 CFMGameFramePadding = 5
 
-class ConveyFieldQtManager(MainPlotController, ColorPalleteManager):
+class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotManager):
 
     xFieldSize = 10
     yFieldSize = 10
@@ -32,8 +33,6 @@ class ConveyFieldQtManager(MainPlotController, ColorPalleteManager):
 
     gameCurrentState = 0
     gamePalleteButtons = []
-
-    mainPlotCurves = []
 
     def initializeManger(self):
         """Initializes some QT events, like timer, basic buttons actions etc"""
@@ -63,6 +62,7 @@ class ConveyFieldQtManager(MainPlotController, ColorPalleteManager):
         self.calc.initializeStatistics()
 
         self.initializeMainPlot()
+        self.initializeMiniPlot()
 
         self.initializeColorPallete()
 
@@ -149,7 +149,8 @@ class ConveyFieldQtManager(MainPlotController, ColorPalleteManager):
         #self.mainPlotView.cla()
         #self.mainPlotView.plot(range(len(self.calc.statistics[0])), self.calc.statistics[0])
         #self.mainPlotView.show()
-        self.drawStatistic()
+        self.drawMainPlotStatistic()
+        self.drawMiniPlotStatistic()
 
     def getButtonState(self, x : int, y : int) -> int:
         return self.gameButtonsStates[x * self.yFieldSize + y]
