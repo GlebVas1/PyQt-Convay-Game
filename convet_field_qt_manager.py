@@ -5,7 +5,7 @@ import calc as cl
 import colorPalletes as cp
 import rules as r
 
-import plot as pltQt
+import pyqtgraph as pg
 
 # CFMButtonStyleSheet = "border-radius : 6px;\nborder-width: 2px; \nborder-style : solid;\nborder-color : rgb(255 79, 79);\nborder-bottom: 2px solid rgb(89, 89, 89);\n"
 CFMButtonStyleSheet = ""
@@ -26,6 +26,7 @@ class ConveyFieldQtManager(object):
     framesTotalCounter = 0
     alliveCellsCounter = 0
 
+    mainPlotCurves = []
     def initializeManger(self):
         """Initializes some QT events, like timer, basic buttons actions etc"""
         self.updateTimer = QtCore.QTimer(self)
@@ -49,8 +50,10 @@ class ConveyFieldQtManager(object):
         self.calc.initializeField(x, y, r.starWars)
         self.calc.initializeStatistics()
 
-        self.dataPlot = pltQt.QTMultiPlot(self.plotFrame)
-        self.dataPlot.colorPalette = self.gameColorPalette
+        for generation, s in self.calc.statistics.items():
+            pen = pg.mkPen('y', width=3, style=QtCore.Qt.DashLine) 
+            self.mainPlotCurves.append(self.mainPlotView.plot(brush=pen))
+        
         
     def fillButtons(self):
         """initial filiing main field with buttons"""
@@ -108,9 +111,13 @@ class ConveyFieldQtManager(object):
         self.alliveCellsCounter = self.calc.statistics[self.calc.thisRule.generationsCount][-1]
         self.updateLCD()
 
-        if self.framesTotalCounter % 1 == 0:
-            if len(self.calc.statistics[0]) > 6:
-                self.dataPlot.updatePlot(range(len(self.calc.statistics[0])), self.calc.statistics)
+        #if self.framesTotalCounter % 1 == 0:
+            #if len(self.calc.statistics[0]) > 6:
+                #self.dataPlot.updatePlot(range(len(self.calc.statistics[0])), self.calc.statistics)
+        #self.mainPlotView.cla()
+        #self.mainPlotView.plot(range(len(self.calc.statistics[0])), self.calc.statistics[0])
+        #self.mainPlotView.show()
+        self.drawStatistic()
 
     def getButtonState(self, x : int, y : int) -> int:
         return self.gameButtonsStates[x * self.yFieldSize + y]
@@ -131,5 +138,13 @@ class ConveyFieldQtManager(object):
         self.totalFramesLCD.display(self.framesTotalCounter)
         self.AliveCellsLCD.display(self.alliveCellsCounter)
 
+    def setUpMainPlot(self):
+        self.mainPlotView.showGrid(x=True, y=True)
+        
     def drawStatistic(self):
-        statistics = self.calc.statistics
+        for i in range(len(self.calc.statistics)):
+            self.mainPlotCurves[i].setData(self.calc.statistics)
+                               
+
+
+    

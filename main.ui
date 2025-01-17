@@ -147,7 +147,7 @@ color : white;
         <item row="0" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout">
           <item>
-           <layout class="QVBoxLayout" name="infoPanelLayout" stretch="0">
+           <layout class="QVBoxLayout" name="infoPanelLayout" stretch="0,0">
             <property name="spacing">
              <number>2</number>
             </property>
@@ -157,6 +157,26 @@ color : white;
             <property name="rightMargin">
              <number>10</number>
             </property>
+            <item>
+             <widget class="QFrame" name="miniPlot">
+              <property name="maximumSize">
+               <size>
+                <width>150</width>
+                <height>250</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69)</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+             </widget>
+            </item>
             <item>
              <widget class="QFrame" name="infoframe">
               <property name="maximumSize">
@@ -345,7 +365,7 @@ background-color : rgb(69, 69, 69)</string>
              <widget class="QFrame" name="gameContolPanel">
               <property name="maximumSize">
                <size>
-                <width>150</width>
+                <width>100</width>
                 <height>100</height>
                </size>
               </property>
@@ -1323,6 +1343,124 @@ width: 10px;
             </widget>
            </widget>
           </item>
+          <item>
+           <widget class="QGroupBox" name="groupBox_2">
+            <property name="font">
+             <font>
+              <pointsize>11</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69); color : white;</string>
+            </property>
+            <property name="title">
+             <string>Window Settings</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_12">
+             <item row="0" column="0">
+              <layout class="QHBoxLayout" name="horizontalLayout_5">
+               <property name="leftMargin">
+                <number>10</number>
+               </property>
+               <property name="topMargin">
+                <number>20</number>
+               </property>
+               <property name="rightMargin">
+                <number>10</number>
+               </property>
+               <property name="bottomMargin">
+                <number>10</number>
+               </property>
+               <item>
+                <widget class="QFrame" name="windowSettingsPanel1">
+                 <property name="styleSheet">
+                  <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <widget class="QRadioButton" name="enableMiniPlot">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>10</y>
+                    <width>572</width>
+                    <height>22</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Enable mini plot in game tab</string>
+                  </property>
+                 </widget>
+                 <widget class="QRadioButton" name="enableMiniPlot_2">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>40</y>
+                    <width>572</width>
+                    <height>22</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Fix window size</string>
+                  </property>
+                 </widget>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="frame_6">
+                 <property name="styleSheet">
+                  <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="frame_7">
+                 <property name="styleSheet">
+                  <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
          </layout>
         </item>
        </layout>
@@ -1402,6 +1540,29 @@ background-color : rgb(69, 69, 69)</string>
               <string>Enable total count</string>
              </property>
             </widget>
+            <widget class="QRadioButton" name="radioButton_5">
+             <property name="geometry">
+              <rect>
+               <x>20</x>
+               <y>80</y>
+               <width>241</width>
+               <height>20</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+               <weight>75</weight>
+               <bold>true</bold>
+              </font>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color : white</string>
+             </property>
+             <property name="text">
+              <string>Display mini plot</string>
+             </property>
+            </widget>
            </widget>
           </item>
           <item>
@@ -1428,6 +1589,11 @@ background-color : rgb(69, 69, 69)</string>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
+            <layout class="QGridLayout" name="gridLayout_13">
+             <item row="0" column="0">
+              <widget class="PlotWidget" name="mainPlotView"/>
+             </item>
+            </layout>
            </widget>
           </item>
          </layout>
@@ -1439,6 +1605,13 @@ background-color : rgb(69, 69, 69)</string>
    </layout>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PlotWidget</class>
+   <extends>QGraphicsView</extends>
+   <header>pyqtgraph</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="resources/ico_res.qrc"/>
  </resources>
