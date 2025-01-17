@@ -296,8 +296,8 @@ class Ui_MainWindow(object):
         self.label.setMaximumSize(QtCore.QSize(200, 20))
         font = QtGui.QFont()
         font.setPointSize(11)
-        font.setBold(True)
-        font.setWeight(75)
+        font.setBold(False)
+        font.setWeight(50)
         self.label.setFont(font)
         self.label.setStyleSheet("color : white")
         self.label.setObjectName("label")
@@ -360,14 +360,14 @@ class Ui_MainWindow(object):
         self.label_2.setStyleSheet("color : white")
         self.label_2.setObjectName("label_2")
         self.verticalLayout_9.addWidget(self.label_2)
-        self.spinBox_5 = QtWidgets.QSpinBox(self.frame_2)
-        self.spinBox_5.setMinimumSize(QtCore.QSize(0, 40))
+        self.brushSizeSpinBox = QtWidgets.QSpinBox(self.frame_2)
+        self.brushSizeSpinBox.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
-        self.spinBox_5.setFont(font)
-        self.spinBox_5.setStyleSheet("\n"
+        self.brushSizeSpinBox.setFont(font)
+        self.brushSizeSpinBox.setStyleSheet("\n"
 "QSpinBox {\n"
 "border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69); \n"
@@ -392,10 +392,10 @@ class Ui_MainWindow(object):
 "width: 10px;\n"
 "\n"
 "}")
-        self.spinBox_5.setMinimum(1)
-        self.spinBox_5.setMaximum(4)
-        self.spinBox_5.setObjectName("spinBox_5")
-        self.verticalLayout_9.addWidget(self.spinBox_5)
+        self.brushSizeSpinBox.setMinimum(1)
+        self.brushSizeSpinBox.setMaximum(4)
+        self.brushSizeSpinBox.setObjectName("brushSizeSpinBox")
+        self.verticalLayout_9.addWidget(self.brushSizeSpinBox)
         self.radioButton_4 = QtWidgets.QRadioButton(self.frame_2)
         font = QtGui.QFont()
         font.setPointSize(11)
@@ -882,6 +882,80 @@ class Ui_MainWindow(object):
         self.frame_10.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_10.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_10.setObjectName("frame_10")
+        self.label_3 = QtWidgets.QLabel(self.frame_10)
+        self.label_3.setGeometry(QtCore.QRect(10, 20, 251, 16))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_3.setFont(font)
+        self.label_3.setStyleSheet("color : white")
+        self.label_3.setObjectName("label_3")
+        self.spinBox_6 = QtWidgets.QSpinBox(self.frame_10)
+        self.spinBox_6.setGeometry(QtCore.QRect(10, 50, 101, 31))
+        self.spinBox_6.setStyleSheet("\n"
+"QSpinBox {\n"
+"border-radius : 5px;\n"
+"background-color : rgb(69, 69, 69); \n"
+"color : white;\n"
+"padding-left : 5px;\n"
+"padding-left : 20px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-button {\n"
+"subcontrol-origin: border;\n"
+"subcontrol-position: center right; \n"
+"border-image: url(:/icons/arrow_right.png);\n"
+"border-right-width:10;\n"
+"width: 10px;\n"
+"}\n"
+"\n"
+"QSpinBox::down-button {\n"
+"subcontrol-origin: border;\n"
+"border-right-width:30;    \n"
+"subcontrol-position: center right ;\n"
+"border-image: url(:/icons/arrow_left.png) 1;\n"
+"width: 10px;\n"
+"\n"
+"}")
+        self.spinBox_6.setObjectName("spinBox_6")
+        self.label_4 = QtWidgets.QLabel(self.frame_10)
+        self.label_4.setGeometry(QtCore.QRect(10, 100, 251, 16))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_4.setFont(font)
+        self.label_4.setStyleSheet("color : white")
+        self.label_4.setObjectName("label_4")
+        self.spinBox_7 = QtWidgets.QSpinBox(self.frame_10)
+        self.spinBox_7.setGeometry(QtCore.QRect(10, 130, 101, 31))
+        self.spinBox_7.setStyleSheet("\n"
+"QSpinBox {\n"
+"border-radius : 5px;\n"
+"background-color : rgb(69, 69, 69); \n"
+"color : white;\n"
+"padding-left : 5px;\n"
+"padding-left : 20px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-button {\n"
+"subcontrol-origin: border;\n"
+"subcontrol-position: center right; \n"
+"border-image: url(:/icons/arrow_right.png);\n"
+"border-right-width:10;\n"
+"width: 10px;\n"
+"}\n"
+"\n"
+"QSpinBox::down-button {\n"
+"subcontrol-origin: border;\n"
+"border-right-width:30;    \n"
+"subcontrol-position: center right ;\n"
+"border-image: url(:/icons/arrow_left.png) 1;\n"
+"width: 10px;\n"
+"\n"
+"}")
+        self.spinBox_7.setObjectName("spinBox_7")
         self.gridLayout_16.addWidget(self.frame_10, 1, 0, 1, 1)
         self.horizontalLayout_3.addWidget(self.plotSettingFrame)
         self.plotFrame = QtWidgets.QFrame(self.tabGraph)
@@ -952,6 +1026,8 @@ class Ui_MainWindow(object):
         self.enableMiniPlot_2.setText(_translate("MainWindow", "Fix window size"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabSetting), _translate("MainWindow", "Settings"))
         self.plotSettingsLabel.setText(_translate("MainWindow", "Plot Settings"))
+        self.label_3.setText(_translate("MainWindow", "Update each n - frame"))
+        self.label_4.setText(_translate("MainWindow", "Frame window"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabGraph), _translate("MainWindow", "Plotter"))
 from pyqtgraph import PlotWidget
 import ico_res_rc

@@ -24,14 +24,9 @@ class MiniPlotManager(object):
         
         labelPen = pg.mkPen('w', width=2, style=QtCore.Qt.SolidLine) 
 
-        self.miniPlotView.getAxis("bottom").setStyle(showValues=False)
-        self.miniPlotView.getAxis("bottom").setPen(labelPen)
         self.miniPlotView.hideAxis("bottom")
 
-        self.miniPlotView.getAxis("left").setTextPen('w')
-        self.miniPlotView.getAxis("left").setTickFont(font)
-        self.miniPlotView.getAxis("left").setStyle(tickTextOffset=20)
-        self.miniPlotView.getAxis("left").setPen(labelPen)
+        self.miniPlotView.hideAxis("left")
 
         self.miniPlotView.addLegend(enableMouse=False)
 
@@ -42,7 +37,8 @@ class MiniPlotManager(object):
         #     self.miniPlotBars.append(plotDataItem)
 
         y = []
-
+        brushes = [pg.mkBrush(self.gameColorPalette[generation], width=3, style=QtCore.Qt.SolidLine) for generation, s in self.calc.statistics.items()]
+        pens = [None for generation, s in self.calc.statistics.items() ]
         for generation, s in self.calc.statistics.items():
             # pen = pg.mkPen(self.gameColorPalette[generation], width=3, style=QtCore.Qt.SolidLine) 
             # plotDataItem = self.miniPlotView.BarGraphItem(pen=pen)
@@ -52,10 +48,11 @@ class MiniPlotManager(object):
         # create horizontal list i.e x-axis
         x = range(self.calc.thisRule.generationsCount + 1)
  
+
         # create pyqt5graph bar graph item
         # with width = 0.6
         # with bar colors = green
-        self.bargraph = pg.BarGraphItem(x, width = 0.6, brush ='g')
+        self.bargraph = pg.BarGraphItem(x=x, height=y, width = 1, brushes=brushes, pens=pens)
  
         # add item to plot window
         # adding bargraph item to the plot window
@@ -74,7 +71,8 @@ class MiniPlotManager(object):
             # self.miniPlotBars.append(plotDataItem)
             y.append(s[-1])
 
-        self.bargraph.setData(y)
+        self.bargraph.setOpts(height=y)
+
         for i in range(len(self.calc.statistics)):
             # self.miniPlotBars[i].setData(self.calc.statistics[i][-1])
             pass

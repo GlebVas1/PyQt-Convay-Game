@@ -3,8 +3,13 @@ from functools import partial
 
 
 class ColorPalleteManager(object):
+    gamePalleteButtons = []
+
     
     def initializeColorPallete(self):
+
+        self.gamePalleteButtons.clear()
+        
         for i in range(self.calc.thisRule.generationsCount + 1):
             button = QtWidgets.QPushButton(self.colorPallete)
             button.setGeometry(QtCore.QRect(10, 10 + (60 + 10) * i, 60, 60))
@@ -16,9 +21,12 @@ class ColorPalleteManager(object):
             self.gamePalleteButtons.append(button)
             self.colorPallete.setMaximumSize(QtCore.QSize(80, (self.calc.thisRule.generationsCount + 2) * 10 + (self.calc.thisRule.generationsCount + 1) * 60))
 
-        self.selectedColorPanel.setStyleSheet("background-color : " + self.gameColorPalleteQt[self.gameCurrentState])
+        self.selectedColorPanel.setStyleSheet("background-color : " + self.gameColorPalleteQt[currentBrushState])
     
     def palleteButtonSetState(self, val : int):
-        self.gameCurrentState = val
+        self.currentBrushState = val
         self.selectedColorPanel.setStyleSheet("background-color : " + self.gameColorPalleteQt[val])
+
+        
+
         

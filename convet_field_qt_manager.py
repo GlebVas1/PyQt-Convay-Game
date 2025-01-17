@@ -6,9 +6,10 @@ import calc as cl
 import colorPalletes as cp
 import rules as r
 
-from main_plot_qt_mamger import MainPlotController
+from main_plot_qt_manager import MainPlotController
 from color_pallete_manager import ColorPalleteManager
 from mini_plot_manager import MiniPlotManager
+from game_brush_manager import BrushManager
 
 import pyqtgraph as pg
 
@@ -16,7 +17,7 @@ import pyqtgraph as pg
 CFMButtonStyleSheet = ""
 CFMGameFramePadding = 5
 
-class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotManager):
+class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotManager, BrushManager):
 
     xFieldSize = 10
     yFieldSize = 10
@@ -30,9 +31,6 @@ class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotMana
 
     framesTotalCounter = 0
     alliveCellsCounter = 0
-
-    gameCurrentState = 0
-    gamePalleteButtons = []
 
     def initializeManger(self):
         """Initializes some QT events, like timer, basic buttons actions etc"""
@@ -53,7 +51,7 @@ class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotMana
         self.xFieldSize = x
         self.yFieldSize = y
         self.calc = cl.Field()
-        self.gameColorPalette = cp.greenHexa
+        self.gameColorPalette = cp.lazureQuadro
 
         for c in self.gameColorPalette:
             self.gameColorPalleteQt.append(cp.convertColorToQTString(c))
@@ -65,6 +63,7 @@ class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotMana
         self.initializeMiniPlot()
 
         self.initializeColorPallete()
+        self.initializeBrushManager()
 
         
         
@@ -86,7 +85,7 @@ class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotMana
                 button.setObjectName("game_button_" + str(i * self.xFieldSize + j))
                 button.setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameColorPalleteQt[0])
 
-                button.clicked.connect(partial(self.changeButtonStateInGame, i, j))
+                button.clicked.connect(partial(self.paintInPlace, i, j))
 
                 self.gameButtons.append(button)
                 self.gameButtonsStates.append(0)
@@ -110,14 +109,14 @@ class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotMana
 
     def changeButtonStateInGame(self, x : int, y : int):
         """change one button state by game parametrs"""
-        val = self.gameCurrentState
+        val = self.currentBrushState
         self.gameButtons[x * self.yFieldSize + y].setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameColorPalleteQt[val])
         self.gameButtonsStates[x * self.yFieldSize + y] = val
         self.calc.setCell(x, y, val)
 
     def changeAllButtonsStateInGame(self):
         """change all buttons to a specific state by game paramters"""
-        val = self.gameCurrentState
+        val = self.currentBrushState
 
         for button in self.gameButtons:
             button.setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameColorPalleteQt[val])
@@ -171,6 +170,7 @@ class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotMana
         self.totalFramesLCD.display(self.framesTotalCounter)
         self.AliveCellsLCD.display(self.alliveCellsCounter)        
 
+    
 
         
                                
