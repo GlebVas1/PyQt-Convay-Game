@@ -57,7 +57,7 @@ class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotMana
         self.initializeSettingsColorPalleteComboBox()
         self.initializeSettingsColorPallete(cp.defaultBinary)
         self.initializeSettingsColorPreview(cp.defaultBinary)
-
+        self.initializeMainPlotActions()
         self.initializeMainPlot()
         self.initializeMiniPlot()
 
