@@ -17,9 +17,18 @@ class Field:
         self.ySize = y
     
     def initializeStatistics(self):
-        self.statistics.clear()
+        maxStatiSticLength = 0
+        for key, value in self.statistics.items():
+            maxStatiSticLength = max(maxStatiSticLength, len(value))
+            if key not in range(self.thisRule.generationsCount + 1):
+                del self.statistics[key]
+        
         for i in range(self.thisRule.generationsCount + 1):
             self.statistics[i] = []
+
+        for key, value in self.statistics.items():
+            while len(value) < maxStatiSticLength:
+                value.append(0)
 
     def setCell(self, x : int, y : int, val : int):
         self.field[x, y] = val
