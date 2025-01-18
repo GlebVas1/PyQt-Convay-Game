@@ -67,4 +67,4 @@ class MiniPlotManager(object):
         for generation, s in self.calc.statistics.items():
             y.append(s[-1])
 
-        self.bargraph.setOpts(height=y)
+        self.bargraph.setOpts(x=range(self.calc.thisRule.generationsCount + 1), height=y)

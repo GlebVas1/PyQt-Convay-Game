@@ -10,15 +10,11 @@ class Field:
 
     statistics = {}
     statisticsMaxSize = 100
-
-    def setRule(self, rule : Rule):
-        self.thisRule = rule
     
-    def initializeField(self, x: int = 10, y : int = 10, rule : Rule = Rule()):
+    def initializeField(self, x: int = 10, y : int = 10):
         self.field = np.ndarray(shape=(x, y), dtype=int)
         self.xSize = x
         self.ySize = y
-        self.thisRule = rule
     
     def initializeStatistics(self):
         for i in range(self.thisRule.generationsCount + 1):

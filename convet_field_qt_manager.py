@@ -4,7 +4,7 @@ from functools import partial
 
 import calc as cl
 import colorPalletes as cp
-import rules as r
+import rules as ru
 
 from main_plot_qt_manager import MainPlotController
 from color_pallete_manager import ColorPalleteManager
@@ -12,6 +12,7 @@ from mini_plot_manager import MiniPlotManager
 from game_brush_manager import BrushManager
 from stop_start_manager import StopStartManager
 from settings_color_pallete import SettingsColorPalleteManager
+from settings_rule import settingsRuleManager
 
 import pyqtgraph as pg
 
@@ -19,7 +20,13 @@ import pyqtgraph as pg
 CFMButtonStyleSheet = ""
 CFMGameFramePadding = 5
 
-class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotManager, BrushManager, StopStartManager, SettingsColorPalleteManager):
+class ConveyFieldQtManager(MainPlotController, 
+                           ColorPalleteManager, 
+                           MiniPlotManager, 
+                           BrushManager, 
+                           StopStartManager, 
+                           SettingsColorPalleteManager, 
+                           settingsRuleManager):
 
     xFieldSize = 10
     yFieldSize = 10
@@ -50,13 +57,22 @@ class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotMana
 
         self.calc = cl.Field()
 
-        self.calc.initializeField(x, y, r.starWars)
+       
+
+        self.initializeSettingsRuleFrameActions()
+        self.initializeSettingsRuleFrame()
+        self.initializeSettingsRuleComboBox()
+        self.initializeSettingsRuleManager(ru.defaultLife)
+        self.settingsRuleMakePreview(ru.defaultLife)
+
+        self.calc.initializeField(x, y)
         self.calc.initializeStatistics()
 
         self.initializeSettingsColorActions()
         self.initializeSettingsColorPalleteComboBox()
         self.initializeSettingsColorPallete(cp.defaultBinary)
         self.initializeSettingsColorPreview(cp.defaultBinary)
+
         self.initializeMainPlotActions()
         self.initializeMainPlot()
         self.initializeMiniPlot()
