@@ -590,7 +590,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.addWidget(self.pickToolPanel)
         self.colorPallete = QtWidgets.QFrame(self.tabDisplay)
         self.colorPallete.setMinimumSize(QtCore.QSize(80, 0))
-        self.colorPallete.setMaximumSize(QtCore.QSize(80, 16777215))
+        self.colorPallete.setMaximumSize(QtCore.QSize(300, 16777215))
         self.colorPallete.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69)")
         self.colorPallete.setFrameShape(QtWidgets.QFrame.StyledPanel)

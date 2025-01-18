@@ -76,23 +76,34 @@ class SettingsColorPalleteManager(object):
             pallete_extended = []
             colorCount = len(pallete)
             needToFillForEachColor = (size - colorCount) // (colorCount - 1)
+            # if colorCount + needToFillForEachColor < size:
+            #     needToFillForEachColor += 1
             for i in range(colorCount - 2):
                 if len(pallete_extended) >= size - 1:
                     break
                 pallete_extended.append(pallete[i])
                 for j in range(needToFillForEachColor):
-                    if needToFillForEachColor != 0:
-                        r = (pallete[i + 1][0] * (j + 1) + pallete[i][0] * (needToFillForEachColor - j)) // (needToFillForEachColor + 1)
-                        g = (pallete[i + 1][1] * (j + 1) + pallete[i][1] * (needToFillForEachColor - j)) // (needToFillForEachColor + 1)
-                        b = (pallete[i + 1][2] * (j + 1) + pallete[i][2] * (needToFillForEachColor - j)) // (needToFillForEachColor + 1)
-                        pallete_extended.append((r, g, b))
-
-            for j in range(size - len(pallete_extended) - 1):
-                if needToFillForEachColor != 0:
-                    r = (pallete[-1][0] * (j + 1) + pallete[-2][0] * (needToFillForEachColor - j)) // (needToFillForEachColor + 1)
-                    g = (pallete[-1][1] * (j + 1) + pallete[-2][1] * (needToFillForEachColor - j)) // (needToFillForEachColor + 1)
-                    b = (pallete[-1][2] * (j + 1) + pallete[-2][2] * (needToFillForEachColor - j)) // (needToFillForEachColor + 1)
+                    r = (pallete[i + 1][0] * (j + 1) + pallete[i][0] * (needToFillForEachColor - j)) // (needToFillForEachColor + 1)
+                    g = (pallete[i + 1][1] * (j + 1) + pallete[i][1] * (needToFillForEachColor - j)) // (needToFillForEachColor + 1)
+                    b = (pallete[i + 1][2] * (j + 1) + pallete[i][2] * (needToFillForEachColor - j)) // (needToFillForEachColor + 1)
+                    r = min(255, r)
+                    g = min(255, g)
+                    b = min(255, b)
                     pallete_extended.append((r, g, b))
+
+            pallete_extended.append(pallete[-2])
+            for j in range(size - len(pallete_extended) - 1):
+                r = (pallete[-1][0] * (j + 1) + pallete[-2][0] * (needToFillForEachColor - j)) // (needToFillForEachColor + 1)
+                g = (pallete[-1][1] * (j + 1) + pallete[-2][1] * (needToFillForEachColor - j)) // (needToFillForEachColor + 1)
+                b = (pallete[-1][2] * (j + 1) + pallete[-2][2] * (needToFillForEachColor - j)) // (needToFillForEachColor + 1)
+                r = min(255, r)
+                g = min(255, g)
+                b = min(255, b)
+                pallete_extended.append((r, g, b))
             
             pallete_extended.append(pallete[-1])
+            print("Requested")
+            print(size)
+            print("Real")
+            print(len(pallete_extended))
             return pallete_extended.copy()
