@@ -42,7 +42,9 @@ class MiniPlotManager(object):
             y.append(0)
  
         # create horizontal list i.e x-axis
-        x = range(self.calc.thisRule.generationsCount + 1)
+        print("Plot initialized")
+        print(self.thisRule.generationsCount)
+        x = range(self.thisRule.generationsCount + 1)
  
 
         # create pyqt5graph bar graph item
@@ -67,4 +69,5 @@ class MiniPlotManager(object):
         for generation, s in self.calc.statistics.items():
             y.append(s[-1])
 
+        # self.bargraph.setOpts(x=range(self.calc.thisRule.generationsCount + 1), height=y)
         self.bargraph.setOpts(x=range(self.calc.thisRule.generationsCount + 1), height=y)

@@ -72,8 +72,11 @@ class settingsRuleManager(object):
         for i in range(9):
             self.thisRule.arriveIfNeighborCount[i] = 1 if self.settingsRuleCheckBoxesArrive[i].isChecked() else 0
             self.thisRule.surviveIfNeighborCount[i] = 1 if self.settingsRuleCheckBoxesSurvive[i].isChecked() else 0
+
         self.thisRule.generationsCount = self.ruleGenerationsSpinBox.value() - 1
+        self.calc.initializeStatistics()
         self.applyPreview()
+        
 
 
     def updateRuleArrive(self, position : int):

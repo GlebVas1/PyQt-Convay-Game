@@ -17,6 +17,7 @@ class Field:
         self.ySize = y
     
     def initializeStatistics(self):
+        self.statistics.clear()
         for i in range(self.thisRule.generationsCount + 1):
             self.statistics[i] = []
 
