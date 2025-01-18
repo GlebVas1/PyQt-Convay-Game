@@ -22,8 +22,9 @@ class ColorPalleteManager(object):
             button.clicked.connect(partial(self.palleteButtonSetState, i))
             button.show()
             self.gamePalleteButtons.append(button)
-            self.colorPallete.setMaximumSize(QtCore.QSize(80, (self.calc.thisRule.generationsCount + 2) * 10 + (self.calc.thisRule.generationsCount + 1) * 60))
+            self.colorPallete.setMaximumSize(QtCore.QSize(80, (self.thisRule.generationsCount + 2) * 10 + (self.thisRule.generationsCount + 1) * 60))
 
+        self.currentBrushState = min(self.currentBrushState,self.thisRule.generationsCount)
         self.selectedColorPanel.setStyleSheet("background-color : " + self.gameColorPalleteQt[self.currentBrushState])
     
     def palleteButtonSetState(self, val : int):
