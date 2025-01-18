@@ -8,12 +8,8 @@ class MiniPlotManager(object):
     def __init__(self):
         pass
     
-    miniPlotBars = []
 
     def initializeMiniPlot(self):
-
-        self.miniPlotBars.clear()
-
         self.miniPlotView.setBackground((89, 89, 89))
 
         self.miniPlotView.setMouseEnabled(x=False, y=False)  # Disable mouse panning & zooming
@@ -43,9 +39,6 @@ class MiniPlotManager(object):
         brushes = [pg.mkBrush(self.gameColorPalette[generation], width=3, style=QtCore.Qt.SolidLine) for generation, s in self.calc.statistics.items()]
         pens = [None for generation, s in self.calc.statistics.items() ]
         for generation, s in self.calc.statistics.items():
-            # pen = pg.mkPen(self.gameColorPalette[generation], width=3, style=QtCore.Qt.SolidLine) 
-            # plotDataItem = self.miniPlotView.BarGraphItem(pen=pen)
-            # self.miniPlotBars.append(plotDataItem)
             y.append(0)
  
         # create horizontal list i.e x-axis
@@ -59,9 +52,12 @@ class MiniPlotManager(object):
  
         # add item to plot window
         # adding bargraph item to the plot window
+        self.miniPlotView.clear()
         self.miniPlotView.addItem(self.bargraph)
 
         self.miniPlotView.showGrid(x=False, y=False)
+
+        self.drawMiniPlotStatistic()
 
     def drawMiniPlotStatistic(self):
         if len(self.calc.statistics[0]) < 2:

@@ -11,6 +11,7 @@ from color_pallete_manager import ColorPalleteManager
 from mini_plot_manager import MiniPlotManager
 from game_brush_manager import BrushManager
 from stop_start_manager import StopStartManager
+from settings_color_pallete import SettingsColorPalleteManager
 
 import pyqtgraph as pg
 
@@ -18,13 +19,13 @@ import pyqtgraph as pg
 CFMButtonStyleSheet = ""
 CFMGameFramePadding = 5
 
-class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotManager, BrushManager, StopStartManager):
+class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotManager, BrushManager, StopStartManager, SettingsColorPalleteManager):
 
     xFieldSize = 10
     yFieldSize = 10
+
     gameButtons = []
-    gameColorPalette = ["rgb(49, 49, 49)", "rgb(255, 249, 207)"]
-    gameColorPalleteQt = []
+    
     gameButtonsStates = []
 
     gameStateFPS = 30
@@ -48,13 +49,14 @@ class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotMana
         self.yFieldSize = y
 
         self.calc = cl.Field()
-        self.gameColorPalette = cp.defaultBinary
 
-        for c in self.gameColorPalette:
-            self.gameColorPalleteQt.append(cp.convertColorToQTString(c))
-
-        self.calc.initializeField(x, y, r.defaultLife)
+        self.calc.initializeField(x, y, r.starWars)
         self.calc.initializeStatistics()
+
+        self.initializeSettingsColorActions()
+        self.initializeSettingsColorPalleteComboBox()
+        self.initializeSettingsColorPallete(cp.defaultBinary)
+        self.initializeSettingsColorPreview(cp.defaultBinary)
 
         self.initializeMainPlot()
         self.initializeMiniPlot()
@@ -66,7 +68,7 @@ class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotMana
 
         
         
-    def fillButtons(self):
+    def initializeGameFieldFillButtons(self):
         """initial filiing main field with buttons"""
         xSize = int((self.mainField.size().width() - (1 + self.xFieldSize) * CFMGameFramePadding) / self.xFieldSize)
         ySize = int((self.mainField.size().height() - (1 + self.yFieldSize) * CFMGameFramePadding) / self.yFieldSize)
@@ -88,7 +90,8 @@ class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotMana
 
                 self.gameButtons.append(button)
                 self.gameButtonsStates.append(0)
-
+        
+    
     def changeAllButtons(self, val : int):
         """change all buttons to a specific state"""
         for button in self.gameButtons:
@@ -125,6 +128,14 @@ class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotMana
 
         self.calc.field.fill(val)
 
+    def updateFieldColors(self):
+        for x in range(self.xFieldSize):
+            for y in range(self.yFieldSize):
+                state = self.calc.getState(x, y)
+                self.changeButtonState(x, y, state)
+    
+
+
     def updateField(self):
         """recalculate field and update buttons"""
         self.framesTotalCounter += 1
@@ -141,12 +152,6 @@ class ConveyFieldQtManager(MainPlotController, ColorPalleteManager, MiniPlotMana
         self.alliveCellsCounter = self.calc.statistics[self.calc.thisRule.generationsCount][-1]
         self.updateLCD()
 
-        #if self.framesTotalCounter % 1 == 0:
-            #if len(self.calc.statistics[0]) > 6:
-                #self.dataPlot.updatePlot(range(len(self.calc.statistics[0])), self.calc.statistics)
-        #self.mainPlotView.cla()
-        #self.mainPlotView.plot(range(len(self.calc.statistics[0])), self.calc.statistics[0])
-        #self.mainPlotView.show()
         self.drawMainPlotStatistic()
         self.drawMiniPlotStatistic()
 

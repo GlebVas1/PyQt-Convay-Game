@@ -1279,8 +1279,8 @@ background-color : rgb(89, 89, 89)</string>
                      <property name="font">
                       <font>
                        <pointsize>11</pointsize>
-                       <weight>50</weight>
-                       <bold>false</bold>
+                       <weight>75</weight>
+                       <bold>true</bold>
                       </font>
                      </property>
                      <property name="focusPolicy">
@@ -1605,10 +1605,10 @@ background-color : rgb(89, 89, 89)</string>
                    <widget class="QFrame" name="colorPalletePreview">
                     <property name="geometry">
                      <rect>
-                      <x>20</x>
+                      <x>10</x>
                       <y>89</y>
-                      <width>561</width>
-                      <height>61</height>
+                      <width>581</width>
+                      <height>65</height>
                      </rect>
                     </property>
                     <property name="styleSheet">
@@ -1648,11 +1648,18 @@ background-color : rgb(69, 69, 69)</string>
                    <widget class="QComboBox" name="colorPalleteComboBox">
                     <property name="geometry">
                      <rect>
-                      <x>150</x>
+                      <x>140</x>
                       <y>10</y>
-                      <width>271</width>
+                      <width>281</width>
                       <height>41</height>
                      </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">QComboBox {
@@ -1684,7 +1691,7 @@ QComboBox::drop-down::pressed {
                      <rect>
                       <x>430</x>
                       <y>10</y>
-                      <width>151</width>
+                      <width>161</width>
                       <height>41</height>
                      </rect>
                     </property>

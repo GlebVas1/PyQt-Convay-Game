@@ -14,7 +14,7 @@ frame = App()
 
 frame.initializeField(25, 25)
 frame.initializeManger()
-frame.fillButtons()
+frame.initializeGameFieldFillButtons()
 frame.changeAllButtons(0)
 
 frame.show()

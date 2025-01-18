@@ -684,8 +684,8 @@ class Ui_MainWindow(object):
         self.spinBox.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
         font.setPointSize(11)
-        font.setBold(False)
-        font.setWeight(50)
+        font.setBold(True)
+        font.setWeight(75)
         self.spinBox.setFont(font)
         self.spinBox.setFocusPolicy(QtCore.Qt.WheelFocus)
         self.spinBox.setStyleSheet("\n"
@@ -877,7 +877,7 @@ class Ui_MainWindow(object):
         self.label_5.setStyleSheet("border :  0px; color : white;")
         self.label_5.setObjectName("label_5")
         self.colorPalletePreview = QtWidgets.QFrame(self.colorPalleteSettings)
-        self.colorPalletePreview.setGeometry(QtCore.QRect(20, 89, 561, 61))
+        self.colorPalletePreview.setGeometry(QtCore.QRect(10, 89, 581, 65))
         self.colorPalletePreview.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69)")
         self.colorPalletePreview.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -893,7 +893,12 @@ class Ui_MainWindow(object):
         self.label_6.setStyleSheet("border :  0px; color : white;")
         self.label_6.setObjectName("label_6")
         self.colorPalleteComboBox = QtWidgets.QComboBox(self.colorPalleteSettings)
-        self.colorPalleteComboBox.setGeometry(QtCore.QRect(150, 10, 271, 41))
+        self.colorPalleteComboBox.setGeometry(QtCore.QRect(140, 10, 281, 41))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.colorPalleteComboBox.setFont(font)
         self.colorPalleteComboBox.setStyleSheet("QComboBox {\n"
 "border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69);\n"
@@ -918,7 +923,7 @@ class Ui_MainWindow(object):
 "")
         self.colorPalleteComboBox.setObjectName("colorPalleteComboBox")
         self.colorPalleteApply = QtWidgets.QPushButton(self.colorPalleteSettings)
-        self.colorPalleteApply.setGeometry(QtCore.QRect(430, 10, 151, 41))
+        self.colorPalleteApply.setGeometry(QtCore.QRect(430, 10, 161, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)

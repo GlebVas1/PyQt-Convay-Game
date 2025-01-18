@@ -15,6 +15,8 @@ class MainPlotController(object):
     def initializeMainPlot(self):
 
         self.mainPlotCurves.clear()
+        self.mainPlotPens.clear()
+        self.mainPlotView.clear()
         self.mainPlotView.setBackground((69, 69, 69))
 
         self.mainPlotView.setMouseEnabled(x=False, y=False)  # Disable mouse panning & zooming
@@ -38,6 +40,9 @@ class MainPlotController(object):
         self.mainPlotView.getAxis("left").setPen(labelPen)
 
         self.mainPlotView.addLegend(enableMouse=False)
+
+        
+
         for generation, s in self.calc.statistics.items():
             pen = pg.mkPen(self.gameColorPalette[generation], width=3, style=QtCore.Qt.SolidLine)
             self.mainPlotPens.append(pen)
@@ -52,6 +57,8 @@ class MainPlotController(object):
         self.mainPlotEnableGrid.stateChanged.connect(self.mainPlotChangeGridMode)
 
         self.lineThicknessSpinBox.valueChanged.connect(self.mainPlotChangePenThickness)
+
+        self.drawMainPlotStatistic()
 
     def drawMainPlotStatistic(self):
         for i in range(len(self.calc.statistics)):
