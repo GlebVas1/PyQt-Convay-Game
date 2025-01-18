@@ -1,15 +1,5 @@
 import numpy as np
-
-class Rule:
-    """Rule that returns new cellState by neighbors count"""
-    surviveIfNeighborCount = [0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
-    arriveIfNeighborCount = [0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
-    
-    def getSurvive(self, neighborCount : int):
-        return self.surviveIfNeighborCount[neighborCount]
-    
-    def getArrival(self, neighborCount : int):
-        return self.arriveIfNeighborCount[neighborCount]
+from rule import Rule
     
 
 class Field:
@@ -18,12 +8,19 @@ class Field:
     ySize = 10
     thisRule = Rule()
 
-    def InitializeField(self, x: int = 10, y : int = 10, rule : Rule = Rule()):
+    statistics = {}
+    statisticsMaxSize = 100
+    
+    def initializeField(self, x: int = 10, y : int = 10):
         self.field = np.ndarray(shape=(x, y), dtype=int)
         self.xSize = x
         self.ySize = y
-        self.thisRule = rule
     
+    def initializeStatistics(self):
+        self.statistics.clear()
+        for i in range(self.thisRule.generationsCount + 1):
+            self.statistics[i] = []
+
     def setCell(self, x : int, y : int, val : int):
         self.field[x, y] = val
     
@@ -34,24 +31,53 @@ class Field:
         neightborCount = 0
         for i in range(-1, 2):
             for j in range(-1, 2):
-                if i == j:
+                if i == 0 and j == 0:
                     continue
-                if self.field[(x + i + self.xSize) % self.xSize, (y + j + self.ySize) % self.ySize] != 0:
+                if self.field[(x + i + self.xSize) % self.xSize, (y + j + self.ySize) % self.ySize] == self.thisRule.generationsCount:
                     neightborCount += 1
         return neightborCount
     
     def calcualteFieldStep(self):
-        newFiled = np.ndarray(shape=(self.xSize, self.ySize))
+        newField = np.ndarray(shape=(self.xSize, self.ySize), dtype=int)
+
         for x in range(self.xSize):
             for y in range(self.ySize):
-                if self.field[x, y] == 0:
-                    newFiled[x, y] = self.thisRule.getArrival(self.calcualteNeighborCount(x, y))
+                neighborCount = self.calcualteNeighborCount(x, y)
+
+                if self.field[x, y] == 0: # empty or dead
+                    if self.thisRule.getArrival(neighborCount):
+                        newField[x, y] = self.thisRule.generationsCount
+                    else:
+                        newField[x,y] = 0
                 else:
-                    newFiled[x, y] = self.thisRule.getSurvive(self.calcualteNeighborCount(x, y))
-        self.field = newFiled.copy()
+                    if self.field[x, y] == self.thisRule.generationsCount:
+                        if self.thisRule.getSurvive(neighborCount):
+                            newField[x, y] = self.field[x, y]
+                        else:
+                            newField[x, y] = self.field[x, y] - 1
+                    else:
+                        newField[x, y] = self.field[x, y] - 1
+
+        self.field = newField.copy()
     
     def getState(self, x : int, y : int) -> int:
         return int(self.field[x, y])
     
     def setState(self, x : int, y : int, val : int):
         self.field[x, y] = val
+
+    def calcStatistic(self):
+        currentStatistic = {}
+        for i in range(self.thisRule.generationsCount + 1):
+            currentStatistic[i] = 0
+
+        for x in range(self.xSize):
+            for y in range(self.ySize):
+                currentStatistic[self.getState(x, y)] += 1
+                
+        for generation, value in currentStatistic.items():
+            self.statistics[generation].append(value)
+            if len(self.statistics[generation]) > self.statisticsMaxSize:
+                self.statistics[generation] = self.statistics[generation][1:]
+        
+

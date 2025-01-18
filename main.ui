@@ -12,20 +12,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>900</width>
-    <height>800</height>
+    <width>1500</width>
+    <height>900</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>900</width>
-    <height>800</height>
+    <width>1500</width>
+    <height>900</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>900</width>
-    <height>800</height>
+    <width>10000</width>
+    <height>10000</height>
    </size>
   </property>
   <property name="contextMenuPolicy">
@@ -41,163 +41,3808 @@
    </size>
   </property>
   <property name="tabShape">
-   <enum>QTabWidget::Rounded</enum>
+   <enum>QTabWidget::Triangular</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="maximumSize">
+    <size>
+     <width>10000</width>
+     <height>10000</height>
+    </size>
+   </property>
    <property name="styleSheet">
     <string notr="true">background-color : black</string>
    </property>
-   <widget class="QTabWidget" name="tabWidget">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>900</width>
-      <height>800</height>
-     </rect>
+   <layout class="QGridLayout" name="gridLayout">
+    <property name="leftMargin">
+     <number>0</number>
     </property>
-    <property name="styleSheet">
-     <string notr="true">QTabWidget QWidget
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="minimumSize">
+       <size>
+        <width>900</width>
+        <height>800</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QTabWidget QWidget
 {
-background-color: black;
+background-color: rgb(49, 49, 49);
 }
 QTabWidget::pane { /* The tab widget frame */
-border-top: 2px solid #C2C7CB;
+border-top: 2px solid rgb(49, 49, 49);
 }
 
-
-/* Style the tab using the tab sub-control. Note that
-it reads QTabBar not QTabWidget */
 QTabBar::tab {
-min-height : 20px;
-
-background: gray;
+padding-left : 5px;
+padding-top: 5px;
+min-height : 40px;
+min-width : 150px;
+background:  rgb(19, 19, 19);
+border-top-left-radius: 8px;
+border-top-right-radius: 8px;
+border: 2px solid  rgb(49, 49, 49);
+border-bottom-color:  rgb(49, 49, 49);
+color : gray;
 }
 
 QTabBar::tab:selected {
-background : white;
+background :  rgb(49, 49, 49);
+color : white;
+}
+
+</string>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>30</width>
+        <height>30</height>
+       </size>
+      </property>
+      <property name="movable">
+       <bool>false</bool>
+      </property>
+      <widget class="QWidget" name="tabDisplay">
+       <property name="maximumSize">
+        <size>
+         <width>10000</width>
+         <height>10000</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>10</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <attribute name="icon">
+        <iconset resource="resources/ico_res.qrc">
+         <normaloff>:/icons/game_ico.png</normaloff>:/icons/game_ico.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Game</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <layout class="QVBoxLayout" name="infoPanelLayout" stretch="0,0">
+            <property name="spacing">
+             <number>2</number>
+            </property>
+            <property name="leftMargin">
+             <number>10</number>
+            </property>
+            <property name="rightMargin">
+             <number>10</number>
+            </property>
+            <item>
+             <widget class="QFrame" name="miniPlot">
+              <property name="minimumSize">
+               <size>
+                <width>200</width>
+                <height>300</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>200</width>
+                <height>300</height>
+               </size>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::RightToLeft</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69)</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_15">
+               <item row="0" column="0">
+                <widget class="QFrame" name="frame_13">
+                 <property name="styleSheet">
+                  <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout_18">
+                  <property name="leftMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="topMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>2</number>
+                  </property>
+                  <property name="bottomMargin">
+                   <number>2</number>
+                  </property>
+                  <item row="0" column="0">
+                   <widget class="PlotWidget" name="miniPlotView">
+                    <property name="layoutDirection">
+                     <enum>Qt::LeftToRight</enum>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_8">
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color : white</string>
+                 </property>
+                 <property name="text">
+                  <string>Distribution</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="infoframe">
+              <property name="maximumSize">
+               <size>
+                <width>150</width>
+                <height>250</height>
+               </size>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::RightToLeft</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69)</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_6">
+               <item row="0" column="0">
+                <layout class="QVBoxLayout" name="infoVerticalLayout">
+                 <item>
+                  <widget class="QFrame" name="frame_3">
+                   <property name="styleSheet">
+                    <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_8">
+                    <item>
+                     <widget class="QLabel" name="framesTotal">
+                      <property name="minimumSize">
+                       <size>
+                        <width>120</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">color : white</string>
+                      </property>
+                      <property name="text">
+                       <string>Frame</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLCDNumber" name="totalFramesLCD">
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>50</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>8</pointsize>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69);
+color : white</string>
+                      </property>
+                      <property name="smallDecimalPoint">
+                       <bool>false</bool>
+                      </property>
+                      <property name="segmentStyle">
+                       <enum>QLCDNumber::Flat</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_4">
+                   <property name="styleSheet">
+                    <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_7">
+                    <item>
+                     <widget class="QLabel" name="CellsAlive">
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">color : white</string>
+                      </property>
+                      <property name="text">
+                       <string>Alive cells</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QLCDNumber" name="AliveCellsLCD">
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>50</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69);
+color : white</string>
+                      </property>
+                      <property name="segmentStyle">
+                       <enum>QLCDNumber::Flat</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QFrame" name="mainField">
+            <property name="minimumSize">
+             <size>
+              <width>800</width>
+              <height>800</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>800</width>
+              <height>800</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69)</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Plain</enum>
+            </property>
+            <property name="lineWidth">
+             <number>10</number>
+            </property>
+            <property name="midLineWidth">
+             <number>16</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="gameControlPanelsLayout">
+            <property name="leftMargin">
+             <number>10</number>
+            </property>
+            <property name="rightMargin">
+             <number>10</number>
+            </property>
+            <item>
+             <widget class="QFrame" name="gameContolPanel">
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>150</width>
+                <height>80</height>
+               </size>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69)</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_5">
+               <item row="0" column="0">
+                <widget class="QPushButton" name="playButton">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>60</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>60</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="layoutDirection">
+                  <enum>Qt::LeftToRight</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+	border-radius : 5px;
+	background-color : rgb(89, 89, 89)
+}
+
+QPushButton:pressed {
+    background-color: rgb(49, 49, 49);
+    border-style: inset;
 }</string>
-    </property>
-    <property name="currentIndex">
-     <number>1</number>
-    </property>
-    <widget class="QWidget" name="tabDisplay">
-     <attribute name="title">
-      <string>Game</string>
-     </attribute>
-     <widget class="QFrame" name="mainField">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>880</width>
-        <height>760</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">border-style: solid;
-border: 4px;
-border-color  : rgb(89, 89, 89);
-border-bottom-color: black;
-border-radius : 10px;
-background-color : rgb(40, 40, 40)</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Plain</enum>
-      </property>
-      <property name="lineWidth">
-       <number>10</number>
-      </property>
-      <property name="midLineWidth">
-       <number>16</number>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="tabSetting">
-     <attribute name="title">
-      <string>Settings</string>
-     </attribute>
-     <widget class="QFrame" name="ruleArriving">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>30</y>
-        <width>541</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <widget class="QLabel" name="ruleArriveLabel">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>231</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Cell arrives when neighbor count is</string>
-       </property>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resources/ico_res.qrc">
+                   <normaloff>:/icons/play.png</normaloff>
+                   <disabledoff>:/icons/play_disabled.png</disabledoff>
+                   <disabledon>:/icons/play_disabled.png</disabledon>
+                   <activeoff>:/icons/play.png</activeoff>:/icons/play.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>40</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QPushButton" name="stopButton">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>60</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>60</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+	border-radius : 5px;
+	background-color : rgb(89, 89, 89)
+}
+
+QPushButton:pressed {
+    background-color: rgb(49, 49, 49);
+    border-style: inset;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resources/ico_res.qrc">
+                   <normaloff>:/icons/pause.png</normaloff>
+                   <disabledoff>:/icons/pause_disabled.png</disabledoff>
+                   <activeoff>:/icons/pause_disabled.png</activeoff>:/icons/pause.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>40</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
+              <item>
+               <widget class="QFrame" name="pickToolPanel">
+                <property name="minimumSize">
+                 <size>
+                  <width>180</width>
+                  <height>699</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>200</width>
+                  <height>700</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69)</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+                <layout class="QGridLayout" name="gridLayout_4">
+                 <item row="1" column="0">
+                  <widget class="QFrame" name="frame_5">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>300</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_11">
+                    <item row="0" column="0">
+                     <layout class="QVBoxLayout" name="verticalLayout_10">
+                      <item>
+                       <widget class="QPushButton" name="pushButton">
+                        <property name="maximumSize">
+                         <size>
+                          <width>16777215</width>
+                          <height>50</height>
+                         </size>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <pointsize>11</pointsize>
+                          <weight>75</weight>
+                          <bold>true</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">QPushButton {
+	border-radius : 5px;
+	background-color : rgb(69, 69, 69);
+	color : white;
+}
+
+QPushButton:pressed {
+    background-color: rgb(49, 49, 49);
+    border-style: inset;
+}
+</string>
+                        </property>
+                        <property name="text">
+                         <string>Place</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
+                 <item row="0" column="0">
+                  <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0">
+                   <property name="spacing">
+                    <number>10</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QFrame" name="frame">
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>150</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                     </property>
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                     <layout class="QGridLayout" name="gridLayout_7" columnstretch="0">
+                      <item row="0" column="0">
+                       <layout class="QVBoxLayout" name="verticalLayout_4">
+                        <item>
+                         <widget class="QLabel" name="label">
+                          <property name="maximumSize">
+                           <size>
+                            <width>200</width>
+                            <height>20</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color : white</string>
+                          </property>
+                          <property name="text">
+                           <string>Current</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QFrame" name="selectedColorPanel">
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">background-color: red</string>
+                          </property>
+                          <property name="frameShape">
+                           <enum>QFrame::StyledPanel</enum>
+                          </property>
+                          <property name="frameShadow">
+                           <enum>QFrame::Raised</enum>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="fillAllCells">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QPushButton {
+	border-radius : 5px;
+	background-color : rgb(69, 69, 69);
+	color : white;
+}
+
+QPushButton:pressed {
+    background-color: rgb(49, 49, 49);
+    border-style: inset;
+}
+</string>
+                          </property>
+                          <property name="text">
+                           <string>Fill all</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QFrame" name="frame_2">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>240</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>240</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                     </property>
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                     <layout class="QGridLayout" name="gridLayout_10">
+                      <item row="0" column="0">
+                       <layout class="QVBoxLayout" name="verticalLayout_9">
+                        <item>
+                         <widget class="QLabel" name="label_2">
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color : white</string>
+                          </property>
+                          <property name="text">
+                           <string>Brush size</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QSpinBox" name="brushSizeSpinBox">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>40</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">
+QSpinBox {
+border-radius : 5px;
+background-color : rgb(69, 69, 69); 
+color : white;
+padding-left : 15px;
+padding-right : 50px;
+}
+
+QSpinBox::up-button {
+subcontrol-origin: border;
+subcontrol-position: center right; 
+border-image: url(:/icons/arrow_right.png);
+border : 1px;
+right : 10px;
+width : 10px;
+}
+
+QSpinBox::up-button::pressed {
+border-image: url(:/icons/arrow_right_pressed.png);
+}
+
+QSpinBox::down-button {
+subcontrol-origin: border;
+subcontrol-position: center right ;
+border-image: url(:/icons/arrow_left.png);
+border : 1px;
+right : 35px;
+width : 10px;
+}
+
+QSpinBox::down-button::pressed {
+border-image: url(:/icons/arrow_left_pressed.png);
+}
+</string>
+                          </property>
+                          <property name="minimum">
+                           <number>1</number>
+                          </property>
+                          <property name="maximum">
+                           <number>4</number>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QCheckBox" name="brushSetRound">
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QCheckBox {
+    spacing : 10px;
+	color : white;
+}
+
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/icons/check_box_unchecked.png)
+}
+
+QCheckBox::indicator:unchecked:hover {
+    image: url(:/icons/checkbox_unchecked_pressed.png)
+}
+
+QCheckBox::indicator:unchecked:pressed {
+    image: url(:/icons/checkbox_unchecked_pressed.png)
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/icons/checkbox_checked.png)
+}
+
+QCheckBox::indicator:checked:hover {
+    image: url(:/icons/checkbox_checked_pressed.png)
+}
+
+QCheckBox::indicator:checked:pressed {
+    image: url(:/icons/checkbox_checked_pressed.png)
+}
+
+QCheckBox::indicator:indeterminate:hover {
+    image: url(:/images/checkbox_indeterminate_hover.png);
+}
+
+QCheckBox::indicator:indeterminate:pressed {
+    image: url(:/images/checkbox_indeterminate_pressed.png);
+}</string>
+                          </property>
+                          <property name="text">
+                           <string>Round</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_12">
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">color : white</string>
+                          </property>
+                          <property name="text">
+                           <string>Random</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QCheckBox" name="brushRandomSize">
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QCheckBox {
+    spacing : 10px;
+	color : white;
+}
+
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/icons/check_box_unchecked.png)
+}
+
+QCheckBox::indicator:unchecked:hover {
+    image: url(:/icons/checkbox_unchecked_pressed.png)
+}
+
+QCheckBox::indicator:unchecked:pressed {
+    image: url(:/icons/checkbox_unchecked_pressed.png)
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/icons/checkbox_checked.png)
+}
+
+QCheckBox::indicator:checked:hover {
+    image: url(:/icons/checkbox_checked_pressed.png)
+}
+
+QCheckBox::indicator:checked:pressed {
+    image: url(:/icons/checkbox_checked_pressed.png)
+}
+
+QCheckBox::indicator:indeterminate:hover {
+    image: url(:/images/checkbox_indeterminate_hover.png);
+}
+
+QCheckBox::indicator:indeterminate:pressed {
+    image: url(:/images/checkbox_indeterminate_pressed.png);
+}</string>
+                          </property>
+                          <property name="text">
+                           <string>Size</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QCheckBox" name="brushRandomState">
+                          <property name="font">
+                           <font>
+                            <pointsize>11</pointsize>
+                            <weight>75</weight>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QCheckBox {
+    spacing : 10px;
+	color : white;
+}
+
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/icons/check_box_unchecked.png)
+}
+
+QCheckBox::indicator:unchecked:hover {
+    image: url(:/icons/checkbox_unchecked_pressed.png)
+}
+
+QCheckBox::indicator:unchecked:pressed {
+    image: url(:/icons/checkbox_unchecked_pressed.png)
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/icons/checkbox_checked.png)
+}
+
+QCheckBox::indicator:checked:hover {
+    image: url(:/icons/checkbox_checked_pressed.png)
+}
+
+QCheckBox::indicator:checked:pressed {
+    image: url(:/icons/checkbox_checked_pressed.png)
+}
+
+QCheckBox::indicator:indeterminate:hover {
+    image: url(:/images/checkbox_indeterminate_hover.png);
+}
+
+QCheckBox::indicator:indeterminate:pressed {
+    image: url(:/images/checkbox_indeterminate_pressed.png);
+}</string>
+                          </property>
+                          <property name="text">
+                           <string>State</string>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QFrame" name="colorPallete">
+                <property name="minimumSize">
+                 <size>
+                  <width>80</width>
+                  <height>300</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>300</width>
+                  <height>16777215</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69)</string>
+                </property>
+                <property name="frameShape">
+                 <enum>QFrame::StyledPanel</enum>
+                </property>
+                <property name="frameShadow">
+                 <enum>QFrame::Raised</enum>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabGraph">
+       <attribute name="icon">
+        <iconset resource="resources/ico_res.qrc">
+         <normaloff>:/icons/graph_ico.png</normaloff>:/icons/graph_ico.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Plotter</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_8">
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_12">
+            <property name="leftMargin">
+             <number>5</number>
+            </property>
+            <property name="topMargin">
+             <number>5</number>
+            </property>
+            <property name="rightMargin">
+             <number>5</number>
+            </property>
+            <property name="bottomMargin">
+             <number>5</number>
+            </property>
+            <item>
+             <widget class="QFrame" name="plotSettingFrame">
+              <property name="minimumSize">
+               <size>
+                <width>400</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>400</width>
+                <height>425</height>
+               </size>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::RightToLeft</enum>
+              </property>
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69)</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_16">
+               <property name="verticalSpacing">
+                <number>10</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="plotSettingsLabel">
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>30</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <pointsize>11</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color : white</string>
+                 </property>
+                 <property name="text">
+                  <string>Plot Settings</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QFrame" name="frame_18">
+                 <property name="styleSheet">
+                  <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <widget class="QLabel" name="label_13">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>10</y>
+                    <width>251</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color : white</string>
+                  </property>
+                  <property name="text">
+                   <string>Line thickness</string>
+                  </property>
+                 </widget>
+                 <widget class="QSpinBox" name="lineThicknessSpinBox">
+                  <property name="geometry">
+                   <rect>
+                    <x>160</x>
+                    <y>10</y>
+                    <width>101</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::LeftToRight</enum>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">
+QSpinBox {
+border-radius : 5px;
+background-color : rgb(69, 69, 69); 
+color : white;
+padding-left : 15px;
+padding-right : 50px;
+}
+
+QSpinBox::up-button {
+subcontrol-origin: border;
+subcontrol-position: center right; 
+border-image: url(:/icons/arrow_right.png);
+border : 1px;
+right : 10px;
+width : 10px;
+}
+
+QSpinBox::up-button::pressed {
+border-image: url(:/icons/arrow_right_pressed.png);
+}
+
+QSpinBox::down-button {
+subcontrol-origin: border;
+subcontrol-position: center right ;
+border-image: url(:/icons/arrow_left.png);
+border : 1px;
+right : 35px;
+width : 10px;
+}
+
+QSpinBox::down-button::pressed {
+border-image: url(:/icons/arrow_left_pressed.png);
+}
+</string>
+                  </property>
+                  <property name="minimum">
+                   <number>1</number>
+                  </property>
+                  <property name="maximum">
+                   <number>5</number>
+                  </property>
+                 </widget>
+                 <widget class="QCheckBox" name="mainPlotFillUnder">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>60</y>
+                    <width>191</width>
+                    <height>31</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::LeftToRight</enum>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QCheckBox {
+    spacing : 10px;
+	color : white;
+}
+
+QCheckBox::indicator {
+    top: 2px;
+    width: 16px;
+    height: 16px;
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/icons/check_box_unchecked.png)
+}
+
+QCheckBox::indicator:unchecked:hover {
+    image: url(:/icons/checkbox_unchecked_pressed.png)
+}
+
+QCheckBox::indicator:unchecked:pressed {
+    image: url(:/icons/checkbox_unchecked_pressed.png)
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/icons/checkbox_checked.png)
+}
+
+QCheckBox::indicator:checked:hover {
+    image: url(:/icons/checkbox_checked_pressed.png)
+}
+
+QCheckBox::indicator:checked:pressed {
+    image: url(:/icons/checkbox_checked_pressed.png)
+}
+
+QCheckBox::indicator:indeterminate:hover {
+    image: url(:/images/checkbox_indeterminate_hover.png);
+}
+
+QCheckBox::indicator:indeterminate:pressed {
+    image: url(:/images/checkbox_indeterminate_pressed.png);
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Fill under</string>
+                  </property>
+                  <property name="checked">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QFrame" name="frame_14">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>90</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>85</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <widget class="QCheckBox" name="mainPlotEnableXGrid">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>10</y>
+                    <width>191</width>
+                    <height>31</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::LeftToRight</enum>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QCheckBox {
+    spacing : 10px;
+	color : white;
+}
+
+QCheckBox::indicator {
+    top: 2px;
+    width: 16px;
+    height: 16px;
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/icons/check_box_unchecked.png)
+}
+
+QCheckBox::indicator:unchecked:hover {
+    image: url(:/icons/checkbox_unchecked_pressed.png)
+}
+
+QCheckBox::indicator:unchecked:pressed {
+    image: url(:/icons/checkbox_unchecked_pressed.png)
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/icons/checkbox_checked.png)
+}
+
+QCheckBox::indicator:checked:hover {
+    image: url(:/icons/checkbox_checked_pressed.png)
+}
+
+QCheckBox::indicator:checked:pressed {
+    image: url(:/icons/checkbox_checked_pressed.png)
+}
+
+QCheckBox::indicator:indeterminate:hover {
+    image: url(:/images/checkbox_indeterminate_hover.png);
+}
+
+QCheckBox::indicator:indeterminate:pressed {
+    image: url(:/images/checkbox_indeterminate_pressed.png);
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Enable x grid</string>
+                  </property>
+                  <property name="checked">
+                   <bool>false</bool>
+                  </property>
+                 </widget>
+                 <widget class="QCheckBox" name="mainPlotEnableYGrid">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>50</y>
+                    <width>191</width>
+                    <height>31</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::LeftToRight</enum>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QCheckBox {
+    spacing : 10px;
+	color : white;
+}
+
+QCheckBox::indicator {
+    top: 2px;
+    width: 16px;
+    height: 16px;
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/icons/check_box_unchecked.png)
+}
+
+QCheckBox::indicator:unchecked:hover {
+    image: url(:/icons/checkbox_unchecked_pressed.png)
+}
+
+QCheckBox::indicator:unchecked:pressed {
+    image: url(:/icons/checkbox_unchecked_pressed.png)
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/icons/checkbox_checked.png)
+}
+
+QCheckBox::indicator:checked:hover {
+    image: url(:/icons/checkbox_checked_pressed.png)
+}
+
+QCheckBox::indicator:checked:pressed {
+    image: url(:/icons/checkbox_checked_pressed.png)
+}
+
+QCheckBox::indicator:indeterminate:hover {
+    image: url(:/images/checkbox_indeterminate_hover.png);
+}
+
+QCheckBox::indicator:indeterminate:pressed {
+    image: url(:/images/checkbox_indeterminate_pressed.png);
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>Enable y grid</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QFrame" name="frame_10">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>150</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <widget class="QLabel" name="label_3">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>20</y>
+                    <width>361</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color : white</string>
+                  </property>
+                  <property name="text">
+                   <string>Update each                           frame</string>
+                  </property>
+                 </widget>
+                 <widget class="QSpinBox" name="spinBox_6">
+                  <property name="geometry">
+                   <rect>
+                    <x>140</x>
+                    <y>20</y>
+                    <width>101</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::LeftToRight</enum>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">
+QSpinBox {
+border-radius : 5px;
+background-color : rgb(69, 69, 69); 
+color : white;
+padding-left : 15px;
+padding-right : 50px;
+}
+
+QSpinBox::up-button {
+subcontrol-origin: border;
+subcontrol-position: center right; 
+border-image: url(:/icons/arrow_right.png);
+border : 1px;
+right : 10px;
+width : 10px;
+}
+
+QSpinBox::up-button::pressed {
+border-image: url(:/icons/arrow_right_pressed.png);
+}
+
+QSpinBox::down-button {
+subcontrol-origin: border;
+subcontrol-position: center right ;
+border-image: url(:/icons/arrow_left.png);
+border : 1px;
+right : 35px;
+width : 10px;
+}
+
+QSpinBox::down-button::pressed {
+border-image: url(:/icons/arrow_left_pressed.png);
+}
+</string>
+                  </property>
+                  <property name="minimum">
+                   <number>1</number>
+                  </property>
+                  <property name="maximum">
+                   <number>10</number>
+                  </property>
+                 </widget>
+                 <widget class="QLabel" name="label_4">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>90</y>
+                    <width>251</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color : white</string>
+                  </property>
+                  <property name="text">
+                   <string>Frame window</string>
+                  </property>
+                 </widget>
+                 <widget class="QSpinBox" name="spinBox_7">
+                  <property name="geometry">
+                   <rect>
+                    <x>160</x>
+                    <y>90</y>
+                    <width>121</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::LeftToRight</enum>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">
+QSpinBox {
+border-radius : 5px;
+background-color : rgb(69, 69, 69); 
+color : white;
+padding-left : 15px;
+padding-right : 50px;
+}
+
+QSpinBox::up-button {
+subcontrol-origin: border;
+subcontrol-position: center right; 
+border-image: url(:/icons/arrow_right.png);
+border : 1px;
+right : 10px;
+width : 10px;
+}
+
+QSpinBox::up-button::pressed {
+border-image: url(:/icons/arrow_right_pressed.png);
+}
+
+QSpinBox::down-button {
+subcontrol-origin: border;
+subcontrol-position: center right ;
+border-image: url(:/icons/arrow_left.png);
+border : 1px;
+right : 35px;
+width : 10px;
+}
+
+QSpinBox::down-button::pressed {
+border-image: url(:/icons/arrow_left_pressed.png);
+}
+</string>
+                  </property>
+                  <property name="minimum">
+                   <number>10</number>
+                  </property>
+                 </widget>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="frame_15">
+              <property name="minimumSize">
+               <size>
+                <width>400</width>
+                <height>125</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>400</width>
+                <height>125</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69)</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <widget class="QLabel" name="label_9">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>10</y>
+                 <width>71</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>11</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color : white</string>
+               </property>
+               <property name="text">
+                <string>Legend</string>
+               </property>
+              </widget>
+              <widget class="QFrame" name="legendAliveFrame">
+               <property name="geometry">
+                <rect>
+                 <x>340</x>
+                 <y>10</y>
+                 <width>50</width>
+                 <height>50</height>
+                </rect>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>50</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>50</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color : white</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+              </widget>
+              <widget class="QFrame" name="legendEmptyFrame">
+               <property name="geometry">
+                <rect>
+                 <x>340</x>
+                 <y>70</y>
+                 <width>50</width>
+                 <height>50</height>
+                </rect>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>50</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>50</width>
+                 <height>50</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color : red</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_10">
+               <property name="geometry">
+                <rect>
+                 <x>190</x>
+                 <y>20</y>
+                 <width>141</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>11</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color : white</string>
+               </property>
+               <property name="text">
+                <string>New living cells</string>
+               </property>
+              </widget>
+              <widget class="QLabel" name="label_11">
+               <property name="geometry">
+                <rect>
+                 <x>170</x>
+                 <y>80</y>
+                 <width>161</width>
+                 <height>31</height>
+                </rect>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>11</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color : white</string>
+               </property>
+               <property name="text">
+                <string>Empty/Died cells</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="wordWrap">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_11">
+            <item>
+             <widget class="QFrame" name="frame_11">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>60</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>800</width>
+                <height>60</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69)</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_17">
+               <item row="0" column="0">
+                <widget class="QFrame" name="frame_12">
+                 <property name="styleSheet">
+                  <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <widget class="QLabel" name="label_7">
+                  <property name="geometry">
+                   <rect>
+                    <x>10</x>
+                    <y>10</y>
+                    <width>481</width>
+                    <height>20</height>
+                   </rect>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>11</pointsize>
+                    <weight>75</weight>
+                    <bold>true</bold>
+                   </font>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">color : white</string>
+                  </property>
+                  <property name="text">
+                   <string>Different cells state during last frames</string>
+                  </property>
+                 </widget>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="plotFrame">
+              <property name="minimumSize">
+               <size>
+                <width>600</width>
+                <height>400</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>800</width>
+                <height>600</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69)</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_13">
+               <item row="0" column="0">
+                <widget class="PlotWidget" name="mainPlotView"/>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabSetting">
+       <attribute name="icon">
+        <iconset resource="resources/ico_res.qrc">
+         <normaloff>:/icons/settings_ico.png</normaloff>
+         <disabledoff>:/icons/settings_pressed_ico.png</disabledoff>
+         <activeoff>:/icons/settings_pressed_ico.png</activeoff>
+         <selectedoff>:/icons/settings_pressed_ico.png</selectedoff>:/icons/settings_ico.png</iconset>
+       </attribute>
+       <attribute name="title">
+        <string>Settings</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QGroupBox" name="groupBox">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>400</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>1300</width>
+              <height>400</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>10</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69); color : white;</string>
+            </property>
+            <property name="title">
+             <string>Game Rule Settings</string>
+            </property>
+            <layout class="QGridLayout" name="gridLayout_9">
+             <item row="0" column="0">
+              <layout class="QHBoxLayout" name="horizontalLayout_4">
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_2">
+                 <property name="leftMargin">
+                  <number>10</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>20</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>10</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>10</number>
+                 </property>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_8">
+                   <item>
+                    <widget class="QFrame" name="ruleSettingsField">
+                     <property name="minimumSize">
+                      <size>
+                       <width>350</width>
+                       <height>210</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <weight>75</weight>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                     </property>
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                     <widget class="QLabel" name="ruleArriveLabel">
+                      <property name="geometry">
+                       <rect>
+                        <x>330</x>
+                        <y>0</y>
+                        <width>201</width>
+                        <height>41</height>
+                       </rect>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>10</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">border :  0px; color : white;</string>
+                      </property>
+                      <property name="text">
+                       <string>Neighbors count</string>
+                      </property>
+                      <property name="textFormat">
+                       <enum>Qt::PlainText</enum>
+                      </property>
+                     </widget>
+                     <widget class="QLabel" name="ruleSurviveLabel">
+                      <property name="geometry">
+                       <rect>
+                        <x>10</x>
+                        <y>110</y>
+                        <width>171</width>
+                        <height>31</height>
+                       </rect>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>10</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">border :  0px; border :  0px; color : white;</string>
+                      </property>
+                      <property name="text">
+                       <string>Cell survives when </string>
+                      </property>
+                     </widget>
+                     <widget class="QFrame" name="ruleCheckFrame">
+                      <property name="geometry">
+                       <rect>
+                        <x>230</x>
+                        <y>40</y>
+                        <width>360</width>
+                        <height>121</height>
+                       </rect>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QFrame {
+border-radius : 5px;
+background-color : rgb(69, 69, 69)
+}
+
+QCheckBox {
+    spacing : 10px;
+	color : white;
+}
+
+QCheckBox::indicator {
+    top: 2px;
+    width: 16px;
+    height: 16px;
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/icons/check_box_unchecked.png)
+}
+
+QCheckBox::indicator:unchecked:hover {
+    image: url(:/icons/checkbox_unchecked_pressed.png)
+}
+
+QCheckBox::indicator:unchecked:pressed {
+    image: url(:/icons/checkbox_unchecked_pressed.png)
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/icons/checkbox_checked.png)
+}
+
+QCheckBox::indicator:checked:hover {
+    image: url(:/icons/checkbox_checked_pressed.png)
+}
+
+QCheckBox::indicator:checked:pressed {
+    image: url(:/icons/checkbox_checked_pressed.png)
+}
+
+QCheckBox::indicator:indeterminate:hover {
+    image: url(:/images/checkbox_indeterminate_hover.png);
+}
+
+QCheckBox::indicator:indeterminate:pressed {
+    image: url(:/images/checkbox_indeterminate_pressed.png);
+}
+
+QLabel {
+	color : white
+    font-size: 11pt
+}</string>
+                      </property>
+                      <property name="frameShape">
+                       <enum>QFrame::StyledPanel</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Raised</enum>
+                      </property>
+                     </widget>
+                     <widget class="QLabel" name="ruleSurviveLabel_4">
+                      <property name="geometry">
+                       <rect>
+                        <x>10</x>
+                        <y>60</y>
+                        <width>171</width>
+                        <height>31</height>
+                       </rect>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>10</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">border :  0px; border :  0px; color : white;</string>
+                      </property>
+                      <property name="text">
+                       <string>Cell arrives when </string>
+                      </property>
+                     </widget>
+                     <widget class="QPushButton" name="ruleApply">
+                      <property name="geometry">
+                       <rect>
+                        <x>10</x>
+                        <y>160</y>
+                        <width>161</width>
+                        <height>41</height>
+                       </rect>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton {
+	border-radius : 5px;
+	background-color : rgb(69, 69, 69);
+	color : white;
+}
+
+QPushButton:pressed {
+    background-color: rgb(49, 49, 49);
+    border-style: inset;
+}
+</string>
+                      </property>
+                      <property name="text">
+                       <string>Apply</string>
+                      </property>
+                     </widget>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_2">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QFrame" name="frame_16">
+                     <property name="maximumSize">
+                      <size>
+                       <width>150</width>
+                       <height>110</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                     </property>
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                     <widget class="QSpinBox" name="ruleGenerationsSpinBox">
+                      <property name="enabled">
+                       <bool>true</bool>
+                      </property>
+                      <property name="geometry">
+                       <rect>
+                        <x>10</x>
+                        <y>60</y>
+                        <width>111</width>
+                        <height>40</height>
+                       </rect>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="focusPolicy">
+                       <enum>Qt::WheelFocus</enum>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">
+QSpinBox {
+border-radius : 5px;
+background-color : rgb(69, 69, 69); 
+color : white;
+padding-left : 15px;
+padding-right : 50px;
+}
+
+QSpinBox::up-button {
+subcontrol-origin: border;
+subcontrol-position: center right; 
+border-image: url(:/icons/arrow_right.png);
+border : 1px;
+right : 10px;
+width : 10px;
+}
+
+QSpinBox::up-button::pressed {
+border-image: url(:/icons/arrow_right_pressed.png);
+}
+
+QSpinBox::down-button {
+subcontrol-origin: border;
+subcontrol-position: center right ;
+border-image: url(:/icons/arrow_left.png);
+border : 1px;
+right : 35px;
+width : 10px;
+}
+
+QSpinBox::down-button::pressed {
+border-image: url(:/icons/arrow_left_pressed.png);
+}
+</string>
+                      </property>
+                      <property name="frame">
+                       <bool>true</bool>
+                      </property>
+                      <property name="suffix">
+                       <string/>
+                      </property>
+                      <property name="minimum">
+                       <number>2</number>
+                      </property>
+                      <property name="maximum">
+                       <number>25</number>
+                      </property>
+                     </widget>
+                     <widget class="QLabel" name="ruleSurviveLabel_2">
+                      <property name="geometry">
+                       <rect>
+                        <x>10</x>
+                        <y>10</y>
+                        <width>161</width>
+                        <height>41</height>
+                       </rect>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="layoutDirection">
+                       <enum>Qt::LeftToRight</enum>
+                      </property>
+                      <property name="autoFillBackground">
+                       <bool>false</bool>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">border :  0px; border :  0px; color : white;</string>
+                      </property>
+                      <property name="text">
+                       <string>Generations</string>
+                      </property>
+                     </widget>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QFrame" name="frame_17">
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>110</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                     </property>
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                     <widget class="QLabel" name="ruleSurviveLabel_3">
+                      <property name="geometry">
+                       <rect>
+                        <x>10</x>
+                        <y>10</y>
+                        <width>161</width>
+                        <height>41</height>
+                       </rect>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="layoutDirection">
+                       <enum>Qt::LeftToRight</enum>
+                      </property>
+                      <property name="autoFillBackground">
+                       <bool>false</bool>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">border :  0px; border :  0px; color : white;</string>
+                      </property>
+                      <property name="text">
+                       <string>Preset</string>
+                      </property>
+                     </widget>
+                     <widget class="QComboBox" name="ruleComboBox">
+                      <property name="geometry">
+                       <rect>
+                        <x>10</x>
+                        <y>60</y>
+                        <width>421</width>
+                        <height>41</height>
+                       </rect>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QComboBox {
+border-radius : 5px;
+background-color : rgb(69, 69, 69);
+color : white;
+padding-right : 20px;
+padding-left: 20px;
+}
+
+QComboBox::drop-down {
+    padding-right : 10px;
+	image: url(:/icons/drop_down.png);
+	min-width: 30px;
+	min-height: 20px;
+}
+
+QComboBox::drop-down::pressed {
+    padding-right : 10px;
+	image: url(:/icons/drop_down_pressed.png);
+	min-width: 30px;
+	min-height: 20px;
+}
+</string>
+                      </property>
+                     </widget>
+                     <widget class="QPushButton" name="ruleLoadbutton">
+                      <property name="geometry">
+                       <rect>
+                        <x>270</x>
+                        <y>10</y>
+                        <width>161</width>
+                        <height>41</height>
+                       </rect>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QPushButton {
+	border-radius : 5px;
+	background-color : rgb(69, 69, 69);
+	color : white;
+}
+
+QPushButton:pressed {
+    background-color: rgb(49, 49, 49);
+    border-style: inset;
+}
+</string>
+                      </property>
+                      <property name="text">
+                       <string>Load</string>
+                      </property>
+                     </widget>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_6">
+                 <property name="leftMargin">
+                  <number>10</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>20</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>10</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>10</number>
+                 </property>
+                 <item>
+                  <widget class="QFrame" name="fieldSettings">
+                   <property name="styleSheet">
+                    <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <widget class="QLabel" name="ruleArriveLabel_3">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>10</y>
+                      <width>521</width>
+                      <height>31</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border :  0px; color : white;</string>
+                    </property>
+                    <property name="text">
+                     <string>Field size</string>
+                    </property>
+                    <property name="textFormat">
+                     <enum>Qt::PlainText</enum>
+                    </property>
+                   </widget>
+                   <widget class="QSpinBox" name="spinBox_3">
+                    <property name="geometry">
+                     <rect>
+                      <x>60</x>
+                      <y>50</y>
+                      <width>101</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">
+QSpinBox {
+border-radius : 5px;
+background-color : rgb(69, 69, 69); 
+color : white;
+padding-left : 15px;
+padding-right : 50px;
+}
+
+QSpinBox::up-button {
+subcontrol-origin: border;
+subcontrol-position: center right; 
+border-image: url(:/icons/arrow_right.png);
+border : 1px;
+right : 10px;
+width : 10px;
+}
+
+QSpinBox::up-button::pressed {
+border-image: url(:/icons/arrow_right_pressed.png);
+}
+
+QSpinBox::down-button {
+subcontrol-origin: border;
+subcontrol-position: center right ;
+border-image: url(:/icons/arrow_left.png);
+border : 1px;
+right : 35px;
+width : 10px;
+}
+
+QSpinBox::down-button::pressed {
+border-image: url(:/icons/arrow_left_pressed.png);
+}
+</string>
+                    </property>
+                    <property name="minimum">
+                     <number>4</number>
+                    </property>
+                    <property name="maximum">
+                     <number>20</number>
+                    </property>
+                   </widget>
+                   <widget class="QSpinBox" name="spinBox_4">
+                    <property name="geometry">
+                     <rect>
+                      <x>240</x>
+                      <y>50</y>
+                      <width>111</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">
+QSpinBox {
+border-radius : 5px;
+background-color : rgb(69, 69, 69); 
+color : white;
+padding-left : 15px;
+padding-right : 50px;
+}
+
+QSpinBox::up-button {
+subcontrol-origin: border;
+subcontrol-position: center right; 
+border-image: url(:/icons/arrow_right.png);
+border : 1px;
+right : 10px;
+width : 10px;
+}
+
+QSpinBox::up-button::pressed {
+border-image: url(:/icons/arrow_right_pressed.png);
+}
+
+QSpinBox::down-button {
+subcontrol-origin: border;
+subcontrol-position: center right ;
+border-image: url(:/icons/arrow_left.png);
+border : 1px;
+right : 35px;
+width : 10px;
+}
+
+QSpinBox::down-button::pressed {
+border-image: url(:/icons/arrow_left_pressed.png);
+}
+</string>
+                    </property>
+                    <property name="minimum">
+                     <number>4</number>
+                    </property>
+                    <property name="maximum">
+                     <number>20</number>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="ruleArriveLabel_4">
+                    <property name="geometry">
+                     <rect>
+                      <x>20</x>
+                      <y>50</y>
+                      <width>41</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>15</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border :  0px; color : white;</string>
+                    </property>
+                    <property name="text">
+                     <string>X :</string>
+                    </property>
+                    <property name="textFormat">
+                     <enum>Qt::PlainText</enum>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="ruleArriveLabel_5">
+                    <property name="geometry">
+                     <rect>
+                      <x>200</x>
+                      <y>50</y>
+                      <width>41</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>15</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border :  0px; color : white;</string>
+                    </property>
+                    <property name="text">
+                     <string>Y:</string>
+                    </property>
+                    <property name="textFormat">
+                     <enum>Qt::PlainText</enum>
+                    </property>
+                   </widget>
+                   <widget class="QPushButton" name="colorPalleteApply_2">
+                    <property name="geometry">
+                     <rect>
+                      <x>20</x>
+                      <y>110</y>
+                      <width>331</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton {
+	border-radius : 5px;
+	background-color : rgb(69, 69, 69);
+	color : white;
+}
+
+QPushButton:pressed {
+    background-color: rgb(49, 49, 49);
+    border-style: inset;
+}
+</string>
+                    </property>
+                    <property name="text">
+                     <string>Apply</string>
+                    </property>
+                   </widget>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="colorPalleteSettings">
+                   <property name="styleSheet">
+                    <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <widget class="QLabel" name="label_5">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>20</y>
+                      <width>151</width>
+                      <height>16</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border :  0px; color : white;</string>
+                    </property>
+                    <property name="text">
+                     <string>Color pallete</string>
+                    </property>
+                   </widget>
+                   <widget class="QFrame" name="colorPalletePreview">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>89</y>
+                      <width>581</width>
+                      <height>65</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <weight>50</weight>
+                      <bold>false</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69)</string>
+                    </property>
+                    <property name="frameShape">
+                     <enum>QFrame::StyledPanel</enum>
+                    </property>
+                    <property name="frameShadow">
+                     <enum>QFrame::Raised</enum>
+                    </property>
+                   </widget>
+                   <widget class="QLabel" name="label_6">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>60</y>
+                      <width>151</width>
+                      <height>16</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">border :  0px; color : white;</string>
+                    </property>
+                    <property name="text">
+                     <string>Preview</string>
+                    </property>
+                   </widget>
+                   <widget class="QComboBox" name="colorPalleteComboBox">
+                    <property name="geometry">
+                     <rect>
+                      <x>140</x>
+                      <y>10</y>
+                      <width>281</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QComboBox {
+border-radius : 5px;
+background-color : rgb(69, 69, 69);
+color : white;
+padding-right : 20px;
+padding-left: 20px;
+}
+
+QComboBox::drop-down {
+    padding-right : 10px;
+	image: url(:/icons/drop_down.png);
+	min-width: 30px;
+	min-height: 20px;
+}
+
+QComboBox::drop-down::pressed {
+    padding-right : 10px;
+	image: url(:/icons/drop_down_pressed.png);
+	min-width: 30px;
+	min-height: 20px;
+}
+</string>
+                    </property>
+                   </widget>
+                   <widget class="QPushButton" name="colorPalleteApply">
+                    <property name="geometry">
+                     <rect>
+                      <x>430</x>
+                      <y>10</y>
+                      <width>161</width>
+                      <height>41</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QPushButton {
+	border-radius : 5px;
+	background-color : rgb(69, 69, 69);
+	color : white;
+}
+
+QPushButton:pressed {
+    background-color: rgb(49, 49, 49);
+    border-style: inset;
+}
+</string>
+                    </property>
+                    <property name="text">
+                     <string>Apply</string>
+                    </property>
+                   </widget>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <item>
+             <widget class="QGroupBox" name="simulationSettings">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>250</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>1200</width>
+                <height>400</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QGroupBox {
+border-radius : 5px;
+background-color : rgb(69, 69, 69); color : white;
+}
+
+QFrame {
+border-radius : 5px;
+background-color : rgb(89, 89, 89); color : white;
+}
+
+QCheckBox {
+    spacing : 10px;
+	color : white;
+}
+
+QCheckBox::indicator {
+    top: 2px;
+    width: 16px;
+    height: 16px;
+}
+
+QCheckBox::indicator:unchecked {
+    image: url(:/icons/check_box_unchecked.png)
+}
+
+QCheckBox::indicator:unchecked:hover {
+    image: url(:/icons/checkbox_unchecked_pressed.png)
+}
+
+QCheckBox::indicator:unchecked:pressed {
+    image: url(:/icons/checkbox_unchecked_pressed.png)
+}
+
+QCheckBox::indicator:checked {
+    image: url(:/icons/checkbox_checked.png)
+}
+
+QCheckBox::indicator:checked:hover {
+    image: url(:/icons/checkbox_checked_pressed.png)
+}
+
+QCheckBox::indicator:checked:pressed {
+    image: url(:/icons/checkbox_checked_pressed.png)
+}
+
+QCheckBox::indicator:indeterminate:hover {
+    image: url(:/images/checkbox_indeterminate_hover.png);
+}
+
+QCheckBox::indicator:indeterminate:pressed {
+    image: url(:/images/checkbox_indeterminate_pressed.png);
+}</string>
+              </property>
+              <property name="title">
+               <string>Simultation Settings</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_14">
+               <item row="0" column="0">
+                <layout class="QHBoxLayout" name="horizontalLayout_6">
+                 <property name="topMargin">
+                  <number>20</number>
+                 </property>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_13">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QFrame" name="fpsSettingsFrame">
+                     <property name="maximumSize">
+                      <size>
+                       <width>250</width>
+                       <height>110</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                     </property>
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                     <widget class="QLabel" name="ruleSurviveLabel_6">
+                      <property name="geometry">
+                       <rect>
+                        <x>10</x>
+                        <y>13</y>
+                        <width>71</width>
+                        <height>31</height>
+                       </rect>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">border :  0px; border :  0px; color : white;</string>
+                      </property>
+                      <property name="text">
+                       <string>FPS</string>
+                      </property>
+                     </widget>
+                     <widget class="QComboBox" name="fpsSetter">
+                      <property name="enabled">
+                       <bool>true</bool>
+                      </property>
+                      <property name="geometry">
+                       <rect>
+                        <x>160</x>
+                        <y>10</y>
+                        <width>81</width>
+                        <height>40</height>
+                       </rect>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QComboBox {
+border-radius : 5px;
+background-color : rgb(69, 69, 69);
+color : white;
+padding-right : 20px;
+padding-left: 20px;
+}
+
+QComboBox::drop-down {
+    padding-right : 10px;
+	image: url(:/icons/drop_down.png);
+	min-width: 30px;
+	min-height: 20px;
+}
+
+QComboBox::drop-down::pressed {
+    padding-right : 10px;
+	image: url(:/icons/drop_down_pressed.png);
+	min-width: 30px;
+	min-height: 20px;
+}
+</string>
+                      </property>
+                      <item>
+                       <property name="text">
+                        <string>5</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>10</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>20</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>30</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>40</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>50</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>60</string>
+                       </property>
+                      </item>
+                     </widget>
+                     <widget class="QLabel" name="ruleSurviveLabel_8">
+                      <property name="geometry">
+                       <rect>
+                        <x>10</x>
+                        <y>60</y>
+                        <width>211</width>
+                        <height>41</height>
+                       </rect>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">border :  0px; border :  0px; color : white;</string>
+                      </property>
+                      <property name="text">
+                       <string>Skip count</string>
+                      </property>
+                     </widget>
+                     <widget class="QComboBox" name="skipFrameSetter">
+                      <property name="enabled">
+                       <bool>true</bool>
+                      </property>
+                      <property name="geometry">
+                       <rect>
+                        <x>160</x>
+                        <y>60</y>
+                        <width>81</width>
+                        <height>40</height>
+                       </rect>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QComboBox {
+border-radius : 5px;
+background-color : rgb(69, 69, 69);
+color : white;
+padding-right : 20px;
+padding-left: 20px;
+}
+
+QComboBox::drop-down {
+    padding-right : 10px;
+	image: url(:/icons/drop_down.png);
+	min-width: 30px;
+	min-height: 20px;
+}
+
+QComboBox::drop-down::pressed {
+    padding-right : 10px;
+	image: url(:/icons/drop_down_pressed.png);
+	min-width: 30px;
+	min-height: 20px;
+}
+</string>
+                      </property>
+                      <item>
+                       <property name="text">
+                        <string>0</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>1</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>2</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>4</string>
+                       </property>
+                      </item>
+                     </widget>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QFrame" name="frame_8">
+                     <property name="maximumSize">
+                      <size>
+                       <width>300</width>
+                       <height>110</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                     </property>
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                     <widget class="QCheckBox" name="enableRandom">
+                      <property name="geometry">
+                       <rect>
+                        <x>10</x>
+                        <y>20</y>
+                        <width>441</width>
+                        <height>20</height>
+                       </rect>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
+                      <property name="text">
+                       <string>Enable random cells</string>
+                      </property>
+                     </widget>
+                     <widget class="QCheckBox" name="enableRandom_2">
+                      <property name="geometry">
+                       <rect>
+                        <x>10</x>
+                        <y>70</y>
+                        <width>301</width>
+                        <height>20</height>
+                       </rect>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
+                      <property name="text">
+                       <string>Enable random structures</string>
+                      </property>
+                     </widget>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QFrame" name="frame_6">
+                     <property name="maximumSize">
+                      <size>
+                       <width>380</width>
+                       <height>60</height>
+                      </size>
+                     </property>
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                     <widget class="QLabel" name="label_17">
+                      <property name="geometry">
+                       <rect>
+                        <x>10</x>
+                        <y>10</y>
+                        <width>461</width>
+                        <height>41</height>
+                       </rect>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Add random each                            frame</string>
+                      </property>
+                     </widget>
+                     <widget class="QSpinBox" name="ruleGenerationsSpinBox_5">
+                      <property name="enabled">
+                       <bool>true</bool>
+                      </property>
+                      <property name="geometry">
+                       <rect>
+                        <x>180</x>
+                        <y>10</y>
+                        <width>111</width>
+                        <height>40</height>
+                       </rect>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="focusPolicy">
+                       <enum>Qt::WheelFocus</enum>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">
+QSpinBox {
+border-radius : 5px;
+background-color : rgb(69, 69, 69); 
+color : white;
+padding-left : 15px;
+padding-right : 50px;
+}
+
+QSpinBox::up-button {
+subcontrol-origin: border;
+subcontrol-position: center right; 
+border-image: url(:/icons/arrow_right.png);
+border : 1px;
+right : 10px;
+width : 10px;
+}
+
+QSpinBox::up-button::pressed {
+border-image: url(:/icons/arrow_right_pressed.png);
+}
+
+QSpinBox::down-button {
+subcontrol-origin: border;
+subcontrol-position: center right ;
+border-image: url(:/icons/arrow_left.png);
+border : 1px;
+right : 35px;
+width : 10px;
+}
+
+QSpinBox::down-button::pressed {
+border-image: url(:/icons/arrow_left_pressed.png);
+}
+</string>
+                      </property>
+                      <property name="frame">
+                       <bool>true</bool>
+                      </property>
+                      <property name="suffix">
+                       <string/>
+                      </property>
+                      <property name="minimum">
+                       <number>2</number>
+                      </property>
+                      <property name="maximum">
+                       <number>25</number>
+                      </property>
+                     </widget>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_14">
+                   <property name="spacing">
+                    <number>10</number>
+                   </property>
+                   <item>
+                    <widget class="QFrame" name="frame_9">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>180</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>480</width>
+                       <height>300</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                     </property>
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                     <widget class="QLabel" name="label_14">
+                      <property name="geometry">
+                       <rect>
+                        <x>20</x>
+                        <y>20</y>
+                        <width>301</width>
+                        <height>41</height>
+                       </rect>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>First generation cells per frame</string>
+                      </property>
+                     </widget>
+                     <widget class="QLabel" name="label_15">
+                      <property name="geometry">
+                       <rect>
+                        <x>20</x>
+                        <y>70</y>
+                        <width>281</width>
+                        <height>41</height>
+                       </rect>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Empty cells per frame</string>
+                      </property>
+                     </widget>
+                     <widget class="QSpinBox" name="ruleGenerationsSpinBox_2">
+                      <property name="enabled">
+                       <bool>true</bool>
+                      </property>
+                      <property name="geometry">
+                       <rect>
+                        <x>330</x>
+                        <y>20</y>
+                        <width>111</width>
+                        <height>40</height>
+                       </rect>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="focusPolicy">
+                       <enum>Qt::WheelFocus</enum>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">
+QSpinBox {
+border-radius : 5px;
+background-color : rgb(69, 69, 69); 
+color : white;
+padding-left : 15px;
+padding-right : 50px;
+}
+
+QSpinBox::up-button {
+subcontrol-origin: border;
+subcontrol-position: center right; 
+border-image: url(:/icons/arrow_right.png);
+border : 1px;
+right : 10px;
+width : 10px;
+}
+
+QSpinBox::up-button::pressed {
+border-image: url(:/icons/arrow_right_pressed.png);
+}
+
+QSpinBox::down-button {
+subcontrol-origin: border;
+subcontrol-position: center right ;
+border-image: url(:/icons/arrow_left.png);
+border : 1px;
+right : 35px;
+width : 10px;
+}
+
+QSpinBox::down-button::pressed {
+border-image: url(:/icons/arrow_left_pressed.png);
+}
+</string>
+                      </property>
+                      <property name="frame">
+                       <bool>true</bool>
+                      </property>
+                      <property name="suffix">
+                       <string/>
+                      </property>
+                      <property name="minimum">
+                       <number>2</number>
+                      </property>
+                      <property name="maximum">
+                       <number>25</number>
+                      </property>
+                     </widget>
+                     <widget class="QSpinBox" name="ruleGenerationsSpinBox_3">
+                      <property name="enabled">
+                       <bool>true</bool>
+                      </property>
+                      <property name="geometry">
+                       <rect>
+                        <x>330</x>
+                        <y>70</y>
+                        <width>111</width>
+                        <height>40</height>
+                       </rect>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="focusPolicy">
+                       <enum>Qt::WheelFocus</enum>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">
+QSpinBox {
+border-radius : 5px;
+background-color : rgb(69, 69, 69); 
+color : white;
+padding-left : 15px;
+padding-right : 50px;
+}
+
+QSpinBox::up-button {
+subcontrol-origin: border;
+subcontrol-position: center right; 
+border-image: url(:/icons/arrow_right.png);
+border : 1px;
+right : 10px;
+width : 10px;
+}
+
+QSpinBox::up-button::pressed {
+border-image: url(:/icons/arrow_right_pressed.png);
+}
+
+QSpinBox::down-button {
+subcontrol-origin: border;
+subcontrol-position: center right ;
+border-image: url(:/icons/arrow_left.png);
+border : 1px;
+right : 35px;
+width : 10px;
+}
+
+QSpinBox::down-button::pressed {
+border-image: url(:/icons/arrow_left_pressed.png);
+}
+</string>
+                      </property>
+                      <property name="frame">
+                       <bool>true</bool>
+                      </property>
+                      <property name="suffix">
+                       <string/>
+                      </property>
+                      <property name="minimum">
+                       <number>2</number>
+                      </property>
+                      <property name="maximum">
+                       <number>25</number>
+                      </property>
+                     </widget>
+                     <widget class="QSpinBox" name="ruleGenerationsSpinBox_4">
+                      <property name="enabled">
+                       <bool>true</bool>
+                      </property>
+                      <property name="geometry">
+                       <rect>
+                        <x>330</x>
+                        <y>120</y>
+                        <width>111</width>
+                        <height>40</height>
+                       </rect>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>40</height>
+                       </size>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="focusPolicy">
+                       <enum>Qt::WheelFocus</enum>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">
+QSpinBox {
+border-radius : 5px;
+background-color : rgb(69, 69, 69); 
+color : white;
+padding-left : 15px;
+padding-right : 50px;
+}
+
+QSpinBox::up-button {
+subcontrol-origin: border;
+subcontrol-position: center right; 
+border-image: url(:/icons/arrow_right.png);
+border : 1px;
+right : 10px;
+width : 10px;
+}
+
+QSpinBox::up-button::pressed {
+border-image: url(:/icons/arrow_right_pressed.png);
+}
+
+QSpinBox::down-button {
+subcontrol-origin: border;
+subcontrol-position: center right ;
+border-image: url(:/icons/arrow_left.png);
+border : 1px;
+right : 35px;
+width : 10px;
+}
+
+QSpinBox::down-button::pressed {
+border-image: url(:/icons/arrow_left_pressed.png);
+}
+</string>
+                      </property>
+                      <property name="frame">
+                       <bool>true</bool>
+                      </property>
+                      <property name="suffix">
+                       <string/>
+                      </property>
+                      <property name="minimum">
+                       <number>2</number>
+                      </property>
+                      <property name="maximum">
+                       <number>25</number>
+                      </property>
+                     </widget>
+                     <widget class="QLabel" name="label_16">
+                      <property name="geometry">
+                       <rect>
+                        <x>20</x>
+                        <y>120</y>
+                        <width>281</width>
+                        <height>41</height>
+                       </rect>
+                      </property>
+                      <property name="font">
+                       <font>
+                        <pointsize>11</pointsize>
+                        <weight>75</weight>
+                        <bold>true</bold>
+                       </font>
+                      </property>
+                      <property name="text">
+                       <string>Intermediate cells generations per frame</string>
+                      </property>
+                     </widget>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QFrame" name="frame_7">
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QGroupBox" name="groupBox_2">
+              <property name="maximumSize">
+               <size>
+                <width>300</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <pointsize>11</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69); color : white;</string>
+              </property>
+              <property name="title">
+               <string>Window Settings</string>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_12">
+               <item row="0" column="0">
+                <layout class="QHBoxLayout" name="horizontalLayout_5">
+                 <property name="leftMargin">
+                  <number>10</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>20</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>10</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>10</number>
+                 </property>
+                 <item>
+                  <widget class="QFrame" name="windowSettingsPanel1">
+                   <property name="styleSheet">
+                    <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabAbout">
+       <attribute name="title">
+        <string>About</string>
+       </attribute>
       </widget>
      </widget>
-     <widget class="QFrame" name="ruleSurviving">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>130</y>
-        <width>541</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <widget class="QLabel" name="ruleSurviveLabel">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>10</y>
-         <width>231</width>
-         <height>16</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Cell survives when neighbor count is</string>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QPushButton" name="updateButton">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>250</y>
-        <width>93</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color : white</string>
-      </property>
-      <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
-    </widget>
-   </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
- <resources/>
+ <customwidgets>
+  <customwidget>
+   <class>PlotWidget</class>
+   <extends>QGraphicsView</extends>
+   <header>pyqtgraph</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="resources/ico_res.qrc"/>
+ </resources>
  <connections/>
 </ui>

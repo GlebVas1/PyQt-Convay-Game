@@ -1,0 +1,28 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>check_box_unchecked.png</file>
+    <file>checkbox_checked.png</file>
+    <file>checkbox_checked_pressed.png</file>
+    <file>checkbox_unchecked_pressed.png</file>
+    <file>drop_down.png</file>
+    <file>drop_down_pressed.png</file>
+    <file>arrow_down_pressed.png</file>
+    <file>arrow_left_pressed.png</file>
+    <file>arrow_right_pressed.png</file>
+    <file>pause_disabled.png</file>
+    <file>play_disabled.png</file>
+    <file>game_pressed_ico.png</file>
+    <file>graph_pressed_ico.png</file>
+    <file>settings_pressed_ico.png</file>
+    <file>graph_ico.png</file>
+    <file>game_ico.png</file>
+    <file>pause.png</file>
+    <file>play.png</file>
+    <file>settings_ico.png</file>
+    <file>arrow_down.png</file>
+    <file>arrow_left.png</file>
+    <file>arrow_right.png</file>
+    <file>arrow_up.png</file>
+    <file>settings_ico.png</file>
+  </qresource>
+</RCC>
