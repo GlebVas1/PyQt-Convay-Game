@@ -22,7 +22,7 @@ class SettingsColorPalleteManager(object):
             self.colorPalleteComboBox.addItem(name)
 
     def changeGamePalletePreview(self, value):
-        name = self.colorPalleteComboBox.itemText(value)
+        name = self.colorPalleteComboBox.currentText()
         self.initializeSettingsColorPreview(cp.colorPalletesDict[name])
         
     def initializeSettingsColorPreview(self, colorPallete : list):

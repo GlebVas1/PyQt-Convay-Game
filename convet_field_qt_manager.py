@@ -58,8 +58,6 @@ class ConveyFieldQtManager(MainPlotController,
 
         self.calc = cl.Field()
 
-       
-
         self.initializeSettingsRuleFrameActions()
         self.initializeSettingsRuleFrame()
         self.initializeSettingsRuleComboBox()
@@ -79,7 +77,10 @@ class ConveyFieldQtManager(MainPlotController,
         self.initializeMiniPlot()
 
         self.initializeColorPallete()
+
         self.initializeBrushManager()
+        self.initializeObjectComboBox()
+
         self.initializeObjectPreview(ob.glider)
 
         self.initializeStopStartManager()

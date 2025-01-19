@@ -3,6 +3,13 @@ import random
 from PyQt5 import QtWidgets, QtCore
 from functools import partial
 
+import gameObjects as ob
+
+GBM_PREVIEW_SIZE = 7
+GBM_PREVIEW_TILE_SIZE = 30
+GBM_TILE_PADDING = 5
+
+
 class BrushManager(object):
 
     brushSize = 1
@@ -25,6 +32,11 @@ class BrushManager(object):
         self.fillAllCells.clicked.connect(self.changeAllButtonsStateInGame)
         self.brushSetRadioButton.clicked.connect(self.setBrushOption)
         self.objectSetRadioButton.clicked.connect(self.setBrushOption)
+        self.objectsPresets.currentIndexChanged.connect(self.setNewObjectToPreview)
+
+    def initializeObjectComboBox(self):
+        for name, pallete in ob.objectsDict.items():
+            self.objectsPresets.addItem(name)
 
     def initializeObjectPreview(self, object : list):
         self.brushCurrentObject = object.copy()
@@ -32,22 +44,30 @@ class BrushManager(object):
         for frame in self.brushManagerPreviewFrames:
             frame.setParent(None)
 
-        for i in range(5):
-            for j in range(5):
+        for i in range(GBM_PREVIEW_SIZE):
+            for j in range(GBM_PREVIEW_SIZE):
                 frame = QtWidgets.QFrame(self.objectPreview)
-                frame.setObjectName(str("objectPrewiewSet") + str(i * 5 + j))
-                frame.setGeometry(QtCore.QRect(5 + (22 + 5) * i, 5 + (22 + 5) * j, 22, 22))
+                frame.setObjectName(str("objectPrewiewSet") + str(i * GBM_PREVIEW_SIZE + j))
+                frame.setGeometry(QtCore.QRect(GBM_TILE_PADDING + (GBM_PREVIEW_TILE_SIZE + GBM_TILE_PADDING) * i, GBM_TILE_PADDING + (GBM_PREVIEW_TILE_SIZE + GBM_TILE_PADDING) * j, GBM_PREVIEW_TILE_SIZE, GBM_PREVIEW_TILE_SIZE))
                 frame.setStyleSheet("background-color : " + self.gameColorPalleteQt[0])
                 self.brushManagerPreviewFrames.append(frame)
                 frame.show()
         
         self.updateObjectPreview()
 
+    def setNewObjectToPreview(self):
+        self.brushCurrentObject = ob.objectsDict[self.objectsPresets.currentText()].copy()
+        print(self.objectsPresets.currentText())
+        self.updateObjectPreview()
+
     def updateObjectPreview(self):
-        for i in range(5):
-            for j in range(5):
+        print(self.brushCurrentObject)
+        for i in range(GBM_PREVIEW_SIZE):
+            for j in range(GBM_PREVIEW_SIZE):
                 if self.brushCurrentObject[i][j] == 1:
-                    self.brushManagerPreviewFrames[i * 5 + j].setStyleSheet("background-color : " + self.gameColorPalleteQt[self.currentBrushState])
+                    self.brushManagerPreviewFrames[i * GBM_PREVIEW_SIZE + j].setStyleSheet("background-color : " + self.gameColorPalleteQt[self.currentBrushState])
+                else:
+                    self.brushManagerPreviewFrames[i * GBM_PREVIEW_SIZE + j].setStyleSheet("background-color : rgb(49, 49, 49)")
 
 
 
@@ -61,7 +81,7 @@ class BrushManager(object):
                 for j in range(1 - size, size):
                 
                     if self.brushSetRound.isChecked():
-                        if i ** 2 + j ** 2 >= size ** 2:
+                        if i ** 2 + j ** 2 >= size:
                             continue
                     x1 = (x + i + self.xFieldSize) % self.xFieldSize
                     y1 = (y + j + self.yFieldSize) % self.yFieldSize
@@ -73,8 +93,8 @@ class BrushManager(object):
         else:
             for i in range(5):
                 for j in range(5):
-                    x1 = (x + i - 2 + self.xFieldSize) % self.xFieldSize
-                    y1 = (y + j - 2 + self.yFieldSize) % self.yFieldSize
+                    x1 = (x + i - GBM_PREVIEW_SIZE // 2 + self.xFieldSize) % self.xFieldSize
+                    y1 = (y + j - GBM_PREVIEW_SIZE // 2 + self.yFieldSize) % self.yFieldSize
                     if self.brushCurrentObject[i][j] == 1:
                         self.changeButtonState(x1, y1, self.currentBrushState)
                 
