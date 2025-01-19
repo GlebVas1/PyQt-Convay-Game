@@ -132,11 +132,11 @@ class ConveyFieldQtManager(MainPlotController,
 
     def changeButtonStateInGame(self, x : int, y : int):
         """change one button state by game parametrs"""
-        self.changeButtonState(x, y, self.currentBrushState)
+        self.changeButtonState(x, y, self.colorPalleteManagerCurrentBrushState)
 
     def changeAllButtonsStateInGame(self):
         """change all buttons to a specific state by game paramters"""
-        self.changeAllButtons(self.currentBrushState)
+        self.changeAllButtons(self.colorPalleteManagerCurrentBrushState)
 
     def updateFieldColors(self):
         for x in range(self.xFieldSize):
@@ -177,6 +177,7 @@ class ConveyFieldQtManager(MainPlotController,
         self.AliveCellsLCD.display(self.alliveCellsCounter)        
 
     def gameManagerSyncChanges(self):
+        self.settingsColorPalleteApplyPreview()
         self.colorPalleteManagerInitialize()
         self.objectManagerUpdateObjectToPreview()
         self.updateFieldColors()

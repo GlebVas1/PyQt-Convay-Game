@@ -38,11 +38,11 @@ class ColorPalleteManager(object):
         self.colorPallete.setMaximumSize(QtCore.QSize(CPM_PADDING_SIZE * (currentColumns + 2)  + CPM_TILE_SIZE * (currentColumns + 1), (realYCellsCount + 1) * CPM_PADDING_SIZE + (realYCellsCount) * CPM_TILE_SIZE))
         self.colorPallete.setMinimumSize(QtCore.QSize(CPM_PADDING_SIZE * (currentColumns + 2)  + CPM_TILE_SIZE * (currentColumns + 1), (realYCellsCount + 1) * CPM_PADDING_SIZE + (realYCellsCount) * CPM_TILE_SIZE))
 
-        self.currentBrushState = min(self.currentBrushState,self.thisRule.generationsCount)
-        self.selectedColorPanel.setStyleSheet("background-color : " + self.gameColorPalleteQt[self.currentBrushState])
+        self.colorPalleteManagerCurrentBrushState = min(self.colorPalleteManagerCurrentBrushState,self.thisRule.generationsCount)
+        self.selectedColorPanel.setStyleSheet("background-color : " + self.gameColorPalleteQt[self.colorPalleteManagerCurrentBrushState])
     
     def colorPalleteManagerSetState(self, val : int):
-        self.currentBrushState = val
+        self.colorPalleteManagerCurrentBrushState = val
         self.objectManagerUpdateObjectToPreview()
         self.selectedColorPanel.setStyleSheet("background-color : " + self.gameColorPalleteQt[val])
 

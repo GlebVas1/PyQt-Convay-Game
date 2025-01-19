@@ -10,7 +10,7 @@ class SettingsColorPalleteManager(object):
 
     def settingsColorInitializeActions(self):
         self.colorPalleteComboBox.currentIndexChanged.connect(self.settingsColorPalleteChangePreview)
-        self.colorPalleteApply.clicked.connect(self.settingsColorPalleteApplyPreview)
+        self.colorPalleteApply.clicked.connect(self.settingColorPalleteSyncPallete)
 
     def settingsColorPalleteInitialize(self, colorPallete : list):
         pallete = self.SettingsColorPalleteConvertPalleteToSize(colorPallete.copy(), self.calc.thisRule.generationsCount + 1)
@@ -45,11 +45,15 @@ class SettingsColorPalleteManager(object):
         
         self.colorPalletePreview.show()
 
+    def settingColorPalleteSyncPallete(self):
+        self.gameManagerSyncChanges()
+
     def settingsColorPalleteApplyPreview(self):
         name = self.colorPalleteComboBox.currentText()
         pallete = self.SettingsColorPalleteConvertPalleteToSize(cp.colorPalletesDict[name].copy(), self.calc.thisRule.generationsCount + 1)
+        self.settingsColorPalleteInitialize(pallete)
+
         
-        self.gameManagerSyncChanges()
         
 
 

@@ -18,7 +18,7 @@ class BrushManager(object):
     # 1 - brush
     # 2 - object
 
-    currentBrushOption = 1
+    brushManagerCurrentBrushOption = 1
 
     brushManagerPreviewFrames = []
 
@@ -29,9 +29,10 @@ class BrushManager(object):
         self.brushSizeSpinBox.valueChanged.connect(self.BrushManagerSetSize)
         self.fillAllCells.clicked.connect(self.changeAllButtonsStateInGame)
         self.brushSetRadioButton.clicked.connect(self.BrushManagerSetOption)
+        self.objectSetRadioButton.clicked.connect(self.BrushManagerSetOption)
 
     def paintInPlace(self, x : int, y : int):
-        if self.currentBrushOption == 1:
+        if self.brushManagerCurrentBrushOption == 1:
             size = self.brushSize
             if self.brushRandomSize.isChecked():
                 size = random.randint(0, 5)
@@ -61,6 +62,6 @@ class BrushManager(object):
         self.brushSize = self.brushSizeSpinBox.value()
 
     def BrushManagerSetOption(self):
-        self.currentBrushOption = 1 if self.brushSetRadioButton.isChecked() else 2
+        self.brushManagerCurrentBrushOption = 1 if self.brushSetRadioButton.isChecked() else 2
         
     

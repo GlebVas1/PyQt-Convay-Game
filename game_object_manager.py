@@ -11,7 +11,6 @@ GBM_TILE_PADDING = 5
 
 class ObjectManager(object):
     def objectManagerInitializeActions(self):
-        self.objectSetRadioButton.clicked.connect(self.setBrushOption)
         self.objectsPresets.currentIndexChanged.connect(self.objectManagerSetToPreview)
 
     def objectManagerInitializeComboBox(self):

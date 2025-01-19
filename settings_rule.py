@@ -74,7 +74,7 @@ class settingsRuleManager(object):
             self.thisRule.surviveIfNeighborCount[i] = 1 if self.settingsRuleCheckBoxesSurvive[i].isChecked() else 0
 
         self.thisRule.generationsCount = self.ruleGenerationsSpinBox.value() - 1
-        
-        self.calc.initializeStatistics()
 
+        self.calc.initializeStatistics()
+        
         self.settingsColorPalleteApplyPreview()
