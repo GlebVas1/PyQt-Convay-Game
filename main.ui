@@ -114,7 +114,7 @@ color : white;
 </string>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <property name="iconSize">
        <size>
@@ -1290,13 +1290,16 @@ QComboBox QAbstractItemView QScrollBar::sub-line:vertical {
                              <string notr="true">QPushButton {
 	border-radius : 5px;
 	background-color : rgb(69, 69, 69);
-	background-image : url(:/icons/flip_vertical.png)
+    image : url(:/icons/flip_vertical.png);
+	padding: 10px 10px 10px 10px;
 	color : white;
 }
 
 QPushButton:pressed {
     background-color: rgb(49, 49, 49);
-	image : url(:/icons/flip_vertical_pressed.png)
+	border-radius : 5px;
+	image : url(:/icons/flip_vertical_pressed.png);
+	padding: 10px 10px 10px 10px;
     border-style: inset;
 }
 </string>
@@ -1324,11 +1327,16 @@ QPushButton:pressed {
                              <string notr="true">QPushButton {
 	border-radius : 5px;
 	background-color : rgb(69, 69, 69);
+    image : url(:/icons/rotate_clockwise.png);
+	padding: 10px 10px 10px 10px;
 	color : white;
 }
 
 QPushButton:pressed {
     background-color: rgb(49, 49, 49);
+	background-color : rgb(69, 69, 69);
+	image : url(:/icons/rotate_clockwise_pressed.png);
+	padding: 10px 10px 10px 10px;
     border-style: inset;
 }
 </string>
@@ -1339,7 +1347,7 @@ QPushButton:pressed {
                            </widget>
                           </item>
                           <item>
-                           <widget class="QPushButton" name="pushButton">
+                           <widget class="QPushButton" name="objectInvertButton">
                             <property name="minimumSize">
                              <size>
                               <width>0</width>

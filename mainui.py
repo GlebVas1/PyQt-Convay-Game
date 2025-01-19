@@ -709,13 +709,16 @@ class Ui_MainWindow(object):
         self.objectFlipButton.setStyleSheet("QPushButton {\n"
 "    border-radius : 5px;\n"
 "    background-color : rgb(69, 69, 69);\n"
-"    background-image : url(:/icons/flip_vertical.png)\n"
+"    image : url(:/icons/flip_vertical.png);\n"
+"    padding: 10px 10px 10px 10px;\n"
 "    color : white;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
 "    background-color: rgb(49, 49, 49);\n"
-"    image : url(:/icons/flip_vertical_pressed.png)\n"
+"    border-radius : 5px;\n"
+"    image : url(:/icons/flip_vertical_pressed.png);\n"
+"    padding: 10px 10px 10px 10px;\n"
 "    border-style: inset;\n"
 "}\n"
 "")
@@ -728,25 +731,30 @@ class Ui_MainWindow(object):
         self.objectRotateButton.setStyleSheet("QPushButton {\n"
 "    border-radius : 5px;\n"
 "    background-color : rgb(69, 69, 69);\n"
+"    image : url(:/icons/rotate_clockwise.png);\n"
+"    padding: 10px 10px 10px 10px;\n"
 "    color : white;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
 "    background-color: rgb(49, 49, 49);\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    image : url(:/icons/rotate_clockwise_pressed.png);\n"
+"    padding: 10px 10px 10px 10px;\n"
 "    border-style: inset;\n"
 "}\n"
 "")
         self.objectRotateButton.setText("")
         self.objectRotateButton.setObjectName("objectRotateButton")
         self.horizontalLayout_10.addWidget(self.objectRotateButton)
-        self.pushButton = QtWidgets.QPushButton(self.frame_5)
-        self.pushButton.setMinimumSize(QtCore.QSize(0, 60))
+        self.objectInvertButton = QtWidgets.QPushButton(self.frame_5)
+        self.objectInvertButton.setMinimumSize(QtCore.QSize(0, 60))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("QPushButton {\n"
+        self.objectInvertButton.setFont(font)
+        self.objectInvertButton.setStyleSheet("QPushButton {\n"
 "    border-radius : 5px;\n"
 "    background-color : rgb(69, 69, 69);\n"
 "    color : white;\n"
@@ -757,8 +765,8 @@ class Ui_MainWindow(object):
 "    border-style: inset;\n"
 "}\n"
 "")
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout_10.addWidget(self.pushButton)
+        self.objectInvertButton.setObjectName("objectInvertButton")
+        self.horizontalLayout_10.addWidget(self.objectInvertButton)
         self.verticalLayout_10.addLayout(self.horizontalLayout_10)
         self.gridLayout_11.addLayout(self.verticalLayout_10, 0, 0, 1, 1)
         self.gridLayout_4.addWidget(self.frame_5, 0, 0, 1, 1)
@@ -2434,7 +2442,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -2452,7 +2460,7 @@ class Ui_MainWindow(object):
         self.brushRandomState.setText(_translate("MainWindow", "State"))
         self.brushSetRadioButton.setText(_translate("MainWindow", "Brush"))
         self.objectSetRadioButton.setText(_translate("MainWindow", "Object"))
-        self.pushButton.setText(_translate("MainWindow", "Invert"))
+        self.objectInvertButton.setText(_translate("MainWindow", "Invert"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabDisplay), _translate("MainWindow", "Game"))
         self.plotSettingsLabel.setText(_translate("MainWindow", "Plot Settings"))
         self.label_13.setText(_translate("MainWindow", "Line thickness"))

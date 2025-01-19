@@ -5,6 +5,8 @@ from functools import partial
 
 import gameObjects as ob
 
+import copy
+
 GBM_PREVIEW_SIZE = 7
 GBM_PREVIEW_TILE_SIZE = 30
 GBM_TILE_PADDING = 5
@@ -12,6 +14,9 @@ GBM_TILE_PADDING = 5
 class ObjectManager(object):
     def objectManagerInitializeActions(self):
         self.objectsPresets.currentIndexChanged.connect(self.objectManagerSetToPreview)
+        self.objectInvertButton.clicked.connect(self.objectManagerInvertObject)
+        self.objectFlipButton.clicked.connect(self.objectManagerFlipObject)
+        self.objectRotateButton.clicked.connect(self.objectManagerRotateClockwiseObject)
 
     def objectManagerInitializeComboBox(self):
         for name, pallete in ob.objectsDict.items():
@@ -33,8 +38,7 @@ class ObjectManager(object):
         self.objectManagerUpdateObjectToPreview()
 
     def objectManagerSetToPreview(self):
-        self.brushCurrentObject = ob.objectsDict[self.objectsPresets.currentText()].copy()
-        print(self.objectsPresets.currentText())
+        self.brushCurrentObject = copy.deepcopy(ob.objectsDict[self.objectsPresets.currentText()])
         self.objectManagerUpdateObjectToPreview()
 
     def objectManagerUpdateObjectToPreview(self):
@@ -44,4 +48,31 @@ class ObjectManager(object):
                     self.brushManagerPreviewFrames[i * GBM_PREVIEW_SIZE + j].setStyleSheet("background-color : " + self.gameColorPalleteQt[self.colorPalleteManagerCurrentBrushState])
                 else:
                     self.brushManagerPreviewFrames[i * GBM_PREVIEW_SIZE + j].setStyleSheet("background-color : rgb(49, 49, 49)")
+
+    def objectManagerInvertObject(self):
+        for i in range(GBM_PREVIEW_SIZE):
+            for j in range(GBM_PREVIEW_SIZE):
+                self.brushCurrentObject[i][j] = 1 - self.brushCurrentObject[i][j]
+
+        self.objectManagerUpdateObjectToPreview()
+
+    def objectManagerRotateClockwiseObject(self):
+        new_object = copy.deepcopy(self.brushCurrentObject)
+        for i in range(GBM_PREVIEW_SIZE):
+            for j in range(GBM_PREVIEW_SIZE):
+                new_object[i][j] = self.brushCurrentObject[j][GBM_PREVIEW_SIZE - 1 - i]
+
+        self.brushCurrentObject = new_object.copy()
+        self.objectManagerUpdateObjectToPreview()
+
+    def objectManagerFlipObject(self):
+        new_object = copy.deepcopy(self.brushCurrentObject)
+        for i in range(GBM_PREVIEW_SIZE):
+            for j in range(GBM_PREVIEW_SIZE):
+                new_object[i][j] = self.brushCurrentObject[GBM_PREVIEW_SIZE - 1 - i][j]
+
+        self.brushCurrentObject = new_object.copy()
+        self.objectManagerUpdateObjectToPreview()
+
+
 
