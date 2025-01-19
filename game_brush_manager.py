@@ -91,8 +91,8 @@ class BrushManager(object):
                     else:
                         self.changeButtonStateInGame(x1, y1)
         else:
-            for i in range(5):
-                for j in range(5):
+            for i in range(GBM_PREVIEW_SIZE):
+                for j in range(GBM_PREVIEW_SIZE):
                     x1 = (x + i - GBM_PREVIEW_SIZE // 2 + self.xFieldSize) % self.xFieldSize
                     y1 = (y + j - GBM_PREVIEW_SIZE // 2 + self.yFieldSize) % self.yFieldSize
                     if self.brushCurrentObject[i][j] == 1:
