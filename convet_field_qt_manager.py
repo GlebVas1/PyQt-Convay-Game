@@ -5,6 +5,7 @@ from functools import partial
 import calc as cl
 import colorPalletes as cp
 import rules as ru
+import gameObjects as ob
 
 from main_plot_qt_manager import MainPlotController
 from color_pallete_manager import ColorPalleteManager
@@ -79,6 +80,7 @@ class ConveyFieldQtManager(MainPlotController,
 
         self.initializeColorPallete()
         self.initializeBrushManager()
+        self.initializeObjectPreview(ob.glider)
 
         self.initializeStopStartManager()
 
@@ -127,22 +129,11 @@ class ConveyFieldQtManager(MainPlotController,
 
     def changeButtonStateInGame(self, x : int, y : int):
         """change one button state by game parametrs"""
-        val = self.currentBrushState
-        self.gameButtons[x * self.yFieldSize + y].setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameColorPalleteQt[val])
-        self.gameButtonsStates[x * self.yFieldSize + y] = val
-        self.calc.setCell(x, y, val)
+        self.changeButtonState(x, y, self.currentBrushState)
 
     def changeAllButtonsStateInGame(self):
         """change all buttons to a specific state by game paramters"""
-        val = self.currentBrushState
-
-        for button in self.gameButtons:
-            button.setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameColorPalleteQt[val])
-           
-        for v in self.gameButtonsStates:
-            v = val
-
-        self.calc.field.fill(val)
+        self.changeAllButtons(self.currentBrushState)
 
     def updateFieldColors(self):
         for x in range(self.xFieldSize):

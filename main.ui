@@ -12,13 +12,13 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1500</width>
-    <height>900</height>
+    <width>1600</width>
+    <height>901</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>1500</width>
+    <width>1600</width>
     <height>900</height>
    </size>
   </property>
@@ -145,9 +145,9 @@ color : white;
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout">
+         <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2,1">
           <item>
-           <layout class="QVBoxLayout" name="infoPanelLayout" stretch="0,0">
+           <layout class="QVBoxLayout" name="infoPanelLayout" stretch="0,0,0">
             <property name="spacing">
              <number>2</number>
             </property>
@@ -157,6 +157,131 @@ color : white;
             <property name="rightMargin">
              <number>10</number>
             </property>
+            <item>
+             <widget class="QFrame" name="gameContolPanel">
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>150</width>
+                <height>80</height>
+               </size>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::RightToLeft</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69)</string>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QGridLayout" name="gridLayout_5">
+               <item row="0" column="0">
+                <widget class="QPushButton" name="playButton">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>60</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>60</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="layoutDirection">
+                  <enum>Qt::LeftToRight</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+	border-radius : 5px;
+	background-color : rgb(89, 89, 89)
+}
+
+QPushButton:pressed {
+    background-color: rgb(49, 49, 49);
+    border-style: inset;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resources/ico_res.qrc">
+                   <normaloff>:/icons/play.png</normaloff>
+                   <disabledoff>:/icons/play_disabled.png</disabledoff>
+                   <disabledon>:/icons/play_disabled.png</disabledon>
+                   <activeoff>:/icons/play.png</activeoff>:/icons/play.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>40</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QPushButton" name="stopButton">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>60</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>60</width>
+                   <height>60</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+	border-radius : 5px;
+	background-color : rgb(89, 89, 89)
+}
+
+QPushButton:pressed {
+    background-color: rgb(49, 49, 49);
+    border-style: inset;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="resources/ico_res.qrc">
+                   <normaloff>:/icons/pause.png</normaloff>
+                   <disabledoff>:/icons/pause_disabled.png</disabledoff>
+                   <activeoff>:/icons/pause_disabled.png</activeoff>:/icons/pause.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>40</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
             <item>
              <widget class="QFrame" name="miniPlot">
               <property name="minimumSize">
@@ -428,144 +553,19 @@ background-color : rgb(69, 69, 69)</string>
              <number>10</number>
             </property>
             <item>
-             <widget class="QFrame" name="gameContolPanel">
-              <property name="minimumSize">
-               <size>
-                <width>150</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>150</width>
-                <height>80</height>
-               </size>
-              </property>
-              <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">border-radius : 5px;
-background-color : rgb(69, 69, 69)</string>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-              <layout class="QGridLayout" name="gridLayout_5">
-               <item row="0" column="0">
-                <widget class="QPushButton" name="playButton">
-                 <property name="enabled">
-                  <bool>true</bool>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>60</width>
-                   <height>60</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>60</width>
-                   <height>60</height>
-                  </size>
-                 </property>
-                 <property name="layoutDirection">
-                  <enum>Qt::LeftToRight</enum>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QPushButton {
-	border-radius : 5px;
-	background-color : rgb(89, 89, 89)
-}
-
-QPushButton:pressed {
-    background-color: rgb(49, 49, 49);
-    border-style: inset;
-}</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="icon">
-                  <iconset resource="resources/ico_res.qrc">
-                   <normaloff>:/icons/play.png</normaloff>
-                   <disabledoff>:/icons/play_disabled.png</disabledoff>
-                   <disabledon>:/icons/play_disabled.png</disabledon>
-                   <activeoff>:/icons/play.png</activeoff>:/icons/play.png</iconset>
-                 </property>
-                 <property name="iconSize">
-                  <size>
-                   <width>40</width>
-                   <height>40</height>
-                  </size>
-                 </property>
-                </widget>
-               </item>
-               <item row="0" column="1">
-                <widget class="QPushButton" name="stopButton">
-                 <property name="enabled">
-                  <bool>true</bool>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>60</width>
-                   <height>60</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>60</width>
-                   <height>60</height>
-                  </size>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QPushButton {
-	border-radius : 5px;
-	background-color : rgb(89, 89, 89)
-}
-
-QPushButton:pressed {
-    background-color: rgb(49, 49, 49);
-    border-style: inset;
-}</string>
-                 </property>
-                 <property name="text">
-                  <string/>
-                 </property>
-                 <property name="icon">
-                  <iconset resource="resources/ico_res.qrc">
-                   <normaloff>:/icons/pause.png</normaloff>
-                   <disabledoff>:/icons/pause_disabled.png</disabledoff>
-                   <activeoff>:/icons/pause_disabled.png</activeoff>:/icons/pause.png</iconset>
-                 </property>
-                 <property name="iconSize">
-                  <size>
-                   <width>40</width>
-                   <height>40</height>
-                  </size>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item>
              <layout class="QHBoxLayout" name="horizontalLayout_7">
               <item>
                <widget class="QFrame" name="pickToolPanel">
                 <property name="minimumSize">
                  <size>
                   <width>180</width>
-                  <height>699</height>
+                  <height>800</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>200</width>
-                  <height>700</height>
+                  <width>185</width>
+                  <height>800</height>
                  </size>
                 </property>
                 <property name="styleSheet">
@@ -578,67 +578,11 @@ background-color : rgb(69, 69, 69)</string>
                 <property name="frameShadow">
                  <enum>QFrame::Raised</enum>
                 </property>
-                <layout class="QGridLayout" name="gridLayout_4">
-                 <item row="1" column="0">
-                  <widget class="QFrame" name="frame_5">
-                   <property name="maximumSize">
-                    <size>
-                     <width>16777215</width>
-                     <height>300</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">border-radius : 5px;
-background-color : rgb(89, 89, 89)</string>
-                   </property>
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <layout class="QGridLayout" name="gridLayout_11">
-                    <item row="0" column="0">
-                     <layout class="QVBoxLayout" name="verticalLayout_10">
-                      <item>
-                       <widget class="QPushButton" name="pushButton">
-                        <property name="maximumSize">
-                         <size>
-                          <width>16777215</width>
-                          <height>50</height>
-                         </size>
-                        </property>
-                        <property name="font">
-                         <font>
-                          <pointsize>11</pointsize>
-                          <weight>75</weight>
-                          <bold>true</bold>
-                         </font>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">QPushButton {
-	border-radius : 5px;
-	background-color : rgb(69, 69, 69);
-	color : white;
-}
-
-QPushButton:pressed {
-    background-color: rgb(49, 49, 49);
-    border-style: inset;
-}
-</string>
-                        </property>
-                        <property name="text">
-                         <string>Place</string>
-                        </property>
-                       </widget>
-                      </item>
-                     </layout>
-                    </item>
-                   </layout>
-                  </widget>
-                 </item>
-                 <item row="0" column="0">
+                <layout class="QVBoxLayout" name="verticalLayout_15">
+                 <property name="spacing">
+                  <number>10</number>
+                 </property>
+                 <item>
                   <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,0">
                    <property name="spacing">
                     <number>10</number>
@@ -648,6 +592,12 @@ QPushButton:pressed {
                    </property>
                    <item>
                     <widget class="QFrame" name="frame">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>150</height>
+                      </size>
+                     </property>
                      <property name="maximumSize">
                       <size>
                        <width>16777215</width>
@@ -1052,6 +1002,235 @@ QCheckBox::indicator:indeterminate:pressed {
                    </item>
                   </layout>
                  </item>
+                 <item>
+                  <widget class="QFrame" name="frame_19">
+                   <property name="minimumSize">
+                    <size>
+                     <width>0</width>
+                     <height>70</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>70</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <widget class="QRadioButton" name="brushSetRadioButton">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>10</y>
+                      <width>171</width>
+                      <height>20</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">color : white</string>
+                    </property>
+                    <property name="text">
+                     <string>Brush</string>
+                    </property>
+                   </widget>
+                   <widget class="QRadioButton" name="objectSetRadioButton">
+                    <property name="geometry">
+                     <rect>
+                      <x>10</x>
+                      <y>40</y>
+                      <width>171</width>
+                      <height>20</height>
+                     </rect>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                      <weight>75</weight>
+                      <bold>true</bold>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">color : white</string>
+                    </property>
+                    <property name="text">
+                     <string>Object</string>
+                    </property>
+                   </widget>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QFrame" name="frame_5">
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>300</height>
+                    </size>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">border-radius : 5px;
+background-color : rgb(89, 89, 89)</string>
+                   </property>
+                   <property name="frameShape">
+                    <enum>QFrame::StyledPanel</enum>
+                   </property>
+                   <property name="frameShadow">
+                    <enum>QFrame::Raised</enum>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_11">
+                    <item row="0" column="0">
+                     <layout class="QVBoxLayout" name="verticalLayout_10" stretch="0,0,0">
+                      <property name="spacing">
+                       <number>10</number>
+                      </property>
+                      <item>
+                       <widget class="QFrame" name="objectPreview">
+                        <property name="minimumSize">
+                         <size>
+                          <width>140</width>
+                          <height>140</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>130</width>
+                          <height>130</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">border-radius : 5px;
+background-color : rgb(69, 69, 69)</string>
+                        </property>
+                        <property name="frameShape">
+                         <enum>QFrame::StyledPanel</enum>
+                        </property>
+                        <property name="frameShadow">
+                         <enum>QFrame::Raised</enum>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QComboBox" name="objectsPresets">
+                        <property name="minimumSize">
+                         <size>
+                          <width>0</width>
+                          <height>40</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">QComboBox {
+border-radius : 5px;
+background-color : rgb(69, 69, 69);
+color : white;
+padding-right : 20px;
+padding-left: 20px;
+}
+
+QComboBox::drop-down {
+    padding-right : 10px;
+	image: url(:/icons/drop_down.png);
+	min-width: 30px;
+	min-height: 20px;
+}
+
+QComboBox::drop-down::pressed {
+    padding-right : 10px;
+	image: url(:/icons/drop_down_pressed.png);
+	min-width: 30px;
+	min-height: 20px;
+}
+</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <layout class="QHBoxLayout" name="horizontalLayout_10">
+                        <item>
+                         <widget class="QPushButton" name="objectFlipButton">
+                          <property name="minimumSize">
+                           <size>
+                            <width>60</width>
+                            <height>60</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>60</width>
+                            <height>60</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QPushButton {
+	border-radius : 5px;
+	background-color : rgb(69, 69, 69);
+	color : white;
+}
+
+QPushButton:pressed {
+    background-color: rgb(49, 49, 49);
+    border-style: inset;
+}
+</string>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="objectRotateButton">
+                          <property name="minimumSize">
+                           <size>
+                            <width>60</width>
+                            <height>60</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>60</width>
+                            <height>60</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QPushButton {
+	border-radius : 5px;
+	background-color : rgb(69, 69, 69);
+	color : white;
+}
+
+QPushButton:pressed {
+    background-color: rgb(49, 49, 49);
+    border-style: inset;
+}
+</string>
+                          </property>
+                          <property name="text">
+                           <string/>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </item>
+                     </layout>
+                    </item>
+                   </layout>
+                  </widget>
+                 </item>
                 </layout>
                </widget>
               </item>
@@ -1065,8 +1244,8 @@ QCheckBox::indicator:indeterminate:pressed {
                 </property>
                 <property name="maximumSize">
                  <size>
-                  <width>300</width>
-                  <height>16777215</height>
+                  <width>80</width>
+                  <height>0</height>
                  </size>
                 </property>
                 <property name="styleSheet">
@@ -2925,6 +3104,12 @@ QPushButton:pressed {
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <property name="topMargin">
+             <number>10</number>
+            </property>
+            <property name="bottomMargin">
+             <number>10</number>
+            </property>
             <item>
              <widget class="QGroupBox" name="simulationSettings">
               <property name="minimumSize">

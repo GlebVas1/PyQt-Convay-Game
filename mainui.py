@@ -16,8 +16,8 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setWindowModality(QtCore.Qt.NonModal)
         MainWindow.setEnabled(True)
-        MainWindow.resize(1500, 900)
-        MainWindow.setMinimumSize(QtCore.QSize(1500, 900))
+        MainWindow.resize(1600, 901)
+        MainWindow.setMinimumSize(QtCore.QSize(1600, 900))
         MainWindow.setMaximumSize(QtCore.QSize(10000, 10000))
         MainWindow.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
         MainWindow.setIconSize(QtCore.QSize(50, 50))
@@ -82,6 +82,64 @@ class Ui_MainWindow(object):
         self.infoPanelLayout.setContentsMargins(10, -1, 10, -1)
         self.infoPanelLayout.setSpacing(2)
         self.infoPanelLayout.setObjectName("infoPanelLayout")
+        self.gameContolPanel = QtWidgets.QFrame(self.tabDisplay)
+        self.gameContolPanel.setMinimumSize(QtCore.QSize(150, 0))
+        self.gameContolPanel.setMaximumSize(QtCore.QSize(150, 80))
+        self.gameContolPanel.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.gameContolPanel.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(69, 69, 69)")
+        self.gameContolPanel.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.gameContolPanel.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.gameContolPanel.setObjectName("gameContolPanel")
+        self.gridLayout_5 = QtWidgets.QGridLayout(self.gameContolPanel)
+        self.gridLayout_5.setObjectName("gridLayout_5")
+        self.playButton = QtWidgets.QPushButton(self.gameContolPanel)
+        self.playButton.setEnabled(True)
+        self.playButton.setMinimumSize(QtCore.QSize(60, 60))
+        self.playButton.setMaximumSize(QtCore.QSize(60, 60))
+        self.playButton.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.playButton.setStyleSheet("QPushButton {\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(89, 89, 89)\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(49, 49, 49);\n"
+"    border-style: inset;\n"
+"}")
+        self.playButton.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icons/play.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/icons/play_disabled.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/icons/play_disabled.png"), QtGui.QIcon.Disabled, QtGui.QIcon.On)
+        icon.addPixmap(QtGui.QPixmap(":/icons/play.png"), QtGui.QIcon.Active, QtGui.QIcon.Off)
+        self.playButton.setIcon(icon)
+        self.playButton.setIconSize(QtCore.QSize(40, 40))
+        self.playButton.setObjectName("playButton")
+        self.gridLayout_5.addWidget(self.playButton, 0, 0, 1, 1)
+        self.stopButton = QtWidgets.QPushButton(self.gameContolPanel)
+        self.stopButton.setEnabled(True)
+        self.stopButton.setMinimumSize(QtCore.QSize(60, 60))
+        self.stopButton.setMaximumSize(QtCore.QSize(60, 60))
+        self.stopButton.setStyleSheet("QPushButton {\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(89, 89, 89)\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(49, 49, 49);\n"
+"    border-style: inset;\n"
+"}")
+        self.stopButton.setText("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/icons/pause.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(":/icons/pause_disabled.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(":/icons/pause_disabled.png"), QtGui.QIcon.Active, QtGui.QIcon.Off)
+        self.stopButton.setIcon(icon1)
+        self.stopButton.setIconSize(QtCore.QSize(40, 40))
+        self.stopButton.setObjectName("stopButton")
+        self.gridLayout_5.addWidget(self.stopButton, 0, 1, 1, 1)
+        self.infoPanelLayout.addWidget(self.gameContolPanel)
         self.miniPlot = QtWidgets.QFrame(self.tabDisplay)
         self.miniPlot.setMinimumSize(QtCore.QSize(200, 300))
         self.miniPlot.setMaximumSize(QtCore.QSize(200, 300))
@@ -203,114 +261,25 @@ class Ui_MainWindow(object):
         self.gameControlPanelsLayout = QtWidgets.QVBoxLayout()
         self.gameControlPanelsLayout.setContentsMargins(10, -1, 10, -1)
         self.gameControlPanelsLayout.setObjectName("gameControlPanelsLayout")
-        self.gameContolPanel = QtWidgets.QFrame(self.tabDisplay)
-        self.gameContolPanel.setMinimumSize(QtCore.QSize(150, 0))
-        self.gameContolPanel.setMaximumSize(QtCore.QSize(150, 80))
-        self.gameContolPanel.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.gameContolPanel.setStyleSheet("border-radius : 5px;\n"
-"background-color : rgb(69, 69, 69)")
-        self.gameContolPanel.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.gameContolPanel.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.gameContolPanel.setObjectName("gameContolPanel")
-        self.gridLayout_5 = QtWidgets.QGridLayout(self.gameContolPanel)
-        self.gridLayout_5.setObjectName("gridLayout_5")
-        self.playButton = QtWidgets.QPushButton(self.gameContolPanel)
-        self.playButton.setEnabled(True)
-        self.playButton.setMinimumSize(QtCore.QSize(60, 60))
-        self.playButton.setMaximumSize(QtCore.QSize(60, 60))
-        self.playButton.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.playButton.setStyleSheet("QPushButton {\n"
-"    border-radius : 5px;\n"
-"    background-color : rgb(89, 89, 89)\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(49, 49, 49);\n"
-"    border-style: inset;\n"
-"}")
-        self.playButton.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/icons/play.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon.addPixmap(QtGui.QPixmap(":/icons/play_disabled.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
-        icon.addPixmap(QtGui.QPixmap(":/icons/play_disabled.png"), QtGui.QIcon.Disabled, QtGui.QIcon.On)
-        icon.addPixmap(QtGui.QPixmap(":/icons/play.png"), QtGui.QIcon.Active, QtGui.QIcon.Off)
-        self.playButton.setIcon(icon)
-        self.playButton.setIconSize(QtCore.QSize(40, 40))
-        self.playButton.setObjectName("playButton")
-        self.gridLayout_5.addWidget(self.playButton, 0, 0, 1, 1)
-        self.stopButton = QtWidgets.QPushButton(self.gameContolPanel)
-        self.stopButton.setEnabled(True)
-        self.stopButton.setMinimumSize(QtCore.QSize(60, 60))
-        self.stopButton.setMaximumSize(QtCore.QSize(60, 60))
-        self.stopButton.setStyleSheet("QPushButton {\n"
-"    border-radius : 5px;\n"
-"    background-color : rgb(89, 89, 89)\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(49, 49, 49);\n"
-"    border-style: inset;\n"
-"}")
-        self.stopButton.setText("")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/icons/pause.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon1.addPixmap(QtGui.QPixmap(":/icons/pause_disabled.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
-        icon1.addPixmap(QtGui.QPixmap(":/icons/pause_disabled.png"), QtGui.QIcon.Active, QtGui.QIcon.Off)
-        self.stopButton.setIcon(icon1)
-        self.stopButton.setIconSize(QtCore.QSize(40, 40))
-        self.stopButton.setObjectName("stopButton")
-        self.gridLayout_5.addWidget(self.stopButton, 0, 1, 1, 1)
-        self.gameControlPanelsLayout.addWidget(self.gameContolPanel)
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
         self.pickToolPanel = QtWidgets.QFrame(self.tabDisplay)
-        self.pickToolPanel.setMinimumSize(QtCore.QSize(180, 699))
-        self.pickToolPanel.setMaximumSize(QtCore.QSize(200, 700))
+        self.pickToolPanel.setMinimumSize(QtCore.QSize(180, 800))
+        self.pickToolPanel.setMaximumSize(QtCore.QSize(185, 800))
         self.pickToolPanel.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69)")
         self.pickToolPanel.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.pickToolPanel.setFrameShadow(QtWidgets.QFrame.Raised)
         self.pickToolPanel.setObjectName("pickToolPanel")
-        self.gridLayout_4 = QtWidgets.QGridLayout(self.pickToolPanel)
-        self.gridLayout_4.setObjectName("gridLayout_4")
-        self.frame_5 = QtWidgets.QFrame(self.pickToolPanel)
-        self.frame_5.setMaximumSize(QtCore.QSize(16777215, 300))
-        self.frame_5.setStyleSheet("border-radius : 5px;\n"
-"background-color : rgb(89, 89, 89)")
-        self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_5.setObjectName("frame_5")
-        self.gridLayout_11 = QtWidgets.QGridLayout(self.frame_5)
-        self.gridLayout_11.setObjectName("gridLayout_11")
-        self.verticalLayout_10 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_10.setObjectName("verticalLayout_10")
-        self.pushButton = QtWidgets.QPushButton(self.frame_5)
-        self.pushButton.setMaximumSize(QtCore.QSize(16777215, 50))
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        font.setBold(True)
-        font.setWeight(75)
-        self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("QPushButton {\n"
-"    border-radius : 5px;\n"
-"    background-color : rgb(69, 69, 69);\n"
-"    color : white;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(49, 49, 49);\n"
-"    border-style: inset;\n"
-"}\n"
-"")
-        self.pushButton.setObjectName("pushButton")
-        self.verticalLayout_10.addWidget(self.pushButton)
-        self.gridLayout_11.addLayout(self.verticalLayout_10, 0, 0, 1, 1)
-        self.gridLayout_4.addWidget(self.frame_5, 1, 0, 1, 1)
+        self.verticalLayout_15 = QtWidgets.QVBoxLayout(self.pickToolPanel)
+        self.verticalLayout_15.setSpacing(10)
+        self.verticalLayout_15.setObjectName("verticalLayout_15")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout()
         self.verticalLayout_3.setContentsMargins(0, -1, -1, -1)
         self.verticalLayout_3.setSpacing(10)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.frame = QtWidgets.QFrame(self.pickToolPanel)
+        self.frame.setMinimumSize(QtCore.QSize(0, 150))
         self.frame.setMaximumSize(QtCore.QSize(16777215, 150))
         self.frame.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(89, 89, 89)")
@@ -586,11 +555,124 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.addWidget(self.brushRandomState)
         self.gridLayout_10.addLayout(self.verticalLayout_9, 0, 0, 1, 1)
         self.verticalLayout_3.addWidget(self.frame_2)
-        self.gridLayout_4.addLayout(self.verticalLayout_3, 0, 0, 1, 1)
+        self.verticalLayout_15.addLayout(self.verticalLayout_3)
+        self.frame_19 = QtWidgets.QFrame(self.pickToolPanel)
+        self.frame_19.setMinimumSize(QtCore.QSize(0, 70))
+        self.frame_19.setMaximumSize(QtCore.QSize(16777215, 70))
+        self.frame_19.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(89, 89, 89)")
+        self.frame_19.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_19.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_19.setObjectName("frame_19")
+        self.brushSetRadioButton = QtWidgets.QRadioButton(self.frame_19)
+        self.brushSetRadioButton.setGeometry(QtCore.QRect(10, 10, 171, 20))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.brushSetRadioButton.setFont(font)
+        self.brushSetRadioButton.setStyleSheet("color : white")
+        self.brushSetRadioButton.setObjectName("brushSetRadioButton")
+        self.objectSetRadioButton = QtWidgets.QRadioButton(self.frame_19)
+        self.objectSetRadioButton.setGeometry(QtCore.QRect(10, 40, 171, 20))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.objectSetRadioButton.setFont(font)
+        self.objectSetRadioButton.setStyleSheet("color : white")
+        self.objectSetRadioButton.setObjectName("objectSetRadioButton")
+        self.verticalLayout_15.addWidget(self.frame_19)
+        self.frame_5 = QtWidgets.QFrame(self.pickToolPanel)
+        self.frame_5.setMaximumSize(QtCore.QSize(16777215, 300))
+        self.frame_5.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(89, 89, 89)")
+        self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_5.setObjectName("frame_5")
+        self.gridLayout_11 = QtWidgets.QGridLayout(self.frame_5)
+        self.gridLayout_11.setObjectName("gridLayout_11")
+        self.verticalLayout_10 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_10.setSpacing(10)
+        self.verticalLayout_10.setObjectName("verticalLayout_10")
+        self.objectPreview = QtWidgets.QFrame(self.frame_5)
+        self.objectPreview.setMinimumSize(QtCore.QSize(140, 140))
+        self.objectPreview.setMaximumSize(QtCore.QSize(130, 130))
+        self.objectPreview.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(69, 69, 69)")
+        self.objectPreview.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.objectPreview.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.objectPreview.setObjectName("objectPreview")
+        self.verticalLayout_10.addWidget(self.objectPreview)
+        self.objectsPresets = QtWidgets.QComboBox(self.frame_5)
+        self.objectsPresets.setMinimumSize(QtCore.QSize(0, 40))
+        self.objectsPresets.setStyleSheet("QComboBox {\n"
+"border-radius : 5px;\n"
+"background-color : rgb(69, 69, 69);\n"
+"color : white;\n"
+"padding-right : 20px;\n"
+"padding-left: 20px;\n"
+"}\n"
+"\n"
+"QComboBox::drop-down {\n"
+"    padding-right : 10px;\n"
+"    image: url(:/icons/drop_down.png);\n"
+"    min-width: 30px;\n"
+"    min-height: 20px;\n"
+"}\n"
+"\n"
+"QComboBox::drop-down::pressed {\n"
+"    padding-right : 10px;\n"
+"    image: url(:/icons/drop_down_pressed.png);\n"
+"    min-width: 30px;\n"
+"    min-height: 20px;\n"
+"}\n"
+"")
+        self.objectsPresets.setObjectName("objectsPresets")
+        self.verticalLayout_10.addWidget(self.objectsPresets)
+        self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
+        self.objectFlipButton = QtWidgets.QPushButton(self.frame_5)
+        self.objectFlipButton.setMinimumSize(QtCore.QSize(60, 60))
+        self.objectFlipButton.setMaximumSize(QtCore.QSize(60, 60))
+        self.objectFlipButton.setStyleSheet("QPushButton {\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    color : white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(49, 49, 49);\n"
+"    border-style: inset;\n"
+"}\n"
+"")
+        self.objectFlipButton.setText("")
+        self.objectFlipButton.setObjectName("objectFlipButton")
+        self.horizontalLayout_10.addWidget(self.objectFlipButton)
+        self.objectRotateButton = QtWidgets.QPushButton(self.frame_5)
+        self.objectRotateButton.setMinimumSize(QtCore.QSize(60, 60))
+        self.objectRotateButton.setMaximumSize(QtCore.QSize(60, 60))
+        self.objectRotateButton.setStyleSheet("QPushButton {\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    color : white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(49, 49, 49);\n"
+"    border-style: inset;\n"
+"}\n"
+"")
+        self.objectRotateButton.setText("")
+        self.objectRotateButton.setObjectName("objectRotateButton")
+        self.horizontalLayout_10.addWidget(self.objectRotateButton)
+        self.verticalLayout_10.addLayout(self.horizontalLayout_10)
+        self.gridLayout_11.addLayout(self.verticalLayout_10, 0, 0, 1, 1)
+        self.verticalLayout_15.addWidget(self.frame_5)
         self.horizontalLayout_7.addWidget(self.pickToolPanel)
         self.colorPallete = QtWidgets.QFrame(self.tabDisplay)
-        self.colorPallete.setMinimumSize(QtCore.QSize(80, 0))
-        self.colorPallete.setMaximumSize(QtCore.QSize(300, 16777215))
+        self.colorPallete.setMinimumSize(QtCore.QSize(80, 300))
+        self.colorPallete.setMaximumSize(QtCore.QSize(80, 0))
         self.colorPallete.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69)")
         self.colorPallete.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -599,6 +681,9 @@ class Ui_MainWindow(object):
         self.horizontalLayout_7.addWidget(self.colorPallete)
         self.gameControlPanelsLayout.addLayout(self.horizontalLayout_7)
         self.horizontalLayout.addLayout(self.gameControlPanelsLayout)
+        self.horizontalLayout.setStretch(0, 1)
+        self.horizontalLayout.setStretch(1, 2)
+        self.horizontalLayout.setStretch(2, 1)
         self.gridLayout_2.addLayout(self.horizontalLayout, 0, 0, 1, 1)
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(":/icons/game_ico.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -1607,6 +1692,7 @@ class Ui_MainWindow(object):
         self.gridLayout_9.addLayout(self.horizontalLayout_4, 0, 0, 1, 1)
         self.verticalLayout.addWidget(self.groupBox)
         self.horizontalLayout_9 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_9.setContentsMargins(-1, 10, -1, 10)
         self.horizontalLayout_9.setObjectName("horizontalLayout_9")
         self.simulationSettings = QtWidgets.QGroupBox(self.tabSetting)
         self.simulationSettings.setMinimumSize(QtCore.QSize(0, 250))
@@ -2112,7 +2198,6 @@ class Ui_MainWindow(object):
         self.label_8.setText(_translate("MainWindow", "Distribution"))
         self.framesTotal.setText(_translate("MainWindow", "Frame"))
         self.CellsAlive.setText(_translate("MainWindow", "Alive cells"))
-        self.pushButton.setText(_translate("MainWindow", "Place"))
         self.label.setText(_translate("MainWindow", "Current"))
         self.fillAllCells.setText(_translate("MainWindow", "Fill all"))
         self.label_2.setText(_translate("MainWindow", "Brush size"))
@@ -2120,6 +2205,8 @@ class Ui_MainWindow(object):
         self.label_12.setText(_translate("MainWindow", "Random"))
         self.brushRandomSize.setText(_translate("MainWindow", "Size"))
         self.brushRandomState.setText(_translate("MainWindow", "State"))
+        self.brushSetRadioButton.setText(_translate("MainWindow", "Brush"))
+        self.objectSetRadioButton.setText(_translate("MainWindow", "Object"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabDisplay), _translate("MainWindow", "Game"))
         self.plotSettingsLabel.setText(_translate("MainWindow", "Plot Settings"))
         self.label_13.setText(_translate("MainWindow", "Line thickness"))

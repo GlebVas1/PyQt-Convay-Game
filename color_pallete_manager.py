@@ -37,6 +37,7 @@ class ColorPalleteManager(object):
     
     def palleteButtonSetState(self, val : int):
         self.currentBrushState = val
+        self.updateObjectPreview()
         self.selectedColorPanel.setStyleSheet("background-color : " + self.gameColorPalleteQt[val])
 
     

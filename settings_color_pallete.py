@@ -30,6 +30,7 @@ class SettingsColorPalleteManager(object):
         colorPalleteQt = cp.convertPalleteToQT(colorPallete)
         for frame in self.settingsColorPalletePreviewFrames:
             frame.setParent(None)
+        
         self.settingsColorPalletePreviewFrames.clear()
 
         frameXSize = int((self.colorPalletePreview.size().width() - 5 * (len(colorPallete) + 1)) / (len(colorPallete)))
@@ -49,9 +50,11 @@ class SettingsColorPalleteManager(object):
         pallete = self.convertPalleteToSize(cp.colorPalletesDict[name].copy(), self.calc.thisRule.generationsCount + 1)
         self.initializeSettingsColorPallete(pallete)
         self.initializeColorPallete()
+        self.updateObjectPreview()
         self.updateFieldColors()
         self.initializeMiniPlot()
         self.initializeMainPlot()
+        
 
 
     def convertPalleteToSize(self, pallete : list, size : int) -> list:
