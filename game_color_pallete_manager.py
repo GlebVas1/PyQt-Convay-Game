@@ -7,14 +7,15 @@ CPM_PADDING_SIZE = 10
 
 class ColorPalleteManager(object):
     
-    gamePalleteButtons = []
+    colorPalleteManagerPalleteButtons = []
+    colorPalleteManagerCurrentBrushState = 0
 
-    def initializeColorPallete(self):
+    def colorPalleteManagerInitialize(self):
 
-        for button in self.gamePalleteButtons:
+        for button in self.colorPalleteManagerPalleteButtons:
             button.setParent(None)
         
-        self.gamePalleteButtons.clear()
+        self.colorPalleteManagerPalleteButtons.clear()
 
         currentColumns = 0
 
@@ -28,9 +29,9 @@ class ColorPalleteManager(object):
             button.setObjectName("game_pallete_button_" + str(i))
             button.setStyleSheet("background-color : " + self.gameColorPalleteQt[i])
 
-            button.clicked.connect(partial(self.palleteButtonSetState, i))
+            button.clicked.connect(partial(self.colorPalleteManagerSetState, i))
             button.show()
-            self.gamePalleteButtons.append(button)
+            self.colorPalleteManagerPalleteButtons.append(button)
 
         realYCellsCount = min(CPM_COLUMN_SIZE, self.thisRule.generationsCount + 1)
 
@@ -40,9 +41,9 @@ class ColorPalleteManager(object):
         self.currentBrushState = min(self.currentBrushState,self.thisRule.generationsCount)
         self.selectedColorPanel.setStyleSheet("background-color : " + self.gameColorPalleteQt[self.currentBrushState])
     
-    def palleteButtonSetState(self, val : int):
+    def colorPalleteManagerSetState(self, val : int):
         self.currentBrushState = val
-        self.updateObjectPreview()
+        self.objectManagerUpdateObjectToPreview()
         self.selectedColorPanel.setStyleSheet("background-color : " + self.gameColorPalleteQt[val])
 
     

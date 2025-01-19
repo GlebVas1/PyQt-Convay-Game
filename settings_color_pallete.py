@@ -8,24 +8,24 @@ class SettingsColorPalleteManager(object):
 
     settingsColorPalletePreviewFrames = []
 
-    def initializeSettingsColorActions(self):
-        self.colorPalleteComboBox.currentIndexChanged.connect(self.changeGamePalletePreview)
-        self.colorPalleteApply.clicked.connect(self.applyPreview)
+    def settingsColorInitializeActions(self):
+        self.colorPalleteComboBox.currentIndexChanged.connect(self.settingsColorPalleteChangePreview)
+        self.colorPalleteApply.clicked.connect(self.settingsColorPalleteApplyPreview)
 
-    def initializeSettingsColorPallete(self, colorPallete : list):
-        pallete = self.convertPalleteToSize(colorPallete.copy(), self.calc.thisRule.generationsCount + 1)
+    def settingsColorPalleteInitialize(self, colorPallete : list):
+        pallete = self.SettingsColorPalleteConvertPalleteToSize(colorPallete.copy(), self.calc.thisRule.generationsCount + 1)
         self.gameColorPalette = pallete
         self.gameColorPalleteQt = cp.convertPalleteToQT(self.gameColorPalette)
 
-    def initializeSettingsColorPalleteComboBox(self):
+    def settingsColorPalleteInitializeComboBox(self):
         for name, pallete in cp.colorPalletesDict.items():
             self.colorPalleteComboBox.addItem(name)
 
-    def changeGamePalletePreview(self, value):
+    def settingsColorPalleteChangePreview(self, value):
         name = self.colorPalleteComboBox.currentText()
-        self.initializeSettingsColorPreview(cp.colorPalletesDict[name])
+        self.settingsColorPalleteInitializePreview(cp.colorPalletesDict[name])
         
-    def initializeSettingsColorPreview(self, colorPallete : list):
+    def settingsColorPalleteInitializePreview(self, colorPallete : list):
         
         colorPalleteQt = cp.convertPalleteToQT(colorPallete)
         for frame in self.settingsColorPalletePreviewFrames:
@@ -45,19 +45,15 @@ class SettingsColorPalleteManager(object):
         
         self.colorPalletePreview.show()
 
-    def applyPreview(self):
+    def settingsColorPalleteApplyPreview(self):
         name = self.colorPalleteComboBox.currentText()
-        pallete = self.convertPalleteToSize(cp.colorPalletesDict[name].copy(), self.calc.thisRule.generationsCount + 1)
-        self.initializeSettingsColorPallete(pallete)
-        self.initializeColorPallete()
-        self.updateObjectPreview()
-        self.updateFieldColors()
-        self.initializeMiniPlot()
-        self.initializeMainPlot()
+        pallete = self.SettingsColorPalleteConvertPalleteToSize(cp.colorPalletesDict[name].copy(), self.calc.thisRule.generationsCount + 1)
+        
+        self.gameManagerSyncChanges()
         
 
 
-    def convertPalleteToSize(self, pallete : list, size : int) -> list:
+    def SettingsColorPalleteConvertPalleteToSize(self, pallete : list, size : int) -> list:
         if len(pallete) > size:
             
             pallete_truncated = []

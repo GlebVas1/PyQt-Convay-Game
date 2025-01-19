@@ -8,13 +8,13 @@ import rules as ru
 import gameObjects as ob
 
 from main_plot_qt_manager import MainPlotController
-from color_pallete_manager import ColorPalleteManager
+from game_color_pallete_manager import ColorPalleteManager
 from mini_plot_manager import MiniPlotManager
 from game_brush_manager import BrushManager
 from stop_start_manager import StopStartManager
 from settings_color_pallete import SettingsColorPalleteManager
 from settings_rule import settingsRuleManager
-
+from game_object_manager import ObjectManager
 import pyqtgraph as pg
 
 # CFMButtonStyleSheet = "border-radius : 6px;\nborder-width: 2px; \nborder-style : solid;\nborder-color : rgb(255 79, 79);\nborder-bottom: 2px solid rgb(89, 89, 89);\n"
@@ -27,7 +27,8 @@ class ConveyFieldQtManager(MainPlotController,
                            BrushManager, 
                            StopStartManager, 
                            SettingsColorPalleteManager, 
-                           settingsRuleManager):
+                           settingsRuleManager,
+                           ObjectManager):
 
     xFieldSize = 10
     yFieldSize = 10
@@ -58,32 +59,33 @@ class ConveyFieldQtManager(MainPlotController,
 
         self.calc = cl.Field()
 
-        self.initializeSettingsRuleFrameActions()
-        self.initializeSettingsRuleFrame()
-        self.initializeSettingsRuleComboBox()
-        self.initializeSettingsRuleManager(ru.defaultLife)
+        self.settingsRuleInitializeActions()
+        self.settingsRuleInitializeFrame()
+        self.settingsRuleInitializeComboBox()
+        self.settingsRuleInitializeManager(ru.defaultLife)
         self.settingsRuleMakePreview(ru.defaultLife)
 
         self.calc.initializeField(x, y)
         self.calc.initializeStatistics()
 
-        self.initializeSettingsColorActions()
-        self.initializeSettingsColorPalleteComboBox()
-        self.initializeSettingsColorPallete(cp.defaultBinary)
-        self.initializeSettingsColorPreview(cp.defaultBinary)
+        self.settingsColorInitializeActions()
+        self.settingsColorPalleteInitializeComboBox()
+        self.settingsColorPalleteInitialize(cp.defaultBinary)
+        self.settingsColorPalleteInitializePreview(cp.defaultBinary)
 
-        self.initializeMainPlotActions()
-        self.initializeMainPlot()
-        self.initializeMiniPlot()
+        self.mainPlotInitializeActions()
+        self.mainPlotInitialize()
+        self.miniPlotInitialize()
 
-        self.initializeColorPallete()
+        self.colorPalleteManagerInitialize()
 
-        self.initializeBrushManager()
-        self.initializeObjectComboBox()
+        self.BrushManagerInitialize()
 
-        self.initializeObjectPreview(ob.glider)
+        self.objectManagerInitializeActions()
+        self.objectManagerInitializeComboBox()
+        self.objectManagerInitializePreview(ob.glider)
 
-        self.initializeStopStartManager()
+        self.stopStartManagerInitializeActions()
 
         
         
@@ -160,8 +162,8 @@ class ConveyFieldQtManager(MainPlotController,
         self.alliveCellsCounter = self.calc.statistics[self.calc.thisRule.generationsCount][-1]
         self.updateLCD()
 
-        self.drawMainPlotStatistic()
-        self.drawMiniPlotStatistic()
+        self.mainPlotDrawStatistic()
+        self.miniPlotDrawStatistic()
 
     def getButtonState(self, x : int, y : int) -> int:
         return self.gameButtonsStates[x * self.yFieldSize + y]
@@ -174,6 +176,12 @@ class ConveyFieldQtManager(MainPlotController,
         self.totalFramesLCD.display(self.framesTotalCounter)
         self.AliveCellsLCD.display(self.alliveCellsCounter)        
 
+    def gameManagerSyncChanges(self):
+        self.colorPalleteManagerInitialize()
+        self.objectManagerUpdateObjectToPreview()
+        self.updateFieldColors()
+        self.miniPlotInitialize()
+        self.mainPlotInitialize()
     
 
         

@@ -16,12 +16,12 @@ class settingsRuleManager(object):
     settingsRuleCheckBoxesSurvive = []
     settingsRuleCheckBoxesArrive = []
 
-    def initializeSettingsRuleFrameActions(self):
-        self.ruleLoadbutton.clicked.connect(self.loadPreset)
-        self.ruleApply.clicked.connect(self.applyRule)
+    def settingsRuleInitializeActions(self):
+        self.ruleLoadbutton.clicked.connect(self.settingsRuleLoadPreset)
+        self.ruleApply.clicked.connect(self.settingsRuleApplyRule)
         # self.ruleComboBox.currentIndexChanged.connect(self.loadPreset)
 
-    def initializeSettingsRuleFrame(self):
+    def settingsRuleInitializeFrame(self):
         for i in range(9):
             checkbox = QtWidgets.QCheckBox(self.ruleCheckFrame)
             checkbox.setObjectName("RuleArriveCB" + str(i))
@@ -49,11 +49,11 @@ class settingsRuleManager(object):
             label.setFont(font)
             label.setGeometry(QtCore.QRect(12 + 40 * i, 10, 20, 20))
 
-    def initializeSettingsRuleComboBox(self):
+    def settingsRuleInitializeComboBox(self):
         for name, pallete in ru.rulesDict.items():
             self.ruleComboBox.addItem(name)
 
-    def initializeSettingsRuleManager(self, rule : Rule):
+    def settingsRuleInitializeManager(self, rule : Rule):
         self.thisRule = copy.copy(rule)
         self.calc.thisRule = self.thisRule
 
@@ -63,25 +63,18 @@ class settingsRuleManager(object):
             self.settingsRuleCheckBoxesSurvive[i].setChecked(rule.surviveIfNeighborCount[i] == 1)
         self.ruleGenerationsSpinBox.setValue(rule.generationsCount + 1)
 
-    def loadPreset(self):
+    def settingsRuleLoadPreset(self):
         name = self.ruleComboBox.currentText()
         rule = copy.copy(ru.rulesDict[name])
         self.settingsRuleMakePreview(rule)
 
-    def applyRule(self):
+    def settingsRuleApplyRule(self):
         for i in range(9):
             self.thisRule.arriveIfNeighborCount[i] = 1 if self.settingsRuleCheckBoxesArrive[i].isChecked() else 0
             self.thisRule.surviveIfNeighborCount[i] = 1 if self.settingsRuleCheckBoxesSurvive[i].isChecked() else 0
 
         self.thisRule.generationsCount = self.ruleGenerationsSpinBox.value() - 1
+        
         self.calc.initializeStatistics()
-        
-        self.applyPreview()
-        
 
-
-    def updateRuleArrive(self, position : int):
-        self.thisRule.arriveIfNeighborCount[position] = 1 if self.settingsRuleCheckBoxesArrive[position].isChecked() else 0
-
-    def updateRuleArrive(self, position : int):
-        self.thisRule.arriveIfNeighborCount[position] = 1 if self.settingsRuleCheckBoxesArrive[position].isChecked() else 0
+        self.settingsColorPalleteApplyPreview()
