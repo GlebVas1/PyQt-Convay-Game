@@ -1,7 +1,10 @@
 from PyQt5 import QtWidgets, QtCore
 from functools import partial
 
-CPM_COLUMN_SIZE = 6
+CPM_COLUMN_SIZE = 5
+CPM_TILE_SIZE = 60
+CPM_PADDING_SIZE = 10
+
 class ColorPalleteManager(object):
     
     gamePalleteButtons = []
@@ -16,12 +19,12 @@ class ColorPalleteManager(object):
         currentColumns = 0
 
         for i in range(self.thisRule.generationsCount + 1):
-            if i > 0 and i % 6 == 0:
+            if i > 0 and i % CPM_COLUMN_SIZE == 0:
                 currentColumns += 1
-            xCoord = 10 * (currentColumns + 1) + 60 * currentColumns
-            yCoord = 10 + (60 + 10) * (i % 5)
+            xCoord = CPM_PADDING_SIZE * (currentColumns + 1) + CPM_TILE_SIZE * currentColumns
+            yCoord = CPM_PADDING_SIZE + (CPM_TILE_SIZE + CPM_PADDING_SIZE) * (i % CPM_COLUMN_SIZE)
             button = QtWidgets.QPushButton(self.colorPallete)
-            button.setGeometry(QtCore.QRect(xCoord, yCoord, 60, 60))
+            button.setGeometry(QtCore.QRect(xCoord, yCoord, CPM_TILE_SIZE, CPM_TILE_SIZE))
             button.setObjectName("game_pallete_button_" + str(i))
             button.setStyleSheet("background-color : " + self.gameColorPalleteQt[i])
 
@@ -30,8 +33,9 @@ class ColorPalleteManager(object):
             self.gamePalleteButtons.append(button)
 
         realYCellsCount = min(CPM_COLUMN_SIZE, self.thisRule.generationsCount + 1)
-        self.colorPallete.setMaximumSize(QtCore.QSize(10 * (currentColumns + 2)  + 60 * (currentColumns + 1), (CPM_COLUMN_SIZE + 2) * 10 + (CPM_COLUMN_SIZE + 1) * 60))
-        self.colorPallete.setMinimumSize(QtCore.QSize(10 * (currentColumns + 2)  + 60 * (currentColumns + 1), (realYCellsCount + 2) * 10 + (realYCellsCount + 1) * 60))
+
+        self.colorPallete.setMaximumSize(QtCore.QSize(CPM_PADDING_SIZE * (currentColumns + 2)  + CPM_TILE_SIZE * (currentColumns + 1), (realYCellsCount + 1) * CPM_PADDING_SIZE + (realYCellsCount) * CPM_TILE_SIZE))
+        self.colorPallete.setMinimumSize(QtCore.QSize(CPM_PADDING_SIZE * (currentColumns + 2)  + CPM_TILE_SIZE * (currentColumns + 1), (realYCellsCount + 1) * CPM_PADDING_SIZE + (realYCellsCount) * CPM_TILE_SIZE))
 
         self.currentBrushState = min(self.currentBrushState,self.thisRule.generationsCount)
         self.selectedColorPanel.setStyleSheet("background-color : " + self.gameColorPalleteQt[self.currentBrushState])

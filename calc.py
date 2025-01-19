@@ -18,10 +18,15 @@ class Field:
     
     def initializeStatistics(self):
         maxStatiSticLength = 0
+
+        keysToDelete = []
         for key, value in self.statistics.items():
             maxStatiSticLength = max(maxStatiSticLength, len(value))
             if key not in range(self.thisRule.generationsCount + 1):
-                del self.statistics[key]
+                keysToDelete.append(key)
+        
+        for key in keysToDelete:
+            del self.statistics[key]
         
         for i in range(self.thisRule.generationsCount + 1):
             self.statistics[i] = []

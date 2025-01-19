@@ -48,8 +48,6 @@ class MainPlotController(object):
 
         self.mainPlotView.addLegend(enableMouse=False)
 
-        
-
         for generation, s in self.calc.statistics.items():
             pen = pg.mkPen(self.gameColorPalette[generation], width=3, style=QtCore.Qt.SolidLine)
             brushColor = (self.gameColorPalette[generation][0], self.gameColorPalette[generation][1], self.gameColorPalette[generation][2], 50)
@@ -63,11 +61,10 @@ class MainPlotController(object):
         for curve in self.mainPlotCurves:
             curve.setFillLevel(1.0 if self.mainPlotFillUnder.isChecked() else None)
         
-        
+
         self.legendAliveFrame.setStyleSheet("background-color : " + self.gameColorPalleteQt[self.calc.thisRule.generationsCount])
         self.legendEmptyFrame.setStyleSheet("background-color : " + self.gameColorPalleteQt[0])
 
-        
         self.drawMainPlotStatistic()
 
     def drawMainPlotStatistic(self):
