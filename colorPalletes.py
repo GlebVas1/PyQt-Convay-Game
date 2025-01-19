@@ -40,6 +40,13 @@ autumn7 =  [(49, 49, 49),
            (253, 168, 57),
            (255, 181, 55)]
 # rgb(38, 226, 163)
+summer7 = [(49, 49, 49),
+          (68, 94, 69),
+          (68, 94, 87),
+          (94, 69, 68),
+          (222, 57, 49),
+          (49, 222, 55),
+          (0, 224, 159)]
 
 colorPalletesDict = {"Yellow chalk 2" : defaultBinary,
                     "Yellow chalk 3" : defaultTernar, 
@@ -52,7 +59,8 @@ colorPalletesDict = {"Yellow chalk 2" : defaultBinary,
                     "Elf 8" : elf8,
                     "Fuxia 5" : fuxia5,
                     "Sea water 6" : seaWater6,
-                    "Autumn 7" : autumn7}
+                    "Autumn 7" : autumn7,
+                    "Summer 7" : summer7}
 
 def convertColorToQTString(color) -> str:
     return 'rgb({},{},{})'.format(color[0], color[1], color[2])

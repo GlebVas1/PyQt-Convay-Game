@@ -20,6 +20,7 @@ class Ui_MainWindow(object):
         MainWindow.setMinimumSize(QtCore.QSize(1600, 900))
         MainWindow.setMaximumSize(QtCore.QSize(10000, 10000))
         MainWindow.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
+        MainWindow.setStyleSheet("")
         MainWindow.setIconSize(QtCore.QSize(50, 50))
         MainWindow.setTabShape(QtWidgets.QTabWidget.Triangular)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -637,11 +638,11 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.objectsPresets.setFont(font)
         self.objectsPresets.setStyleSheet("QComboBox {\n"
-"border-radius : 5px;\n"
-"background-color : rgb(69, 69, 69);\n"
-"color : white;\n"
-"padding-right : 20px;\n"
-"padding-left: 20px;\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    color : white;\n"
+"    padding-right : 20px;\n"
+"    padding-left: 20px;\n"
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
@@ -658,7 +659,46 @@ class Ui_MainWindow(object):
 "    min-height: 20px;\n"
 "}\n"
 "\n"
-"color : white")
+"QComboBox QAbstractItemView {\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    border-radius : 6px;\n"
+"    outline : 0px;\n"
+"    selection-background-color: lightgray;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar:vertical {\n"
+"  background-color: rgb(69, 69, 69);\n"
+"  color: black;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::handle:vertical {\n"
+"  background-color: rgb(89, 89, 89);\n"
+"  border : 3px solid rgb(69, 69, 69);\n"
+"  border-radius : 5px;\n"
+"  color: black;\n"
+"  max-width : 5px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::add-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::add-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::sub-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"")
         self.objectsPresets.setObjectName("objectsPresets")
         self.verticalLayout_10.addWidget(self.objectsPresets)
         self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
@@ -669,11 +709,13 @@ class Ui_MainWindow(object):
         self.objectFlipButton.setStyleSheet("QPushButton {\n"
 "    border-radius : 5px;\n"
 "    background-color : rgb(69, 69, 69);\n"
+"    background-image : url(:/icons/flip_vertical.png)\n"
 "    color : white;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
 "    background-color: rgb(49, 49, 49);\n"
+"    image : url(:/icons/flip_vertical_pressed.png)\n"
 "    border-style: inset;\n"
 "}\n"
 "")
@@ -1234,7 +1276,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_2.setContentsMargins(10, 20, 10, 10)
+        self.verticalLayout_2.setContentsMargins(0, 20, 0, 0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.horizontalLayout_8 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
@@ -1359,7 +1401,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setContentsMargins(0, -1, 0, -1)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.frame_16 = QtWidgets.QFrame(self.groupBox)
-        self.frame_16.setMaximumSize(QtCore.QSize(150, 110))
+        self.frame_16.setMaximumSize(QtCore.QSize(150, 130))
         self.frame_16.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(89, 89, 89)")
         self.frame_16.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -1367,7 +1409,7 @@ class Ui_MainWindow(object):
         self.frame_16.setObjectName("frame_16")
         self.ruleGenerationsSpinBox = QtWidgets.QSpinBox(self.frame_16)
         self.ruleGenerationsSpinBox.setEnabled(True)
-        self.ruleGenerationsSpinBox.setGeometry(QtCore.QRect(10, 60, 111, 40))
+        self.ruleGenerationsSpinBox.setGeometry(QtCore.QRect(10, 80, 111, 40))
         self.ruleGenerationsSpinBox.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
         font.setPointSize(11)
@@ -1428,14 +1470,14 @@ class Ui_MainWindow(object):
         self.ruleSurviveLabel_2.setObjectName("ruleSurviveLabel_2")
         self.horizontalLayout_2.addWidget(self.frame_16)
         self.frame_17 = QtWidgets.QFrame(self.groupBox)
-        self.frame_17.setMaximumSize(QtCore.QSize(16777215, 110))
+        self.frame_17.setMaximumSize(QtCore.QSize(16777215, 130))
         self.frame_17.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(89, 89, 89)")
         self.frame_17.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_17.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_17.setObjectName("frame_17")
         self.ruleSurviveLabel_3 = QtWidgets.QLabel(self.frame_17)
-        self.ruleSurviveLabel_3.setGeometry(QtCore.QRect(10, 10, 161, 41))
+        self.ruleSurviveLabel_3.setGeometry(QtCore.QRect(20, 20, 161, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -1446,18 +1488,18 @@ class Ui_MainWindow(object):
         self.ruleSurviveLabel_3.setStyleSheet("border :  0px; border :  0px; color : white;")
         self.ruleSurviveLabel_3.setObjectName("ruleSurviveLabel_3")
         self.ruleComboBox = QtWidgets.QComboBox(self.frame_17)
-        self.ruleComboBox.setGeometry(QtCore.QRect(10, 60, 421, 41))
+        self.ruleComboBox.setGeometry(QtCore.QRect(10, 80, 451, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
         self.ruleComboBox.setFont(font)
         self.ruleComboBox.setStyleSheet("QComboBox {\n"
-"border-radius : 5px;\n"
-"background-color : rgb(69, 69, 69);\n"
-"color : white;\n"
-"padding-right : 20px;\n"
-"padding-left: 20px;\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    color : white;\n"
+"    padding-right : 20px;\n"
+"    padding-left: 20px;\n"
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
@@ -1473,10 +1515,50 @@ class Ui_MainWindow(object):
 "    min-width: 30px;\n"
 "    min-height: 20px;\n"
 "}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    border-radius : 6px;\n"
+"    outline : 0px;\n"
+"    selection-background-color: lightgray;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar:vertical {\n"
+"  background-color: rgb(69, 69, 69);\n"
+"  color: black;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::handle:vertical {\n"
+"  background-color: rgb(89, 89, 89);\n"
+"  border : 3px solid rgb(69, 69, 69);\n"
+"  border-radius : 5px;\n"
+"  color: black;\n"
+"  max-width : 5px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::add-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::add-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::sub-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
 "")
         self.ruleComboBox.setObjectName("ruleComboBox")
         self.ruleLoadbutton = QtWidgets.QPushButton(self.frame_17)
-        self.ruleLoadbutton.setGeometry(QtCore.QRect(270, 10, 161, 41))
+        self.ruleLoadbutton.setGeometry(QtCore.QRect(300, 20, 161, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -1498,7 +1580,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
         self.horizontalLayout_4.addLayout(self.verticalLayout_2)
         self.verticalLayout_6 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_6.setContentsMargins(10, 20, 10, 10)
+        self.verticalLayout_6.setContentsMargins(0, 20, 0, 0)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
         self.fieldSettings = QtWidgets.QFrame(self.groupBox)
         self.fieldSettings.setStyleSheet("border-radius : 5px;\n"
@@ -1662,7 +1744,7 @@ class Ui_MainWindow(object):
         self.label_5.setStyleSheet("border :  0px; color : white;")
         self.label_5.setObjectName("label_5")
         self.colorPalletePreview = QtWidgets.QFrame(self.colorPalleteSettings)
-        self.colorPalletePreview.setGeometry(QtCore.QRect(10, 89, 581, 65))
+        self.colorPalletePreview.setGeometry(QtCore.QRect(10, 100, 581, 65))
         font = QtGui.QFont()
         font.setBold(False)
         font.setWeight(50)
@@ -1682,18 +1764,18 @@ class Ui_MainWindow(object):
         self.label_6.setStyleSheet("border :  0px; color : white;")
         self.label_6.setObjectName("label_6")
         self.colorPalleteComboBox = QtWidgets.QComboBox(self.colorPalleteSettings)
-        self.colorPalleteComboBox.setGeometry(QtCore.QRect(140, 10, 281, 41))
+        self.colorPalleteComboBox.setGeometry(QtCore.QRect(140, 10, 311, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
         self.colorPalleteComboBox.setFont(font)
         self.colorPalleteComboBox.setStyleSheet("QComboBox {\n"
-"border-radius : 5px;\n"
-"background-color : rgb(69, 69, 69);\n"
-"color : white;\n"
-"padding-right : 20px;\n"
-"padding-left: 20px;\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    color : white;\n"
+"    padding-right : 20px;\n"
+"    padding-left: 20px;\n"
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
@@ -1709,10 +1791,50 @@ class Ui_MainWindow(object):
 "    min-width: 30px;\n"
 "    min-height: 20px;\n"
 "}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    border-radius : 6px;\n"
+"    outline : 0px;\n"
+"    selection-background-color: lightgray;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar:vertical {\n"
+"  background-color: rgb(69, 69, 69);\n"
+"  color: black;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::handle:vertical {\n"
+"  background-color: rgb(89, 89, 89);\n"
+"  border : 3px solid rgb(69, 69, 69);\n"
+"  border-radius : 5px;\n"
+"  color: rgb(69, 69, 69);\n"
+"  max-width : 5px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::add-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::add-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::sub-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
 "")
         self.colorPalleteComboBox.setObjectName("colorPalleteComboBox")
         self.colorPalleteApply = QtWidgets.QPushButton(self.colorPalleteSettings)
-        self.colorPalleteApply.setGeometry(QtCore.QRect(430, 10, 161, 41))
+        self.colorPalleteApply.setGeometry(QtCore.QRect(460, 10, 161, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -1807,7 +1929,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.setSpacing(0)
         self.verticalLayout_13.setObjectName("verticalLayout_13")
         self.fpsSettingsFrame = QtWidgets.QFrame(self.simulationSettings)
-        self.fpsSettingsFrame.setMaximumSize(QtCore.QSize(250, 110))
+        self.fpsSettingsFrame.setMaximumSize(QtCore.QSize(270, 110))
         self.fpsSettingsFrame.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(89, 89, 89)")
         self.fpsSettingsFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -1824,7 +1946,7 @@ class Ui_MainWindow(object):
         self.ruleSurviveLabel_6.setObjectName("ruleSurviveLabel_6")
         self.fpsSetter = QtWidgets.QComboBox(self.fpsSettingsFrame)
         self.fpsSetter.setEnabled(True)
-        self.fpsSetter.setGeometry(QtCore.QRect(160, 10, 81, 40))
+        self.fpsSetter.setGeometry(QtCore.QRect(160, 10, 101, 40))
         self.fpsSetter.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
         font.setPointSize(11)
@@ -1832,11 +1954,11 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.fpsSetter.setFont(font)
         self.fpsSetter.setStyleSheet("QComboBox {\n"
-"border-radius : 5px;\n"
-"background-color : rgb(69, 69, 69);\n"
-"color : white;\n"
-"padding-right : 20px;\n"
-"padding-left: 20px;\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    color : white;\n"
+"    padding-right : 20px;\n"
+"    padding-left: 20px;\n"
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
@@ -1851,6 +1973,46 @@ class Ui_MainWindow(object):
 "    image: url(:/icons/drop_down_pressed.png);\n"
 "    min-width: 30px;\n"
 "    min-height: 20px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    border-radius : 6px;\n"
+"    outline : 0px;\n"
+"    selection-background-color: lightgray;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar:vertical {\n"
+"  background-color: rgb(69, 69, 69);\n"
+"  color: black;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::handle:vertical {\n"
+"  background-color: rgb(89, 89, 89);\n"
+"  border : 3px solid rgb(69, 69, 69);\n"
+"  border-radius : 5px;\n"
+"  color: black;\n"
+"  max-width : 5px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::add-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::add-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::sub-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
 "}\n"
 "")
         self.fpsSetter.setObjectName("fpsSetter")
@@ -1872,7 +2034,7 @@ class Ui_MainWindow(object):
         self.ruleSurviveLabel_8.setObjectName("ruleSurviveLabel_8")
         self.skipFrameSetter = QtWidgets.QComboBox(self.fpsSettingsFrame)
         self.skipFrameSetter.setEnabled(True)
-        self.skipFrameSetter.setGeometry(QtCore.QRect(160, 60, 81, 40))
+        self.skipFrameSetter.setGeometry(QtCore.QRect(160, 60, 101, 40))
         self.skipFrameSetter.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
         font.setPointSize(11)
@@ -1880,11 +2042,11 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.skipFrameSetter.setFont(font)
         self.skipFrameSetter.setStyleSheet("QComboBox {\n"
-"border-radius : 5px;\n"
-"background-color : rgb(69, 69, 69);\n"
-"color : white;\n"
-"padding-right : 20px;\n"
-"padding-left: 20px;\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    color : white;\n"
+"    padding-right : 20px;\n"
+"    padding-left: 20px;\n"
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
@@ -1899,6 +2061,46 @@ class Ui_MainWindow(object):
 "    image: url(:/icons/drop_down_pressed.png);\n"
 "    min-width: 30px;\n"
 "    min-height: 20px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    border-radius : 6px;\n"
+"    outline : 0px;\n"
+"    selection-background-color: lightgray;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar:vertical {\n"
+"  background-color: rgb(69, 69, 69);\n"
+"  color: black;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::handle:vertical {\n"
+"  background-color: rgb(89, 89, 89);\n"
+"  border : 3px solid rgb(69, 69, 69);\n"
+"  border-radius : 5px;\n"
+"  color: black;\n"
+"  max-width : 5px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::add-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::add-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::sub-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
 "}\n"
 "")
         self.skipFrameSetter.setObjectName("skipFrameSetter")
@@ -2232,7 +2434,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

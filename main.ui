@@ -34,6 +34,9 @@
   <property name="windowTitle">
    <string>Convey</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <property name="iconSize">
    <size>
     <width>50</width>
@@ -111,7 +114,7 @@ color : white;
 </string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="iconSize">
        <size>
@@ -1203,11 +1206,11 @@ background-color : rgb(69, 69, 69)</string>
                           </property>
                           <property name="styleSheet">
                            <string notr="true">QComboBox {
-border-radius : 5px;
-background-color : rgb(69, 69, 69);
-color : white;
-padding-right : 20px;
-padding-left: 20px;
+	border-radius : 5px;
+	background-color : rgb(69, 69, 69);
+	color : white;
+	padding-right : 20px;
+	padding-left: 20px;
 }
 
 QComboBox::drop-down {
@@ -1224,7 +1227,46 @@ QComboBox::drop-down::pressed {
 	min-height: 20px;
 }
 
-color : white</string>
+QComboBox QAbstractItemView {
+    background-color : rgb(69, 69, 69);
+	border-radius : 6px;
+	outline : 0px;
+	selection-background-color: lightgray;
+}
+
+QComboBox QAbstractItemView QScrollBar:vertical {
+  background-color: rgb(69, 69, 69);
+  color: black;
+}
+
+QComboBox QAbstractItemView QScrollBar::handle:vertical {
+  background-color: rgb(89, 89, 89);
+  border : 3px solid rgb(69, 69, 69);
+  border-radius : 5px;
+  color: black;
+  max-width : 5px;
+}
+
+QComboBox QAbstractItemView QScrollBar::add-page:vertical {
+    background: none;
+	height : 0px;
+}
+
+QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
+    background: none;
+    height : 0px;
+}
+
+QComboBox QAbstractItemView QScrollBar::add-line:vertical {
+    background: none;
+	height : 0px;
+}
+
+QComboBox QAbstractItemView QScrollBar::sub-line:vertical {
+    background: none;
+    height : 0px;
+}
+</string>
                           </property>
                          </widget>
                         </item>
@@ -1248,11 +1290,13 @@ color : white</string>
                              <string notr="true">QPushButton {
 	border-radius : 5px;
 	background-color : rgb(69, 69, 69);
+	background-image : url(:/icons/flip_vertical.png)
 	color : white;
 }
 
 QPushButton:pressed {
     background-color: rgb(49, 49, 49);
+	image : url(:/icons/flip_vertical_pressed.png)
     border-style: inset;
 }
 </string>
@@ -2277,16 +2321,16 @@ background-color : rgb(69, 69, 69); color : white;</string>
                <item>
                 <layout class="QVBoxLayout" name="verticalLayout_2">
                  <property name="leftMargin">
-                  <number>10</number>
+                  <number>0</number>
                  </property>
                  <property name="topMargin">
                   <number>20</number>
                  </property>
                  <property name="rightMargin">
-                  <number>10</number>
+                  <number>0</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>10</number>
+                  <number>0</number>
                  </property>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_8">
@@ -2506,7 +2550,7 @@ QPushButton:pressed {
                      <property name="maximumSize">
                       <size>
                        <width>150</width>
-                       <height>110</height>
+                       <height>130</height>
                       </size>
                      </property>
                      <property name="styleSheet">
@@ -2526,7 +2570,7 @@ background-color : rgb(89, 89, 89)</string>
                       <property name="geometry">
                        <rect>
                         <x>10</x>
-                        <y>60</y>
+                        <y>80</y>
                         <width>111</width>
                         <height>40</height>
                        </rect>
@@ -2633,7 +2677,7 @@ border-image: url(:/icons/arrow_left_pressed.png);
                      <property name="maximumSize">
                       <size>
                        <width>16777215</width>
-                       <height>110</height>
+                       <height>130</height>
                       </size>
                      </property>
                      <property name="styleSheet">
@@ -2649,8 +2693,8 @@ background-color : rgb(89, 89, 89)</string>
                      <widget class="QLabel" name="ruleSurviveLabel_3">
                       <property name="geometry">
                        <rect>
-                        <x>10</x>
-                        <y>10</y>
+                        <x>20</x>
+                        <y>20</y>
                         <width>161</width>
                         <height>41</height>
                        </rect>
@@ -2679,8 +2723,8 @@ background-color : rgb(89, 89, 89)</string>
                       <property name="geometry">
                        <rect>
                         <x>10</x>
-                        <y>60</y>
-                        <width>421</width>
+                        <y>80</y>
+                        <width>451</width>
                         <height>41</height>
                        </rect>
                       </property>
@@ -2693,11 +2737,11 @@ background-color : rgb(89, 89, 89)</string>
                       </property>
                       <property name="styleSheet">
                        <string notr="true">QComboBox {
-border-radius : 5px;
-background-color : rgb(69, 69, 69);
-color : white;
-padding-right : 20px;
-padding-left: 20px;
+	border-radius : 5px;
+	background-color : rgb(69, 69, 69);
+	color : white;
+	padding-right : 20px;
+	padding-left: 20px;
 }
 
 QComboBox::drop-down {
@@ -2713,14 +2757,54 @@ QComboBox::drop-down::pressed {
 	min-width: 30px;
 	min-height: 20px;
 }
+
+QComboBox QAbstractItemView {
+    background-color : rgb(69, 69, 69);
+	border-radius : 6px;
+	outline : 0px;
+	selection-background-color: lightgray;
+}
+
+QComboBox QAbstractItemView QScrollBar:vertical {
+  background-color: rgb(69, 69, 69);
+  color: black;
+}
+
+QComboBox QAbstractItemView QScrollBar::handle:vertical {
+  background-color: rgb(89, 89, 89);
+  border : 3px solid rgb(69, 69, 69);
+  border-radius : 5px;
+  color: black;
+  max-width : 5px;
+}
+
+QComboBox QAbstractItemView QScrollBar::add-page:vertical {
+    background: none;
+	height : 0px;
+}
+
+QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
+    background: none;
+    height : 0px;
+}
+
+QComboBox QAbstractItemView QScrollBar::add-line:vertical {
+    background: none;
+	height : 0px;
+}
+
+QComboBox QAbstractItemView QScrollBar::sub-line:vertical {
+    background: none;
+    height : 0px;
+}
 </string>
                       </property>
                      </widget>
                      <widget class="QPushButton" name="ruleLoadbutton">
                       <property name="geometry">
                        <rect>
-                        <x>270</x>
-                        <y>10</y>
+                        <x>300</x>
+                        <y>20</y>
                         <width>161</width>
                         <height>41</height>
                        </rect>
@@ -2758,16 +2842,16 @@ QPushButton:pressed {
                <item>
                 <layout class="QVBoxLayout" name="verticalLayout_6">
                  <property name="leftMargin">
-                  <number>10</number>
+                  <number>0</number>
                  </property>
                  <property name="topMargin">
                   <number>20</number>
                  </property>
                  <property name="rightMargin">
-                  <number>10</number>
+                  <number>0</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>10</number>
+                  <number>0</number>
                  </property>
                  <item>
                   <widget class="QFrame" name="fieldSettings">
@@ -3053,7 +3137,7 @@ background-color : rgb(89, 89, 89)</string>
                     <property name="geometry">
                      <rect>
                       <x>10</x>
-                      <y>89</y>
+                      <y>100</y>
                       <width>581</width>
                       <height>65</height>
                      </rect>
@@ -3103,7 +3187,7 @@ background-color : rgb(69, 69, 69)</string>
                      <rect>
                       <x>140</x>
                       <y>10</y>
-                      <width>281</width>
+                      <width>311</width>
                       <height>41</height>
                      </rect>
                     </property>
@@ -3116,11 +3200,11 @@ background-color : rgb(69, 69, 69)</string>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">QComboBox {
-border-radius : 5px;
-background-color : rgb(69, 69, 69);
-color : white;
-padding-right : 20px;
-padding-left: 20px;
+	border-radius : 5px;
+	background-color : rgb(69, 69, 69);
+	color : white;
+	padding-right : 20px;
+	padding-left: 20px;
 }
 
 QComboBox::drop-down {
@@ -3136,13 +3220,53 @@ QComboBox::drop-down::pressed {
 	min-width: 30px;
 	min-height: 20px;
 }
+
+QComboBox QAbstractItemView {
+    background-color : rgb(69, 69, 69);
+	border-radius : 6px;
+	outline : 0px;
+	selection-background-color: lightgray;
+}
+
+QComboBox QAbstractItemView QScrollBar:vertical {
+  background-color: rgb(69, 69, 69);
+  color: black;
+}
+
+QComboBox QAbstractItemView QScrollBar::handle:vertical {
+  background-color: rgb(89, 89, 89);
+  border : 3px solid rgb(69, 69, 69);
+  border-radius : 5px;
+  color: rgb(69, 69, 69);
+  max-width : 5px;
+}
+
+QComboBox QAbstractItemView QScrollBar::add-page:vertical {
+    background: none;
+	height : 0px;
+}
+
+QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
+    background: none;
+    height : 0px;
+}
+
+QComboBox QAbstractItemView QScrollBar::add-line:vertical {
+    background: none;
+	height : 0px;
+}
+
+QComboBox QAbstractItemView QScrollBar::sub-line:vertical {
+    background: none;
+    height : 0px;
+}
 </string>
                     </property>
                    </widget>
                    <widget class="QPushButton" name="colorPalleteApply">
                     <property name="geometry">
                      <rect>
-                      <x>430</x>
+                      <x>460</x>
                       <y>10</y>
                       <width>161</width>
                       <height>41</height>
@@ -3282,7 +3406,7 @@ QCheckBox::indicator:indeterminate:pressed {
                     <widget class="QFrame" name="fpsSettingsFrame">
                      <property name="maximumSize">
                       <size>
-                       <width>250</width>
+                       <width>270</width>
                        <height>110</height>
                       </size>
                      </property>
@@ -3327,7 +3451,7 @@ background-color : rgb(89, 89, 89)</string>
                        <rect>
                         <x>160</x>
                         <y>10</y>
-                        <width>81</width>
+                        <width>101</width>
                         <height>40</height>
                        </rect>
                       </property>
@@ -3346,11 +3470,11 @@ background-color : rgb(89, 89, 89)</string>
                       </property>
                       <property name="styleSheet">
                        <string notr="true">QComboBox {
-border-radius : 5px;
-background-color : rgb(69, 69, 69);
-color : white;
-padding-right : 20px;
-padding-left: 20px;
+	border-radius : 5px;
+	background-color : rgb(69, 69, 69);
+	color : white;
+	padding-right : 20px;
+	padding-left: 20px;
 }
 
 QComboBox::drop-down {
@@ -3365,6 +3489,46 @@ QComboBox::drop-down::pressed {
 	image: url(:/icons/drop_down_pressed.png);
 	min-width: 30px;
 	min-height: 20px;
+}
+
+QComboBox QAbstractItemView {
+    background-color : rgb(69, 69, 69);
+	border-radius : 6px;
+	outline : 0px;
+	selection-background-color: lightgray;
+}
+
+QComboBox QAbstractItemView QScrollBar:vertical {
+  background-color: rgb(69, 69, 69);
+  color: black;
+}
+
+QComboBox QAbstractItemView QScrollBar::handle:vertical {
+  background-color: rgb(89, 89, 89);
+  border : 3px solid rgb(69, 69, 69);
+  border-radius : 5px;
+  color: black;
+  max-width : 5px;
+}
+
+QComboBox QAbstractItemView QScrollBar::add-page:vertical {
+    background: none;
+	height : 0px;
+}
+
+QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
+    background: none;
+    height : 0px;
+}
+
+QComboBox QAbstractItemView QScrollBar::add-line:vertical {
+    background: none;
+	height : 0px;
+}
+
+QComboBox QAbstractItemView QScrollBar::sub-line:vertical {
+    background: none;
+    height : 0px;
 }
 </string>
                       </property>
@@ -3435,7 +3599,7 @@ QComboBox::drop-down::pressed {
                        <rect>
                         <x>160</x>
                         <y>60</y>
-                        <width>81</width>
+                        <width>101</width>
                         <height>40</height>
                        </rect>
                       </property>
@@ -3454,11 +3618,11 @@ QComboBox::drop-down::pressed {
                       </property>
                       <property name="styleSheet">
                        <string notr="true">QComboBox {
-border-radius : 5px;
-background-color : rgb(69, 69, 69);
-color : white;
-padding-right : 20px;
-padding-left: 20px;
+	border-radius : 5px;
+	background-color : rgb(69, 69, 69);
+	color : white;
+	padding-right : 20px;
+	padding-left: 20px;
 }
 
 QComboBox::drop-down {
@@ -3473,6 +3637,46 @@ QComboBox::drop-down::pressed {
 	image: url(:/icons/drop_down_pressed.png);
 	min-width: 30px;
 	min-height: 20px;
+}
+
+QComboBox QAbstractItemView {
+    background-color : rgb(69, 69, 69);
+	border-radius : 6px;
+	outline : 0px;
+	selection-background-color: lightgray;
+}
+
+QComboBox QAbstractItemView QScrollBar:vertical {
+  background-color: rgb(69, 69, 69);
+  color: black;
+}
+
+QComboBox QAbstractItemView QScrollBar::handle:vertical {
+  background-color: rgb(89, 89, 89);
+  border : 3px solid rgb(69, 69, 69);
+  border-radius : 5px;
+  color: black;
+  max-width : 5px;
+}
+
+QComboBox QAbstractItemView QScrollBar::add-page:vertical {
+    background: none;
+	height : 0px;
+}
+
+QComboBox QAbstractItemView QScrollBar::sub-page:vertical {
+    background: none;
+    height : 0px;
+}
+
+QComboBox QAbstractItemView QScrollBar::add-line:vertical {
+    background: none;
+	height : 0px;
+}
+
+QComboBox QAbstractItemView QScrollBar::sub-line:vertical {
+    background: none;
+    height : 0px;
 }
 </string>
                       </property>
