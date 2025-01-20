@@ -12,7 +12,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1600</width>
+    <width>1693</width>
     <height>901</height>
    </rect>
   </property>
@@ -148,7 +148,7 @@ color : white;
        </attribute>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2,2">
+         <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2,0">
           <item>
            <layout class="QVBoxLayout" name="infoPanelLayout" stretch="0,0,1">
             <property name="spacing">
@@ -5228,6 +5228,9 @@ QCheckBox::indicator:indeterminate:pressed {
                     <enum>QFrame::Raised</enum>
                    </property>
                    <widget class="QCheckBox" name="settingsWindowFixedSize">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
                     <property name="geometry">
                      <rect>
                       <x>20</x>
