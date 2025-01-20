@@ -13,13 +13,13 @@ class MainPlotController(object):
     def __init__(self):
         pass
 
-    def initializeMainPlotActions(self):
+    def mainPlotInitializeActions(self):
         self.mainPlotEnableXGrid.stateChanged.connect(self.mainPlotChangeGridMode)
         self.mainPlotEnableYGrid.stateChanged.connect(self.mainPlotChangeGridMode)
         self.lineThicknessSpinBox.valueChanged.connect(self.mainPlotChangePenThickness)
         self.mainPlotFillUnder.stateChanged.connect(self.mainPlotEnableFill)
 
-    def initializeMainPlot(self):
+    def mainPlotInitialize(self):
         self.mainPlotCurves.clear()
         self.mainPlotPens.clear()
         self.mainPlotBrushes.clear()
@@ -48,8 +48,6 @@ class MainPlotController(object):
 
         self.mainPlotView.addLegend(enableMouse=False)
 
-        
-
         for generation, s in self.calc.statistics.items():
             pen = pg.mkPen(self.gameColorPalette[generation], width=3, style=QtCore.Qt.SolidLine)
             brushColor = (self.gameColorPalette[generation][0], self.gameColorPalette[generation][1], self.gameColorPalette[generation][2], 50)
@@ -63,27 +61,26 @@ class MainPlotController(object):
         for curve in self.mainPlotCurves:
             curve.setFillLevel(1.0 if self.mainPlotFillUnder.isChecked() else None)
         
-        
+
         self.legendAliveFrame.setStyleSheet("background-color : " + self.gameColorPalleteQt[self.calc.thisRule.generationsCount])
         self.legendEmptyFrame.setStyleSheet("background-color : " + self.gameColorPalleteQt[0])
 
-        
-        self.drawMainPlotStatistic()
+        self.mainPlotDrawStatistic()
 
-    def drawMainPlotStatistic(self):
+    def mainPlotDrawStatistic(self):
         for i in range(len(self.calc.statistics)):
             self.mainPlotCurves[i].setData(self.calc.statistics[i])
 
     def mainPlotChangeGridMode(self):
         self.mainPlotView.showGrid(x=self.mainPlotEnableXGrid.isChecked(), y=self.mainPlotEnableYGrid.isChecked())
-        self.drawMainPlotStatistic()
+        self.mainPlotDrawStatistic()
 
     def mainPlotChangePenThickness(self):
         for pen in self.mainPlotPens:
             pen.setWidth(self.lineThicknessSpinBox.value())
-        self.drawMainPlotStatistic()
+        self.mainPlotDrawStatistic()
 
     def mainPlotEnableFill(self):
         for curve in self.mainPlotCurves:
             curve.setFillLevel(1.0 if self.mainPlotFillUnder.isChecked() else None)
-        self.drawMainPlotStatistic()
+        self.mainPlotDrawStatistic()

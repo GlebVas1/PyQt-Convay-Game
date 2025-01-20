@@ -8,28 +8,29 @@ class SettingsColorPalleteManager(object):
 
     settingsColorPalletePreviewFrames = []
 
-    def initializeSettingsColorActions(self):
-        self.colorPalleteComboBox.currentIndexChanged.connect(self.changeGamePalletePreview)
-        self.colorPalleteApply.clicked.connect(self.applyPreview)
+    def settingsColorInitializeActions(self):
+        self.colorPalleteComboBox.currentIndexChanged.connect(self.settingsColorPalleteChangePreview)
+        self.colorPalleteApply.clicked.connect(self.settingColorPalleteSyncPallete)
 
-    def initializeSettingsColorPallete(self, colorPallete : list):
-        pallete = self.convertPalleteToSize(colorPallete.copy(), self.calc.thisRule.generationsCount + 1)
+    def settingsColorPalleteInitialize(self, colorPallete : list):
+        pallete = self.SettingsColorPalleteConvertPalleteToSize(colorPallete.copy(), self.calc.thisRule.generationsCount + 1)
         self.gameColorPalette = pallete
         self.gameColorPalleteQt = cp.convertPalleteToQT(self.gameColorPalette)
 
-    def initializeSettingsColorPalleteComboBox(self):
+    def settingsColorPalleteInitializeComboBox(self):
         for name, pallete in cp.colorPalletesDict.items():
             self.colorPalleteComboBox.addItem(name)
 
-    def changeGamePalletePreview(self, value):
-        name = self.colorPalleteComboBox.itemText(value)
-        self.initializeSettingsColorPreview(cp.colorPalletesDict[name])
+    def settingsColorPalleteChangePreview(self, value):
+        name = self.colorPalleteComboBox.currentText()
+        self.settingsColorPalleteInitializePreview(cp.colorPalletesDict[name])
         
-    def initializeSettingsColorPreview(self, colorPallete : list):
+    def settingsColorPalleteInitializePreview(self, colorPallete : list):
         
         colorPalleteQt = cp.convertPalleteToQT(colorPallete)
         for frame in self.settingsColorPalletePreviewFrames:
             frame.setParent(None)
+        
         self.settingsColorPalletePreviewFrames.clear()
 
         frameXSize = int((self.colorPalletePreview.size().width() - 5 * (len(colorPallete) + 1)) / (len(colorPallete)))
@@ -44,17 +45,19 @@ class SettingsColorPalleteManager(object):
         
         self.colorPalletePreview.show()
 
-    def applyPreview(self):
+    def settingColorPalleteSyncPallete(self):
+        self.gameManagerSyncChanges()
+
+    def settingsColorPalleteApplyPreview(self):
         name = self.colorPalleteComboBox.currentText()
-        pallete = self.convertPalleteToSize(cp.colorPalletesDict[name].copy(), self.calc.thisRule.generationsCount + 1)
-        self.initializeSettingsColorPallete(pallete)
-        self.initializeColorPallete()
-        self.updateFieldColors()
-        self.initializeMiniPlot()
-        self.initializeMainPlot()
+        pallete = self.SettingsColorPalleteConvertPalleteToSize(cp.colorPalletesDict[name].copy(), self.calc.thisRule.generationsCount + 1)
+        self.settingsColorPalleteInitialize(pallete)
+
+        
+        
 
 
-    def convertPalleteToSize(self, pallete : list, size : int) -> list:
+    def SettingsColorPalleteConvertPalleteToSize(self, pallete : list, size : int) -> list:
         if len(pallete) > size:
             
             pallete_truncated = []
@@ -86,9 +89,9 @@ class SettingsColorPalleteManager(object):
                     r = (pallete[i + 1][0] * (j + 1) + pallete[i][0] * (needToFillForEachColor - j)) // (needToFillForEachColor + 1)
                     g = (pallete[i + 1][1] * (j + 1) + pallete[i][1] * (needToFillForEachColor - j)) // (needToFillForEachColor + 1)
                     b = (pallete[i + 1][2] * (j + 1) + pallete[i][2] * (needToFillForEachColor - j)) // (needToFillForEachColor + 1)
-                    r = min(255, r)
-                    g = min(255, g)
-                    b = min(255, b)
+                    r = max(min(255, r), 0)
+                    g = max(min(255, g), 0)
+                    b = max(min(255, b), 0)
                     pallete_extended.append((r, g, b))
 
             pallete_extended.append(pallete[-2])
@@ -96,9 +99,9 @@ class SettingsColorPalleteManager(object):
                 r = (pallete[-1][0] * (j + 1) + pallete[-2][0] * (needToFillForEachColor - j)) // (needToFillForEachColor + 1)
                 g = (pallete[-1][1] * (j + 1) + pallete[-2][1] * (needToFillForEachColor - j)) // (needToFillForEachColor + 1)
                 b = (pallete[-1][2] * (j + 1) + pallete[-2][2] * (needToFillForEachColor - j)) // (needToFillForEachColor + 1)
-                r = min(255, r)
-                g = min(255, g)
-                b = min(255, b)
+                r = max(min(255, r), 0)
+                g = max(min(255, g), 0)
+                b = max(min(255, b), 0)
                 pallete_extended.append((r, g, b))
             
             pallete_extended.append(pallete[-1])

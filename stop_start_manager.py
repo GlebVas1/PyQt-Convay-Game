@@ -5,12 +5,12 @@ class StopStartManager(object):
 
     gameStatePlayed = True
 
-    def initializeStopStartManager(self):
-        self.playButton.clicked.connect(self.gameStartStopButtonAction)
-        self.stopButton.clicked.connect(self.gameStartStopButtonAction)
+    def stopStartManagerInitializeActions(self):
+        self.playButton.clicked.connect(self.stopStartManagerButtonAction)
+        self.stopButton.clicked.connect(self.stopStartManagerButtonAction)
         self.playButton.setEnabled(False)
 
-    def gameStartStopButtonAction(self):
+    def stopStartManagerButtonAction(self):
         if self.gameStatePlayed:
             self.gameStatePlayed = False
             self.stopButton.setEnabled(False)

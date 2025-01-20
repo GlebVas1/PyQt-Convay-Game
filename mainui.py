@@ -16,10 +16,11 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setWindowModality(QtCore.Qt.NonModal)
         MainWindow.setEnabled(True)
-        MainWindow.resize(1500, 900)
-        MainWindow.setMinimumSize(QtCore.QSize(1500, 900))
+        MainWindow.resize(1600, 901)
+        MainWindow.setMinimumSize(QtCore.QSize(1600, 900))
         MainWindow.setMaximumSize(QtCore.QSize(10000, 10000))
         MainWindow.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
+        MainWindow.setStyleSheet("")
         MainWindow.setIconSize(QtCore.QSize(50, 50))
         MainWindow.setTabShape(QtWidgets.QTabWidget.Triangular)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -82,6 +83,64 @@ class Ui_MainWindow(object):
         self.infoPanelLayout.setContentsMargins(10, -1, 10, -1)
         self.infoPanelLayout.setSpacing(2)
         self.infoPanelLayout.setObjectName("infoPanelLayout")
+        self.gameContolPanel = QtWidgets.QFrame(self.tabDisplay)
+        self.gameContolPanel.setMinimumSize(QtCore.QSize(150, 0))
+        self.gameContolPanel.setMaximumSize(QtCore.QSize(150, 80))
+        self.gameContolPanel.setLayoutDirection(QtCore.Qt.RightToLeft)
+        self.gameContolPanel.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(69, 69, 69)")
+        self.gameContolPanel.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.gameContolPanel.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.gameContolPanel.setObjectName("gameContolPanel")
+        self.gridLayout_5 = QtWidgets.QGridLayout(self.gameContolPanel)
+        self.gridLayout_5.setObjectName("gridLayout_5")
+        self.playButton = QtWidgets.QPushButton(self.gameContolPanel)
+        self.playButton.setEnabled(True)
+        self.playButton.setMinimumSize(QtCore.QSize(60, 60))
+        self.playButton.setMaximumSize(QtCore.QSize(60, 60))
+        self.playButton.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.playButton.setStyleSheet("QPushButton {\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(89, 89, 89)\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(49, 49, 49);\n"
+"    border-style: inset;\n"
+"}")
+        self.playButton.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icons/play.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/icons/play_disabled.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/icons/play_disabled.png"), QtGui.QIcon.Disabled, QtGui.QIcon.On)
+        icon.addPixmap(QtGui.QPixmap(":/icons/play.png"), QtGui.QIcon.Active, QtGui.QIcon.Off)
+        self.playButton.setIcon(icon)
+        self.playButton.setIconSize(QtCore.QSize(40, 40))
+        self.playButton.setObjectName("playButton")
+        self.gridLayout_5.addWidget(self.playButton, 0, 0, 1, 1)
+        self.stopButton = QtWidgets.QPushButton(self.gameContolPanel)
+        self.stopButton.setEnabled(True)
+        self.stopButton.setMinimumSize(QtCore.QSize(60, 60))
+        self.stopButton.setMaximumSize(QtCore.QSize(60, 60))
+        self.stopButton.setStyleSheet("QPushButton {\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(89, 89, 89)\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(49, 49, 49);\n"
+"    border-style: inset;\n"
+"}")
+        self.stopButton.setText("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap(":/icons/pause.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(":/icons/pause_disabled.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap(":/icons/pause_disabled.png"), QtGui.QIcon.Active, QtGui.QIcon.Off)
+        self.stopButton.setIcon(icon1)
+        self.stopButton.setIconSize(QtCore.QSize(40, 40))
+        self.stopButton.setObjectName("stopButton")
+        self.gridLayout_5.addWidget(self.stopButton, 0, 1, 1, 1)
+        self.infoPanelLayout.addWidget(self.gameContolPanel)
         self.miniPlot = QtWidgets.QFrame(self.tabDisplay)
         self.miniPlot.setMinimumSize(QtCore.QSize(200, 300))
         self.miniPlot.setMaximumSize(QtCore.QSize(200, 300))
@@ -188,6 +247,7 @@ class Ui_MainWindow(object):
         self.infoVerticalLayout.addWidget(self.frame_4)
         self.gridLayout_6.addLayout(self.infoVerticalLayout, 0, 0, 1, 1)
         self.infoPanelLayout.addWidget(self.infoframe)
+        self.infoPanelLayout.setStretch(2, 1)
         self.horizontalLayout.addLayout(self.infoPanelLayout)
         self.mainField = QtWidgets.QFrame(self.tabDisplay)
         self.mainField.setMinimumSize(QtCore.QSize(800, 800))
@@ -203,114 +263,29 @@ class Ui_MainWindow(object):
         self.gameControlPanelsLayout = QtWidgets.QVBoxLayout()
         self.gameControlPanelsLayout.setContentsMargins(10, -1, 10, -1)
         self.gameControlPanelsLayout.setObjectName("gameControlPanelsLayout")
-        self.gameContolPanel = QtWidgets.QFrame(self.tabDisplay)
-        self.gameContolPanel.setMinimumSize(QtCore.QSize(150, 0))
-        self.gameContolPanel.setMaximumSize(QtCore.QSize(150, 80))
-        self.gameContolPanel.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.gameContolPanel.setStyleSheet("border-radius : 5px;\n"
-"background-color : rgb(69, 69, 69)")
-        self.gameContolPanel.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.gameContolPanel.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.gameContolPanel.setObjectName("gameContolPanel")
-        self.gridLayout_5 = QtWidgets.QGridLayout(self.gameContolPanel)
-        self.gridLayout_5.setObjectName("gridLayout_5")
-        self.playButton = QtWidgets.QPushButton(self.gameContolPanel)
-        self.playButton.setEnabled(True)
-        self.playButton.setMinimumSize(QtCore.QSize(60, 60))
-        self.playButton.setMaximumSize(QtCore.QSize(60, 60))
-        self.playButton.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.playButton.setStyleSheet("QPushButton {\n"
-"    border-radius : 5px;\n"
-"    background-color : rgb(89, 89, 89)\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(49, 49, 49);\n"
-"    border-style: inset;\n"
-"}")
-        self.playButton.setText("")
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/icons/play.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon.addPixmap(QtGui.QPixmap(":/icons/play_disabled.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
-        icon.addPixmap(QtGui.QPixmap(":/icons/play_disabled.png"), QtGui.QIcon.Disabled, QtGui.QIcon.On)
-        icon.addPixmap(QtGui.QPixmap(":/icons/play.png"), QtGui.QIcon.Active, QtGui.QIcon.Off)
-        self.playButton.setIcon(icon)
-        self.playButton.setIconSize(QtCore.QSize(40, 40))
-        self.playButton.setObjectName("playButton")
-        self.gridLayout_5.addWidget(self.playButton, 0, 0, 1, 1)
-        self.stopButton = QtWidgets.QPushButton(self.gameContolPanel)
-        self.stopButton.setEnabled(True)
-        self.stopButton.setMinimumSize(QtCore.QSize(60, 60))
-        self.stopButton.setMaximumSize(QtCore.QSize(60, 60))
-        self.stopButton.setStyleSheet("QPushButton {\n"
-"    border-radius : 5px;\n"
-"    background-color : rgb(89, 89, 89)\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(49, 49, 49);\n"
-"    border-style: inset;\n"
-"}")
-        self.stopButton.setText("")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/icons/pause.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        icon1.addPixmap(QtGui.QPixmap(":/icons/pause_disabled.png"), QtGui.QIcon.Disabled, QtGui.QIcon.Off)
-        icon1.addPixmap(QtGui.QPixmap(":/icons/pause_disabled.png"), QtGui.QIcon.Active, QtGui.QIcon.Off)
-        self.stopButton.setIcon(icon1)
-        self.stopButton.setIconSize(QtCore.QSize(40, 40))
-        self.stopButton.setObjectName("stopButton")
-        self.gridLayout_5.addWidget(self.stopButton, 0, 1, 1, 1)
-        self.gameControlPanelsLayout.addWidget(self.gameContolPanel)
+        spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.gameControlPanelsLayout.addItem(spacerItem)
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
+        self.verticalLayout_19 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_19.setObjectName("verticalLayout_19")
         self.pickToolPanel = QtWidgets.QFrame(self.tabDisplay)
-        self.pickToolPanel.setMinimumSize(QtCore.QSize(180, 699))
-        self.pickToolPanel.setMaximumSize(QtCore.QSize(200, 700))
+        self.pickToolPanel.setMinimumSize(QtCore.QSize(180, 500))
+        self.pickToolPanel.setMaximumSize(QtCore.QSize(185, 500))
         self.pickToolPanel.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69)")
         self.pickToolPanel.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.pickToolPanel.setFrameShadow(QtWidgets.QFrame.Raised)
         self.pickToolPanel.setObjectName("pickToolPanel")
-        self.gridLayout_4 = QtWidgets.QGridLayout(self.pickToolPanel)
-        self.gridLayout_4.setObjectName("gridLayout_4")
-        self.frame_5 = QtWidgets.QFrame(self.pickToolPanel)
-        self.frame_5.setMaximumSize(QtCore.QSize(16777215, 300))
-        self.frame_5.setStyleSheet("border-radius : 5px;\n"
-"background-color : rgb(89, 89, 89)")
-        self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_5.setObjectName("frame_5")
-        self.gridLayout_11 = QtWidgets.QGridLayout(self.frame_5)
-        self.gridLayout_11.setObjectName("gridLayout_11")
-        self.verticalLayout_10 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_10.setObjectName("verticalLayout_10")
-        self.pushButton = QtWidgets.QPushButton(self.frame_5)
-        self.pushButton.setMaximumSize(QtCore.QSize(16777215, 50))
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        font.setBold(True)
-        font.setWeight(75)
-        self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("QPushButton {\n"
-"    border-radius : 5px;\n"
-"    background-color : rgb(69, 69, 69);\n"
-"    color : white;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"    background-color: rgb(49, 49, 49);\n"
-"    border-style: inset;\n"
-"}\n"
-"")
-        self.pushButton.setObjectName("pushButton")
-        self.verticalLayout_10.addWidget(self.pushButton)
-        self.gridLayout_11.addLayout(self.verticalLayout_10, 0, 0, 1, 1)
-        self.gridLayout_4.addWidget(self.frame_5, 1, 0, 1, 1)
+        self.verticalLayout_15 = QtWidgets.QVBoxLayout(self.pickToolPanel)
+        self.verticalLayout_15.setSpacing(10)
+        self.verticalLayout_15.setObjectName("verticalLayout_15")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout()
         self.verticalLayout_3.setContentsMargins(0, -1, -1, -1)
         self.verticalLayout_3.setSpacing(10)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
         self.frame = QtWidgets.QFrame(self.pickToolPanel)
+        self.frame.setMinimumSize(QtCore.QSize(0, 150))
         self.frame.setMaximumSize(QtCore.QSize(16777215, 150))
         self.frame.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(89, 89, 89)")
@@ -586,19 +561,229 @@ class Ui_MainWindow(object):
         self.verticalLayout_9.addWidget(self.brushRandomState)
         self.gridLayout_10.addLayout(self.verticalLayout_9, 0, 0, 1, 1)
         self.verticalLayout_3.addWidget(self.frame_2)
-        self.gridLayout_4.addLayout(self.verticalLayout_3, 0, 0, 1, 1)
-        self.horizontalLayout_7.addWidget(self.pickToolPanel)
+        self.verticalLayout_15.addLayout(self.verticalLayout_3)
+        self.frame_19 = QtWidgets.QFrame(self.pickToolPanel)
+        self.frame_19.setMinimumSize(QtCore.QSize(0, 70))
+        self.frame_19.setMaximumSize(QtCore.QSize(16777215, 70))
+        self.frame_19.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(89, 89, 89)")
+        self.frame_19.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_19.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_19.setObjectName("frame_19")
+        self.brushSetRadioButton = QtWidgets.QRadioButton(self.frame_19)
+        self.brushSetRadioButton.setGeometry(QtCore.QRect(10, 10, 171, 20))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.brushSetRadioButton.setFont(font)
+        self.brushSetRadioButton.setStyleSheet("color : white")
+        self.brushSetRadioButton.setChecked(True)
+        self.brushSetRadioButton.setObjectName("brushSetRadioButton")
+        self.objectSetRadioButton = QtWidgets.QRadioButton(self.frame_19)
+        self.objectSetRadioButton.setGeometry(QtCore.QRect(10, 40, 171, 20))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.objectSetRadioButton.setFont(font)
+        self.objectSetRadioButton.setStyleSheet("color : white")
+        self.objectSetRadioButton.setObjectName("objectSetRadioButton")
+        self.verticalLayout_15.addWidget(self.frame_19)
+        self.verticalLayout_19.addWidget(self.pickToolPanel)
+        spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_19.addItem(spacerItem1)
+        self.horizontalLayout_7.addLayout(self.verticalLayout_19)
+        self.verticalLayout_16 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_16.setObjectName("verticalLayout_16")
         self.colorPallete = QtWidgets.QFrame(self.tabDisplay)
-        self.colorPallete.setMinimumSize(QtCore.QSize(80, 0))
-        self.colorPallete.setMaximumSize(QtCore.QSize(300, 16777215))
+        self.colorPallete.setMinimumSize(QtCore.QSize(80, 350))
+        self.colorPallete.setMaximumSize(QtCore.QSize(80, 350))
+        self.colorPallete.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.colorPallete.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69)")
         self.colorPallete.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.colorPallete.setFrameShadow(QtWidgets.QFrame.Raised)
         self.colorPallete.setObjectName("colorPallete")
-        self.horizontalLayout_7.addWidget(self.colorPallete)
+        self.verticalLayout_16.addWidget(self.colorPallete)
+        self.frame_20 = QtWidgets.QFrame(self.tabDisplay)
+        self.frame_20.setMinimumSize(QtCore.QSize(200, 440))
+        self.frame_20.setMaximumSize(QtCore.QSize(300, 440))
+        self.frame_20.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(69, 69, 69)")
+        self.frame_20.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_20.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_20.setObjectName("frame_20")
+        self.gridLayout_4 = QtWidgets.QGridLayout(self.frame_20)
+        self.gridLayout_4.setObjectName("gridLayout_4")
+        self.frame_5 = QtWidgets.QFrame(self.frame_20)
+        self.frame_5.setMaximumSize(QtCore.QSize(16777215, 400))
+        self.frame_5.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(89, 89, 89)")
+        self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame_5.setObjectName("frame_5")
+        self.gridLayout_11 = QtWidgets.QGridLayout(self.frame_5)
+        self.gridLayout_11.setObjectName("gridLayout_11")
+        self.verticalLayout_10 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_10.setSpacing(10)
+        self.verticalLayout_10.setObjectName("verticalLayout_10")
+        self.objectPreview = QtWidgets.QFrame(self.frame_5)
+        self.objectPreview.setMinimumSize(QtCore.QSize(250, 250))
+        self.objectPreview.setMaximumSize(QtCore.QSize(130, 250))
+        self.objectPreview.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(69, 69, 69)")
+        self.objectPreview.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.objectPreview.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.objectPreview.setObjectName("objectPreview")
+        self.verticalLayout_10.addWidget(self.objectPreview)
+        self.objectsPresets = QtWidgets.QComboBox(self.frame_5)
+        self.objectsPresets.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.objectsPresets.setFont(font)
+        self.objectsPresets.setStyleSheet("QComboBox {\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    color : white;\n"
+"    padding-right : 20px;\n"
+"    padding-left: 20px;\n"
+"}\n"
+"\n"
+"QComboBox::drop-down {\n"
+"    padding-right : 10px;\n"
+"    image: url(:/icons/drop_down.png);\n"
+"    min-width: 30px;\n"
+"    min-height: 20px;\n"
+"}\n"
+"\n"
+"QComboBox::drop-down::pressed {\n"
+"    padding-right : 10px;\n"
+"    image: url(:/icons/drop_down_pressed.png);\n"
+"    min-width: 30px;\n"
+"    min-height: 20px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    border-radius : 6px;\n"
+"    outline : 0px;\n"
+"    selection-background-color: lightgray;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar:vertical {\n"
+"  background-color: rgb(69, 69, 69);\n"
+"  color: black;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::handle:vertical {\n"
+"  background-color: rgb(89, 89, 89);\n"
+"  border : 3px solid rgb(69, 69, 69);\n"
+"  border-radius : 5px;\n"
+"  color: black;\n"
+"  max-width : 5px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::add-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::add-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::sub-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"")
+        self.objectsPresets.setObjectName("objectsPresets")
+        self.verticalLayout_10.addWidget(self.objectsPresets)
+        self.horizontalLayout_10 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_10.setObjectName("horizontalLayout_10")
+        self.objectFlipButton = QtWidgets.QPushButton(self.frame_5)
+        self.objectFlipButton.setMinimumSize(QtCore.QSize(60, 60))
+        self.objectFlipButton.setMaximumSize(QtCore.QSize(60, 60))
+        self.objectFlipButton.setStyleSheet("QPushButton {\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    image : url(:/icons/flip_vertical.png);\n"
+"    padding: 10px 10px 10px 10px;\n"
+"    color : white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(49, 49, 49);\n"
+"    border-radius : 5px;\n"
+"    image : url(:/icons/flip_vertical_pressed.png);\n"
+"    padding: 10px 10px 10px 10px;\n"
+"    border-style: inset;\n"
+"}\n"
+"")
+        self.objectFlipButton.setText("")
+        self.objectFlipButton.setObjectName("objectFlipButton")
+        self.horizontalLayout_10.addWidget(self.objectFlipButton)
+        self.objectRotateButton = QtWidgets.QPushButton(self.frame_5)
+        self.objectRotateButton.setMinimumSize(QtCore.QSize(60, 60))
+        self.objectRotateButton.setMaximumSize(QtCore.QSize(60, 60))
+        self.objectRotateButton.setStyleSheet("QPushButton {\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    image : url(:/icons/rotate_clockwise.png);\n"
+"    padding: 10px 10px 10px 10px;\n"
+"    color : white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(49, 49, 49);\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    image : url(:/icons/rotate_clockwise_pressed.png);\n"
+"    padding: 10px 10px 10px 10px;\n"
+"    border-style: inset;\n"
+"}\n"
+"")
+        self.objectRotateButton.setText("")
+        self.objectRotateButton.setObjectName("objectRotateButton")
+        self.horizontalLayout_10.addWidget(self.objectRotateButton)
+        self.objectInvertButton = QtWidgets.QPushButton(self.frame_5)
+        self.objectInvertButton.setMinimumSize(QtCore.QSize(0, 60))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.objectInvertButton.setFont(font)
+        self.objectInvertButton.setStyleSheet("QPushButton {\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    color : white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(49, 49, 49);\n"
+"    border-style: inset;\n"
+"}\n"
+"")
+        self.objectInvertButton.setObjectName("objectInvertButton")
+        self.horizontalLayout_10.addWidget(self.objectInvertButton)
+        self.verticalLayout_10.addLayout(self.horizontalLayout_10)
+        self.gridLayout_11.addLayout(self.verticalLayout_10, 0, 0, 1, 1)
+        self.gridLayout_4.addWidget(self.frame_5, 0, 0, 1, 1)
+        self.verticalLayout_16.addWidget(self.frame_20)
+        self.horizontalLayout_7.addLayout(self.verticalLayout_16)
         self.gameControlPanelsLayout.addLayout(self.horizontalLayout_7)
         self.horizontalLayout.addLayout(self.gameControlPanelsLayout)
+        self.horizontalLayout.setStretch(0, 1)
+        self.horizontalLayout.setStretch(1, 2)
+        self.horizontalLayout.setStretch(2, 2)
         self.gridLayout_2.addLayout(self.horizontalLayout, 0, 0, 1, 1)
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(":/icons/game_ico.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -607,13 +792,17 @@ class Ui_MainWindow(object):
         self.tabGraph.setObjectName("tabGraph")
         self.gridLayout_8 = QtWidgets.QGridLayout(self.tabGraph)
         self.gridLayout_8.setObjectName("gridLayout_8")
+        spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.gridLayout_8.addItem(spacerItem2, 0, 1, 1, 1)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.verticalLayout_12 = QtWidgets.QVBoxLayout()
         self.verticalLayout_12.setContentsMargins(5, 5, 5, 5)
         self.verticalLayout_12.setObjectName("verticalLayout_12")
+        spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_12.addItem(spacerItem3)
         self.plotSettingFrame = QtWidgets.QFrame(self.tabGraph)
-        self.plotSettingFrame.setMinimumSize(QtCore.QSize(400, 0))
+        self.plotSettingFrame.setMinimumSize(QtCore.QSize(400, 425))
         self.plotSettingFrame.setMaximumSize(QtCore.QSize(400, 425))
         self.plotSettingFrame.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.plotSettingFrame.setAutoFillBackground(False)
@@ -981,8 +1170,8 @@ class Ui_MainWindow(object):
         self.gridLayout_16.addWidget(self.frame_10, 1, 0, 1, 1)
         self.verticalLayout_12.addWidget(self.plotSettingFrame)
         self.frame_15 = QtWidgets.QFrame(self.tabGraph)
-        self.frame_15.setMinimumSize(QtCore.QSize(400, 125))
-        self.frame_15.setMaximumSize(QtCore.QSize(400, 125))
+        self.frame_15.setMinimumSize(QtCore.QSize(400, 140))
+        self.frame_15.setMaximumSize(QtCore.QSize(400, 140))
         self.frame_15.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69)")
         self.frame_15.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -998,7 +1187,7 @@ class Ui_MainWindow(object):
         self.label_9.setStyleSheet("color : white")
         self.label_9.setObjectName("label_9")
         self.legendAliveFrame = QtWidgets.QFrame(self.frame_15)
-        self.legendAliveFrame.setGeometry(QtCore.QRect(340, 10, 50, 50))
+        self.legendAliveFrame.setGeometry(QtCore.QRect(340, 15, 50, 50))
         self.legendAliveFrame.setMinimumSize(QtCore.QSize(50, 50))
         self.legendAliveFrame.setMaximumSize(QtCore.QSize(50, 50))
         self.legendAliveFrame.setStyleSheet("background-color : white")
@@ -1006,7 +1195,7 @@ class Ui_MainWindow(object):
         self.legendAliveFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.legendAliveFrame.setObjectName("legendAliveFrame")
         self.legendEmptyFrame = QtWidgets.QFrame(self.frame_15)
-        self.legendEmptyFrame.setGeometry(QtCore.QRect(340, 70, 50, 50))
+        self.legendEmptyFrame.setGeometry(QtCore.QRect(340, 80, 50, 50))
         self.legendEmptyFrame.setMinimumSize(QtCore.QSize(50, 50))
         self.legendEmptyFrame.setMaximumSize(QtCore.QSize(50, 50))
         self.legendEmptyFrame.setStyleSheet("background-color : red")
@@ -1014,7 +1203,7 @@ class Ui_MainWindow(object):
         self.legendEmptyFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.legendEmptyFrame.setObjectName("legendEmptyFrame")
         self.label_10 = QtWidgets.QLabel(self.frame_15)
-        self.label_10.setGeometry(QtCore.QRect(190, 20, 141, 31))
+        self.label_10.setGeometry(QtCore.QRect(190, 20, 141, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -1023,7 +1212,7 @@ class Ui_MainWindow(object):
         self.label_10.setStyleSheet("color : white")
         self.label_10.setObjectName("label_10")
         self.label_11 = QtWidgets.QLabel(self.frame_15)
-        self.label_11.setGeometry(QtCore.QRect(170, 80, 161, 31))
+        self.label_11.setGeometry(QtCore.QRect(170, 80, 161, 51))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -1035,9 +1224,13 @@ class Ui_MainWindow(object):
         self.label_11.setWordWrap(False)
         self.label_11.setObjectName("label_11")
         self.verticalLayout_12.addWidget(self.frame_15)
+        spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_12.addItem(spacerItem4)
         self.horizontalLayout_3.addLayout(self.verticalLayout_12)
         self.verticalLayout_11 = QtWidgets.QVBoxLayout()
         self.verticalLayout_11.setObjectName("verticalLayout_11")
+        spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_11.addItem(spacerItem5)
         self.frame_11 = QtWidgets.QFrame(self.tabGraph)
         self.frame_11.setMinimumSize(QtCore.QSize(0, 60))
         self.frame_11.setMaximumSize(QtCore.QSize(800, 60))
@@ -1066,7 +1259,7 @@ class Ui_MainWindow(object):
         self.gridLayout_17.addWidget(self.frame_12, 0, 0, 1, 1)
         self.verticalLayout_11.addWidget(self.frame_11)
         self.plotFrame = QtWidgets.QFrame(self.tabGraph)
-        self.plotFrame.setMinimumSize(QtCore.QSize(600, 400))
+        self.plotFrame.setMinimumSize(QtCore.QSize(800, 600))
         self.plotFrame.setMaximumSize(QtCore.QSize(800, 600))
         self.plotFrame.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69)")
@@ -1079,6 +1272,8 @@ class Ui_MainWindow(object):
         self.mainPlotView.setObjectName("mainPlotView")
         self.gridLayout_13.addWidget(self.mainPlotView, 0, 0, 1, 1)
         self.verticalLayout_11.addWidget(self.plotFrame)
+        spacerItem6 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_11.addItem(spacerItem6)
         self.horizontalLayout_3.addLayout(self.verticalLayout_11)
         self.gridLayout_8.addLayout(self.horizontalLayout_3, 0, 0, 1, 1)
         icon3 = QtGui.QIcon()
@@ -1106,12 +1301,12 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_2.setContentsMargins(10, 20, 10, 10)
+        self.verticalLayout_2.setContentsMargins(0, 20, 0, 0)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.horizontalLayout_8 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.ruleSettingsField = QtWidgets.QFrame(self.groupBox)
-        self.ruleSettingsField.setMinimumSize(QtCore.QSize(350, 210))
+        self.ruleSettingsField.setMinimumSize(QtCore.QSize(600, 210))
         font = QtGui.QFont()
         font.setBold(True)
         font.setWeight(75)
@@ -1231,7 +1426,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_2.setContentsMargins(0, -1, 0, -1)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.frame_16 = QtWidgets.QFrame(self.groupBox)
-        self.frame_16.setMaximumSize(QtCore.QSize(150, 110))
+        self.frame_16.setMinimumSize(QtCore.QSize(150, 0))
+        self.frame_16.setMaximumSize(QtCore.QSize(150, 130))
         self.frame_16.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(89, 89, 89)")
         self.frame_16.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -1239,7 +1435,7 @@ class Ui_MainWindow(object):
         self.frame_16.setObjectName("frame_16")
         self.ruleGenerationsSpinBox = QtWidgets.QSpinBox(self.frame_16)
         self.ruleGenerationsSpinBox.setEnabled(True)
-        self.ruleGenerationsSpinBox.setGeometry(QtCore.QRect(10, 60, 111, 40))
+        self.ruleGenerationsSpinBox.setGeometry(QtCore.QRect(10, 80, 111, 40))
         self.ruleGenerationsSpinBox.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
         font.setPointSize(11)
@@ -1300,14 +1496,15 @@ class Ui_MainWindow(object):
         self.ruleSurviveLabel_2.setObjectName("ruleSurviveLabel_2")
         self.horizontalLayout_2.addWidget(self.frame_16)
         self.frame_17 = QtWidgets.QFrame(self.groupBox)
-        self.frame_17.setMaximumSize(QtCore.QSize(16777215, 110))
+        self.frame_17.setMinimumSize(QtCore.QSize(480, 0))
+        self.frame_17.setMaximumSize(QtCore.QSize(16777215, 130))
         self.frame_17.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(89, 89, 89)")
         self.frame_17.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_17.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_17.setObjectName("frame_17")
         self.ruleSurviveLabel_3 = QtWidgets.QLabel(self.frame_17)
-        self.ruleSurviveLabel_3.setGeometry(QtCore.QRect(10, 10, 161, 41))
+        self.ruleSurviveLabel_3.setGeometry(QtCore.QRect(20, 20, 161, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -1318,18 +1515,18 @@ class Ui_MainWindow(object):
         self.ruleSurviveLabel_3.setStyleSheet("border :  0px; border :  0px; color : white;")
         self.ruleSurviveLabel_3.setObjectName("ruleSurviveLabel_3")
         self.ruleComboBox = QtWidgets.QComboBox(self.frame_17)
-        self.ruleComboBox.setGeometry(QtCore.QRect(10, 60, 421, 41))
+        self.ruleComboBox.setGeometry(QtCore.QRect(10, 80, 451, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
         self.ruleComboBox.setFont(font)
         self.ruleComboBox.setStyleSheet("QComboBox {\n"
-"border-radius : 5px;\n"
-"background-color : rgb(69, 69, 69);\n"
-"color : white;\n"
-"padding-right : 20px;\n"
-"padding-left: 20px;\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    color : white;\n"
+"    padding-right : 20px;\n"
+"    padding-left: 20px;\n"
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
@@ -1345,10 +1542,50 @@ class Ui_MainWindow(object):
 "    min-width: 30px;\n"
 "    min-height: 20px;\n"
 "}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    border-radius : 6px;\n"
+"    outline : 0px;\n"
+"    selection-background-color: lightgray;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar:vertical {\n"
+"  background-color: rgb(69, 69, 69);\n"
+"  color: black;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::handle:vertical {\n"
+"  background-color: rgb(89, 89, 89);\n"
+"  border : 3px solid rgb(69, 69, 69);\n"
+"  border-radius : 5px;\n"
+"  color: black;\n"
+"  max-width : 5px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::add-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::add-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::sub-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
 "")
         self.ruleComboBox.setObjectName("ruleComboBox")
         self.ruleLoadbutton = QtWidgets.QPushButton(self.frame_17)
-        self.ruleLoadbutton.setGeometry(QtCore.QRect(270, 10, 161, 41))
+        self.ruleLoadbutton.setGeometry(QtCore.QRect(300, 20, 161, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -1370,9 +1607,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
         self.horizontalLayout_4.addLayout(self.verticalLayout_2)
         self.verticalLayout_6 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_6.setContentsMargins(10, 20, 10, 10)
+        self.verticalLayout_6.setContentsMargins(0, 20, 0, 0)
         self.verticalLayout_6.setObjectName("verticalLayout_6")
+        self.horizontalLayout_13 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_13.setObjectName("horizontalLayout_13")
         self.fieldSettings = QtWidgets.QFrame(self.groupBox)
+        self.fieldSettings.setMinimumSize(QtCore.QSize(350, 0))
+        self.fieldSettings.setMaximumSize(QtCore.QSize(350, 16777215))
         self.fieldSettings.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(89, 89, 89)")
         self.fieldSettings.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -1434,7 +1675,7 @@ class Ui_MainWindow(object):
         self.spinBox_3.setMaximum(20)
         self.spinBox_3.setObjectName("spinBox_3")
         self.spinBox_4 = QtWidgets.QSpinBox(self.fieldSettings)
-        self.spinBox_4.setGeometry(QtCore.QRect(240, 50, 111, 41))
+        self.spinBox_4.setGeometry(QtCore.QRect(220, 50, 111, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -1489,7 +1730,7 @@ class Ui_MainWindow(object):
         self.ruleArriveLabel_4.setTextFormat(QtCore.Qt.PlainText)
         self.ruleArriveLabel_4.setObjectName("ruleArriveLabel_4")
         self.ruleArriveLabel_5 = QtWidgets.QLabel(self.fieldSettings)
-        self.ruleArriveLabel_5.setGeometry(QtCore.QRect(200, 50, 41, 41))
+        self.ruleArriveLabel_5.setGeometry(QtCore.QRect(180, 50, 41, 41))
         font = QtGui.QFont()
         font.setPointSize(15)
         font.setBold(True)
@@ -1499,7 +1740,7 @@ class Ui_MainWindow(object):
         self.ruleArriveLabel_5.setTextFormat(QtCore.Qt.PlainText)
         self.ruleArriveLabel_5.setObjectName("ruleArriveLabel_5")
         self.colorPalleteApply_2 = QtWidgets.QPushButton(self.fieldSettings)
-        self.colorPalleteApply_2.setGeometry(QtCore.QRect(20, 110, 331, 41))
+        self.colorPalleteApply_2.setGeometry(QtCore.QRect(20, 110, 311, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -1517,8 +1758,13 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         self.colorPalleteApply_2.setObjectName("colorPalleteApply_2")
-        self.verticalLayout_6.addWidget(self.fieldSettings)
+        self.horizontalLayout_13.addWidget(self.fieldSettings)
+        spacerItem7 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_13.addItem(spacerItem7)
+        self.verticalLayout_6.addLayout(self.horizontalLayout_13)
         self.colorPalleteSettings = QtWidgets.QFrame(self.groupBox)
+        self.colorPalleteSettings.setMinimumSize(QtCore.QSize(630, 0))
+        self.colorPalleteSettings.setMaximumSize(QtCore.QSize(630, 16777215))
         self.colorPalleteSettings.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(89, 89, 89)")
         self.colorPalleteSettings.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -1534,7 +1780,7 @@ class Ui_MainWindow(object):
         self.label_5.setStyleSheet("border :  0px; color : white;")
         self.label_5.setObjectName("label_5")
         self.colorPalletePreview = QtWidgets.QFrame(self.colorPalleteSettings)
-        self.colorPalletePreview.setGeometry(QtCore.QRect(10, 89, 581, 65))
+        self.colorPalletePreview.setGeometry(QtCore.QRect(10, 100, 611, 65))
         font = QtGui.QFont()
         font.setBold(False)
         font.setWeight(50)
@@ -1554,18 +1800,18 @@ class Ui_MainWindow(object):
         self.label_6.setStyleSheet("border :  0px; color : white;")
         self.label_6.setObjectName("label_6")
         self.colorPalleteComboBox = QtWidgets.QComboBox(self.colorPalleteSettings)
-        self.colorPalleteComboBox.setGeometry(QtCore.QRect(140, 10, 281, 41))
+        self.colorPalleteComboBox.setGeometry(QtCore.QRect(140, 10, 311, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
         self.colorPalleteComboBox.setFont(font)
         self.colorPalleteComboBox.setStyleSheet("QComboBox {\n"
-"border-radius : 5px;\n"
-"background-color : rgb(69, 69, 69);\n"
-"color : white;\n"
-"padding-right : 20px;\n"
-"padding-left: 20px;\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    color : white;\n"
+"    padding-right : 20px;\n"
+"    padding-left: 20px;\n"
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
@@ -1581,10 +1827,50 @@ class Ui_MainWindow(object):
 "    min-width: 30px;\n"
 "    min-height: 20px;\n"
 "}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    border-radius : 6px;\n"
+"    outline : 0px;\n"
+"    selection-background-color: lightgray;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar:vertical {\n"
+"  background-color: rgb(69, 69, 69);\n"
+"  color: black;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::handle:vertical {\n"
+"  background-color: rgb(89, 89, 89);\n"
+"  border : 3px solid rgb(69, 69, 69);\n"
+"  border-radius : 5px;\n"
+"  color: rgb(69, 69, 69);\n"
+"  max-width : 5px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::add-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::add-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::sub-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
 "")
         self.colorPalleteComboBox.setObjectName("colorPalleteComboBox")
         self.colorPalleteApply = QtWidgets.QPushButton(self.colorPalleteSettings)
-        self.colorPalleteApply.setGeometry(QtCore.QRect(430, 10, 161, 41))
+        self.colorPalleteApply.setGeometry(QtCore.QRect(460, 10, 161, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -1607,9 +1893,10 @@ class Ui_MainWindow(object):
         self.gridLayout_9.addLayout(self.horizontalLayout_4, 0, 0, 1, 1)
         self.verticalLayout.addWidget(self.groupBox)
         self.horizontalLayout_9 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_9.setContentsMargins(-1, 10, -1, 10)
         self.horizontalLayout_9.setObjectName("horizontalLayout_9")
         self.simulationSettings = QtWidgets.QGroupBox(self.tabSetting)
-        self.simulationSettings.setMinimumSize(QtCore.QSize(0, 250))
+        self.simulationSettings.setMinimumSize(QtCore.QSize(1200, 400))
         self.simulationSettings.setMaximumSize(QtCore.QSize(1200, 400))
         font = QtGui.QFont()
         font.setPointSize(11)
@@ -1672,13 +1959,19 @@ class Ui_MainWindow(object):
         self.gridLayout_14 = QtWidgets.QGridLayout(self.simulationSettings)
         self.gridLayout_14.setObjectName("gridLayout_14")
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_6.setContentsMargins(-1, 20, -1, -1)
+        self.horizontalLayout_6.setContentsMargins(-1, 15, -1, -1)
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
         self.verticalLayout_13 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_13.setSpacing(0)
+        self.verticalLayout_13.setSpacing(5)
         self.verticalLayout_13.setObjectName("verticalLayout_13")
+        self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_11.setSpacing(5)
+        self.horizontalLayout_11.setObjectName("horizontalLayout_11")
+        spacerItem8 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_11.addItem(spacerItem8)
         self.fpsSettingsFrame = QtWidgets.QFrame(self.simulationSettings)
-        self.fpsSettingsFrame.setMaximumSize(QtCore.QSize(250, 110))
+        self.fpsSettingsFrame.setMinimumSize(QtCore.QSize(270, 120))
+        self.fpsSettingsFrame.setMaximumSize(QtCore.QSize(270, 120))
         self.fpsSettingsFrame.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(89, 89, 89)")
         self.fpsSettingsFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -1695,7 +1988,7 @@ class Ui_MainWindow(object):
         self.ruleSurviveLabel_6.setObjectName("ruleSurviveLabel_6")
         self.fpsSetter = QtWidgets.QComboBox(self.fpsSettingsFrame)
         self.fpsSetter.setEnabled(True)
-        self.fpsSetter.setGeometry(QtCore.QRect(160, 10, 81, 40))
+        self.fpsSetter.setGeometry(QtCore.QRect(160, 10, 101, 40))
         self.fpsSetter.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
         font.setPointSize(11)
@@ -1703,11 +1996,11 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.fpsSetter.setFont(font)
         self.fpsSetter.setStyleSheet("QComboBox {\n"
-"border-radius : 5px;\n"
-"background-color : rgb(69, 69, 69);\n"
-"color : white;\n"
-"padding-right : 20px;\n"
-"padding-left: 20px;\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    color : white;\n"
+"    padding-right : 20px;\n"
+"    padding-left: 20px;\n"
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
@@ -1722,6 +2015,46 @@ class Ui_MainWindow(object):
 "    image: url(:/icons/drop_down_pressed.png);\n"
 "    min-width: 30px;\n"
 "    min-height: 20px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    border-radius : 6px;\n"
+"    outline : 0px;\n"
+"    selection-background-color: lightgray;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar:vertical {\n"
+"  background-color: rgb(69, 69, 69);\n"
+"  color: black;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::handle:vertical {\n"
+"  background-color: rgb(89, 89, 89);\n"
+"  border : 3px solid rgb(69, 69, 69);\n"
+"  border-radius : 5px;\n"
+"  color: black;\n"
+"  max-width : 5px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::add-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::add-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::sub-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
 "}\n"
 "")
         self.fpsSetter.setObjectName("fpsSetter")
@@ -1743,7 +2076,7 @@ class Ui_MainWindow(object):
         self.ruleSurviveLabel_8.setObjectName("ruleSurviveLabel_8")
         self.skipFrameSetter = QtWidgets.QComboBox(self.fpsSettingsFrame)
         self.skipFrameSetter.setEnabled(True)
-        self.skipFrameSetter.setGeometry(QtCore.QRect(160, 60, 81, 40))
+        self.skipFrameSetter.setGeometry(QtCore.QRect(160, 60, 101, 40))
         self.skipFrameSetter.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
         font.setPointSize(11)
@@ -1751,11 +2084,11 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.skipFrameSetter.setFont(font)
         self.skipFrameSetter.setStyleSheet("QComboBox {\n"
-"border-radius : 5px;\n"
-"background-color : rgb(69, 69, 69);\n"
-"color : white;\n"
-"padding-right : 20px;\n"
-"padding-left: 20px;\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    color : white;\n"
+"    padding-right : 20px;\n"
+"    padding-left: 20px;\n"
 "}\n"
 "\n"
 "QComboBox::drop-down {\n"
@@ -1771,111 +2104,90 @@ class Ui_MainWindow(object):
 "    min-width: 30px;\n"
 "    min-height: 20px;\n"
 "}\n"
+"\n"
+"QComboBox QAbstractItemView {\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    border-radius : 6px;\n"
+"    outline : 0px;\n"
+"    selection-background-color: lightgray;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar:vertical {\n"
+"  background-color: rgb(69, 69, 69);\n"
+"  color: black;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::handle:vertical {\n"
+"  background-color: rgb(89, 89, 89);\n"
+"  border : 3px solid rgb(69, 69, 69);\n"
+"  border-radius : 5px;\n"
+"  color: black;\n"
+"  max-width : 5px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::add-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::add-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QComboBox QAbstractItemView QScrollBar::sub-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
 "")
         self.skipFrameSetter.setObjectName("skipFrameSetter")
         self.skipFrameSetter.addItem("")
         self.skipFrameSetter.addItem("")
         self.skipFrameSetter.addItem("")
         self.skipFrameSetter.addItem("")
-        self.verticalLayout_13.addWidget(self.fpsSettingsFrame)
+        self.horizontalLayout_11.addWidget(self.fpsSettingsFrame)
         self.frame_8 = QtWidgets.QFrame(self.simulationSettings)
-        self.frame_8.setMaximumSize(QtCore.QSize(300, 110))
+        self.frame_8.setMinimumSize(QtCore.QSize(300, 120))
+        self.frame_8.setMaximumSize(QtCore.QSize(300, 120))
         self.frame_8.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(89, 89, 89)")
         self.frame_8.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_8.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_8.setObjectName("frame_8")
-        self.enableRandom = QtWidgets.QCheckBox(self.frame_8)
-        self.enableRandom.setGeometry(QtCore.QRect(10, 20, 441, 20))
+        self.enableRandomStructures = QtWidgets.QCheckBox(self.frame_8)
+        self.enableRandomStructures.setGeometry(QtCore.QRect(10, 70, 301, 20))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
-        self.enableRandom.setFont(font)
-        self.enableRandom.setStyleSheet("")
-        self.enableRandom.setObjectName("enableRandom")
-        self.enableRandom_2 = QtWidgets.QCheckBox(self.frame_8)
-        self.enableRandom_2.setGeometry(QtCore.QRect(10, 70, 301, 20))
+        self.enableRandomStructures.setFont(font)
+        self.enableRandomStructures.setStyleSheet("")
+        self.enableRandomStructures.setObjectName("enableRandomStructures")
+        self.enableRandomCells = QtWidgets.QCheckBox(self.frame_8)
+        self.enableRandomCells.setGeometry(QtCore.QRect(10, 20, 304, 22))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
-        self.enableRandom_2.setFont(font)
-        self.enableRandom_2.setStyleSheet("")
-        self.enableRandom_2.setObjectName("enableRandom_2")
-        self.verticalLayout_13.addWidget(self.frame_8)
-        self.frame_6 = QtWidgets.QFrame(self.simulationSettings)
-        self.frame_6.setMaximumSize(QtCore.QSize(380, 60))
-        self.frame_6.setFrameShape(QtWidgets.QFrame.StyledPanel)
-        self.frame_6.setFrameShadow(QtWidgets.QFrame.Raised)
-        self.frame_6.setObjectName("frame_6")
-        self.label_17 = QtWidgets.QLabel(self.frame_6)
-        self.label_17.setGeometry(QtCore.QRect(10, 10, 461, 41))
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_17.setFont(font)
-        self.label_17.setObjectName("label_17")
-        self.ruleGenerationsSpinBox_5 = QtWidgets.QSpinBox(self.frame_6)
-        self.ruleGenerationsSpinBox_5.setEnabled(True)
-        self.ruleGenerationsSpinBox_5.setGeometry(QtCore.QRect(180, 10, 111, 40))
-        self.ruleGenerationsSpinBox_5.setMinimumSize(QtCore.QSize(0, 40))
-        font = QtGui.QFont()
-        font.setPointSize(11)
-        font.setBold(True)
-        font.setWeight(75)
-        self.ruleGenerationsSpinBox_5.setFont(font)
-        self.ruleGenerationsSpinBox_5.setFocusPolicy(QtCore.Qt.WheelFocus)
-        self.ruleGenerationsSpinBox_5.setStyleSheet("\n"
-"QSpinBox {\n"
-"border-radius : 5px;\n"
-"background-color : rgb(69, 69, 69); \n"
-"color : white;\n"
-"padding-left : 15px;\n"
-"padding-right : 50px;\n"
-"}\n"
-"\n"
-"QSpinBox::up-button {\n"
-"subcontrol-origin: border;\n"
-"subcontrol-position: center right; \n"
-"border-image: url(:/icons/arrow_right.png);\n"
-"border : 1px;\n"
-"right : 10px;\n"
-"width : 10px;\n"
-"}\n"
-"\n"
-"QSpinBox::up-button::pressed {\n"
-"border-image: url(:/icons/arrow_right_pressed.png);\n"
-"}\n"
-"\n"
-"QSpinBox::down-button {\n"
-"subcontrol-origin: border;\n"
-"subcontrol-position: center right ;\n"
-"border-image: url(:/icons/arrow_left.png);\n"
-"border : 1px;\n"
-"right : 35px;\n"
-"width : 10px;\n"
-"}\n"
-"\n"
-"QSpinBox::down-button::pressed {\n"
-"border-image: url(:/icons/arrow_left_pressed.png);\n"
-"}\n"
-"")
-        self.ruleGenerationsSpinBox_5.setFrame(True)
-        self.ruleGenerationsSpinBox_5.setSuffix("")
-        self.ruleGenerationsSpinBox_5.setMinimum(2)
-        self.ruleGenerationsSpinBox_5.setMaximum(25)
-        self.ruleGenerationsSpinBox_5.setObjectName("ruleGenerationsSpinBox_5")
-        self.verticalLayout_13.addWidget(self.frame_6)
-        self.horizontalLayout_6.addLayout(self.verticalLayout_13)
-        self.verticalLayout_14 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_14.setSpacing(10)
-        self.verticalLayout_14.setObjectName("verticalLayout_14")
+        self.enableRandomCells.setFont(font)
+        self.enableRandomCells.setStyleSheet("")
+        self.enableRandomCells.setObjectName("enableRandomCells")
+        self.horizontalLayout_11.addWidget(self.frame_8)
+        self.verticalLayout_13.addLayout(self.horizontalLayout_11)
+        self.horizontalLayout_12 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_12.setObjectName("horizontalLayout_12")
+        spacerItem9 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_12.addItem(spacerItem9)
         self.frame_9 = QtWidgets.QFrame(self.simulationSettings)
         self.frame_9.setEnabled(True)
-        self.frame_9.setMinimumSize(QtCore.QSize(0, 180))
-        self.frame_9.setMaximumSize(QtCore.QSize(480, 300))
+        self.frame_9.setMinimumSize(QtCore.QSize(480, 230))
+        self.frame_9.setMaximumSize(QtCore.QSize(480, 230))
+        self.frame_9.setContextMenuPolicy(QtCore.Qt.DefaultContextMenu)
         self.frame_9.setStyleSheet("border-radius : 5px;\n"
 "background-color : rgb(89, 89, 89)")
         self.frame_9.setFrameShape(QtWidgets.QFrame.StyledPanel)
@@ -1897,17 +2209,17 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label_15.setFont(font)
         self.label_15.setObjectName("label_15")
-        self.ruleGenerationsSpinBox_2 = QtWidgets.QSpinBox(self.frame_9)
-        self.ruleGenerationsSpinBox_2.setEnabled(True)
-        self.ruleGenerationsSpinBox_2.setGeometry(QtCore.QRect(330, 20, 111, 40))
-        self.ruleGenerationsSpinBox_2.setMinimumSize(QtCore.QSize(0, 40))
+        self.randomFirstGenerationRate = QtWidgets.QSpinBox(self.frame_9)
+        self.randomFirstGenerationRate.setEnabled(True)
+        self.randomFirstGenerationRate.setGeometry(QtCore.QRect(350, 20, 111, 40))
+        self.randomFirstGenerationRate.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
-        self.ruleGenerationsSpinBox_2.setFont(font)
-        self.ruleGenerationsSpinBox_2.setFocusPolicy(QtCore.Qt.WheelFocus)
-        self.ruleGenerationsSpinBox_2.setStyleSheet("\n"
+        self.randomFirstGenerationRate.setFont(font)
+        self.randomFirstGenerationRate.setFocusPolicy(QtCore.Qt.WheelFocus)
+        self.randomFirstGenerationRate.setStyleSheet("\n"
 "QSpinBox {\n"
 "border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69); \n"
@@ -1942,22 +2254,24 @@ class Ui_MainWindow(object):
 "border-image: url(:/icons/arrow_left_pressed.png);\n"
 "}\n"
 "")
-        self.ruleGenerationsSpinBox_2.setFrame(True)
-        self.ruleGenerationsSpinBox_2.setSuffix("")
-        self.ruleGenerationsSpinBox_2.setMinimum(2)
-        self.ruleGenerationsSpinBox_2.setMaximum(25)
-        self.ruleGenerationsSpinBox_2.setObjectName("ruleGenerationsSpinBox_2")
-        self.ruleGenerationsSpinBox_3 = QtWidgets.QSpinBox(self.frame_9)
-        self.ruleGenerationsSpinBox_3.setEnabled(True)
-        self.ruleGenerationsSpinBox_3.setGeometry(QtCore.QRect(330, 70, 111, 40))
-        self.ruleGenerationsSpinBox_3.setMinimumSize(QtCore.QSize(0, 40))
+        self.randomFirstGenerationRate.setFrame(True)
+        self.randomFirstGenerationRate.setSuffix("")
+        self.randomFirstGenerationRate.setMinimum(0)
+        self.randomFirstGenerationRate.setMaximum(400)
+        self.randomFirstGenerationRate.setSingleStep(1)
+        self.randomFirstGenerationRate.setProperty("value", 1)
+        self.randomFirstGenerationRate.setObjectName("randomFirstGenerationRate")
+        self.randomEmptyGenerationRate = QtWidgets.QSpinBox(self.frame_9)
+        self.randomEmptyGenerationRate.setEnabled(True)
+        self.randomEmptyGenerationRate.setGeometry(QtCore.QRect(350, 70, 111, 40))
+        self.randomEmptyGenerationRate.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
-        self.ruleGenerationsSpinBox_3.setFont(font)
-        self.ruleGenerationsSpinBox_3.setFocusPolicy(QtCore.Qt.WheelFocus)
-        self.ruleGenerationsSpinBox_3.setStyleSheet("\n"
+        self.randomEmptyGenerationRate.setFont(font)
+        self.randomEmptyGenerationRate.setFocusPolicy(QtCore.Qt.WheelFocus)
+        self.randomEmptyGenerationRate.setStyleSheet("\n"
 "QSpinBox {\n"
 "border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69); \n"
@@ -1992,22 +2306,24 @@ class Ui_MainWindow(object):
 "border-image: url(:/icons/arrow_left_pressed.png);\n"
 "}\n"
 "")
-        self.ruleGenerationsSpinBox_3.setFrame(True)
-        self.ruleGenerationsSpinBox_3.setSuffix("")
-        self.ruleGenerationsSpinBox_3.setMinimum(2)
-        self.ruleGenerationsSpinBox_3.setMaximum(25)
-        self.ruleGenerationsSpinBox_3.setObjectName("ruleGenerationsSpinBox_3")
-        self.ruleGenerationsSpinBox_4 = QtWidgets.QSpinBox(self.frame_9)
-        self.ruleGenerationsSpinBox_4.setEnabled(True)
-        self.ruleGenerationsSpinBox_4.setGeometry(QtCore.QRect(330, 120, 111, 40))
-        self.ruleGenerationsSpinBox_4.setMinimumSize(QtCore.QSize(0, 40))
+        self.randomEmptyGenerationRate.setFrame(True)
+        self.randomEmptyGenerationRate.setSuffix("")
+        self.randomEmptyGenerationRate.setMinimum(0)
+        self.randomEmptyGenerationRate.setMaximum(400)
+        self.randomEmptyGenerationRate.setSingleStep(1)
+        self.randomEmptyGenerationRate.setProperty("value", 1)
+        self.randomEmptyGenerationRate.setObjectName("randomEmptyGenerationRate")
+        self.randomIntermediateGenerationRate = QtWidgets.QSpinBox(self.frame_9)
+        self.randomIntermediateGenerationRate.setEnabled(True)
+        self.randomIntermediateGenerationRate.setGeometry(QtCore.QRect(350, 120, 111, 40))
+        self.randomIntermediateGenerationRate.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
-        self.ruleGenerationsSpinBox_4.setFont(font)
-        self.ruleGenerationsSpinBox_4.setFocusPolicy(QtCore.Qt.WheelFocus)
-        self.ruleGenerationsSpinBox_4.setStyleSheet("\n"
+        self.randomIntermediateGenerationRate.setFont(font)
+        self.randomIntermediateGenerationRate.setFocusPolicy(QtCore.Qt.WheelFocus)
+        self.randomIntermediateGenerationRate.setStyleSheet("\n"
 "QSpinBox {\n"
 "border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69); \n"
@@ -2042,11 +2358,12 @@ class Ui_MainWindow(object):
 "border-image: url(:/icons/arrow_left_pressed.png);\n"
 "}\n"
 "")
-        self.ruleGenerationsSpinBox_4.setFrame(True)
-        self.ruleGenerationsSpinBox_4.setSuffix("")
-        self.ruleGenerationsSpinBox_4.setMinimum(2)
-        self.ruleGenerationsSpinBox_4.setMaximum(25)
-        self.ruleGenerationsSpinBox_4.setObjectName("ruleGenerationsSpinBox_4")
+        self.randomIntermediateGenerationRate.setFrame(True)
+        self.randomIntermediateGenerationRate.setSuffix("")
+        self.randomIntermediateGenerationRate.setMinimum(1)
+        self.randomIntermediateGenerationRate.setMaximum(400)
+        self.randomIntermediateGenerationRate.setSingleStep(1)
+        self.randomIntermediateGenerationRate.setObjectName("randomIntermediateGenerationRate")
         self.label_16 = QtWidgets.QLabel(self.frame_9)
         self.label_16.setGeometry(QtCore.QRect(20, 120, 281, 41))
         font = QtGui.QFont()
@@ -2055,17 +2372,232 @@ class Ui_MainWindow(object):
         font.setWeight(75)
         self.label_16.setFont(font)
         self.label_16.setObjectName("label_16")
-        self.verticalLayout_14.addWidget(self.frame_9)
+        self.label_17 = QtWidgets.QLabel(self.frame_9)
+        self.label_17.setGeometry(QtCore.QRect(20, 170, 281, 41))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_17.setFont(font)
+        self.label_17.setObjectName("label_17")
+        self.randomOnEachFrameRate = QtWidgets.QSpinBox(self.frame_9)
+        self.randomOnEachFrameRate.setEnabled(True)
+        self.randomOnEachFrameRate.setGeometry(QtCore.QRect(350, 170, 111, 40))
+        self.randomOnEachFrameRate.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.randomOnEachFrameRate.setFont(font)
+        self.randomOnEachFrameRate.setFocusPolicy(QtCore.Qt.WheelFocus)
+        self.randomOnEachFrameRate.setStyleSheet("\n"
+"QSpinBox {\n"
+"border-radius : 5px;\n"
+"background-color : rgb(69, 69, 69); \n"
+"color : white;\n"
+"padding-left : 15px;\n"
+"padding-right : 50px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-button {\n"
+"subcontrol-origin: border;\n"
+"subcontrol-position: center right; \n"
+"border-image: url(:/icons/arrow_right.png);\n"
+"border : 1px;\n"
+"right : 10px;\n"
+"width : 10px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-button::pressed {\n"
+"border-image: url(:/icons/arrow_right_pressed.png);\n"
+"}\n"
+"\n"
+"QSpinBox::down-button {\n"
+"subcontrol-origin: border;\n"
+"subcontrol-position: center right ;\n"
+"border-image: url(:/icons/arrow_left.png);\n"
+"border : 1px;\n"
+"right : 35px;\n"
+"width : 10px;\n"
+"}\n"
+"\n"
+"QSpinBox::down-button::pressed {\n"
+"border-image: url(:/icons/arrow_left_pressed.png);\n"
+"}\n"
+"")
+        self.randomOnEachFrameRate.setFrame(True)
+        self.randomOnEachFrameRate.setSuffix("")
+        self.randomOnEachFrameRate.setMinimum(1)
+        self.randomOnEachFrameRate.setMaximum(60)
+        self.randomOnEachFrameRate.setSingleStep(1)
+        self.randomOnEachFrameRate.setObjectName("randomOnEachFrameRate")
+        self.horizontalLayout_12.addWidget(self.frame_9)
+        self.verticalLayout_13.addLayout(self.horizontalLayout_12)
+        self.horizontalLayout_6.addLayout(self.verticalLayout_13)
+        self.verticalLayout_14 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_14.setSpacing(10)
+        self.verticalLayout_14.setObjectName("verticalLayout_14")
         self.frame_7 = QtWidgets.QFrame(self.simulationSettings)
+        self.frame_7.setMinimumSize(QtCore.QSize(580, 355))
+        self.frame_7.setMaximumSize(QtCore.QSize(580, 360))
+        self.frame_7.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(89, 89, 89)")
         self.frame_7.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_7.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_7.setObjectName("frame_7")
+        self.label_18 = QtWidgets.QLabel(self.frame_7)
+        self.label_18.setGeometry(QtCore.QRect(10, 20, 301, 41))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_18.setFont(font)
+        self.label_18.setObjectName("label_18")
+        self.randomStructuresPerFrame = QtWidgets.QSpinBox(self.frame_7)
+        self.randomStructuresPerFrame.setEnabled(True)
+        self.randomStructuresPerFrame.setGeometry(QtCore.QRect(300, 20, 111, 40))
+        self.randomStructuresPerFrame.setMinimumSize(QtCore.QSize(0, 40))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.randomStructuresPerFrame.setFont(font)
+        self.randomStructuresPerFrame.setFocusPolicy(QtCore.Qt.WheelFocus)
+        self.randomStructuresPerFrame.setStyleSheet("\n"
+"QSpinBox {\n"
+"border-radius : 5px;\n"
+"background-color : rgb(69, 69, 69); \n"
+"color : white;\n"
+"padding-left : 15px;\n"
+"padding-right : 50px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-button {\n"
+"subcontrol-origin: border;\n"
+"subcontrol-position: center right; \n"
+"border-image: url(:/icons/arrow_right.png);\n"
+"border : 1px;\n"
+"right : 10px;\n"
+"width : 10px;\n"
+"}\n"
+"\n"
+"QSpinBox::up-button::pressed {\n"
+"border-image: url(:/icons/arrow_right_pressed.png);\n"
+"}\n"
+"\n"
+"QSpinBox::down-button {\n"
+"subcontrol-origin: border;\n"
+"subcontrol-position: center right ;\n"
+"border-image: url(:/icons/arrow_left.png);\n"
+"border : 1px;\n"
+"right : 35px;\n"
+"width : 10px;\n"
+"}\n"
+"\n"
+"QSpinBox::down-button::pressed {\n"
+"border-image: url(:/icons/arrow_left_pressed.png);\n"
+"}\n"
+"")
+        self.randomStructuresPerFrame.setFrame(True)
+        self.randomStructuresPerFrame.setSuffix("")
+        self.randomStructuresPerFrame.setMinimum(1)
+        self.randomStructuresPerFrame.setMaximum(25)
+        self.randomStructuresPerFrame.setProperty("value", 1)
+        self.randomStructuresPerFrame.setObjectName("randomStructuresPerFrame")
+        self.randomManagerStructuresField = QtWidgets.QFrame(self.frame_7)
+        self.randomManagerStructuresField.setGeometry(QtCore.QRect(10, 74, 401, 271))
+        self.randomManagerStructuresField.setMaximumSize(QtCore.QSize(16777215, 1000))
+        font = QtGui.QFont()
+        font.setBold(False)
+        font.setWeight(50)
+        self.randomManagerStructuresField.setFont(font)
+        self.randomManagerStructuresField.setStyleSheet("border-radius : 5px;\n"
+"background-color : rgb(69, 69, 69)")
+        self.randomManagerStructuresField.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.randomManagerStructuresField.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.randomManagerStructuresField.setObjectName("randomManagerStructuresField")
+        self.gridLayout_19 = QtWidgets.QGridLayout(self.randomManagerStructuresField)
+        self.gridLayout_19.setObjectName("gridLayout_19")
+        self.randomStructuresListWidget = QtWidgets.QListWidget(self.randomManagerStructuresField)
+        self.randomStructuresListWidget.setMaximumSize(QtCore.QSize(16777215, 1000))
+        self.randomStructuresListWidget.setStyleSheet("QListWidget::item {\n"
+"    margin: 5px; \n"
+"}\n"
+"\n"
+"QAbstractItemView {\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    outline : 0px;\n"
+"    selection-background-color: lightgray;\n"
+"}\n"
+"\n"
+"QScrollBar:vertical {\n"
+"  background-color: rgb(69, 69, 69);\n"
+"  color: black;\n"
+"}\n"
+"\n"
+" QScrollBar::handle:vertical {\n"
+"  background-color: rgb(89, 89, 89);\n"
+"  border : 3px solid rgb(69, 69, 69);\n"
+"  border-radius : 5px;\n"
+"  color: rgb(69, 69, 69);\n"
+"  max-width : 5px;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QScrollBar::sub-page:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QScrollBar::add-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"\n"
+"QScrollBar::sub-line:vertical {\n"
+"    background: none;\n"
+"    height : 0px;\n"
+"}\n"
+"")
+        self.randomStructuresListWidget.setObjectName("randomStructuresListWidget")
+        self.gridLayout_19.addWidget(self.randomStructuresListWidget, 1, 0, 1, 1)
+        self.enableRandomStructuresRotate = QtWidgets.QCheckBox(self.frame_7)
+        self.enableRandomStructuresRotate.setGeometry(QtCore.QRect(430, 110, 121, 21))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.enableRandomStructuresRotate.setFont(font)
+        self.enableRandomStructuresRotate.setStyleSheet("")
+        self.enableRandomStructuresRotate.setObjectName("enableRandomStructuresRotate")
+        self.enableRandomStructuresFlip = QtWidgets.QCheckBox(self.frame_7)
+        self.enableRandomStructuresFlip.setGeometry(QtCore.QRect(430, 150, 121, 21))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.enableRandomStructuresFlip.setFont(font)
+        self.enableRandomStructuresFlip.setStyleSheet("")
+        self.enableRandomStructuresFlip.setObjectName("enableRandomStructuresFlip")
+        self.label_19 = QtWidgets.QLabel(self.frame_7)
+        self.label_19.setGeometry(QtCore.QRect(430, 70, 301, 41))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.label_19.setFont(font)
+        self.label_19.setObjectName("label_19")
         self.verticalLayout_14.addWidget(self.frame_7)
         self.horizontalLayout_6.addLayout(self.verticalLayout_14)
         self.gridLayout_14.addLayout(self.horizontalLayout_6, 0, 0, 1, 1)
         self.horizontalLayout_9.addWidget(self.simulationSettings)
         self.groupBox_2 = QtWidgets.QGroupBox(self.tabSetting)
-        self.groupBox_2.setMaximumSize(QtCore.QSize(300, 16777215))
+        self.groupBox_2.setMinimumSize(QtCore.QSize(200, 0))
+        self.groupBox_2.setMaximumSize(QtCore.QSize(200, 16777215))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -2077,7 +2609,7 @@ class Ui_MainWindow(object):
         self.gridLayout_12 = QtWidgets.QGridLayout(self.groupBox_2)
         self.gridLayout_12.setObjectName("gridLayout_12")
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_5.setContentsMargins(10, 20, 10, 10)
+        self.horizontalLayout_5.setContentsMargins(0, 20, 0, 0)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.windowSettingsPanel1 = QtWidgets.QFrame(self.groupBox_2)
         self.windowSettingsPanel1.setStyleSheet("border-radius : 5px;\n"
@@ -2088,6 +2620,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.addWidget(self.windowSettingsPanel1)
         self.gridLayout_12.addLayout(self.horizontalLayout_5, 0, 0, 1, 1)
         self.horizontalLayout_9.addWidget(self.groupBox_2)
+        spacerItem10 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_9.addItem(spacerItem10)
         self.verticalLayout.addLayout(self.horizontalLayout_9)
         self.gridLayout_3.addLayout(self.verticalLayout, 0, 0, 1, 1)
         icon4 = QtGui.QIcon()
@@ -2103,7 +2637,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -2112,7 +2646,6 @@ class Ui_MainWindow(object):
         self.label_8.setText(_translate("MainWindow", "Distribution"))
         self.framesTotal.setText(_translate("MainWindow", "Frame"))
         self.CellsAlive.setText(_translate("MainWindow", "Alive cells"))
-        self.pushButton.setText(_translate("MainWindow", "Place"))
         self.label.setText(_translate("MainWindow", "Current"))
         self.fillAllCells.setText(_translate("MainWindow", "Fill all"))
         self.label_2.setText(_translate("MainWindow", "Brush size"))
@@ -2120,6 +2653,9 @@ class Ui_MainWindow(object):
         self.label_12.setText(_translate("MainWindow", "Random"))
         self.brushRandomSize.setText(_translate("MainWindow", "Size"))
         self.brushRandomState.setText(_translate("MainWindow", "State"))
+        self.brushSetRadioButton.setText(_translate("MainWindow", "Brush"))
+        self.objectSetRadioButton.setText(_translate("MainWindow", "Object"))
+        self.objectInvertButton.setText(_translate("MainWindow", "Invert"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabDisplay), _translate("MainWindow", "Game"))
         self.plotSettingsLabel.setText(_translate("MainWindow", "Plot Settings"))
         self.label_13.setText(_translate("MainWindow", "Line thickness"))
@@ -2162,12 +2698,16 @@ class Ui_MainWindow(object):
         self.skipFrameSetter.setItemText(1, _translate("MainWindow", "1"))
         self.skipFrameSetter.setItemText(2, _translate("MainWindow", "2"))
         self.skipFrameSetter.setItemText(3, _translate("MainWindow", "4"))
-        self.enableRandom.setText(_translate("MainWindow", "Enable random cells"))
-        self.enableRandom_2.setText(_translate("MainWindow", "Enable random structures"))
-        self.label_17.setText(_translate("MainWindow", "Add random each                            frame"))
+        self.enableRandomStructures.setText(_translate("MainWindow", "Enable random structures"))
+        self.enableRandomCells.setText(_translate("MainWindow", "Enable random cells"))
         self.label_14.setText(_translate("MainWindow", "First generation cells per frame"))
         self.label_15.setText(_translate("MainWindow", "Empty cells per frame"))
         self.label_16.setText(_translate("MainWindow", "Intermediate cells generations per frame"))
+        self.label_17.setText(_translate("MainWindow", "Generate frame rate"))
+        self.label_18.setText(_translate("MainWindow", "Random structures per frame"))
+        self.enableRandomStructuresRotate.setText(_translate("MainWindow", "Rotate"))
+        self.enableRandomStructuresFlip.setText(_translate("MainWindow", "Flip"))
+        self.label_19.setText(_translate("MainWindow", "Random"))
         self.groupBox_2.setTitle(_translate("MainWindow", "Window Settings"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabSetting), _translate("MainWindow", "Settings"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabAbout), _translate("MainWindow", "About"))

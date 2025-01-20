@@ -20,3 +20,4 @@ frame.changeAllButtons(0)
 frame.show()
 
 app.exec()
+

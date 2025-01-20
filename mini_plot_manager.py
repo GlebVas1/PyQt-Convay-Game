@@ -9,7 +9,7 @@ class MiniPlotManager(object):
         pass
     
 
-    def initializeMiniPlot(self):
+    def miniPlotInitialize(self):
         self.miniPlotView.setBackground((89, 89, 89))
 
         self.miniPlotView.setMouseEnabled(x=False, y=False)  # Disable mouse panning & zooming
@@ -59,9 +59,9 @@ class MiniPlotManager(object):
 
         self.miniPlotView.showGrid(x=False, y=False)
 
-        self.drawMiniPlotStatistic()
+        self.miniPlotDrawStatistic()
 
-    def drawMiniPlotStatistic(self):
+    def miniPlotDrawStatistic(self):
         if len(self.calc.statistics[0]) < 2:
             return
         
