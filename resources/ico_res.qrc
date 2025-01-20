@@ -1,5 +1,9 @@
 <RCC>
   <qresource prefix="icons">
+    <file>radiobutton_checked.png</file>
+    <file>radiobutton_checked_pressed.png</file>
+    <file>radiobutton_unchecked.png</file>
+    <file>radiobutton_unchecked_pressed.png</file>
     <file>flip_vertical.png</file>
     <file>flip_vertical_pressed.png</file>
     <file>rotate_clockwise.png</file>

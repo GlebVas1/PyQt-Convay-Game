@@ -1061,7 +1061,47 @@ background-color : rgb(89, 89, 89)</string>
                        </font>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">color : white</string>
+                       <string notr="true">QRadioButton {
+    spacing : 10px;
+	color : white;
+}
+
+QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+}
+
+QRadioButton::indicator:unchecked {
+    image: url(:/icons/radiobutton_unchecked.png)
+}
+
+QRadioButton::indicator:unchecked:hover {
+    image: url(:/icons/radiobutton_unchecked_pressed.png)
+}
+
+QRadioButton::indicator:unchecked:pressed {
+    image: url(:/icons/radiobutton_unchecked_pressed.png)
+}
+
+QRadioButton::indicator:checked {
+    image: url(:/icons/radiobutton_checked.png)
+}
+
+QRadioButton::indicator:checked:hover {
+    image: url(:/icons/radiobutton_checked_pressed.png)
+}
+
+QRadioButton::indicator:checked:pressed {
+    image: url(:/icons/radiobutton_checked_pressed.png)
+}
+
+QRadioButton::indicator:indeterminate:hover {
+    image: url(:/images/radiobutton_indeterminate_hover.png);
+}
+
+QRadioButton::indicator:indeterminate:pressed {
+    image: url(:/images/radiobutton_indeterminate_pressed.png);
+}</string>
                       </property>
                       <property name="text">
                        <string>Brush</string>
@@ -1087,7 +1127,47 @@ background-color : rgb(89, 89, 89)</string>
                        </font>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">color : white</string>
+                       <string notr="true">QRadioButton {
+    spacing : 10px;
+	color : white;
+}
+
+QRadioButton::indicator {
+    width: 16px;
+    height: 16px;
+}
+
+QRadioButton::indicator:unchecked {
+    image: url(:/icons/radiobutton_unchecked.png)
+}
+
+QRadioButton::indicator:unchecked:hover {
+    image: url(:/icons/radiobutton_unchecked_pressed.png)
+}
+
+QRadioButton::indicator:unchecked:pressed {
+    image: url(:/icons/radiobutton_unchecked_pressed.png)
+}
+
+QRadioButton::indicator:checked {
+    image: url(:/icons/radiobutton_checked.png)
+}
+
+QRadioButton::indicator:checked:hover {
+    image: url(:/icons/radiobutton_checked_pressed.png)
+}
+
+QRadioButton::indicator:checked:pressed {
+    image: url(:/icons/radiobutton_checked_pressed.png)
+}
+
+QRadioButton::indicator:indeterminate:hover {
+    image: url(:/images/radiobutton_indeterminate_hover.png);
+}
+
+QRadioButton::indicator:indeterminate:pressed {
+    image: url(:/images/radiobutton_indeterminate_pressed.png);
+}</string>
                       </property>
                       <property name="text">
                        <string>Object</string>
@@ -1258,6 +1338,7 @@ QComboBox::drop-down::pressed {
 }
 
 QComboBox QAbstractItemView {
+	color : white;
     background-color : rgb(69, 69, 69);
 	border-radius : 6px;
 	outline : 0px;
@@ -3072,9 +3153,9 @@ QPushButton:pressed {
                          <colorrole role="PlaceholderText">
                           <brush brushstyle="NoBrush">
                            <color alpha="128">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
+                            <red>0</red>
+                            <green>0</green>
+                            <blue>0</blue>
                            </color>
                           </brush>
                          </colorrole>
@@ -3202,9 +3283,9 @@ QPushButton:pressed {
                          <colorrole role="PlaceholderText">
                           <brush brushstyle="NoBrush">
                            <color alpha="128">
-                            <red>255</red>
-                            <green>255</green>
-                            <blue>255</blue>
+                            <red>0</red>
+                            <green>0</green>
+                            <blue>0</blue>
                            </color>
                           </brush>
                          </colorrole>

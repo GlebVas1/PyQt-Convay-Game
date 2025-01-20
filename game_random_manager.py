@@ -78,16 +78,19 @@ class RandomManager(object):
                                 for j in range(ob.OBJ_SIZE):
                                     newObjectToPlaceFlipStep[i][j] = newObjectToPlaceRotateStep[j][ob.OBJ_SIZE - 1 - i]
 
-                        
                         x = random.randint(0, self.xFieldSize)
                         y = random.randint(0, self.yFieldSize)
+
+                        generationToSet = self.thisRule.generationsCount
+                        if self.enableRandomStructuresGeneration.isChecked():
+                            generationToSet = random.randint(0, generationToSet)
 
                         for i in range(ob.OBJ_SIZE):
                             for j in range(ob.OBJ_SIZE):
                                 x1 = (x + i + self.xFieldSize) % self.xFieldSize
                                 y1 = (y + j + self.yFieldSize) % self.yFieldSize
                                 if newObjectToPlaceFlipStep[i][j] == 1:
-                                    self.calc.setCell(x1, y1, self.thisRule.generationsCount)
+                                    self.calc.setCell(x1, y1, generationToSet)
                         needToBePlaced -= 1
                     if needToBePlaced <= 0:
                         break
