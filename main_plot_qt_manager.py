@@ -50,7 +50,7 @@ class MainPlotController(object):
 
         for generation, s in self.calc.statistics.items():
             pen = pg.mkPen(self.gameColorPalette[generation], width=3, style=QtCore.Qt.SolidLine)
-            brushColor = (self.gameColorPalette[generation][0], self.gameColorPalette[generation][1], self.gameColorPalette[generation][2], 50)
+            brushColor = (self.gameColorPalette[generation][0], self.gameColorPalette[generation][1], self.gameColorPalette[generation][2], 30)
             brush = pg.mkBrush(brushColor, width=3, style=QtCore.Qt.SolidLine)
             self.mainPlotPens.append(pen)
             self.mainPlotBrushes.append(brush)

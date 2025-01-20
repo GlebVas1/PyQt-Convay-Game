@@ -55,6 +55,14 @@ blueOrange = [(60, 80, 85),
               (191, 126, 61),
               (0, 197, 255)]
 
+highContrastI7 = [(49, 49, 49),
+                 (85, 73, 128),
+                 (121, 73, 128),
+                 (123, 128, 73),
+                 (228, 18, 255),
+                 (61, 0, 255),
+                 (234, 255, 18)]
+
 colorPalletesDict = {"Yellow chalk 2" : defaultBinary,
                     "Yellow chalk 3" : defaultTernar, 
                     "Yellow chunk 4" : defaultQuadro, 
@@ -68,10 +76,12 @@ colorPalletesDict = {"Yellow chalk 2" : defaultBinary,
                     "Sea water 6" : seaWater6,
                     "Autumn 7" : autumn7,
                     "Summer 7" : summer7,
-                    "Blue/Orange 6" : blueOrange}
+                    "Blue/Orange 6" : blueOrange,
+                    "High contrast I 7" : highContrastI7}
 
 def convertColorToQTString(color) -> str:
     return 'rgb({},{},{})'.format(color[0], color[1], color[2])
 
 def convertPalleteToQT(pallete : list) -> list:
     return ['rgb({},{},{})'.format(color[0], color[1], color[2]) for color in pallete]
+

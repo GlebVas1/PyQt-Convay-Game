@@ -26,7 +26,7 @@ class Field:
         # Xtop с + 1, Xbottom wo + 1
 
         truncatedField = self.field[xBorders :  self.xSize - xBorders, yBorders :self.ySize - yBorders]
-        
+
         self.xSize = xSize
         self.ySize = ySize
 
@@ -116,5 +116,10 @@ class Field:
             self.statistics[generation].append(value)
             if len(self.statistics[generation]) > self.statisticsMaxSize:
                 self.statistics[generation] = self.statistics[generation][1:]
+
+    def applyRuleGenerationChanges(self):
+        for x in range(self.xSize):
+            for y in range(self.ySize):
+                self.field[x, y] = min(self.field[x, y], self.thisRule.generationsCount)
         
 

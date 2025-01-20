@@ -90,5 +90,5 @@ class settingsRuleManager(object):
         self.thisRule.generationsCount = self.ruleGenerationsSpinBox.value() - 1
 
         self.calc.initializeStatistics()
-
+        self.calc.applyRuleGenerationChanges()
         self.gameManagerSyncChanges()

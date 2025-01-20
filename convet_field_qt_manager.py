@@ -55,7 +55,7 @@ class ConveyFieldQtManager(MainPlotController,
         self.updateTimer.start()
 
         self.fpsSetter.currentIndexChanged.connect(self.setFPS)
-        self.settingsWindowFixedSize.clicked(self.windowFixedSizeMode)
+        self.settingsWindowFixedSize.clicked.connect(self.windowFixedSizeMode)
         
 
     def initializeField(self, x: int = 10, y : int = 10):
