@@ -30,3 +30,50 @@ rulesDict = {"Default life" : defaultLife,
              "Transers II" : transersII,
              "Thrill Grill" : thrillGrill,
              "Fades" : fades}
+
+def loadRulesFromFile():
+    file = open("rulesPresets.txt", "r")
+
+    def strToList(values : str) -> list:
+        l = []
+        for i in range(9):
+            l.append(0)
+        for c in list(values):
+            if not c.isdigit():
+                continue
+            l[int(c)] = 1
+        return l
+    
+    for line in file:
+        parsed = line.split('/')
+        name = parsed[0]
+        generationsCount = int(parsed[3]) if len(parsed) == 4 else 1
+        listArrive = strToList(parsed[1])
+        listSurvive = strToList(parsed[2])
+        rulesDict[name] = Rule(listSurvive, listArrive, generationsCount)
+        
+
+def strFromRule(name : str, rule : Rule) -> str:
+    res = name
+    res += "/B"
+
+    for i in range(9):
+        if rule.arriveIfNeighborCount[i] == 1:
+            res += str(i)
+
+    res += "/S"
+
+    for i in range(9):
+        if rule.surviveIfNeighborCount[i] == 1:
+            res += str(i)
+            
+    if rule.generationsCount != 1:
+        res += "/"
+        res += str(rule.generationsCount)
+
+    return res
+
+def saveToFile():
+    file = open("rulesPresets.txt", "w")
+    for key, rule in rulesDict.items():
+        file.write(strFromRule(key, rule) + '\n')

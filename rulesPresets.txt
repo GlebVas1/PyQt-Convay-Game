@@ -1,0 +1,16 @@
+Default life/B3/S23
+Maze/B3/S12345
+Mazectric/B3/S1234
+Mouse maze/B37/S12345
+Mazectric with mice/B37/S1234
+H-Tree/B1/S012345678
+Star Wars/B2/S345/3
+Free star/B2/S0345/9
+Worms/B25/S3467/5
+Sticks/B2/S3456/5
+Transers I/B26/S0345/5
+Transers II/B26/S345/4
+Thrill Grill/B34/S1234/47
+Fades/B26/S25/24
+Abab/B/S234
+Default life2/B3/S23

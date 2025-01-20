@@ -19,6 +19,7 @@ class settingsRuleManager(object):
     def settingsRuleInitializeActions(self):
         self.ruleLoadbutton.clicked.connect(self.settingsRuleLoadPreset)
         self.ruleApply.clicked.connect(self.settingsRuleApplyRule)
+        self.ruleSave.clicked.connect(self.settingsRuleSaveRule)
         # self.ruleComboBox.currentIndexChanged.connect(self.loadPreset)
 
     def settingsRuleInitializeFrame(self):
@@ -28,6 +29,7 @@ class settingsRuleManager(object):
             checkbox.setGeometry(QtCore.QRect(10 + 40 * i, 40, 20, 20))
             checkbox.setText("")
             self.settingsRuleCheckBoxesArrive.append(checkbox)
+            ru.loadRulesFromFile()
 
         for i in range(9):
             checkbox = QtWidgets.QCheckBox(self.ruleCheckFrame)
@@ -62,12 +64,24 @@ class settingsRuleManager(object):
             self.settingsRuleCheckBoxesArrive[i].setChecked(rule.arriveIfNeighborCount[i] == 1)
             self.settingsRuleCheckBoxesSurvive[i].setChecked(rule.surviveIfNeighborCount[i] == 1)
         self.ruleGenerationsSpinBox.setValue(rule.generationsCount + 1)
+        self.ruleName.setText(self.ruleComboBox.currentText())
 
     def settingsRuleLoadPreset(self):
         name = self.ruleComboBox.currentText()
         rule = copy.copy(ru.rulesDict[name])
+        self.ruleName.setText(self.ruleComboBox.currentText())
         self.settingsRuleMakePreview(rule)
 
+    def settingsRuleSaveRule(self):
+        if self.ruleName.toPlainText() not in ru.rulesDict.keys():
+            self.ruleComboBox.addItem(self.ruleName.toPlainText())
+        
+        ru.rulesDict[self.ruleName.toPlainText()] = copy.deepcopy(self.thisRule)
+        ru.saveToFile()
+
+    def settingsRuleSaveToFile(self):
+        ru.saveToFile()
+        
     def settingsRuleApplyRule(self):
         for i in range(9):
             self.thisRule.arriveIfNeighborCount[i] = 1 if self.settingsRuleCheckBoxesArrive[i].isChecked() else 0

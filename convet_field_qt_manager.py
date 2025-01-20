@@ -173,19 +173,21 @@ class ConveyFieldQtManager(MainPlotController,
         if self.framesTotalCounter % self.randomOnEachFrameRate.value() == 0:
             self.randomManagerAddRandomCells()
         
-        for x in range(self.xFieldSize):
-            for y in range(self.yFieldSize):
-                state = self.calc.getState(x, y)
-                self.changeButtonState(x, y, state)
-                if state == self.calc.thisRule.generationsCount:
-                    self.alliveCellsCounter += 1
+        if self.framesTotalCounter % (int(self.skipFrameSetter.currentText()) + 1) == 0:
+            for x in range(self.xFieldSize):
+                for y in range(self.yFieldSize):
+                    state = self.calc.getState(x, y)
+                    self.changeButtonState(x, y, state)
+                    if state == self.calc.thisRule.generationsCount:
+                        self.alliveCellsCounter += 1
         
         self.calc.calcStatistic()
         self.alliveCellsCounter = self.calc.statistics[self.calc.thisRule.generationsCount][-1]
         self.updateLCD()
 
-        self.mainPlotDrawStatistic()
-        self.miniPlotDrawStatistic()
+        if self.framesTotalCounter % self.plotsUpdateFramesRate.value() == 0:
+            self.mainPlotDrawStatistic()
+            self.miniPlotDrawStatistic()
 
     def getButtonState(self, x : int, y : int) -> int:
         return self.gameButtonsStates[x * self.yFieldSize + y]

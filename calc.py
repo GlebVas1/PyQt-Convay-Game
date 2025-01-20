@@ -26,7 +26,7 @@ class Field:
         # Xtop с + 1, Xbottom wo + 1
 
         truncatedField = self.field[xBorders :  self.xSize - xBorders, yBorders :self.ySize - yBorders]
-        print(truncatedField)
+        
         self.xSize = xSize
         self.ySize = ySize
 

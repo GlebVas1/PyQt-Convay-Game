@@ -69,7 +69,7 @@ class MainPlotController(object):
 
     def mainPlotDrawStatistic(self):
         for i in range(len(self.calc.statistics)):
-            self.mainPlotCurves[i].setData(self.calc.statistics[i])
+            self.mainPlotCurves[i].setData(self.calc.statistics[i][0 : self.plotsFrameWindow.value()])
 
     def mainPlotChangeGridMode(self):
         self.mainPlotView.showGrid(x=self.mainPlotEnableXGrid.isChecked(), y=self.mainPlotEnableYGrid.isChecked())
