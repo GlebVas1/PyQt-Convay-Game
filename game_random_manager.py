@@ -64,9 +64,12 @@ class RandomManager(object):
                         newObjectToPlaceRotateStep = copy.deepcopy(objectToPlace)
 
                         if self.enableRandomStructuresRotate.isChecked():
-                            for i in range(ob.OBJ_SIZE):
-                                for j in range(ob.OBJ_SIZE):
-                                    newObjectToPlaceRotateStep[i][j] = objectToPlace[j][ob.OBJ_SIZE - 1 - i]
+                            for r in range(random.randint(0, 3)):
+                                newObjectRotateStep = copy.deepcopy(newObjectToPlaceRotateStep)
+                                for i in range(ob.OBJ_SIZE):
+                                    for j in range(ob.OBJ_SIZE):
+                                        newObjectRotateStep[i][j] = newObjectToPlaceRotateStep[j][ob.OBJ_SIZE - 1 - i]
+                                newObjectToPlaceRotateStep = copy.deepcopy(newObjectRotateStep)
 
                         newObjectToPlaceFlipStep = copy.deepcopy(newObjectToPlaceRotateStep)
 
