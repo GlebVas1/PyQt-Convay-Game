@@ -577,7 +577,47 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.brushSetRadioButton.setFont(font)
-        self.brushSetRadioButton.setStyleSheet("color : white")
+        self.brushSetRadioButton.setStyleSheet("QRadioButton {\n"
+"    spacing : 10px;\n"
+"    color : white;\n"
+"}\n"
+"\n"
+"QRadioButton::indicator {\n"
+"    width: 16px;\n"
+"    height: 16px;\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:unchecked {\n"
+"    image: url(:/icons/radiobutton_unchecked.png)\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:unchecked:hover {\n"
+"    image: url(:/icons/radiobutton_unchecked_pressed.png)\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:unchecked:pressed {\n"
+"    image: url(:/icons/radiobutton_unchecked_pressed.png)\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:checked {\n"
+"    image: url(:/icons/radiobutton_checked.png)\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:checked:hover {\n"
+"    image: url(:/icons/radiobutton_checked_pressed.png)\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:checked:pressed {\n"
+"    image: url(:/icons/radiobutton_checked_pressed.png)\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:indeterminate:hover {\n"
+"    image: url(:/images/radiobutton_indeterminate_hover.png);\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:indeterminate:pressed {\n"
+"    image: url(:/images/radiobutton_indeterminate_pressed.png);\n"
+"}")
         self.brushSetRadioButton.setChecked(True)
         self.brushSetRadioButton.setObjectName("brushSetRadioButton")
         self.objectSetRadioButton = QtWidgets.QRadioButton(self.frame_19)
@@ -587,7 +627,47 @@ class Ui_MainWindow(object):
         font.setBold(True)
         font.setWeight(75)
         self.objectSetRadioButton.setFont(font)
-        self.objectSetRadioButton.setStyleSheet("color : white")
+        self.objectSetRadioButton.setStyleSheet("QRadioButton {\n"
+"    spacing : 10px;\n"
+"    color : white;\n"
+"}\n"
+"\n"
+"QRadioButton::indicator {\n"
+"    width: 16px;\n"
+"    height: 16px;\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:unchecked {\n"
+"    image: url(:/icons/radiobutton_unchecked.png)\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:unchecked:hover {\n"
+"    image: url(:/icons/radiobutton_unchecked_pressed.png)\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:unchecked:pressed {\n"
+"    image: url(:/icons/radiobutton_unchecked_pressed.png)\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:checked {\n"
+"    image: url(:/icons/radiobutton_checked.png)\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:checked:hover {\n"
+"    image: url(:/icons/radiobutton_checked_pressed.png)\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:checked:pressed {\n"
+"    image: url(:/icons/radiobutton_checked_pressed.png)\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:indeterminate:hover {\n"
+"    image: url(:/images/radiobutton_indeterminate_hover.png);\n"
+"}\n"
+"\n"
+"QRadioButton::indicator:indeterminate:pressed {\n"
+"    image: url(:/images/radiobutton_indeterminate_pressed.png);\n"
+"}")
         self.objectSetRadioButton.setObjectName("objectSetRadioButton")
         self.verticalLayout_15.addWidget(self.frame_19)
         self.verticalLayout_19.addWidget(self.pickToolPanel)
@@ -619,7 +699,8 @@ class Ui_MainWindow(object):
         self.frame_5 = QtWidgets.QFrame(self.frame_20)
         self.frame_5.setMaximumSize(QtCore.QSize(16777215, 400))
         self.frame_5.setStyleSheet("border-radius : 5px;\n"
-"background-color : rgb(89, 89, 89)")
+"background-color : rgb(89, 89, 89);\n"
+"color : white;")
         self.frame_5.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame_5.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_5.setObjectName("frame_5")
@@ -667,6 +748,7 @@ class Ui_MainWindow(object):
 "}\n"
 "\n"
 "QComboBox QAbstractItemView {\n"
+"    color : white;\n"
 "    background-color : rgb(69, 69, 69);\n"
 "    border-radius : 6px;\n"
 "    outline : 0px;\n"
@@ -798,11 +880,13 @@ class Ui_MainWindow(object):
         self.gridLayout_8.addItem(spacerItem3, 0, 1, 1, 1)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        spacerItem4 = QtWidgets.QSpacerItem(160, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_3.addItem(spacerItem4)
         self.verticalLayout_12 = QtWidgets.QVBoxLayout()
         self.verticalLayout_12.setContentsMargins(5, 5, 5, 5)
         self.verticalLayout_12.setObjectName("verticalLayout_12")
-        spacerItem4 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_12.addItem(spacerItem4)
+        spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_12.addItem(spacerItem5)
         self.plotSettingFrame = QtWidgets.QFrame(self.tabGraph)
         self.plotSettingFrame.setMinimumSize(QtCore.QSize(400, 425))
         self.plotSettingFrame.setMaximumSize(QtCore.QSize(400, 425))
@@ -1229,13 +1313,13 @@ class Ui_MainWindow(object):
         self.label_11.setWordWrap(False)
         self.label_11.setObjectName("label_11")
         self.verticalLayout_12.addWidget(self.frame_15)
-        spacerItem5 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_12.addItem(spacerItem5)
+        spacerItem6 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_12.addItem(spacerItem6)
         self.horizontalLayout_3.addLayout(self.verticalLayout_12)
         self.verticalLayout_11 = QtWidgets.QVBoxLayout()
         self.verticalLayout_11.setObjectName("verticalLayout_11")
-        spacerItem6 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_11.addItem(spacerItem6)
+        spacerItem7 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_11.addItem(spacerItem7)
         self.frame_11 = QtWidgets.QFrame(self.tabGraph)
         self.frame_11.setMinimumSize(QtCore.QSize(0, 60))
         self.frame_11.setMaximumSize(QtCore.QSize(800, 60))
@@ -1277,8 +1361,8 @@ class Ui_MainWindow(object):
         self.mainPlotView.setObjectName("mainPlotView")
         self.gridLayout_13.addWidget(self.mainPlotView, 0, 0, 1, 1)
         self.verticalLayout_11.addWidget(self.plotFrame)
-        spacerItem7 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_11.addItem(spacerItem7)
+        spacerItem8 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
+        self.verticalLayout_11.addItem(spacerItem8)
         self.horizontalLayout_3.addLayout(self.verticalLayout_11)
         self.gridLayout_8.addLayout(self.horizontalLayout_3, 0, 0, 1, 1)
         icon3 = QtGui.QIcon()
@@ -1648,7 +1732,7 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(69, 69, 69))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0, 128))
         brush.setStyle(QtCore.Qt.NoBrush)
         palette.setBrush(QtGui.QPalette.Active, QtGui.QPalette.PlaceholderText, brush)
         brush = QtGui.QBrush(QtGui.QColor(255, 255, 255))
@@ -1690,7 +1774,7 @@ class Ui_MainWindow(object):
         brush = QtGui.QBrush(QtGui.QColor(69, 69, 69))
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Window, brush)
-        brush = QtGui.QBrush(QtGui.QColor(255, 255, 255, 128))
+        brush = QtGui.QBrush(QtGui.QColor(0, 0, 0, 128))
         brush.setStyle(QtCore.Qt.NoBrush)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.PlaceholderText, brush)
         self.ruleName.setPalette(palette)
@@ -1865,8 +1949,8 @@ class Ui_MainWindow(object):
 "")
         self.fieldSizeUpdate.setObjectName("fieldSizeUpdate")
         self.horizontalLayout_13.addWidget(self.fieldSettings)
-        spacerItem8 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_13.addItem(spacerItem8)
+        spacerItem9 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_13.addItem(spacerItem9)
         self.verticalLayout_6.addLayout(self.horizontalLayout_13)
         self.colorPalleteSettings = QtWidgets.QFrame(self.groupBox)
         self.colorPalleteSettings.setMinimumSize(QtCore.QSize(630, 0))
@@ -2073,8 +2157,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_11 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_11.setSpacing(5)
         self.horizontalLayout_11.setObjectName("horizontalLayout_11")
-        spacerItem9 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_11.addItem(spacerItem9)
+        spacerItem10 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_11.addItem(spacerItem10)
         self.fpsSettingsFrame = QtWidgets.QFrame(self.simulationSettings)
         self.fpsSettingsFrame.setMinimumSize(QtCore.QSize(270, 120))
         self.fpsSettingsFrame.setMaximumSize(QtCore.QSize(270, 120))
@@ -2287,8 +2371,8 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.addLayout(self.horizontalLayout_11)
         self.horizontalLayout_12 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_12.setObjectName("horizontalLayout_12")
-        spacerItem10 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_12.addItem(spacerItem10)
+        spacerItem11 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_12.addItem(spacerItem11)
         self.frame_9 = QtWidgets.QFrame(self.simulationSettings)
         self.frame_9.setEnabled(True)
         self.frame_9.setMinimumSize(QtCore.QSize(480, 230))
@@ -2789,8 +2873,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.addWidget(self.windowSettingsPanel1)
         self.gridLayout_12.addLayout(self.horizontalLayout_5, 0, 0, 1, 1)
         self.horizontalLayout_9.addWidget(self.groupBox_2)
-        spacerItem11 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
-        self.horizontalLayout_9.addItem(spacerItem11)
+        spacerItem12 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.horizontalLayout_9.addItem(spacerItem12)
         self.verticalLayout.addLayout(self.horizontalLayout_9)
         self.gridLayout_3.addLayout(self.verticalLayout, 0, 0, 1, 1)
         icon4 = QtGui.QIcon()
@@ -2806,7 +2890,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
