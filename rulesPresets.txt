@@ -26,11 +26,17 @@ Mazelike VI/B26/S012357
 Mice in maze/B2378/S1234
 Mice in maze II/B23/S234
 Blinking maze/B24567/S
-Star Wars/B2/S345/3
-Free star/B2/S0345/9
-Worms/B25/S3467/5
-Sticks/B2/S3456/5
-Transers I/B26/S0345/5
-Transers II/B26/S345/4
-Thrill Grill/B34/S1234/47
-Fades/B26/S25/24
+Star Wars/B2/S345/4
+Free star/B2/S0345/10
+Worms/B25/S3467/6
+Sticks/B2/S3456/6
+Transers I/B26/S0345/6
+Transers II/B26/S345/5
+Thrill Grill/B34/S1234/48
+Fades/B26/S25/25
+Replicators/B37/S345/3
+Replicators II/B35/S3457/5
+Xtasy/B2356/S1456/16
+Spirals/B234/S2/5
+BelZhab Sediment/B23/S145678/8
+Lines/B458/S012345/3

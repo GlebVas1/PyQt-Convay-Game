@@ -47,7 +47,7 @@ def loadRulesFromFile():
     for line in file:
         parsed = line.split('/')
         name = parsed[0]
-        generationsCount = int(parsed[3]) if len(parsed) == 4 else 1
+        generationsCount = int(parsed[3]) - 1 if len(parsed) == 4 else 1
         listArrive = strToList(parsed[1])
         listSurvive = strToList(parsed[2])
         rulesDict[name] = Rule(listSurvive, listArrive, generationsCount)
@@ -69,7 +69,7 @@ def strFromRule(name : str, rule : Rule) -> str:
             
     if rule.generationsCount != 1:
         res += "/"
-        res += str(rule.generationsCount)
+        res += str(rule.generationsCount + 1)
 
     return res
 
