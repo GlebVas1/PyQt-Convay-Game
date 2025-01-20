@@ -1,4 +1,6 @@
-# there will be objects that size is 5 x 5
+# there will be objects that size is 7 x 7
+
+OBJ_SIZE = 7
 
 glider = [[0, 0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0, 0],

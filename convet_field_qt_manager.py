@@ -15,6 +15,7 @@ from stop_start_manager import StopStartManager
 from settings_color_pallete import SettingsColorPalleteManager
 from settings_rule import settingsRuleManager
 from game_object_manager import ObjectManager
+from game_random_manager import RandomManager
 import pyqtgraph as pg
 
 # CFMButtonStyleSheet = "border-radius : 6px;\nborder-width: 2px; \nborder-style : solid;\nborder-color : rgb(255 79, 79);\nborder-bottom: 2px solid rgb(89, 89, 89);\n"
@@ -28,7 +29,8 @@ class ConveyFieldQtManager(MainPlotController,
                            StopStartManager, 
                            SettingsColorPalleteManager, 
                            settingsRuleManager,
-                           ObjectManager):
+                           ObjectManager,
+                           RandomManager):
 
     xFieldSize = 10
     yFieldSize = 10
@@ -84,6 +86,8 @@ class ConveyFieldQtManager(MainPlotController,
         self.objectManagerInitializeActions()
         self.objectManagerInitializeComboBox()
         self.objectManagerInitializePreview(ob.glider)
+
+        self.randomManagerInitializeStructuresList()
 
         self.stopStartManagerInitializeActions()
 
@@ -150,7 +154,12 @@ class ConveyFieldQtManager(MainPlotController,
         """recalculate field and update buttons"""
         self.framesTotalCounter += 1
         self.alliveCellsCounter = 0
+
         self.calc.calcualteFieldStep()
+
+        if self.framesTotalCounter % self.randomOnEachFrameRate.value() == 0:
+            self.randomManagerAddRandomCells()
+        
         for x in range(self.xFieldSize):
             for y in range(self.yFieldSize):
                 state = self.calc.getState(x, y)

@@ -1,7 +1,4 @@
-from math import sqrt
-import random
 from PyQt5 import QtWidgets, QtCore
-from functools import partial
 
 import gameObjects as ob
 
