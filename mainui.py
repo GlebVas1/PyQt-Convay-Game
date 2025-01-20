@@ -1585,7 +1585,7 @@ class Ui_MainWindow(object):
 "")
         self.ruleComboBox.setObjectName("ruleComboBox")
         self.ruleLoadbutton = QtWidgets.QPushButton(self.frame_17)
-        self.ruleLoadbutton.setGeometry(QtCore.QRect(300, 20, 161, 41))
+        self.ruleLoadbutton.setGeometry(QtCore.QRect(120, 20, 161, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -1603,6 +1603,25 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         self.ruleLoadbutton.setObjectName("ruleLoadbutton")
+        self.ruleSave = QtWidgets.QPushButton(self.frame_17)
+        self.ruleSave.setGeometry(QtCore.QRect(300, 20, 161, 41))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.ruleSave.setFont(font)
+        self.ruleSave.setStyleSheet("QPushButton {\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(69, 69, 69);\n"
+"    color : white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: rgb(49, 49, 49);\n"
+"    border-style: inset;\n"
+"}\n"
+"")
+        self.ruleSave.setObjectName("ruleSave")
         self.horizontalLayout_2.addWidget(self.frame_17)
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
         self.horizontalLayout_4.addLayout(self.verticalLayout_2)
@@ -1629,14 +1648,14 @@ class Ui_MainWindow(object):
         self.ruleArriveLabel_3.setStyleSheet("border :  0px; color : white;")
         self.ruleArriveLabel_3.setTextFormat(QtCore.Qt.PlainText)
         self.ruleArriveLabel_3.setObjectName("ruleArriveLabel_3")
-        self.spinBox_3 = QtWidgets.QSpinBox(self.fieldSettings)
-        self.spinBox_3.setGeometry(QtCore.QRect(60, 50, 101, 41))
+        self.fieldSizeX = QtWidgets.QSpinBox(self.fieldSettings)
+        self.fieldSizeX.setGeometry(QtCore.QRect(60, 50, 101, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
-        self.spinBox_3.setFont(font)
-        self.spinBox_3.setStyleSheet("\n"
+        self.fieldSizeX.setFont(font)
+        self.fieldSizeX.setStyleSheet("\n"
 "QSpinBox {\n"
 "border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69); \n"
@@ -1671,17 +1690,17 @@ class Ui_MainWindow(object):
 "border-image: url(:/icons/arrow_left_pressed.png);\n"
 "}\n"
 "")
-        self.spinBox_3.setMinimum(4)
-        self.spinBox_3.setMaximum(20)
-        self.spinBox_3.setObjectName("spinBox_3")
-        self.spinBox_4 = QtWidgets.QSpinBox(self.fieldSettings)
-        self.spinBox_4.setGeometry(QtCore.QRect(220, 50, 111, 41))
+        self.fieldSizeX.setMinimum(4)
+        self.fieldSizeX.setMaximum(20)
+        self.fieldSizeX.setObjectName("fieldSizeX")
+        self.fieldSizeY = QtWidgets.QSpinBox(self.fieldSettings)
+        self.fieldSizeY.setGeometry(QtCore.QRect(220, 50, 111, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
-        self.spinBox_4.setFont(font)
-        self.spinBox_4.setStyleSheet("\n"
+        self.fieldSizeY.setFont(font)
+        self.fieldSizeY.setStyleSheet("\n"
 "QSpinBox {\n"
 "border-radius : 5px;\n"
 "background-color : rgb(69, 69, 69); \n"
@@ -1716,9 +1735,9 @@ class Ui_MainWindow(object):
 "border-image: url(:/icons/arrow_left_pressed.png);\n"
 "}\n"
 "")
-        self.spinBox_4.setMinimum(4)
-        self.spinBox_4.setMaximum(20)
-        self.spinBox_4.setObjectName("spinBox_4")
+        self.fieldSizeY.setMinimum(4)
+        self.fieldSizeY.setMaximum(20)
+        self.fieldSizeY.setObjectName("fieldSizeY")
         self.ruleArriveLabel_4 = QtWidgets.QLabel(self.fieldSettings)
         self.ruleArriveLabel_4.setGeometry(QtCore.QRect(20, 50, 41, 41))
         font = QtGui.QFont()
@@ -1739,14 +1758,14 @@ class Ui_MainWindow(object):
         self.ruleArriveLabel_5.setStyleSheet("border :  0px; color : white;")
         self.ruleArriveLabel_5.setTextFormat(QtCore.Qt.PlainText)
         self.ruleArriveLabel_5.setObjectName("ruleArriveLabel_5")
-        self.colorPalleteApply_2 = QtWidgets.QPushButton(self.fieldSettings)
-        self.colorPalleteApply_2.setGeometry(QtCore.QRect(20, 110, 311, 41))
+        self.fieldSizeUpdate = QtWidgets.QPushButton(self.fieldSettings)
+        self.fieldSizeUpdate.setGeometry(QtCore.QRect(20, 110, 311, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
         font.setWeight(75)
-        self.colorPalleteApply_2.setFont(font)
-        self.colorPalleteApply_2.setStyleSheet("QPushButton {\n"
+        self.fieldSizeUpdate.setFont(font)
+        self.fieldSizeUpdate.setStyleSheet("QPushButton {\n"
 "    border-radius : 5px;\n"
 "    background-color : rgb(69, 69, 69);\n"
 "    color : white;\n"
@@ -1757,7 +1776,7 @@ class Ui_MainWindow(object):
 "    border-style: inset;\n"
 "}\n"
 "")
-        self.colorPalleteApply_2.setObjectName("colorPalleteApply_2")
+        self.fieldSizeUpdate.setObjectName("fieldSizeUpdate")
         self.horizontalLayout_13.addWidget(self.fieldSettings)
         spacerItem7 = QtWidgets.QSpacerItem(20, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout_13.addItem(spacerItem7)
@@ -1791,7 +1810,7 @@ class Ui_MainWindow(object):
         self.colorPalletePreview.setFrameShadow(QtWidgets.QFrame.Raised)
         self.colorPalletePreview.setObjectName("colorPalletePreview")
         self.label_6 = QtWidgets.QLabel(self.colorPalleteSettings)
-        self.label_6.setGeometry(QtCore.QRect(10, 60, 151, 16))
+        self.label_6.setGeometry(QtCore.QRect(10, 70, 151, 16))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -1800,7 +1819,7 @@ class Ui_MainWindow(object):
         self.label_6.setStyleSheet("border :  0px; color : white;")
         self.label_6.setObjectName("label_6")
         self.colorPalleteComboBox = QtWidgets.QComboBox(self.colorPalleteSettings)
-        self.colorPalleteComboBox.setGeometry(QtCore.QRect(140, 10, 311, 41))
+        self.colorPalleteComboBox.setGeometry(QtCore.QRect(140, 10, 301, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -2066,7 +2085,7 @@ class Ui_MainWindow(object):
         self.fpsSetter.addItem("")
         self.fpsSetter.addItem("")
         self.ruleSurviveLabel_8 = QtWidgets.QLabel(self.fpsSettingsFrame)
-        self.ruleSurviveLabel_8.setGeometry(QtCore.QRect(10, 60, 211, 41))
+        self.ruleSurviveLabel_8.setGeometry(QtCore.QRect(10, 70, 211, 41))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -2076,7 +2095,7 @@ class Ui_MainWindow(object):
         self.ruleSurviveLabel_8.setObjectName("ruleSurviveLabel_8")
         self.skipFrameSetter = QtWidgets.QComboBox(self.fpsSettingsFrame)
         self.skipFrameSetter.setEnabled(True)
-        self.skipFrameSetter.setGeometry(QtCore.QRect(160, 60, 101, 40))
+        self.skipFrameSetter.setGeometry(QtCore.QRect(160, 70, 101, 40))
         self.skipFrameSetter.setMinimumSize(QtCore.QSize(0, 40))
         font = QtGui.QFont()
         font.setPointSize(11)
@@ -2160,7 +2179,7 @@ class Ui_MainWindow(object):
         self.frame_8.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame_8.setObjectName("frame_8")
         self.enableRandomStructures = QtWidgets.QCheckBox(self.frame_8)
-        self.enableRandomStructures.setGeometry(QtCore.QRect(10, 70, 301, 20))
+        self.enableRandomStructures.setGeometry(QtCore.QRect(10, 80, 301, 20))
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -2612,11 +2631,65 @@ class Ui_MainWindow(object):
         self.horizontalLayout_5.setContentsMargins(0, 20, 0, 0)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.windowSettingsPanel1 = QtWidgets.QFrame(self.groupBox_2)
-        self.windowSettingsPanel1.setStyleSheet("border-radius : 5px;\n"
-"background-color : rgb(89, 89, 89)")
+        self.windowSettingsPanel1.setStyleSheet("QFrame {\n"
+"    border-radius : 5px;\n"
+"    background-color : rgb(89, 89, 89);\n"
+"}\n"
+"\n"
+"QCheckBox {\n"
+"    background-color : rgb(89, 89, 89);\n"
+"    spacing : 10px;\n"
+"    color : white;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator {\n"
+"    top: 2px;\n"
+"    width: 16px;\n"
+"    height: 16px;\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked {\n"
+"    image: url(:/icons/check_box_unchecked.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:hover {\n"
+"    image: url(:/icons/checkbox_unchecked_pressed.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:unchecked:pressed {\n"
+"    image: url(:/icons/checkbox_unchecked_pressed.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked {\n"
+"    image: url(:/icons/checkbox_checked.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked:hover {\n"
+"    image: url(:/icons/checkbox_checked_pressed.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:checked:pressed {\n"
+"    image: url(:/icons/checkbox_checked_pressed.png)\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:indeterminate:hover {\n"
+"    image: url(:/images/checkbox_indeterminate_hover.png);\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:indeterminate:pressed {\n"
+"    image: url(:/images/checkbox_indeterminate_pressed.png);\n"
+"}")
         self.windowSettingsPanel1.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.windowSettingsPanel1.setFrameShadow(QtWidgets.QFrame.Raised)
         self.windowSettingsPanel1.setObjectName("windowSettingsPanel1")
+        self.settingsWindowFixedSize = QtWidgets.QCheckBox(self.windowSettingsPanel1)
+        self.settingsWindowFixedSize.setGeometry(QtCore.QRect(20, 20, 151, 20))
+        font = QtGui.QFont()
+        font.setPointSize(11)
+        font.setBold(True)
+        font.setWeight(75)
+        self.settingsWindowFixedSize.setFont(font)
+        self.settingsWindowFixedSize.setObjectName("settingsWindowFixedSize")
         self.horizontalLayout_5.addWidget(self.windowSettingsPanel1)
         self.gridLayout_12.addLayout(self.horizontalLayout_5, 0, 0, 1, 1)
         self.horizontalLayout_9.addWidget(self.groupBox_2)
@@ -2677,10 +2750,11 @@ class Ui_MainWindow(object):
         self.ruleSurviveLabel_2.setText(_translate("MainWindow", "Generations"))
         self.ruleSurviveLabel_3.setText(_translate("MainWindow", "Preset"))
         self.ruleLoadbutton.setText(_translate("MainWindow", "Load"))
+        self.ruleSave.setText(_translate("MainWindow", "Save"))
         self.ruleArriveLabel_3.setText(_translate("MainWindow", "Field size"))
         self.ruleArriveLabel_4.setText(_translate("MainWindow", "X :"))
         self.ruleArriveLabel_5.setText(_translate("MainWindow", "Y:"))
-        self.colorPalleteApply_2.setText(_translate("MainWindow", "Apply"))
+        self.fieldSizeUpdate.setText(_translate("MainWindow", "Apply"))
         self.label_5.setText(_translate("MainWindow", "Color pallete"))
         self.label_6.setText(_translate("MainWindow", "Preview"))
         self.colorPalleteApply.setText(_translate("MainWindow", "Apply"))
@@ -2709,6 +2783,7 @@ class Ui_MainWindow(object):
         self.enableRandomStructuresFlip.setText(_translate("MainWindow", "Flip"))
         self.label_19.setText(_translate("MainWindow", "Random"))
         self.groupBox_2.setTitle(_translate("MainWindow", "Window Settings"))
+        self.settingsWindowFixedSize.setText(_translate("MainWindow", "Fixed size"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabSetting), _translate("MainWindow", "Settings"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tabAbout), _translate("MainWindow", "About"))
 from pyqtgraph import PlotWidget
