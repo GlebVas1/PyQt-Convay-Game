@@ -17,33 +17,27 @@ class Field:
         self.ySize = y
 
     def reinitializeFieldWithNewSize(self, xSize : int, ySize : int):
-
-        
         
         newField = np.zeros(shape=(xSize, ySize), dtype=int)
-        
+
         xBorders = (max(self.field.shape[0] - xSize, 0) + 1) // 2
         yBorders = (max(self.field.shape[1] - ySize, 0) + 1) // 2
 
         # Xtop с + 1, Xbottom wo + 1
 
-        truncatedField = self.field[xBorders : -xBorders, yBorders : -yBorders]
-
+        truncatedField = self.field[xBorders :  self.xSize - xBorders, yBorders :self.ySize - yBorders]
+        print(truncatedField)
         self.xSize = xSize
         self.ySize = ySize
 
         xPosition = (xSize - truncatedField.shape[0]) // 2
         yPosition = (ySize - truncatedField.shape[1]) // 2
 
-
         for i in range(truncatedField.shape[0]):
             for j in range(truncatedField.shape[1]):
                 newField[i + xPosition][j + yPosition] = truncatedField[i][j]
 
         self.field = newField
-
-
-
 
     def initializeStatistics(self):
         maxStatiSticLength = 0
