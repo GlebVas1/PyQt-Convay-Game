@@ -1,7 +1,11 @@
 from rule import Rule
 
 defaultLife = Rule(surviveIfNeighborCount = [0, 0, 1, 1, 0, 0, 0, 0, 0], arriveIfNeighborCount = [0, 0, 0, 1, 0, 0, 0, 0, 0], genetationsCount = 1)
-
+labirinth = Rule(surviveIfNeighborCount = [0, 1, 1, 1, 1, 1, 0, 0, 0], arriveIfNeighborCount = [0, 0, 0, 1, 0, 0, 0, 0, 0], genetationsCount = 1)
+mazectric = Rule(surviveIfNeighborCount = [0, 1, 1, 1, 1, 0, 0, 0, 0], arriveIfNeighborCount = [0, 0, 0, 1, 0, 0, 0, 0, 0], genetationsCount = 1)
+mouseMaze = Rule(surviveIfNeighborCount = [0, 1, 1, 1, 1, 1, 0, 0, 0], arriveIfNeighborCount = [0, 0, 0, 1, 0, 0, 0, 1, 0], genetationsCount = 1)
+mazectricMouse = Rule(surviveIfNeighborCount = [0, 1, 1, 1, 1, 0, 0, 0, 0], arriveIfNeighborCount = [0, 0, 0, 1, 0, 0, 0, 1, 0], genetationsCount = 1)
+HTree = Rule(surviveIfNeighborCount = [1, 1, 1, 1, 1, 1, 1, 1, 1], arriveIfNeighborCount = [0, 1, 0, 0, 0, 0, 0, 0, 0], genetationsCount = 1)
 
 starWars = Rule(surviveIfNeighborCount = [0, 0, 0, 1, 1, 1, 0, 0, 0], arriveIfNeighborCount = [0, 0, 1, 0, 0, 0, 0, 0, 0], genetationsCount = 3)
 freeStar = Rule(surviveIfNeighborCount = [1, 0, 0, 1, 1, 1, 0, 0, 0], arriveIfNeighborCount = [0, 0, 1, 0, 0, 0, 0, 0, 0], genetationsCount = 9)
@@ -13,6 +17,11 @@ thrillGrill = Rule(surviveIfNeighborCount = [0, 1, 1, 1, 1, 0, 0, 0, 0], arriveI
 fades = Rule(surviveIfNeighborCount = [0, 0, 1, 0, 0, 1, 0, 0, 0], arriveIfNeighborCount = [0, 0, 1, 0, 0, 0, 1, 0, 0], genetationsCount = 24)
 
 rulesDict = {"Default life" : defaultLife,
+             "Maze" : labirinth,
+             "Mazectric" : mazectric,
+             "Mouse maze" : mouseMaze,
+             "Mazectric with mice" : mazectricMouse,
+             "H-Tree" : HTree,
              "Star Wars" : starWars,
              "Free star" : freeStar,
              "Worms" : worms,
