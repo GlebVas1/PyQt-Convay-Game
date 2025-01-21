@@ -14,7 +14,7 @@ class SettingsColorPalleteManager(object):
         self.colorPalleteApply.clicked.connect(self.settingColorPalleteSyncPallete)
 
     def settingsColorPalleteInitialize(self, colorPallete : list):
-        pallete = self.SettingsColorPalleteConvertPalleteToSize(colorPallete.copy(), self.calc.thisRule.generationsCount + 1)
+        pallete = self.settingsColorPalleteConvertPalleteToSize(colorPallete.copy(), self.calc.thisRule.generationsCount + 1)
         self.gameColorPalette = pallete
         self.gameColorPalleteQt = cp.convertPalleteToQT(self.gameColorPalette)
 
@@ -51,10 +51,10 @@ class SettingsColorPalleteManager(object):
 
     def settingsColorPalleteApplyPreview(self):
         name = self.colorPalleteComboBox.currentText()
-        pallete = self.SettingsColorPalleteConvertPalleteToSize(cp.colorPalletesDict[name].copy(), self.calc.thisRule.generationsCount + 1)
+        pallete = self.settingsColorPalleteConvertPalleteToSize(cp.colorPalletesDict[name].copy(), self.calc.thisRule.generationsCount + 1)
         self.settingsColorPalleteInitialize(pallete)
 
-    def SettingsColorPalleteConvertPalleteToSize(self, pallete : list, size : int) -> list:
+    def settingsColorPalleteConvertPalleteToSize(self, pallete : list, size : int) -> list:
         
         if len(pallete) > size:
             

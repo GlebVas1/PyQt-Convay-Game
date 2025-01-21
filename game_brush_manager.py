@@ -12,7 +12,7 @@ GBM_TILE_PADDING = 5
 
 
 class BrushManager(object):
-    """Brush magager implements functions of 
+    """Brush manager implements functions of 
        paint/place selected color/object controlled
         by game_color_manager and game_object_manager"""
 
@@ -23,7 +23,7 @@ class BrushManager(object):
 
     brushManagerCurrentObject = []
 
-    def BrushManagerInitializeActions(self):
+    def brushManagerInitializeActions(self):
         self.fillAllCells.clicked.connect(self.changeAllButtonsStateInGame)
 
     def paintInPlace(self, x : int, y : int):
@@ -50,11 +50,12 @@ class BrushManager(object):
                     else:
                         self.changeButtonStateInGame(x1, y1)
         else:
+            
             for i in range(GBM_PREVIEW_SIZE):
                 for j in range(GBM_PREVIEW_SIZE):
                     x1 = (x + i - GBM_PREVIEW_SIZE // 2 + self.xFieldSize) % self.xFieldSize
                     y1 = (y + j - GBM_PREVIEW_SIZE // 2 + self.yFieldSize) % self.yFieldSize
-                    
+
                     if self.brushManagerCurrentObject[i][j] == 1:
                         self.changeButtonState(x1, y1, self.colorPalleteManagerCurrentBrushState)
 

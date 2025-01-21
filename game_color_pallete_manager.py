@@ -44,7 +44,7 @@ class ColorPalleteManager(object):
     
     def colorPalleteManagerSetState(self, val : int):
         self.colorPalleteManagerCurrentBrushState = val
-        self.objectManagerUpdateObjectToPreview() # need update the preview of placed object
+        self.objectManagerUpdateObjectInPreview() # need update the preview of placed object
         self.selectedColorPanel.setStyleSheet("background-color : " + self.gameColorPalleteQt[val])
 
     

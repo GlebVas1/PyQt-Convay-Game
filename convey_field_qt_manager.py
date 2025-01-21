@@ -22,18 +22,18 @@ import pyqtgraph as pg
 
 # CFMButtonStyleSheet = "border-radius : 6px;\nborder-width: 2px; \nborder-style : solid;\nborder-color : rgb(255 79, 79);\nborder-bottom: 2px solid rgb(89, 89, 89);\n"
 CFMButtonStyleSheet = ""
-CFMGameFramePadding = 5
+CFMGameFramePadding = 5 
 
-class ConveyFieldQtManager(MainPlotController, 
-                           ColorPalleteManager, 
-                           MiniPlotManager, 
-                           BrushManager, 
-                           StopStartManager, 
-                           SettingsColorPalleteManager, 
-                           SettingsRuleManager,
+class ConveyFieldQtManager(BrushManager,
+                           ColorPalleteManager,
+                           MainPlotController,
+                           MiniPlotManager,
                            ObjectManager,
                            RandomManager,
-                           SettingsFieldSize):
+                           SettingsColorPalleteManager, 
+                           SettingsFieldSize,
+                           SettingsRuleManager,
+                           StopStartManager):
 
     xFieldSize = 10
     yFieldSize = 10
@@ -84,7 +84,7 @@ class ConveyFieldQtManager(MainPlotController,
         self.calc.initializeStatistics()
 
 
-        self.SettingsFieldSizeInititalizeActions()
+        self.settingsFieldSizeInititalizeActions()
 
         self.settingsColorInitializeActions()
         self.settingsColorPalleteInitializeComboBox()
@@ -97,7 +97,7 @@ class ConveyFieldQtManager(MainPlotController,
 
         self.colorPalleteManagerInitialize()
 
-        self.BrushManagerInitializeActions()
+        self.brushManagerInitializeActions()
 
         self.objectManagerInitializeActions()
         self.objectManagerInitializeComboBox()
@@ -212,7 +212,7 @@ class ConveyFieldQtManager(MainPlotController,
     def conveyFieldQtManagerSyncChanges(self):
         self.settingsColorPalleteApplyPreview()
         self.colorPalleteManagerInitialize()
-        self.objectManagerUpdateObjectToPreview()
+        self.objectManagerUpdateObjectInPreview()
         self.conveyFieldQtManagerUpdateFieldColors()
         self.miniPlotInitialize()
         self.mainPlotInitialize()
