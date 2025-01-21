@@ -14,8 +14,10 @@ from game_brush_manager import BrushManager
 from stop_start_manager import StopStartManager
 from settings_color_pallete import SettingsColorPalleteManager
 from settings_rule import settingsRuleManager
+from settings_field_size import SettingsFieldSize
 from game_object_manager import ObjectManager
 from game_random_manager import RandomManager
+
 import pyqtgraph as pg
 
 # CFMButtonStyleSheet = "border-radius : 6px;\nborder-width: 2px; \nborder-style : solid;\nborder-color : rgb(255 79, 79);\nborder-bottom: 2px solid rgb(89, 89, 89);\n"
@@ -30,7 +32,8 @@ class ConveyFieldQtManager(MainPlotController,
                            SettingsColorPalleteManager, 
                            settingsRuleManager,
                            ObjectManager,
-                           RandomManager):
+                           RandomManager,
+                           SettingsFieldSize):
 
     xFieldSize = 10
     yFieldSize = 10
@@ -52,6 +55,7 @@ class ConveyFieldQtManager(MainPlotController,
         self.updateTimer.start()
 
         self.fpsSetter.currentIndexChanged.connect(self.setFPS)
+        self.settingsWindowFixedSize.clicked.connect(self.windowFixedSizeMode)
         
 
     def initializeField(self, x: int = 10, y : int = 10):
@@ -69,6 +73,8 @@ class ConveyFieldQtManager(MainPlotController,
 
         self.calc.initializeField(x, y)
         self.calc.initializeStatistics()
+
+        self.SettingsFieldSizeInititalizeActions()
 
         self.settingsColorInitializeActions()
         self.settingsColorPalleteInitializeComboBox()
@@ -95,6 +101,14 @@ class ConveyFieldQtManager(MainPlotController,
         
     def initializeGameFieldFillButtons(self):
         """initial filiing main field with buttons"""
+
+        for button in self.gameButtons:
+            button.setParent(None)
+
+        self.gameButtonsStates.clear()
+        self.gameButtons.clear()
+
+
         xSize = int((self.mainField.size().width() - (1 + self.xFieldSize) * CFMGameFramePadding) / self.xFieldSize)
         ySize = int((self.mainField.size().height() - (1 + self.yFieldSize) * CFMGameFramePadding) / self.yFieldSize)
 
@@ -109,12 +123,13 @@ class ConveyFieldQtManager(MainPlotController,
                 button = QtWidgets.QPushButton(self.mainField)
                 button.setGeometry(QtCore.QRect(CFMGameFramePadding + (xSize + CFMGameFramePadding) * i, CFMGameFramePadding + (ySize + CFMGameFramePadding) * j, xSize, ySize))
                 button.setObjectName("game_button_" + str(i * self.xFieldSize + j))
-                button.setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameColorPalleteQt[0])
 
                 button.clicked.connect(partial(self.paintInPlace, i, j))
 
                 self.gameButtons.append(button)
                 self.gameButtonsStates.append(0)
+
+        self.updateFieldColors()
         
     
     def changeAllButtons(self, val : int):
@@ -129,7 +144,6 @@ class ConveyFieldQtManager(MainPlotController,
     
     def changeButtonState(self, x : int, y : int, val : int):
         """change one button state"""
-        # print(val)
         self.gameButtons[x * self.yFieldSize + y].setStyleSheet(CFMButtonStyleSheet + "background-color : " + self.gameColorPalleteQt[val])
         self.gameButtonsStates[x * self.yFieldSize + y] = val
         self.calc.setCell(x, y, val)
@@ -160,19 +174,21 @@ class ConveyFieldQtManager(MainPlotController,
         if self.framesTotalCounter % self.randomOnEachFrameRate.value() == 0:
             self.randomManagerAddRandomCells()
         
-        for x in range(self.xFieldSize):
-            for y in range(self.yFieldSize):
-                state = self.calc.getState(x, y)
-                self.changeButtonState(x, y, state)
-                if state == self.calc.thisRule.generationsCount:
-                    self.alliveCellsCounter += 1
+        if self.framesTotalCounter % (int(self.skipFrameSetter.currentText()) + 1) == 0:
+            for x in range(self.xFieldSize):
+                for y in range(self.yFieldSize):
+                    state = self.calc.getState(x, y)
+                    self.changeButtonState(x, y, state)
+                    if state == self.calc.thisRule.generationsCount:
+                        self.alliveCellsCounter += 1
         
         self.calc.calcStatistic()
         self.alliveCellsCounter = self.calc.statistics[self.calc.thisRule.generationsCount][-1]
         self.updateLCD()
 
-        self.mainPlotDrawStatistic()
-        self.miniPlotDrawStatistic()
+        if self.framesTotalCounter % self.plotsUpdateFramesRate.value() == 0:
+            self.mainPlotDrawStatistic()
+            self.miniPlotDrawStatistic()
 
     def getButtonState(self, x : int, y : int) -> int:
         return self.gameButtonsStates[x * self.yFieldSize + y]
@@ -193,6 +209,8 @@ class ConveyFieldQtManager(MainPlotController,
         self.miniPlotInitialize()
         self.mainPlotInitialize()
     
+    def windowFixedSizeMode(self):
+        pass
 
         
                                

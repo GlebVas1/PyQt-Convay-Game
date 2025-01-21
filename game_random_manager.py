@@ -64,9 +64,12 @@ class RandomManager(object):
                         newObjectToPlaceRotateStep = copy.deepcopy(objectToPlace)
 
                         if self.enableRandomStructuresRotate.isChecked():
-                            for i in range(ob.OBJ_SIZE):
-                                for j in range(ob.OBJ_SIZE):
-                                    newObjectToPlaceRotateStep[i][j] = objectToPlace[j][ob.OBJ_SIZE - 1 - i]
+                            for r in range(random.randint(0, 3)):
+                                newObjectRotateStep = copy.deepcopy(newObjectToPlaceRotateStep)
+                                for i in range(ob.OBJ_SIZE):
+                                    for j in range(ob.OBJ_SIZE):
+                                        newObjectRotateStep[i][j] = newObjectToPlaceRotateStep[j][ob.OBJ_SIZE - 1 - i]
+                                newObjectToPlaceRotateStep = copy.deepcopy(newObjectRotateStep)
 
                         newObjectToPlaceFlipStep = copy.deepcopy(newObjectToPlaceRotateStep)
 
@@ -75,16 +78,19 @@ class RandomManager(object):
                                 for j in range(ob.OBJ_SIZE):
                                     newObjectToPlaceFlipStep[i][j] = newObjectToPlaceRotateStep[j][ob.OBJ_SIZE - 1 - i]
 
-                        
                         x = random.randint(0, self.xFieldSize)
                         y = random.randint(0, self.yFieldSize)
+
+                        generationToSet = self.thisRule.generationsCount
+                        if self.enableRandomStructuresGeneration.isChecked():
+                            generationToSet = random.randint(0, generationToSet)
 
                         for i in range(ob.OBJ_SIZE):
                             for j in range(ob.OBJ_SIZE):
                                 x1 = (x + i + self.xFieldSize) % self.xFieldSize
                                 y1 = (y + j + self.yFieldSize) % self.yFieldSize
                                 if newObjectToPlaceFlipStep[i][j] == 1:
-                                    self.calc.setCell(x1, y1, self.thisRule.generationsCount)
+                                    self.calc.setCell(x1, y1, generationToSet)
                         needToBePlaced -= 1
                     if needToBePlaced <= 0:
                         break

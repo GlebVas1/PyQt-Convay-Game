@@ -1,0 +1,42 @@
+Default life/B3/S23
+Maze/B3/S12345
+Mazectric/B3/S1234
+Mouse maze/B37/S12345
+Mazectric with mice/B37/S1234
+H-Tree/B1/S012345678
+Diameba/B35678/S5678
+Assimilation/B345/S4567
+Rabbits/B2/S0
+Seeds/B2/S
+Persian carpet/B234/S
+Carpet II/B234678/S8
+Carpet III/B2345678/S0238
+Carpet IV/B234567/S124567
+Carpet V/B235678/S1234567
+Corals/B3/S45678
+Coagulation/B378/S235678
+Majority/B45678/S5678
+Annealing/B4678/S35678
+Mazelike I/B2/S124
+Mazelike II/B2/S123
+Mazelike III/B3/S012358
+Mazelike IV/B25/S23457
+Mazelike V/B278/S0124567
+Mazelike VI/B26/S012357
+Mice in maze/B2378/S1234
+Mice in maze II/B23/S234
+Blinking maze/B24567/S
+Star Wars/B2/S345/4
+Free star/B2/S0345/10
+Worms/B25/S3467/6
+Sticks/B2/S3456/6
+Transers I/B26/S0345/6
+Transers II/B26/S345/5
+Thrill Grill/B34/S1234/48
+Fades/B26/S25/25
+Replicators/B37/S345/3
+Replicators II/B35/S3457/5
+Xtasy/B2356/S1456/16
+Spirals/B234/S2/5
+BelZhab Sediment/B23/S145678/8
+Lines/B458/S012345/3
