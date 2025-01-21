@@ -1,6 +1,6 @@
 class SettingsFieldSize(object):
 
-    def SettingsFieldSizeInititalizeActions(self):
+    def settingsFieldSizeInititalizeActions(self):
         self.fieldSizeUpdate.clicked.connect(self.settingsFieldSizeChacngeField)
 
     def settingsFieldSizeChacngeField(self):
