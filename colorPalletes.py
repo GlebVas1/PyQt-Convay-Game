@@ -65,7 +65,7 @@ highContrastI7 = [(49, 49, 49),
 
 colorPalletesDict = {"Yellow chalk 2" : defaultBinary,
                     "Yellow chalk 3" : defaultTernar, 
-                    "Yellow chunk 4" : defaultQuadro, 
+                    "Yellow chalk 4" : defaultQuadro, 
                     "Lazure 4" : lazureQuadro,
                     "Lime 4" : limeQuadro, 
                     "Coral 4" : coralQuadro,

@@ -16,7 +16,7 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setWindowModality(QtCore.Qt.NonModal)
         MainWindow.setEnabled(True)
-        MainWindow.resize(1600, 901)
+        MainWindow.resize(1693, 901)
         MainWindow.setMinimumSize(QtCore.QSize(1600, 900))
         MainWindow.setMaximumSize(QtCore.QSize(10000, 10000))
         MainWindow.setContextMenuPolicy(QtCore.Qt.NoContextMenu)
@@ -867,7 +867,6 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addLayout(self.gameControlPanelsLayout)
         self.horizontalLayout.setStretch(0, 1)
         self.horizontalLayout.setStretch(1, 2)
-        self.horizontalLayout.setStretch(2, 2)
         self.gridLayout_2.addLayout(self.horizontalLayout, 0, 0, 1, 1)
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(":/icons/game_ico.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -2863,6 +2862,7 @@ class Ui_MainWindow(object):
         self.windowSettingsPanel1.setFrameShadow(QtWidgets.QFrame.Raised)
         self.windowSettingsPanel1.setObjectName("windowSettingsPanel1")
         self.settingsWindowFixedSize = QtWidgets.QCheckBox(self.windowSettingsPanel1)
+        self.settingsWindowFixedSize.setEnabled(False)
         self.settingsWindowFixedSize.setGeometry(QtCore.QRect(20, 20, 151, 20))
         font = QtGui.QFont()
         font.setPointSize(11)
@@ -2890,7 +2890,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
