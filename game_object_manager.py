@@ -20,9 +20,11 @@ class ObjectManager(object):
             self.objectsPresets.addItem(name)
 
     def objectManagerInitializePreview(self, object : list):
-        self.brushCurrentObject = object.copy()
+        self.brushCurrentObject = copy.deepcopy(object)
+
         for frame in self.brushManagerPreviewFrames:
             frame.setParent(None)
+
         for i in range(GBM_PREVIEW_SIZE):
             for j in range(GBM_PREVIEW_SIZE):
                 frame = QtWidgets.QFrame(self.objectPreview)

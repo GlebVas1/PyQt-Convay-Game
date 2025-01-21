@@ -8,7 +8,6 @@ class MiniPlotManager(object):
     def __init__(self):
         pass
     
-
     def miniPlotInitialize(self):
         self.miniPlotView.setBackground((89, 89, 89))
 

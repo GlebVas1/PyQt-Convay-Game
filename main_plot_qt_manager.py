@@ -39,7 +39,7 @@ class MainPlotController(object):
 
         self.mainPlotView.getAxis("bottom").setStyle(showValues=False)
         self.mainPlotView.getAxis("bottom").setPen(labelPen)
-        # self.mainPlotView.hideAxis("bottom")
+        # self.mainPlotView.hideAxis("bottom") -- cant use that, because also diables vertical x grid
 
         self.mainPlotView.getAxis("left").setTextPen('w')
         self.mainPlotView.getAxis("left").setTickFont(font)
@@ -62,15 +62,16 @@ class MainPlotController(object):
             curve.setFillLevel(1.0 if self.mainPlotFillUnder.isChecked() else None)
         
 
-        self.legendAliveFrame.setStyleSheet("background-color : " + self.gameColorPalleteQt[self.calc.thisRule.generationsCount])
+        self.legendAliveFrame.setStyleSheet("background-color : " + self.gameColorPalleteQt[self.thisRule.generationsCount])
         self.legendEmptyFrame.setStyleSheet("background-color : " + self.gameColorPalleteQt[0])
 
         self.mainPlotDrawStatistic()
 
     def mainPlotDrawStatistic(self):
+        """In the nutshell a function that makes the main plot to update after changing the color pallete, rules changing etc"""
         for i in range(len(self.calc.statistics)):
             self.mainPlotCurves[i].setData(self.calc.statistics[i][0 : self.plotsFrameWindow.value()])
-
+    
     def mainPlotChangeGridMode(self):
         self.mainPlotView.showGrid(x=self.mainPlotEnableXGrid.isChecked(), y=self.mainPlotEnableYGrid.isChecked())
         self.mainPlotDrawStatistic()

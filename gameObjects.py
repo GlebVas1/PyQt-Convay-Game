@@ -1,3 +1,4 @@
+# the file consists of obejcts presets that will be used on the maingame screen as placeble objects
 # there will be objects that size is 7 x 7
 
 OBJ_SIZE = 7

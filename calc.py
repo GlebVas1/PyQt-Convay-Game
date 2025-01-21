@@ -11,7 +11,7 @@ class Field:
     statistics = {}
     statisticsMaxSize = 100
     
-    def initializeField(self, x: int = 10, y : int = 10):
+    def initializeField(self, x: int = 10, y : int = 10) -> None:
         self.field = np.zeros(shape=(x, y), dtype=int)
         self.xSize = x
         self.ySize = y
