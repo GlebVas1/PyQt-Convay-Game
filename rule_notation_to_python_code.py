@@ -18,8 +18,6 @@ name = parsed[0]
 listArrive = strToList(parsed[2])
 listSurvive = strToList(parsed[4])
 
-
-
 generationsCount = int(parsed[5]) - 1 if len(parsed) == 6 else 1
     
 print(formulateRule(name, listSurvive, listArrive, generationsCount))

@@ -9,10 +9,10 @@ class Rule:
     arriveIfNeighborCount = [0, 0, 0, 1, 0, 0, 0, 0, 0, 0]
     generationsCount = 1
     
-    def getSurvive(self, neighborCount : int):
+    def getSurvive(self, neighborCount : int) -> bool:
         return self.surviveIfNeighborCount[neighborCount] == 1
     
-    def getArrival(self, neighborCount : int):
+    def getArrival(self, neighborCount : int) -> bool:
         return self.arriveIfNeighborCount[neighborCount] == 1
 
     def __init__(self, surviveIfNeighborCount : list = [0, 0, 1, 1, 0, 0, 0, 0, 0, 0], arriveIfNeighborCount : list = [0, 0, 0, 1, 0, 0, 0, 0, 0, 0], genetationsCount = 1):
