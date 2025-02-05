@@ -9,7 +9,6 @@ class RandomManager(object):
     randomManagerCheckBoxes = {}
     
     def randomManagerInitializeStructuresList(self):
-
         font = QtGui.QFont()
         font.setPointSize(11)
         font.setBold(True)
@@ -48,11 +47,8 @@ class RandomManager(object):
                     self.calc.setCell(x, y, random.randint(1, self.thisRule.generationsCount))
 
         if self.enableRandomStructures.isChecked():
-
-            needToBePlaced = self.randomStructuresPerFrame.value()
-
-            isThereAnySelectedObject = False
-
+            needToBePlaced = self.randomStructuresPerFrame.value() # how many objects should be placed on this frame in general
+            isThereAnySelectedObject = False # if there is even one selected object
             for key, checkBox in self.randomManagerCheckBoxes.items():
                     if checkBox.isChecked():
                         isThereAnySelectedObject = True
@@ -64,7 +60,7 @@ class RandomManager(object):
                         newObjectToPlaceRotateStep = copy.deepcopy(objectToPlace)
 
                         if self.enableRandomStructuresRotate.isChecked():
-                            for r in range(random.randint(0, 3)):
+                            for r in range(random.randint(0, 3)): # random rotations count
                                 newObjectRotateStep = copy.deepcopy(newObjectToPlaceRotateStep)
                                 for i in range(ob.OBJ_SIZE):
                                     for j in range(ob.OBJ_SIZE):
@@ -92,6 +88,7 @@ class RandomManager(object):
                                 if newObjectToPlaceFlipStep[i][j] == 1:
                                     self.calc.setCell(x1, y1, generationToSet)
                         needToBePlaced -= 1
+
                     if needToBePlaced <= 0:
                         break
                 if needToBePlaced <= 0:

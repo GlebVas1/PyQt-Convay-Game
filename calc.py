@@ -11,19 +11,19 @@ class Field:
     statistics = {}
     statisticsMaxSize = 100
     
-    def initializeField(self, x: int = 10, y : int = 10):
+    def initializeField(self, x: int = 10, y : int = 10) -> None:
         self.field = np.zeros(shape=(x, y), dtype=int)
         self.xSize = x
         self.ySize = y
 
     def reinitializeFieldWithNewSize(self, xSize : int, ySize : int):
-        
+        """Function to reinitialize field with new size"""
         newField = np.zeros(shape=(xSize, ySize), dtype=int)
 
         xBorders = (max(self.field.shape[0] - xSize, 0) + 1) // 2
         yBorders = (max(self.field.shape[1] - ySize, 0) + 1) // 2
 
-        # Xtop с + 1, Xbottom wo + 1
+        # Xtop with + 1, Xbottom w/o + 1 // mb todo next 
 
         truncatedField = self.field[xBorders :  self.xSize - xBorders, yBorders :self.ySize - yBorders]
 

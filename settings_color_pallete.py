@@ -2,6 +2,7 @@ from PyQt5 import QtWidgets, QtCore
 import colorPalletes as cp
 
 class SettingsColorPalleteManager(object):
+    """The class implenets the funtionallyty of changing color pallete, after selection the preset it must be applied"""
 
     gameColorPalette = []
     gameColorPalleteQt = []
@@ -13,7 +14,7 @@ class SettingsColorPalleteManager(object):
         self.colorPalleteApply.clicked.connect(self.settingColorPalleteSyncPallete)
 
     def settingsColorPalleteInitialize(self, colorPallete : list):
-        pallete = self.SettingsColorPalleteConvertPalleteToSize(colorPallete.copy(), self.calc.thisRule.generationsCount + 1)
+        pallete = self.settingsColorPalleteConvertPalleteToSize(colorPallete.copy(), self.calc.thisRule.generationsCount + 1)
         self.gameColorPalette = pallete
         self.gameColorPalleteQt = cp.convertPalleteToQT(self.gameColorPalette)
 
@@ -46,18 +47,15 @@ class SettingsColorPalleteManager(object):
         self.colorPalletePreview.show()
 
     def settingColorPalleteSyncPallete(self):
-        self.gameManagerSyncChanges()
+        self.conveyFieldQtManagerSyncChanges()
 
     def settingsColorPalleteApplyPreview(self):
         name = self.colorPalleteComboBox.currentText()
-        pallete = self.SettingsColorPalleteConvertPalleteToSize(cp.colorPalletesDict[name].copy(), self.calc.thisRule.generationsCount + 1)
+        pallete = self.settingsColorPalleteConvertPalleteToSize(cp.colorPalletesDict[name].copy(), self.calc.thisRule.generationsCount + 1)
         self.settingsColorPalleteInitialize(pallete)
 
+    def settingsColorPalleteConvertPalleteToSize(self, pallete : list, size : int) -> list:
         
-        
-
-
-    def SettingsColorPalleteConvertPalleteToSize(self, pallete : list, size : int) -> list:
         if len(pallete) > size:
             
             pallete_truncated = []

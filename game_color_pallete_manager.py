@@ -11,6 +11,7 @@ class ColorPalleteManager(object):
     colorPalleteManagerCurrentBrushState = 0
 
     def colorPalleteManagerInitialize(self):
+        """Make a pallete containing colors that are corresponding to the states of game field"""
 
         for button in self.colorPalleteManagerPalleteButtons:
             button.setParent(None)
@@ -43,7 +44,7 @@ class ColorPalleteManager(object):
     
     def colorPalleteManagerSetState(self, val : int):
         self.colorPalleteManagerCurrentBrushState = val
-        self.objectManagerUpdateObjectToPreview()
+        self.objectManagerUpdateObjectInPreview() # need update the preview of placed object
         self.selectedColorPanel.setStyleSheet("background-color : " + self.gameColorPalleteQt[val])
 
     

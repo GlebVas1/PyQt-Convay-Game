@@ -1,5 +1,17 @@
 from rule import Rule
 
+"""
+This file contains some hardcoded rules
+All rules presets will be saved in file rulesPresets.txt after clicking save im settings preview button
+To restore original rules and delete added in game rules either modify rulesPresets.txt of delete that file
+Data should be pasted as rule_name/B{digitals}/S{digitals} and optionally /generationscount (wo it will be setted to 2)
+Ex.
+Default life/B3/S23
+Star Wars/B2/S345/4
+
+The rules are from https://habr.com/ru/articles/718620/ and the next article
+"""
+
 defaultLife = Rule(surviveIfNeighborCount = [0, 0, 1, 1, 0, 0, 0, 0, 0], arriveIfNeighborCount = [0, 0, 0, 1, 0, 0, 0, 0, 0], genetationsCount = 1)
 labirinth = Rule(surviveIfNeighborCount = [0, 1, 1, 1, 1, 1, 0, 0, 0], arriveIfNeighborCount = [0, 0, 0, 1, 0, 0, 0, 0, 0], genetationsCount = 1)
 mazectric = Rule(surviveIfNeighborCount = [0, 1, 1, 1, 1, 0, 0, 0, 0], arriveIfNeighborCount = [0, 0, 0, 1, 0, 0, 0, 0, 0], genetationsCount = 1)
