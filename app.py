@@ -1,5 +1,5 @@
 import sys
-from PyQt5 import QtWidgets, QtCore
+from PyQt5 import QtWidgets
 
 import mainui
 import convey_field_qt_manager
@@ -12,10 +12,9 @@ class App(QtWidgets.QMainWindow, mainui.Ui_MainWindow, convey_field_qt_manager.C
 app = QtWidgets.QApplication(sys.argv)
 frame = App()
 
-frame.ConveyFieldQtManagerInitializeField(16, 16)
 frame.ConveyFieldQtManagerInitializeActions()
-frame.conveyFieldQtManageInitializeButtons()
-frame.changeAllButtons(0)
+frame.ConveyFieldQtManagerInitializeManager(16, 16)
+
 
 frame.show()
 

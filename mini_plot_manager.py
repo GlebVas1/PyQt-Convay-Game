@@ -1,5 +1,5 @@
 
-from PyQt5 import QtWidgets, QtCore
+from PyQt5 import QtCore
 from PyQt5.QtGui import QFont
 
 import pyqtgraph as pg
@@ -10,17 +10,12 @@ class MiniPlotManager(object):
     
     def miniPlotInitialize(self):
         self.miniPlotView.setBackground((89, 89, 89))
-
         self.miniPlotView.setMouseEnabled(x=False, y=False)  # Disable mouse panning & zooming
         self.miniPlotView.hideButtons()  # Disable corner auto-scale button
         self.miniPlotView.getPlotItem().setMenuEnabled(False)
 
-        my_font = QFont("MS Shell Dlg 2", 10, QFont.Bold)
-
         font = QFont()
         font.setPixelSize(20)
-        
-        labelPen = pg.mkPen('w', width=2, style=QtCore.Qt.SolidLine) 
 
         self.miniPlotView.hideAxis("bottom")
 
@@ -47,8 +42,7 @@ class MiniPlotManager(object):
  
 
         # create pyqt5graph bar graph item
-        # with width = 0.6
-        # with bar colors = green
+
         self.bargraph = pg.BarGraphItem(x=x, height=y, width = 1, brushes=brushes, pens=pens)
  
         # add item to plot window
@@ -68,5 +62,4 @@ class MiniPlotManager(object):
         for generation, s in self.calc.statistics.items():
             y.append(s[-1])
 
-        # self.bargraph.setOpts(x=range(self.calc.thisRule.generationsCount + 1), height=y)
         self.bargraph.setOpts(x=range(self.calc.thisRule.generationsCount + 1), height=y)

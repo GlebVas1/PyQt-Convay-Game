@@ -4,21 +4,21 @@ from functools import partial
 
 import calc as cl
 import colorPalletes as cp
-import rules as ru
 import gameObjects as ob
+import rules as ru
 
-from main_plot_qt_manager import MainPlotController
-from game_color_pallete_manager import ColorPalleteManager
-from mini_plot_manager import MiniPlotManager
 from game_brush_manager import BrushManager
-from stop_start_manager import StopStartManager
-from settings_color_pallete import SettingsColorPalleteManager
-from settings_rule import SettingsRuleManager
-from settings_field_size import SettingsFieldSize
+from game_color_pallete_manager import ColorPalleteManager
 from game_object_manager import ObjectManager
 from game_random_manager import RandomManager
 
-import pyqtgraph as pg
+from main_plot_qt_manager import MainPlotController
+from mini_plot_manager import MiniPlotManager
+
+from stop_start_manager import StopStartManager
+from settings_color_pallete import SettingsColorPalleteManager
+from settings_field_size import SettingsFieldSize
+from settings_rule import SettingsRuleManager
 
 # CFMButtonStyleSheet = "border-radius : 6px;\nborder-width: 2px; \nborder-style : solid;\nborder-color : rgb(255 79, 79);\nborder-bottom: 2px solid rgb(89, 89, 89);\n"
 CFMButtonStyleSheet = ""
@@ -42,8 +42,6 @@ class ConveyFieldQtManager(BrushManager,
     
     gameButtonsStates = []
 
-    gameStateFPS = 30
-
     framesTotalCounter = 0
     alliveCellsCounter = 0
 
@@ -58,7 +56,7 @@ class ConveyFieldQtManager(BrushManager,
         self.settingsWindowFixedSize.clicked.connect(self.windowFixedSizeMode)
         
 
-    def ConveyFieldQtManagerInitializeField(
+    def ConveyFieldQtManagerInitializeManager(
             self, xSize: int = 10,
             ySize : int = 10, 
             rule : ru.Rule = ru.defaultLife, 
@@ -109,10 +107,8 @@ class ConveyFieldQtManager(BrushManager,
 
         self.conveyFieldQtManageInitializeButtons()
 
-        
-        
     def conveyFieldQtManageInitializeButtons(self):
-        """initial filiing main field with buttons"""
+        """initial filiing main field with buttons, also is used to reinitilize field"""
 
         for button in self.gameButtons:
             button.setParent(None)
@@ -170,6 +166,7 @@ class ConveyFieldQtManager(BrushManager,
         self.changeAllButtons(self.colorPalleteManagerCurrentBrushState)
 
     def conveyFieldQtManagerUpdateFieldColors(self):
+        """Called on pallete/rule change in order to update appropriate colors"""
         for x in range(self.xFieldSize):
             for y in range(self.yFieldSize):
                 state = self.calc.getState(x, y)

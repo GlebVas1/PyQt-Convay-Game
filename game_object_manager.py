@@ -21,7 +21,7 @@ class ObjectManager(object):
         for name, pallete in ob.objectsDict.items():
             self.objectsPresets.addItem(name)
 
-    def objectManagerInitializePreview(self, object : list):
+    def objectManagerInitializePreview(self, object : list[list[int]]):
         self.brushManagerCurrentObject = copy.deepcopy(object)
         for frame in self.brushManagerPreviewFrames:
             frame.setParent(None)

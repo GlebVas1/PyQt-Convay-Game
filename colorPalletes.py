@@ -82,6 +82,6 @@ colorPalletesDict = {"Yellow chalk 2" : defaultBinary,
 def convertColorToQTString(color) -> str:
     return 'rgb({},{},{})'.format(color[0], color[1], color[2])
 
-def convertPalleteToQT(pallete : list) -> list:
+def convertPalleteToQT(pallete : list[tuple[int]]) -> list:
     return ['rgb({},{},{})'.format(color[0], color[1], color[2]) for color in pallete]
 
