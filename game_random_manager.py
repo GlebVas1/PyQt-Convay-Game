@@ -21,7 +21,7 @@ class RandomManager(object):
             checkBox.setFont(font)
             self.randomManagerCheckBoxes[key] = checkBox
             item = QtWidgets.QListWidgetItem(self.randomStructuresListWidget) 
-            item.setSizeHint = (checkBox.sizeHint())
+            item.setSizeHint(checkBox.sizeHint())
             
             self.randomStructuresListWidget.addItem(item)
             self.randomStructuresListWidget.setItemWidget(item, checkBox)
